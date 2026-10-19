@@ -2,6 +2,7 @@
 // main.js v1.10.0
 //=============================================================================
 
+const assetVersion = "688af3a";
 const scriptUrls = [
     "js/libs/pixi.js",
     "js/libs/pako.min.js",
@@ -15,8 +16,8 @@ const scriptUrls = [
     "js/rmmz_sprites.js",
     "js/rmmz_windows.js",
     "js/plugins.js"
-];
-const effekseerWasmUrl = "js/libs/effekseer.wasm";
+].map(url => `${url}?v=${assetVersion}`);
+const effekseerWasmUrl = `js/libs/effekseer.wasm?v=${assetVersion}`;
 
 class Main {
     constructor() {
