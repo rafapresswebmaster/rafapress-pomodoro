@@ -1,0 +1,618 @@
+[
+  {
+    "row": 0,
+    "column": 0,
+    "bounds": [
+      121,
+      13,
+      256,
+      133
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 0,
+    "column": 1,
+    "bounds": [
+      327,
+      13,
+      468,
+      133
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 0,
+    "column": 2,
+    "bounds": [
+      546,
+      13,
+      664,
+      132
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 0,
+    "column": 3,
+    "bounds": [
+      726,
+      13,
+      875,
+      132
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 0,
+    "column": 4,
+    "bounds": [
+      929,
+      13,
+      1082,
+      132
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 0,
+    "column": 5,
+    "bounds": [
+      1149,
+      12,
+      1302,
+      132
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 0,
+    "column": 6,
+    "bounds": [
+      1348,
+      58,
+      1557,
+      131
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 1,
+    "column": 0,
+    "bounds": [
+      120,
+      137,
+      260,
+      263
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 1,
+    "column": 1,
+    "bounds": [
+      325,
+      137,
+      466,
+      263
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 1,
+    "column": 2,
+    "bounds": [
+      547,
+      139,
+      655,
+      263
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 1,
+    "column": 3,
+    "bounds": [
+      720,
+      138,
+      877,
+      263
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 1,
+    "column": 4,
+    "bounds": [
+      926,
+      138,
+      1084,
+      263
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 1,
+    "column": 5,
+    "bounds": [
+      1155,
+      134,
+      1303,
+      262
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 1,
+    "column": 6,
+    "bounds": [
+      1344,
+      170,
+      1565,
+      260
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 2,
+    "column": 0,
+    "bounds": [
+      119,
+      266,
+      272,
+      391
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 2,
+    "column": 1,
+    "bounds": [
+      326,
+      266,
+      485,
+      391
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 2,
+    "column": 2,
+    "bounds": [
+      543,
+      270,
+      671,
+      391
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 2,
+    "column": 3,
+    "bounds": [
+      720,
+      266,
+      888,
+      391
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 2,
+    "column": 4,
+    "bounds": [
+      925,
+      268,
+      1097,
+      392
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 2,
+    "column": 5,
+    "bounds": [
+      1157,
+      266,
+      1316,
+      392
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 2,
+    "column": 6,
+    "bounds": [
+      1341,
+      302,
+      1572,
+      395
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 3,
+    "column": 0,
+    "bounds": [
+      120,
+      396,
+      274,
+      516
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 3,
+    "column": 1,
+    "bounds": [
+      325,
+      396,
+      482,
+      515
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 3,
+    "column": 2,
+    "bounds": [
+      547,
+      396,
+      671,
+      516
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 3,
+    "column": 3,
+    "bounds": [
+      720,
+      397,
+      880,
+      516
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 3,
+    "column": 4,
+    "bounds": [
+      923,
+      398,
+      1094,
+      516
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 3,
+    "column": 5,
+    "bounds": [
+      1160,
+      396,
+      1319,
+      516
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 3,
+    "column": 6,
+    "bounds": [
+      1347,
+      432,
+      1579,
+      515
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 4,
+    "column": 0,
+    "bounds": [
+      119,
+      519,
+      272,
+      638
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 4,
+    "column": 1,
+    "bounds": [
+      325,
+      519,
+      479,
+      638
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 4,
+    "column": 2,
+    "bounds": [
+      544,
+      519,
+      669,
+      637
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 4,
+    "column": 3,
+    "bounds": [
+      722,
+      519,
+      886,
+      638
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 4,
+    "column": 4,
+    "bounds": [
+      926,
+      520,
+      1097,
+      638
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 4,
+    "column": 5,
+    "bounds": [
+      1157,
+      519,
+      1310,
+      638
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 4,
+    "column": 6,
+    "bounds": [
+      1337,
+      553,
+      1570,
+      645
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 5,
+    "column": 0,
+    "bounds": [
+      119,
+      638,
+      274,
+      753
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 5,
+    "column": 1,
+    "bounds": [
+      328,
+      638,
+      484,
+      753
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 5,
+    "column": 2,
+    "bounds": [
+      544,
+      639,
+      667,
+      752
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 5,
+    "column": 3,
+    "bounds": [
+      721,
+      640,
+      884,
+      753
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 5,
+    "column": 4,
+    "bounds": [
+      927,
+      641,
+      1096,
+      753
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 5,
+    "column": 5,
+    "bounds": [
+      1159,
+      642,
+      1321,
+      754
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 5,
+    "column": 6,
+    "bounds": [
+      1349,
+      663,
+      1575,
+      758
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 6,
+    "column": 0,
+    "bounds": [
+      119,
+      754,
+      267,
+      861
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 6,
+    "column": 1,
+    "bounds": [
+      327,
+      753,
+      469,
+      861
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 6,
+    "column": 2,
+    "bounds": [
+      538,
+      755,
+      664,
+      861
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 6,
+    "column": 3,
+    "bounds": [
+      723,
+      754,
+      867,
+      861
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 6,
+    "column": 4,
+    "bounds": [
+      928,
+      753,
+      1081,
+      861
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 6,
+    "column": 5,
+    "bounds": [
+      1161,
+      756,
+      1319,
+      861
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 6,
+    "column": 6,
+    "bounds": [
+      1355,
+      778,
+      1571,
+      859
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 7,
+    "column": 0,
+    "bounds": [
+      122,
+      863,
+      251,
+      945
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 7,
+    "column": 1,
+    "bounds": [
+      326,
+      863,
+      467,
+      945
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 7,
+    "column": 2,
+    "bounds": [
+      547,
+      862,
+      654,
+      945
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 7,
+    "column": 3,
+    "bounds": [
+      731,
+      863,
+      877,
+      945
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 7,
+    "column": 4,
+    "bounds": [
+      934,
+      862,
+      1088,
+      945
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 7,
+    "column": 5,
+    "bounds": [
+      1162,
+      863,
+      1309,
+      945
+    ],
+    "coreAlpha": 192
+  },
+  {
+    "row": 7,
+    "column": 6,
+    "bounds": [
+      1356,
+      879,
+      1569,
+      945
+    ],
+    "coreAlpha": 192
+  }
+]

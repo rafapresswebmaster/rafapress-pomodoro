@@ -1,0 +1,20 @@
+[
+  {
+    "viewport": [
+      816,
+      624
+    ],
+    "passed": true,
+    "audio": "mocked optional buffer: dedupe, Alerts, failure, completion priority",
+    "errors": []
+  },
+  {
+    "viewport": [
+      1280,
+      720
+    ],
+    "passed": true,
+    "audio": "mocked optional buffer: dedupe, Alerts, failure, completion priority",
+    "errors": []
+  }
+]

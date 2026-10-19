@@ -1,0 +1,6928 @@
+{
+  "method": "All 20 distinct three-class compositions, four levels, five enemy scenarios, 16 seeds each. Fresh full pools, no gear, no ritual. Single battles; not campaign attrition. Marginal class win rates include two teammates; not causal individual strength.",
+  "runs": 6400,
+  "byClass": {
+    "barbarian/L1": {
+      "runs": 800,
+      "wins": 230,
+      "winRate": 0.2875
+    },
+    "barbarian/L3": {
+      "runs": 800,
+      "wins": 589,
+      "winRate": 0.73625
+    },
+    "barbarian/L5": {
+      "runs": 800,
+      "wins": 731,
+      "winRate": 0.91375
+    },
+    "barbarian/L8": {
+      "runs": 800,
+      "wins": 781,
+      "winRate": 0.97625
+    },
+    "knight/L1": {
+      "runs": 800,
+      "wins": 237,
+      "winRate": 0.29625
+    },
+    "knight/L3": {
+      "runs": 800,
+      "wins": 581,
+      "winRate": 0.72625
+    },
+    "knight/L5": {
+      "runs": 800,
+      "wins": 699,
+      "winRate": 0.87375
+    },
+    "knight/L8": {
+      "runs": 800,
+      "wins": 737,
+      "winRate": 0.92125
+    },
+    "ranger/L1": {
+      "runs": 800,
+      "wins": 231,
+      "winRate": 0.28875
+    },
+    "ranger/L3": {
+      "runs": 800,
+      "wins": 521,
+      "winRate": 0.65125
+    },
+    "ranger/L5": {
+      "runs": 800,
+      "wins": 660,
+      "winRate": 0.825
+    },
+    "ranger/L8": {
+      "runs": 800,
+      "wins": 715,
+      "winRate": 0.89375
+    },
+    "rogue/L1": {
+      "runs": 800,
+      "wins": 241,
+      "winRate": 0.30125
+    },
+    "rogue/L3": {
+      "runs": 800,
+      "wins": 510,
+      "winRate": 0.6375
+    },
+    "rogue/L5": {
+      "runs": 800,
+      "wins": 662,
+      "winRate": 0.8275
+    },
+    "rogue/L8": {
+      "runs": 800,
+      "wins": 707,
+      "winRate": 0.88375
+    },
+    "mage/L1": {
+      "runs": 800,
+      "wins": 241,
+      "winRate": 0.30125
+    },
+    "mage/L3": {
+      "runs": 800,
+      "wins": 554,
+      "winRate": 0.6925
+    },
+    "mage/L5": {
+      "runs": 800,
+      "wins": 704,
+      "winRate": 0.88
+    },
+    "mage/L8": {
+      "runs": 800,
+      "wins": 758,
+      "winRate": 0.9475
+    },
+    "cleric/L1": {
+      "runs": 800,
+      "wins": 245,
+      "winRate": 0.30625
+    },
+    "cleric/L3": {
+      "runs": 800,
+      "wins": 503,
+      "winRate": 0.62875
+    },
+    "cleric/L5": {
+      "runs": 800,
+      "wins": 705,
+      "winRate": 0.88125
+    },
+    "cleric/L8": {
+      "runs": 800,
+      "wins": 736,
+      "winRate": 0.92
+    }
+  },
+  "rows": [
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 210,
+      "damage": {
+        "ranger": 37,
+        "barbarian": 29,
+        "knight": 30
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 56,
+        "barbarian": 39,
+        "knight": 70
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 32,
+        "barbarian": 20,
+        "knight": 46
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 52,
+        "barbarian": 31,
+        "knight": 74
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 5,
+      "hp": 18,
+      "damage": {
+        "ranger": 50,
+        "barbarian": 37,
+        "knight": 73
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 281,
+      "damage": {
+        "ranger": 37,
+        "barbarian": 37,
+        "knight": 22
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 112,
+      "damage": {
+        "ranger": 137,
+        "barbarian": 144,
+        "knight": 128
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 8,
+      "hp": 50,
+      "damage": {
+        "ranger": 85,
+        "barbarian": 116,
+        "knight": 116
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 12,
+      "hp": 79,
+      "damage": {
+        "ranger": 125,
+        "barbarian": 136,
+        "knight": 175
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 185,
+      "damage": {
+        "ranger": 69,
+        "barbarian": 88,
+        "knight": 51
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 297,
+      "damage": {
+        "ranger": 38,
+        "barbarian": 38,
+        "knight": 20
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 14,
+      "hp": 133,
+      "damage": {
+        "ranger": 111,
+        "barbarian": 166,
+        "knight": 133
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 81,
+      "damage": {
+        "ranger": 91,
+        "barbarian": 124,
+        "knight": 124
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 15,
+      "hp": 132,
+      "damage": {
+        "ranger": 128,
+        "barbarian": 209,
+        "knight": 142
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 198,
+      "damage": {
+        "ranger": 69,
+        "barbarian": 87,
+        "knight": 52
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 299,
+      "damage": {
+        "ranger": 39,
+        "barbarian": 43,
+        "knight": 14
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 191,
+      "damage": {
+        "ranger": 140,
+        "barbarian": 195,
+        "knight": 81
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 15,
+      "hp": 157,
+      "damage": {
+        "ranger": 125,
+        "barbarian": 174,
+        "knight": 64
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 15,
+      "hp": 169,
+      "damage": {
+        "ranger": 131,
+        "barbarian": 226,
+        "knight": 120
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 236,
+      "damage": {
+        "ranger": 82,
+        "barbarian": 96,
+        "knight": 30
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 215,
+      "damage": {
+        "rogue": 40,
+        "barbarian": 30,
+        "knight": 26
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 57,
+        "barbarian": 42,
+        "knight": 68
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 31,
+        "barbarian": 28,
+        "knight": 48
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 58,
+        "knight": 77,
+        "barbarian": 36
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 5,
+      "hp": 18,
+      "damage": {
+        "rogue": 43,
+        "barbarian": 42,
+        "knight": 77
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 287,
+      "damage": {
+        "rogue": 35,
+        "barbarian": 39,
+        "knight": 22
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 13,
+      "hp": 91,
+      "damage": {
+        "rogue": 99,
+        "barbarian": 152,
+        "knight": 144
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 7,
+      "hp": 47,
+      "damage": {
+        "rogue": 78,
+        "barbarian": 114,
+        "knight": 122
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 9,
+      "hp": 55,
+      "damage": {
+        "rogue": 88,
+        "barbarian": 159,
+        "knight": 184
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 186,
+      "damage": {
+        "rogue": 63,
+        "barbarian": 91,
+        "knight": 54
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 307,
+      "damage": {
+        "rogue": 35,
+        "barbarian": 38,
+        "knight": 23
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 14,
+      "hp": 123,
+      "damage": {
+        "rogue": 100,
+        "barbarian": 165,
+        "knight": 138
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 79,
+      "damage": {
+        "rogue": 85,
+        "barbarian": 133,
+        "knight": 121
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 14,
+      "hp": 121,
+      "damage": {
+        "rogue": 127,
+        "barbarian": 187,
+        "knight": 159
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 212,
+      "damage": {
+        "rogue": 70,
+        "barbarian": 84,
+        "knight": 54
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 310,
+      "damage": {
+        "rogue": 34,
+        "barbarian": 49,
+        "knight": 13
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 183,
+      "damage": {
+        "rogue": 106,
+        "barbarian": 212,
+        "knight": 96
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 14,
+      "hp": 145,
+      "damage": {
+        "rogue": 94,
+        "barbarian": 195,
+        "knight": 74
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 175,
+      "damage": {
+        "rogue": 111,
+        "barbarian": 242,
+        "knight": 126
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 218,
+      "damage": {
+        "rogue": 54,
+        "barbarian": 120,
+        "knight": 34
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 194,
+      "damage": {
+        "mage": 33,
+        "barbarian": 32,
+        "knight": 31
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 57,
+        "barbarian": 35,
+        "knight": 62
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 36,
+        "barbarian": 21,
+        "knight": 44
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 56,
+        "barbarian": 31,
+        "knight": 66
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 7,
+      "hp": 25,
+      "damage": {
+        "mage": 63,
+        "barbarian": 43,
+        "knight": 72
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 259,
+      "damage": {
+        "mage": 47,
+        "barbarian": 30,
+        "knight": 19
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 128,
+      "damage": {
+        "mage": 148,
+        "barbarian": 147,
+        "knight": 114
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 76,
+      "damage": {
+        "mage": 130,
+        "barbarian": 118,
+        "knight": 110
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 14,
+      "hp": 98,
+      "damage": {
+        "mage": 156,
+        "barbarian": 160,
+        "knight": 152
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 203,
+      "damage": {
+        "mage": 105,
+        "barbarian": 65,
+        "knight": 38
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 273,
+      "damage": {
+        "mage": 35,
+        "barbarian": 37,
+        "knight": 24
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 171,
+      "damage": {
+        "mage": 146,
+        "barbarian": 159,
+        "knight": 111
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 16,
+      "hp": 142,
+      "damage": {
+        "mage": 129,
+        "barbarian": 139,
+        "knight": 100
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 155,
+      "damage": {
+        "mage": 145,
+        "barbarian": 192,
+        "knight": 143
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 226,
+      "damage": {
+        "mage": 91,
+        "barbarian": 76,
+        "knight": 41
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 279,
+      "damage": {
+        "mage": 27,
+        "barbarian": 54,
+        "knight": 15
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 215,
+      "damage": {
+        "mage": 164,
+        "barbarian": 182,
+        "knight": 70
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 16,
+      "hp": 199,
+      "damage": {
+        "mage": 159,
+        "barbarian": 164,
+        "knight": 45
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 201,
+      "damage": {
+        "mage": 166,
+        "barbarian": 213,
+        "knight": 101
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 232,
+      "damage": {
+        "mage": 85,
+        "barbarian": 90,
+        "knight": 33
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 215,
+      "damage": {
+        "barbarian": 44,
+        "knight": 32,
+        "cleric": 20
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "barbarian": 38,
+        "knight": 70,
+        "cleric": 28
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "barbarian": 35,
+        "knight": 48,
+        "cleric": 16
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "barbarian": 48,
+        "knight": 71,
+        "cleric": 38
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 8,
+      "hp": 20,
+      "damage": {
+        "barbarian": 56,
+        "knight": 76,
+        "cleric": 37
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 276,
+      "damage": {
+        "barbarian": 58,
+        "knight": 25,
+        "cleric": 13
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 93,
+      "damage": {
+        "barbarian": 179,
+        "knight": 153,
+        "cleric": 81
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 4,
+      "hp": 18,
+      "damage": {
+        "barbarian": 127,
+        "knight": 118,
+        "cleric": 43
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 12,
+      "hp": 52,
+      "damage": {
+        "barbarian": 166,
+        "knight": 183,
+        "cleric": 110
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 210,
+      "damage": {
+        "barbarian": 106,
+        "knight": 66,
+        "cleric": 36
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 308,
+      "damage": {
+        "barbarian": 60,
+        "knight": 22,
+        "cleric": 14
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 181,
+      "damage": {
+        "barbarian": 186,
+        "knight": 131,
+        "cleric": 99
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 92,
+      "damage": {
+        "barbarian": 157,
+        "knight": 139,
+        "cleric": 52
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 148,
+      "damage": {
+        "barbarian": 209,
+        "knight": 161,
+        "cleric": 110
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 249,
+      "damage": {
+        "barbarian": 107,
+        "knight": 63,
+        "cleric": 38
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 311,
+      "damage": {
+        "barbarian": 73,
+        "knight": 17,
+        "cleric": 6
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 215,
+      "damage": {
+        "barbarian": 227,
+        "knight": 108,
+        "cleric": 81
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 15,
+      "hp": 148,
+      "damage": {
+        "barbarian": 230,
+        "knight": 91,
+        "cleric": 44
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 185,
+      "damage": {
+        "barbarian": 253,
+        "knight": 126,
+        "cleric": 101
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 247,
+      "damage": {
+        "barbarian": 134,
+        "knight": 44,
+        "cleric": 30
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 208,
+      "damage": {
+        "rogue": 41,
+        "ranger": 30,
+        "barbarian": 25
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 51,
+        "ranger": 75,
+        "barbarian": 55
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 38,
+        "ranger": 37,
+        "barbarian": 32
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 59,
+        "ranger": 48,
+        "barbarian": 45
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 7,
+      "hp": 22,
+      "damage": {
+        "rogue": 57,
+        "ranger": 63,
+        "barbarian": 57
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 269,
+      "damage": {
+        "rogue": 37,
+        "ranger": 30,
+        "barbarian": 29
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 11,
+      "hp": 65,
+      "damage": {
+        "rogue": 127,
+        "ranger": 103,
+        "barbarian": 161
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 4,
+      "hp": 15,
+      "damage": {
+        "rogue": 78,
+        "ranger": 83,
+        "barbarian": 111
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 5,
+      "hp": 23,
+      "damage": {
+        "rogue": 114,
+        "ranger": 82,
+        "barbarian": 168
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 165,
+      "damage": {
+        "rogue": 69,
+        "ranger": 65,
+        "barbarian": 74
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 284,
+      "damage": {
+        "rogue": 37,
+        "ranger": 27,
+        "barbarian": 32
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 12,
+      "hp": 94,
+      "damage": {
+        "rogue": 120,
+        "ranger": 99,
+        "barbarian": 177
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 8,
+      "hp": 44,
+      "damage": {
+        "rogue": 84,
+        "ranger": 85,
+        "barbarian": 138
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 11,
+      "hp": 73,
+      "damage": {
+        "rogue": 131,
+        "ranger": 129,
+        "barbarian": 196
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 185,
+      "damage": {
+        "rogue": 66,
+        "ranger": 73,
+        "barbarian": 69
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 286,
+      "damage": {
+        "rogue": 29,
+        "ranger": 22,
+        "barbarian": 45
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 14,
+      "hp": 126,
+      "damage": {
+        "rogue": 86,
+        "ranger": 129,
+        "barbarian": 191
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 13,
+      "hp": 95,
+      "damage": {
+        "rogue": 71,
+        "ranger": 106,
+        "barbarian": 178
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 15,
+      "hp": 97,
+      "damage": {
+        "rogue": 123,
+        "ranger": 123,
+        "barbarian": 231
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 197,
+      "damage": {
+        "rogue": 52,
+        "ranger": 65,
+        "barbarian": 91
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 185,
+      "damage": {
+        "ranger": 36,
+        "mage": 32,
+        "barbarian": 28
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 51,
+        "mage": 64,
+        "barbarian": 42
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 27,
+        "mage": 35,
+        "barbarian": 22
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 45,
+        "mage": 62,
+        "barbarian": 45
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 6,
+      "hp": 21,
+      "damage": {
+        "ranger": 59,
+        "mage": 62,
+        "barbarian": 41
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 234,
+      "damage": {
+        "ranger": 35,
+        "mage": 33,
+        "barbarian": 28
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 14,
+      "hp": 95,
+      "damage": {
+        "ranger": 93,
+        "mage": 174,
+        "barbarian": 134
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 6,
+      "hp": 18,
+      "damage": {
+        "ranger": 83,
+        "mage": 131,
+        "barbarian": 99
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 10,
+      "hp": 43,
+      "damage": {
+        "ranger": 109,
+        "mage": 156,
+        "barbarian": 156
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 158,
+      "damage": {
+        "ranger": 58,
+        "mage": 79,
+        "barbarian": 71
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 253,
+      "damage": {
+        "ranger": 36,
+        "mage": 21,
+        "barbarian": 39
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 14,
+      "hp": 114,
+      "damage": {
+        "ranger": 96,
+        "mage": 161,
+        "barbarian": 146
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 66,
+      "damage": {
+        "ranger": 82,
+        "mage": 142,
+        "barbarian": 114
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 11,
+      "hp": 80,
+      "damage": {
+        "ranger": 102,
+        "mage": 163,
+        "barbarian": 178
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 178,
+      "damage": {
+        "ranger": 63,
+        "mage": 70,
+        "barbarian": 75
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 253,
+      "damage": {
+        "ranger": 30,
+        "mage": 23,
+        "barbarian": 43
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 154,
+      "damage": {
+        "ranger": 118,
+        "mage": 148,
+        "barbarian": 150
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 15,
+      "hp": 115,
+      "damage": {
+        "ranger": 85,
+        "mage": 143,
+        "barbarian": 139
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 135,
+      "damage": {
+        "ranger": 106,
+        "mage": 176,
+        "barbarian": 198
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 194,
+      "damage": {
+        "ranger": 70,
+        "mage": 66,
+        "barbarian": 72
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 203,
+      "damage": {
+        "ranger": 47,
+        "barbarian": 33,
+        "cleric": 16
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 66,
+        "barbarian": 52,
+        "cleric": 36
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 33,
+        "barbarian": 29,
+        "cleric": 21
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 61,
+        "barbarian": 53,
+        "cleric": 42
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 8,
+      "hp": 19,
+      "damage": {
+        "ranger": 67,
+        "barbarian": 60,
+        "cleric": 51
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 253,
+      "damage": {
+        "ranger": 42,
+        "barbarian": 43,
+        "cleric": 11
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 12,
+      "hp": 76,
+      "damage": {
+        "ranger": 125,
+        "barbarian": 178,
+        "cleric": 87
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 68,
+        "barbarian": 121,
+        "cleric": 38
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 7,
+      "hp": 35,
+      "damage": {
+        "ranger": 116,
+        "barbarian": 165,
+        "cleric": 104
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 160,
+      "damage": {
+        "ranger": 77,
+        "barbarian": 94,
+        "cleric": 37
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 285,
+      "damage": {
+        "ranger": 43,
+        "barbarian": 42,
+        "cleric": 11
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 133,
+      "damage": {
+        "ranger": 124,
+        "barbarian": 185,
+        "cleric": 97
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 66,
+      "damage": {
+        "ranger": 106,
+        "barbarian": 166,
+        "cleric": 71
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 13,
+      "hp": 105,
+      "damage": {
+        "ranger": 119,
+        "barbarian": 216,
+        "cleric": 116
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 215,
+      "damage": {
+        "ranger": 80,
+        "barbarian": 97,
+        "cleric": 31
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 283,
+      "damage": {
+        "ranger": 36,
+        "barbarian": 56,
+        "cleric": 4
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 197,
+      "damage": {
+        "ranger": 147,
+        "barbarian": 212,
+        "cleric": 54
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 14,
+      "hp": 130,
+      "damage": {
+        "ranger": 118,
+        "barbarian": 200,
+        "cleric": 47
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 15,
+      "hp": 170,
+      "damage": {
+        "ranger": 145,
+        "barbarian": 249,
+        "cleric": 83
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 223,
+      "damage": {
+        "ranger": 83,
+        "barbarian": 105,
+        "cleric": 20
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 189,
+      "damage": {
+        "rogue": 40,
+        "mage": 31,
+        "barbarian": 25
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 51,
+        "mage": 69,
+        "barbarian": 47
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 46,
+        "mage": 37,
+        "barbarian": 27
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 49,
+        "mage": 77,
+        "barbarian": 53
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 8,
+      "hp": 26,
+      "damage": {
+        "rogue": 60,
+        "mage": 68,
+        "barbarian": 43
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 249,
+      "damage": {
+        "rogue": 35,
+        "mage": 32,
+        "barbarian": 29
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 12,
+      "hp": 81,
+      "damage": {
+        "rogue": 89,
+        "mage": 159,
+        "barbarian": 141
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 5,
+      "hp": 11,
+      "damage": {
+        "rogue": 72,
+        "mage": 143,
+        "barbarian": 97
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 5,
+      "hp": 24,
+      "damage": {
+        "rogue": 86,
+        "mage": 161,
+        "barbarian": 159
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 166,
+      "damage": {
+        "rogue": 54,
+        "mage": 86,
+        "barbarian": 68
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 263,
+      "damage": {
+        "rogue": 36,
+        "mage": 19,
+        "barbarian": 41
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 126,
+      "damage": {
+        "rogue": 110,
+        "mage": 146,
+        "barbarian": 151
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 13,
+      "hp": 72,
+      "damage": {
+        "rogue": 96,
+        "mage": 142,
+        "barbarian": 115
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 14,
+      "hp": 93,
+      "damage": {
+        "rogue": 116,
+        "mage": 165,
+        "barbarian": 185
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 192,
+      "damage": {
+        "rogue": 69,
+        "mage": 65,
+        "barbarian": 74
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 264,
+      "damage": {
+        "rogue": 27,
+        "mage": 24,
+        "barbarian": 45
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 150,
+      "damage": {
+        "rogue": 94,
+        "mage": 158,
+        "barbarian": 162
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 16,
+      "hp": 129,
+      "damage": {
+        "rogue": 66,
+        "mage": 149,
+        "barbarian": 153
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 15,
+      "hp": 120,
+      "damage": {
+        "rogue": 96,
+        "mage": 182,
+        "barbarian": 198
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 198,
+      "damage": {
+        "rogue": 41,
+        "mage": 73,
+        "barbarian": 94
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 210,
+      "damage": {
+        "rogue": 47,
+        "barbarian": 33,
+        "cleric": 16
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 67,
+        "barbarian": 57,
+        "cleric": 41
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 42,
+        "barbarian": 35,
+        "cleric": 21
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 72,
+        "cleric": 43,
+        "barbarian": 62
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 9,
+      "hp": 25,
+      "damage": {
+        "rogue": 65,
+        "barbarian": 57,
+        "cleric": 61
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 262,
+      "damage": {
+        "rogue": 42,
+        "barbarian": 44,
+        "cleric": 10
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 10,
+      "hp": 52,
+      "damage": {
+        "rogue": 125,
+        "barbarian": 154,
+        "cleric": 94
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 3,
+      "hp": 8,
+      "damage": {
+        "rogue": 77,
+        "barbarian": 128,
+        "cleric": 62
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 5,
+      "hp": 26,
+      "damage": {
+        "rogue": 100,
+        "barbarian": 170,
+        "cleric": 100
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 166,
+      "damage": {
+        "rogue": 68,
+        "barbarian": 98,
+        "cleric": 42
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 292,
+      "damage": {
+        "rogue": 44,
+        "barbarian": 44,
+        "cleric": 8
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 145,
+      "damage": {
+        "rogue": 133,
+        "barbarian": 179,
+        "cleric": 102
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 13,
+      "hp": 75,
+      "damage": {
+        "rogue": 111,
+        "barbarian": 157,
+        "cleric": 83
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 14,
+      "hp": 111,
+      "damage": {
+        "rogue": 140,
+        "barbarian": 204,
+        "cleric": 121
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 233,
+      "damage": {
+        "rogue": 77,
+        "barbarian": 97,
+        "cleric": 34
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 295,
+      "damage": {
+        "rogue": 33,
+        "barbarian": 60,
+        "cleric": 3
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 171,
+      "damage": {
+        "rogue": 105,
+        "barbarian": 231,
+        "cleric": 75
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 15,
+      "hp": 137,
+      "damage": {
+        "rogue": 89,
+        "barbarian": 215,
+        "cleric": 56
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 154,
+      "damage": {
+        "rogue": 140,
+        "barbarian": 244,
+        "cleric": 96
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 222,
+      "damage": {
+        "rogue": 57,
+        "barbarian": 122,
+        "cleric": 29
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 186,
+      "damage": {
+        "mage": 44,
+        "barbarian": 35,
+        "cleric": 17
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 59,
+        "barbarian": 49,
+        "cleric": 35
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 35,
+        "barbarian": 31,
+        "cleric": 18
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 57,
+        "barbarian": 44,
+        "cleric": 37
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 7,
+      "hp": 19,
+      "damage": {
+        "mage": 69,
+        "barbarian": 56,
+        "cleric": 42
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 231,
+      "damage": {
+        "mage": 56,
+        "barbarian": 35,
+        "cleric": 5
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 13,
+      "hp": 73,
+      "damage": {
+        "mage": 181,
+        "barbarian": 149,
+        "cleric": 74
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 4,
+      "hp": 12,
+      "damage": {
+        "mage": 133,
+        "barbarian": 125,
+        "cleric": 48
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 7,
+      "hp": 30,
+      "damage": {
+        "mage": 143,
+        "barbarian": 172,
+        "cleric": 87
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 169,
+      "damage": {
+        "mage": 105,
+        "barbarian": 79,
+        "cleric": 24
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 267,
+      "damage": {
+        "mage": 44,
+        "barbarian": 41,
+        "cleric": 11
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 153,
+      "damage": {
+        "mage": 162,
+        "barbarian": 162,
+        "cleric": 92
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 14,
+      "hp": 88,
+      "damage": {
+        "mage": 141,
+        "barbarian": 156,
+        "cleric": 65
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 15,
+      "hp": 118,
+      "damage": {
+        "mage": 152,
+        "barbarian": 202,
+        "cleric": 124
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 237,
+      "damage": {
+        "mage": 96,
+        "barbarian": 87,
+        "cleric": 25
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 268,
+      "damage": {
+        "mage": 33,
+        "barbarian": 57,
+        "cleric": 6
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 228,
+      "damage": {
+        "mage": 175,
+        "barbarian": 194,
+        "cleric": 47
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 16,
+      "hp": 171,
+      "damage": {
+        "mage": 165,
+        "barbarian": 168,
+        "cleric": 35
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 186,
+      "damage": {
+        "mage": 192,
+        "barbarian": 218,
+        "cleric": 70
+      }
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 218,
+      "damage": {
+        "mage": 89,
+        "barbarian": 102,
+        "cleric": 17
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 200,
+      "damage": {
+        "rogue": 41,
+        "ranger": 30,
+        "knight": 25
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 61,
+        "ranger": 79,
+        "knight": 80
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 33,
+        "ranger": 30,
+        "knight": 47
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 63,
+        "ranger": 55,
+        "knight": 74
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 6,
+      "hp": 31,
+      "damage": {
+        "rogue": 42,
+        "ranger": 46,
+        "knight": 65
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 236,
+      "damage": {
+        "rogue": 38,
+        "ranger": 30,
+        "knight": 28
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 11,
+      "hp": 86,
+      "damage": {
+        "rogue": 112,
+        "ranger": 116,
+        "knight": 149
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 5,
+      "hp": 19,
+      "damage": {
+        "rogue": 78,
+        "ranger": 58,
+        "knight": 130
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 5,
+      "hp": 31,
+      "damage": {
+        "rogue": 97,
+        "ranger": 76,
+        "knight": 177
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 154,
+      "damage": {
+        "rogue": 73,
+        "ranger": 61,
+        "knight": 74
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 237,
+      "damage": {
+        "rogue": 37,
+        "ranger": 32,
+        "knight": 27
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 12,
+      "hp": 91,
+      "damage": {
+        "rogue": 122,
+        "ranger": 105,
+        "knight": 164
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 3,
+      "hp": 23,
+      "damage": {
+        "rogue": 75,
+        "ranger": 51,
+        "knight": 126
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 8,
+      "hp": 54,
+      "damage": {
+        "rogue": 115,
+        "ranger": 88,
+        "knight": 192
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 159,
+      "damage": {
+        "rogue": 65,
+        "ranger": 78,
+        "knight": 65
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 238,
+      "damage": {
+        "rogue": 30,
+        "ranger": 35,
+        "knight": 31
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 12,
+      "hp": 106,
+      "damage": {
+        "rogue": 115,
+        "ranger": 141,
+        "knight": 128
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 6,
+      "hp": 54,
+      "damage": {
+        "rogue": 70,
+        "ranger": 115,
+        "knight": 106
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 12,
+      "hp": 85,
+      "damage": {
+        "rogue": 120,
+        "ranger": 150,
+        "knight": 174
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 167,
+      "damage": {
+        "rogue": 62,
+        "ranger": 91,
+        "knight": 55
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 187,
+      "damage": {
+        "ranger": 36,
+        "mage": 32,
+        "knight": 28
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 47,
+        "mage": 57,
+        "knight": 69
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 28,
+        "mage": 22,
+        "knight": 40
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 46,
+        "mage": 61,
+        "knight": 77
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 8,
+      "hp": 28,
+      "damage": {
+        "ranger": 47,
+        "mage": 49,
+        "knight": 78
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 208,
+      "damage": {
+        "ranger": 36,
+        "mage": 35,
+        "knight": 25
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 13,
+      "hp": 88,
+      "damage": {
+        "ranger": 101,
+        "mage": 155,
+        "knight": 146
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 4,
+      "hp": 20,
+      "damage": {
+        "ranger": 62,
+        "mage": 97,
+        "knight": 122
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 8,
+      "hp": 56,
+      "damage": {
+        "ranger": 89,
+        "mage": 148,
+        "knight": 185
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 171,
+      "damage": {
+        "ranger": 57,
+        "mage": 93,
+        "knight": 58
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 207,
+      "damage": {
+        "ranger": 39,
+        "mage": 21,
+        "knight": 36
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 136,
+      "damage": {
+        "ranger": 115,
+        "mage": 160,
+        "knight": 135
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 9,
+      "hp": 68,
+      "damage": {
+        "ranger": 78,
+        "mage": 118,
+        "knight": 121
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 12,
+      "hp": 100,
+      "damage": {
+        "ranger": 92,
+        "mage": 176,
+        "knight": 177
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 181,
+      "damage": {
+        "ranger": 62,
+        "mage": 88,
+        "knight": 58
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 208,
+      "damage": {
+        "ranger": 43,
+        "mage": 23,
+        "knight": 30
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 159,
+      "damage": {
+        "ranger": 145,
+        "mage": 172,
+        "knight": 99
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 94,
+      "damage": {
+        "ranger": 92,
+        "mage": 159,
+        "knight": 88
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 13,
+      "hp": 125,
+      "damage": {
+        "ranger": 130,
+        "mage": 191,
+        "knight": 135
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 183,
+      "damage": {
+        "ranger": 88,
+        "mage": 87,
+        "knight": 33
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 202,
+      "damage": {
+        "ranger": 47,
+        "knight": 31,
+        "cleric": 18
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 57,
+        "knight": 71,
+        "cleric": 44
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 35,
+        "knight": 47,
+        "cleric": 14
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 54,
+        "knight": 71,
+        "cleric": 50
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 8,
+      "hp": 33,
+      "damage": {
+        "ranger": 56,
+        "knight": 73,
+        "cleric": 36
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 223,
+      "damage": {
+        "ranger": 46,
+        "knight": 35,
+        "cleric": 15
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 6,
+      "hp": 31,
+      "damage": {
+        "ranger": 94,
+        "knight": 173,
+        "cleric": 74
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 2,
+      "hp": 9,
+      "damage": {
+        "ranger": 69,
+        "knight": 114,
+        "cleric": 25
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 7,
+      "hp": 39,
+      "damage": {
+        "ranger": 103,
+        "knight": 193,
+        "cleric": 89
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 160,
+      "damage": {
+        "ranger": 75,
+        "knight": 84,
+        "cleric": 49
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 240,
+      "damage": {
+        "ranger": 46,
+        "knight": 38,
+        "cleric": 12
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 127,
+      "damage": {
+        "ranger": 133,
+        "knight": 171,
+        "cleric": 112
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 9,
+      "hp": 55,
+      "damage": {
+        "ranger": 87,
+        "knight": 144,
+        "cleric": 66
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 13,
+      "hp": 109,
+      "damage": {
+        "ranger": 137,
+        "knight": 190,
+        "cleric": 114
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 186,
+      "damage": {
+        "ranger": 86,
+        "knight": 78,
+        "cleric": 44
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 240,
+      "damage": {
+        "ranger": 48,
+        "knight": 33,
+        "cleric": 15
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 160,
+      "damage": {
+        "ranger": 179,
+        "knight": 130,
+        "cleric": 96
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 9,
+      "hp": 81,
+      "damage": {
+        "ranger": 135,
+        "knight": 119,
+        "cleric": 43
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 13,
+      "hp": 109,
+      "damage": {
+        "ranger": 155,
+        "knight": 175,
+        "cleric": 112
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 198,
+      "damage": {
+        "ranger": 107,
+        "knight": 62,
+        "cleric": 39
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 185,
+      "damage": {
+        "rogue": 40,
+        "mage": 31,
+        "knight": 25
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 58,
+        "mage": 70,
+        "knight": 74
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 46,
+        "mage": 32,
+        "knight": 52
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 1,
+      "hp": 4,
+      "damage": {
+        "rogue": 59,
+        "mage": 68,
+        "knight": 79
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 10,
+      "hp": 33,
+      "damage": {
+        "rogue": 53,
+        "mage": 46,
+        "knight": 82
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 218,
+      "damage": {
+        "rogue": 37,
+        "mage": 35,
+        "knight": 24
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 109,
+      "damage": {
+        "rogue": 107,
+        "mage": 161,
+        "knight": 138
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 7,
+      "hp": 36,
+      "damage": {
+        "rogue": 67,
+        "mage": 111,
+        "knight": 119
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 7,
+      "hp": 46,
+      "damage": {
+        "rogue": 79,
+        "mage": 144,
+        "knight": 174
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 187,
+      "damage": {
+        "rogue": 58,
+        "mage": 96,
+        "knight": 54
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 214,
+      "damage": {
+        "rogue": 40,
+        "mage": 21,
+        "knight": 35
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 143,
+      "damage": {
+        "rogue": 126,
+        "mage": 147,
+        "knight": 135
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 10,
+      "hp": 86,
+      "damage": {
+        "rogue": 103,
+        "mage": 102,
+        "knight": 125
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 10,
+      "hp": 88,
+      "damage": {
+        "rogue": 114,
+        "mage": 136,
+        "knight": 183
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 188,
+      "damage": {
+        "rogue": 75,
+        "mage": 74,
+        "knight": 59
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 216,
+      "damage": {
+        "rogue": 41,
+        "mage": 25,
+        "knight": 30
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 160,
+      "damage": {
+        "rogue": 115,
+        "mage": 192,
+        "knight": 107
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 15,
+      "hp": 129,
+      "damage": {
+        "rogue": 81,
+        "mage": 185,
+        "knight": 94
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 12,
+      "hp": 114,
+      "damage": {
+        "rogue": 107,
+        "mage": 187,
+        "knight": 157
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 188,
+      "damage": {
+        "rogue": 52,
+        "mage": 108,
+        "knight": 48
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 215,
+      "damage": {
+        "rogue": 48,
+        "knight": 31,
+        "cleric": 17
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 57,
+        "knight": 74,
+        "cleric": 43
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 43,
+        "knight": 51,
+        "cleric": 14
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 64,
+        "knight": 87,
+        "cleric": 47
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 10,
+      "hp": 41,
+      "damage": {
+        "rogue": 63,
+        "knight": 78,
+        "cleric": 36
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 229,
+      "damage": {
+        "rogue": 44,
+        "knight": 36,
+        "cleric": 16
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 8,
+      "hp": 50,
+      "damage": {
+        "rogue": 129,
+        "knight": 173,
+        "cleric": 71
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 3,
+      "hp": 15,
+      "damage": {
+        "rogue": 91,
+        "knight": 129,
+        "cleric": 34
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 3,
+      "hp": 15,
+      "damage": {
+        "rogue": 77,
+        "knight": 172,
+        "cleric": 63
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 176,
+      "damage": {
+        "rogue": 80,
+        "knight": 87,
+        "cleric": 41
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 250,
+      "damage": {
+        "rogue": 45,
+        "knight": 37,
+        "cleric": 14
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 129,
+      "damage": {
+        "rogue": 153,
+        "knight": 166,
+        "cleric": 95
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 8,
+      "hp": 72,
+      "damage": {
+        "rogue": 119,
+        "knight": 138,
+        "cleric": 51
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 11,
+      "hp": 98,
+      "damage": {
+        "rogue": 127,
+        "knight": 183,
+        "cleric": 101
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 207,
+      "damage": {
+        "rogue": 80,
+        "knight": 82,
+        "cleric": 46
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 249,
+      "damage": {
+        "rogue": 45,
+        "knight": 36,
+        "cleric": 15
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 12,
+      "hp": 117,
+      "damage": {
+        "rogue": 138,
+        "knight": 154,
+        "cleric": 102
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 10,
+      "hp": 68,
+      "damage": {
+        "rogue": 121,
+        "knight": 134,
+        "cleric": 53
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 10,
+      "hp": 99,
+      "damage": {
+        "rogue": 134,
+        "knight": 179,
+        "cleric": 103
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 192,
+      "damage": {
+        "rogue": 86,
+        "knight": 77,
+        "cleric": 45
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 188,
+      "damage": {
+        "mage": 45,
+        "knight": 31,
+        "cleric": 20
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 65,
+        "knight": 80,
+        "cleric": 38
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 35,
+        "knight": 46,
+        "cleric": 16
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "mage": 48,
+        "knight": 71,
+        "cleric": 54
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 9,
+      "hp": 34,
+      "damage": {
+        "mage": 54,
+        "knight": 78,
+        "cleric": 44
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 208,
+      "damage": {
+        "mage": 56,
+        "knight": 26,
+        "cleric": 14
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 11,
+      "hp": 75,
+      "damage": {
+        "mage": 158,
+        "knight": 147,
+        "cleric": 73
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 2,
+      "hp": 4,
+      "damage": {
+        "mage": 113,
+        "knight": 117,
+        "cleric": 28
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 8,
+      "hp": 39,
+      "damage": {
+        "mage": 139,
+        "knight": 202,
+        "cleric": 79
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 179,
+      "damage": {
+        "mage": 116,
+        "knight": 61,
+        "cleric": 31
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 224,
+      "damage": {
+        "mage": 47,
+        "knight": 34,
+        "cleric": 15
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 145,
+      "damage": {
+        "mage": 160,
+        "knight": 148,
+        "cleric": 100
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 12,
+      "hp": 86,
+      "damage": {
+        "mage": 134,
+        "knight": 134,
+        "cleric": 73
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 13,
+      "hp": 108,
+      "damage": {
+        "mage": 160,
+        "knight": 195,
+        "cleric": 115
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 213,
+      "damage": {
+        "mage": 103,
+        "knight": 69,
+        "cleric": 36
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 224,
+      "damage": {
+        "mage": 43,
+        "knight": 36,
+        "cleric": 17
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 186,
+      "damage": {
+        "mage": 206,
+        "knight": 125,
+        "cleric": 85
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 15,
+      "hp": 118,
+      "damage": {
+        "mage": 198,
+        "knight": 109,
+        "cleric": 52
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 165,
+      "damage": {
+        "mage": 216,
+        "knight": 148,
+        "cleric": 116
+      }
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 215,
+      "damage": {
+        "mage": 133,
+        "knight": 44,
+        "cleric": 31
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 171,
+      "damage": {
+        "rogue": 40,
+        "ranger": 30,
+        "mage": 26
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 66,
+        "ranger": 57,
+        "mage": 80
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 46,
+        "ranger": 33,
+        "mage": 36
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 48,
+        "mage": 65,
+        "ranger": 68
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 7,
+      "hp": 19,
+      "damage": {
+        "rogue": 64,
+        "ranger": 41,
+        "mage": 66
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 188,
+      "damage": {
+        "rogue": 36,
+        "ranger": 28,
+        "mage": 32
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 7,
+      "hp": 32,
+      "damage": {
+        "rogue": 96,
+        "ranger": 92,
+        "mage": 174
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 2,
+      "hp": 6,
+      "damage": {
+        "rogue": 68,
+        "ranger": 48,
+        "mage": 124
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 2,
+      "hp": 5,
+      "damage": {
+        "rogue": 64,
+        "mage": 160,
+        "ranger": 91
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 124,
+      "damage": {
+        "rogue": 62,
+        "ranger": 63,
+        "mage": 83
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 191,
+      "damage": {
+        "rogue": 38,
+        "ranger": 35,
+        "mage": 23
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 14,
+      "hp": 85,
+      "damage": {
+        "rogue": 122,
+        "ranger": 113,
+        "mage": 160
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 6,
+      "hp": 36,
+      "damage": {
+        "rogue": 94,
+        "ranger": 71,
+        "mage": 131
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 9,
+      "hp": 47,
+      "damage": {
+        "rogue": 113,
+        "ranger": 116,
+        "mage": 172
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 116,
+      "damage": {
+        "rogue": 77,
+        "ranger": 65,
+        "mage": 66
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 190,
+      "damage": {
+        "rogue": 36,
+        "ranger": 37,
+        "mage": 23
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 87,
+      "damage": {
+        "rogue": 83,
+        "ranger": 141,
+        "mage": 179
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 9,
+      "hp": 46,
+      "damage": {
+        "rogue": 71,
+        "ranger": 87,
+        "mage": 161
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 8,
+      "hp": 50,
+      "damage": {
+        "rogue": 111,
+        "ranger": 116,
+        "mage": 178
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 109,
+      "damage": {
+        "rogue": 47,
+        "ranger": 78,
+        "mage": 83
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 196,
+      "damage": {
+        "rogue": 45,
+        "ranger": 33,
+        "cleric": 18
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 86,
+        "ranger": 72,
+        "cleric": 44
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 42,
+        "ranger": 41,
+        "cleric": 19
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 72,
+        "cleric": 43,
+        "ranger": 64
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 8,
+      "hp": 25,
+      "damage": {
+        "rogue": 63,
+        "ranger": 57,
+        "cleric": 52
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 201,
+      "damage": {
+        "rogue": 46,
+        "ranger": 35,
+        "cleric": 15
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 5,
+      "hp": 24,
+      "damage": {
+        "rogue": 122,
+        "ranger": 100,
+        "cleric": 95
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 3,
+      "hp": 6,
+      "damage": {
+        "rogue": 73,
+        "ranger": 80,
+        "cleric": 46
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 3,
+      "hp": 13,
+      "damage": {
+        "rogue": 96,
+        "cleric": 91,
+        "ranger": 102
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 15,
+      "hp": 106,
+      "damage": {
+        "rogue": 82,
+        "ranger": 71,
+        "cleric": 49
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 223,
+      "damage": {
+        "rogue": 47,
+        "ranger": 36,
+        "cleric": 13
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 12,
+      "hp": 62,
+      "damage": {
+        "rogue": 157,
+        "ranger": 110,
+        "cleric": 123
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 6,
+      "hp": 30,
+      "damage": {
+        "rogue": 111,
+        "ranger": 93,
+        "cleric": 63
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 11,
+      "hp": 63,
+      "damage": {
+        "rogue": 160,
+        "ranger": 141,
+        "cleric": 132
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 161,
+      "damage": {
+        "rogue": 90,
+        "ranger": 76,
+        "cleric": 42
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 223,
+      "damage": {
+        "rogue": 43,
+        "ranger": 39,
+        "cleric": 14
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 15,
+      "hp": 128,
+      "damage": {
+        "rogue": 147,
+        "ranger": 166,
+        "cleric": 91
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 5,
+      "hp": 30,
+      "damage": {
+        "rogue": 96,
+        "ranger": 123,
+        "cleric": 46
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 10,
+      "hp": 88,
+      "damage": {
+        "rogue": 150,
+        "ranger": 150,
+        "cleric": 93
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 153,
+      "damage": {
+        "rogue": 69,
+        "ranger": 101,
+        "cleric": 38
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 175,
+      "damage": {
+        "ranger": 46,
+        "mage": 33,
+        "cleric": 17
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 53,
+        "mage": 74,
+        "cleric": 35
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 32,
+        "mage": 38,
+        "cleric": 19
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 52,
+        "mage": 53,
+        "cleric": 45
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 8,
+      "hp": 26,
+      "damage": {
+        "ranger": 60,
+        "mage": 65,
+        "cleric": 41
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 176,
+      "damage": {
+        "ranger": 41,
+        "mage": 45,
+        "cleric": 10
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 10,
+      "hp": 34,
+      "damage": {
+        "ranger": 125,
+        "mage": 177,
+        "cleric": 73
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "ranger": 81,
+        "mage": 128,
+        "cleric": 36
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 5,
+      "hp": 25,
+      "damage": {
+        "ranger": 128,
+        "mage": 154,
+        "cleric": 96
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 121,
+      "damage": {
+        "ranger": 68,
+        "mage": 109,
+        "cleric": 31
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 192,
+      "damage": {
+        "ranger": 47,
+        "mage": 34,
+        "cleric": 15
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 14,
+      "hp": 83,
+      "damage": {
+        "ranger": 131,
+        "mage": 168,
+        "cleric": 101
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 8,
+      "hp": 30,
+      "damage": {
+        "ranger": 98,
+        "mage": 140,
+        "cleric": 71
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 14,
+      "hp": 79,
+      "damage": {
+        "ranger": 161,
+        "mage": 180,
+        "cleric": 128
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 152,
+      "damage": {
+        "ranger": 82,
+        "mage": 93,
+        "cleric": 33
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 192,
+      "damage": {
+        "ranger": 47,
+        "mage": 34,
+        "cleric": 15
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 155,
+      "damage": {
+        "ranger": 165,
+        "mage": 188,
+        "cleric": 63
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 14,
+      "hp": 99,
+      "damage": {
+        "ranger": 135,
+        "mage": 193,
+        "cleric": 33
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 16,
+      "hp": 115,
+      "damage": {
+        "ranger": 168,
+        "mage": 210,
+        "cleric": 102
+      }
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 163,
+      "damage": {
+        "ranger": 97,
+        "mage": 92,
+        "cleric": 19
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 182,
+      "damage": {
+        "rogue": 46,
+        "mage": 33,
+        "cleric": 17
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 55,
+        "mage": 73,
+        "cleric": 40
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 38,
+        "mage": 33,
+        "cleric": 17
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 0,
+      "hp": 0,
+      "damage": {
+        "rogue": 42,
+        "mage": 60,
+        "cleric": 42
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 1,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 10,
+      "hp": 34,
+      "damage": {
+        "rogue": 71,
+        "mage": 64,
+        "cleric": 48
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 188,
+      "damage": {
+        "rogue": 42,
+        "mage": 41,
+        "cleric": 13
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 11,
+      "hp": 46,
+      "damage": {
+        "rogue": 130,
+        "mage": 167,
+        "cleric": 78
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 1,
+      "hp": 2,
+      "damage": {
+        "rogue": 69,
+        "mage": 120,
+        "cleric": 36
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 4,
+      "hp": 12,
+      "damage": {
+        "rogue": 118,
+        "mage": 144,
+        "cleric": 69
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 3,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 143,
+      "damage": {
+        "rogue": 79,
+        "mage": 104,
+        "cleric": 25
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 203,
+      "damage": {
+        "rogue": 53,
+        "mage": 27,
+        "cleric": 16
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 108,
+      "damage": {
+        "rogue": 160,
+        "mage": 163,
+        "cleric": 93
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 8,
+      "hp": 28,
+      "damage": {
+        "rogue": 106,
+        "mage": 136,
+        "cleric": 55
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 12,
+      "hp": 61,
+      "damage": {
+        "rogue": 166,
+        "mage": 161,
+        "cleric": 119
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 5,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 187,
+      "damage": {
+        "rogue": 84,
+        "mage": 89,
+        "cleric": 35
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "pack",
+      "runs": 16,
+      "wins": 16,
+      "hp": 206,
+      "damage": {
+        "rogue": 40,
+        "mage": 42,
+        "cleric": 14
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "armored",
+      "runs": 16,
+      "wins": 16,
+      "hp": 141,
+      "damage": {
+        "rogue": 129,
+        "mage": 207,
+        "cleric": 80
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "spectral",
+      "runs": 16,
+      "wins": 10,
+      "hp": 75,
+      "damage": {
+        "rogue": 84,
+        "mage": 203,
+        "cleric": 39
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "boss",
+      "runs": 16,
+      "wins": 13,
+      "hp": 111,
+      "damage": {
+        "rogue": 148,
+        "mage": 210,
+        "cleric": 90
+      }
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "level": 8,
+      "scenario": "swarm",
+      "runs": 16,
+      "wins": 16,
+      "hp": 158,
+      "damage": {
+        "rogue": 62,
+        "mage": 123,
+        "cleric": 23
+      }
+    }
+  ]
+}

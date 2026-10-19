@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-17",
+  "schema": 28,
+  "classBalanceRuns": 13440,
+  "handoff": "context/Teamfight_Manager_Post_Sprint_Handoff.md",
+  "bytes": 352584,
+  "words": 39992,
+  "quests": 75,
+  "enemies": 52,
+  "rituals": 14,
+  "baselineRuns": 5400,
+  "pairedRitualRuns": 1800,
+  "missingNarratives": 34,
+  "testFiles": 54,
+  "passedTests": 612,
+  "failedTests": 132,
+  "sourceManifest": [
+    {
+      "path": "package.json",
+      "bytes": 266,
+      "lines": 12,
+      "sha256": "756a373511e1af61ea33f374cf71ed7e12b874064e9c7ee209c81cbfd0cb576d"
+    },
+    {
+      "path": "index.html",
+      "bytes": 720,
+      "lines": 18,
+      "sha256": "d3117f27189851c208bddd26b02855c6b480bad56931a1d70afdbbcd384b6464"
+    },
+    {
+      "path": "css/game.css",
+      "bytes": 2188,
+      "lines": 117,
+      "sha256": "8e5e86cbbcb404236ac17015538fd2e0a2b64467bf0a30dca2603def0d67c1ac"
+    },
+    {
+      "path": "js/plugins.js",
+      "bytes": 668,
+      "lines": 10,
+      "sha256": "e2e6bf245a09670462314ef1d0a1574f836edfd712871966b9b4f86d86ed6ecf"
+    },
+    {
+      "path": "js/main.js",
+      "bytes": 5272,
+      "lines": 165,
+      "sha256": "18906acda87d8aee631613b148a8fadfb80e819fc629da6c8a9fee31fdfcfebf"
+    },
+    {
+      "path": "js/focus_companion.js",
+      "bytes": 9139,
+      "lines": 73,
+      "sha256": "81850ba781fd5517a4f9b5fa8cec80721c20bc69c93d6fc9bcea09d3675d3e39"
+    },
+    {
+      "path": "js/focus_timer_widget.js",
+      "bytes": 289,
+      "lines": 4,
+      "sha256": "291850cdbf818d0f548320224c6322c0e36fb5076f805e9ec07a34a1795fae2f"
+    },
+    {
+      "path": "js/focus_timer.html",
+      "bytes": 1317,
+      "lines": 6,
+      "sha256": "6b98923c4dfe283ce5354595460e8777c2d0caf393d3ab8c68c1b6b343f0fa9b"
+    },
+    {
+      "path": "js/plugins/RPGManager.js",
+      "bytes": 312006,
+      "lines": 3495,
+      "sha256": "53ffe8347e0abd7b6857a6b15cb0cfa17a2e7be07d040f9bc39b9876e60d98be"
+    },
+    {
+      "path": "js/plugins/RPGManagerBattle.js",
+      "bytes": 53711,
+      "lines": 666,
+      "sha256": "0707d0997dd37d5cea2c9f0ca40afec600b14df0261e3649e89eac0e0dfe5a38"
+    },
+    {
+      "path": "js/plugins/RPGManagerBattleStage.js",
+      "bytes": 43162,
+      "lines": 445,
+      "sha256": "cd1ba09e198f808d0ea711e26d53c82185b03f7d36ef66f7b7b1ec52010c6e08"
+    },
+    {
+      "path": "js/plugins/RPGManagerProgression.js",
+      "bytes": 207926,
+      "lines": 2077,
+      "sha256": "5b7affa486747dea2c9731ed0a64652a383424992049c0196c730728da508376"
+    },
+    {
+      "path": "data/RPGManagerArtV4.json",
+      "bytes": 56619,
+      "lines": 2114,
+      "sha256": "827acb9f8b69e0bd78f66edefe0bb64c8f7015b00b8cc2df93071dc36d1fbd0f"
+    },
+    {
+      "path": "data/RPGManagerArtV5.json",
+      "bytes": 48075,
+      "lines": 2306,
+      "sha256": "f7f28395e8810ed20b52ef0ff476a1b68230cbae1a46fabec0d29271dc14a462"
+    },
+    {
+      "path": "data/RPGManagerClasses.json",
+      "bytes": 21666,
+      "lines": 1035,
+      "sha256": "707a76648c35c2d64d6a1f4665947440207bb747d86ca2cdc3dfcf05c14872b3"
+    },
+    {
+      "path": "data/RPGManagerDialogue.json",
+      "bytes": 13970,
+      "lines": 514,
+      "sha256": "ab57f0c235cb7271fc0a469fe450c1d18ac9390a516f2fa437b21631b84b0858"
+    },
+    {
+      "path": "data/RPGManagerEnemyTeam.json",
+      "bytes": 1348,
+      "lines": 6,
+      "sha256": "a95bf3402ed2e09c171b719b686150d2eb2fb3c07ce845770acb76703e7f2d6b"
+    },
+    {
+      "path": "data/RPGManagerIdentity.json",
+      "bytes": 2654,
+      "lines": 162,
+      "sha256": "3f0e23009ec9cf189864647ce041db9db0536b7b09d966dc731dc9761925d074"
+    },
+    {
+      "path": "data/RPGManagerNarratives.json",
+      "bytes": 152119,
+      "lines": 4310,
+      "sha256": "cd89781e7f1788b5c1e67c585bfd8d50505d9d9b8fa974334bc9c842a7d09e3b"
+    },
+    {
+      "path": "data/RPGManagerPresentation.json",
+      "bytes": 1334,
+      "lines": 32,
+      "sha256": "7558435643bf9ebff510e3880d9da513fef757c0e7b0e94b76db25bf9447e464"
+    },
+    {
+      "path": "data/RPGManagerQuests.json",
+      "bytes": 53715,
+      "lines": 2205,
+      "sha256": "fdeaae97d013c9e9d8224c6c88459ce6acfc43698a79e4c5500593b20821d373"
+    },
+    {
+      "path": "data/RPGManagerRoster.json",
+      "bytes": 5200,
+      "lines": 243,
+      "sha256": "c44469199445c9d4cee359e0103a3e2222af63e33aec73bd4f8a8d08b35dc6c8"
+    },
+    {
+      "path": "data/RPGManagerSkeletonArtV7.json",
+      "bytes": 51113,
+      "lines": 2307,
+      "sha256": "a3ccd7a7513bf72c28a1fc4963dfacc6b34d7827999c29b891b0106faa388c46"
+    },
+    {
+      "path": "data/RPGManagerStage3.json",
+      "bytes": 150262,
+      "lines": 4995,
+      "sha256": "8a41b41a0090825c30fd0e52055da05b1b049f6d6611a7d207fc74ff866cf3b7"
+    },
+    {
+      "path": "data/RPGManagerUI.json",
+      "bytes": 1307,
+      "lines": 61,
+      "sha256": "71a50c221836371a2b1b298057f11ef90e352423a332440ece8ead8c20fcf5a1"
+    }
+  ]
+}

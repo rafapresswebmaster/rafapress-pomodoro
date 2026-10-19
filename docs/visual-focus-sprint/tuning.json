@@ -1,0 +1,83 @@
+[
+  {
+    "id": "goblin_tracks",
+    "hp": 0,
+    "n": 96,
+    "clears": 96,
+    "deaths": 1,
+    "retreats": 0,
+    "safety": 0
+  },
+  {
+    "id": "goblin_tracks",
+    "hp": 1,
+    "n": 96,
+    "clears": 93,
+    "deaths": 11,
+    "retreats": 0,
+    "safety": 0
+  },
+  {
+    "id": "goblin_tracks",
+    "hp": 2,
+    "n": 96,
+    "clears": 73,
+    "deaths": 33,
+    "retreats": 1,
+    "safety": 0
+  },
+  {
+    "id": "birchwater_samples",
+    "hp": 0,
+    "n": 96,
+    "clears": 27,
+    "deaths": 96,
+    "retreats": 26,
+    "safety": 0
+  },
+  {
+    "id": "birchwater_samples",
+    "hp": 1,
+    "n": 96,
+    "clears": 15,
+    "deaths": 97,
+    "retreats": 24,
+    "safety": 0
+  },
+  {
+    "id": "birchwater_samples",
+    "hp": 2,
+    "n": 96,
+    "clears": 0,
+    "deaths": 118,
+    "retreats": 20,
+    "safety": 0
+  },
+  {
+    "id": "meadow_cartography",
+    "hp": 0,
+    "n": 96,
+    "clears": 25,
+    "deaths": 96,
+    "retreats": 19,
+    "safety": 0
+  },
+  {
+    "id": "meadow_cartography",
+    "hp": 1,
+    "n": 96,
+    "clears": 13,
+    "deaths": 91,
+    "retreats": 24,
+    "safety": 0
+  },
+  {
+    "id": "meadow_cartography",
+    "hp": 2,
+    "n": 96,
+    "clears": 0,
+    "deaths": 131,
+    "retreats": 20,
+    "safety": 0
+  }
+]

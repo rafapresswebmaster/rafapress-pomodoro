@@ -1,0 +1,4088 @@
+{
+  "method": "All 56 unordered trios including duplicates, ratings/levels 2,5,8; ordinary and strongest compatible equipment; six seeds. Single objective encounters with durability. Marginal win rates include teammates; they are not individual causal strength.",
+  "runs": 2016,
+  "marginal": {
+    "barbarian/ordinary": {
+      "runs": 126,
+      "wins": 67
+    },
+    "barbarian/strong": {
+      "runs": 126,
+      "wins": 123
+    },
+    "knight/ordinary": {
+      "runs": 126,
+      "wins": 46
+    },
+    "knight/strong": {
+      "runs": 126,
+      "wins": 124
+    },
+    "ranger/ordinary": {
+      "runs": 126,
+      "wins": 70
+    },
+    "ranger/strong": {
+      "runs": 126,
+      "wins": 126
+    },
+    "rogue/ordinary": {
+      "runs": 126,
+      "wins": 68
+    },
+    "rogue/strong": {
+      "runs": 126,
+      "wins": 122
+    },
+    "mage/ordinary": {
+      "runs": 126,
+      "wins": 58
+    },
+    "mage/strong": {
+      "runs": 126,
+      "wins": 124
+    },
+    "cleric/ordinary": {
+      "runs": 126,
+      "wins": 49
+    },
+    "cleric/strong": {
+      "runs": 126,
+      "wins": 121
+    }
+  },
+  "rows": [
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "barbarian"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "barbarian"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "barbarian"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "barbarian"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "barbarian"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "barbarian"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "knight"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "knight"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "knight"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "knight"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "knight"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "knight"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 9
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 10
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 9
+    },
+    {
+      "classes": [
+        "barbarian",
+        "barbarian",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "knight"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "knight"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "knight"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "knight"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "knight"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 15
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "knight"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 5
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 14
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 4
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 14
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "barbarian",
+        "knight",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 8
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 6
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 8
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 15
+    },
+    {
+      "classes": [
+        "barbarian",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 8
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 9
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "barbarian",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 6
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 14
+    },
+    {
+      "classes": [
+        "barbarian",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 6
+    },
+    {
+      "classes": [
+        "barbarian",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "barbarian",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 14
+    },
+    {
+      "classes": [
+        "barbarian",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 4
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "knight"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "knight"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "knight"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "knight"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "knight"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "knight"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 4
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 17
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 6
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 16
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 8
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 17
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 4
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 16
+    },
+    {
+      "classes": [
+        "knight",
+        "knight",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 10
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 3
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 11
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 3
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 11
+    },
+    {
+      "classes": [
+        "knight",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 3
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 14
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 5
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 15
+    },
+    {
+      "classes": [
+        "knight",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 6
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 16
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 17
+    },
+    {
+      "classes": [
+        "knight",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 6
+    },
+    {
+      "classes": [
+        "knight",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "knight",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 10
+    },
+    {
+      "classes": [
+        "knight",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "ranger"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 9
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 11
+    },
+    {
+      "classes": [
+        "ranger",
+        "ranger",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 4
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 8
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 10
+    },
+    {
+      "classes": [
+        "ranger",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 3
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "ranger",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 3
+    },
+    {
+      "classes": [
+        "ranger",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "ranger",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "ranger",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 3
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 5
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "rogue"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 14
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "rogue",
+        "rogue",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 4
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 4,
+      "deaths": 8
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "rogue",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "rogue",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "rogue",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 13
+    },
+    {
+      "classes": [
+        "rogue",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 5
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "mage"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "mage"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 3,
+      "deaths": 12
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "mage"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 1
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 2,
+      "deaths": 14
+    },
+    {
+      "classes": [
+        "mage",
+        "mage",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 2
+    },
+    {
+      "classes": [
+        "mage",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "mage",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 16
+    },
+    {
+      "classes": [
+        "mage",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 5,
+      "deaths": 5
+    },
+    {
+      "classes": [
+        "cleric",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "cleric",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 2,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "cleric",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "cleric",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 5,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 0
+    },
+    {
+      "classes": [
+        "cleric",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "ordinary",
+      "runs": 6,
+      "wins": 1,
+      "deaths": 17
+    },
+    {
+      "classes": [
+        "cleric",
+        "cleric",
+        "cleric"
+      ],
+      "rating": 8,
+      "gear": "strong",
+      "runs": 6,
+      "wins": 6,
+      "deaths": 5
+    }
+  ]
+}
