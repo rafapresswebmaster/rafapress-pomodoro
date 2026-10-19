@@ -1,0 +1,513 @@
+{
+  "signature": "This is my moment!",
+  "fall": "I can't keep fighting...",
+  "victory": "We held the field. Let's get everyone home.",
+  "defeat": "The party can fight no further. Check the report for injuries.",
+  "draw": "Neither side broke through. Time to regroup.",
+  "characters": {
+    "ada": "Stand behind me. I'll break their line!",
+    "bram": "Let's shake the ground beneath them!",
+    "cora": "One clear shot. That's all I need.",
+    "dax": "An opening! Try to keep up.",
+    "elin": "Steady, everyone. Dawn is on our side.",
+    "finn": "Storm, answer me!",
+    "gwen": "Hold fast. They won't move us!",
+    "hale": "Their guard is open. Now!",
+    "iris": "Even the moon knows when to strike.",
+    "jory": "Hear that thunder? Here it comes!",
+    "enemy_slime": "Gluuurp!",
+    "enemy_skeleton": "Rattle... crack!",
+    "enemy_goblin": "Too slow! My turn!"
+  },
+  "events": {
+    "attack": "{move}! Stay on your feet, {target}.",
+    "signature": "This is my moment!",
+    "allyFalls": "Hold on, {ally}. We will get you home.",
+    "defeat": "I can't keep fighting...",
+    "death": "Remember me, friends.",
+    "victory": "We held the field. Let's get everyone home.",
+    "departure": "Ready, friends? We leave together.",
+    "return": "Back home. Time to tend our wounds.",
+    "draw": "Neither side broke through. Time to regroup."
+  },
+  "classes": {
+    "barbarian": {
+      "attack": {
+        "text": "Here comes {move}!",
+        "requires": [
+          "move"
+        ]
+      },
+      "signature": {
+        "text": "Let's shake the ground beneath them!",
+        "requires": []
+      }
+    },
+    "knight": {
+      "attack": {
+        "text": "Keep your guard up, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Stand behind me. I'll break their line!",
+        "requires": []
+      }
+    },
+    "ranger": {
+      "attack": {
+        "text": "I have my mark, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "One clear shot. That's all I need.",
+        "requires": []
+      }
+    },
+    "rogue": {
+      "attack": {
+        "text": "Keep your guard up, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "An opening! Try to keep up.",
+        "requires": []
+      }
+    },
+    "mage": {
+      "attack": {
+        "text": "I have my mark, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Storm, answer me!",
+        "requires": []
+      }
+    },
+    "cleric": {
+      "attack": {
+        "text": "I have my mark, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Light, guide this strike.",
+        "requires": []
+      }
+    }
+  },
+  "bondedAllyFalls": {
+    "text": "Stay with me, {ally}. We have fought too far together.",
+    "requires": [
+      "ally"
+    ]
+  },
+  "expedition": {
+    "barbarian": {
+      "travel": [
+        "Set a steady pace. We have to walk back, too.",
+        "Pass me the heavier pack if your shoulders tire."
+      ],
+      "clue": [
+        "A trail mark. Someone passed here.",
+        "A clue by the roadside. Worth a closer look."
+      ],
+      "battleStart": [
+        "Danger ahead. Here we go.",
+        "Company ahead. Find your footing."
+      ],
+      "battleEnd": [
+        "Encounter over. Check on everyone.",
+        "Catch your breath. The road is still waiting."
+      ],
+      "ability": [
+        "Time for my special trick.",
+        "A practiced move, right on cue."
+      ],
+      "attack": [
+        "Making an opening. Watch my step.",
+        "A quick strike. Keep the pressure steady."
+      ],
+      "hit": [
+        "That one hurt. Still here.",
+        "Ouch. Better mind the next blow."
+      ],
+      "nearMiss": [
+        "That went wide. Lucky footwork.",
+        "A close one. Keep moving."
+      ],
+      "supplies": [
+        "Supplies tucked away. A welcome find.",
+        "A useful little find beside the trail."
+      ],
+      "return": [
+        "Homeward, then. Keep a little strength for the last stretch.",
+        "A warm fire sounds better with every step."
+      ]
+    },
+    "knight": {
+      "travel": [
+        "Stay within sight. I will watch the next turn.",
+        "Let us check the route before we press on."
+      ],
+      "clue": [
+        "A trail mark. Someone passed here.",
+        "A clue by the roadside. Worth a closer look."
+      ],
+      "battleStart": [
+        "Danger ahead. Here we go.",
+        "Company ahead. Find your footing."
+      ],
+      "battleEnd": [
+        "Encounter over. Check on everyone.",
+        "Catch your breath. The road is still waiting."
+      ],
+      "ability": [
+        "Time for my special trick.",
+        "A practiced move, right on cue."
+      ],
+      "attack": [
+        "Making an opening. Watch my step.",
+        "A quick strike. Keep the pressure steady."
+      ],
+      "hit": [
+        "That one hurt. Still here.",
+        "Ouch. Better mind the next blow."
+      ],
+      "nearMiss": [
+        "That went wide. Lucky footwork.",
+        "A close one. Keep moving."
+      ],
+      "supplies": [
+        "Supplies tucked away. A welcome find.",
+        "A useful little find beside the trail."
+      ],
+      "return": [
+        "Keep together until we reach camp.",
+        "The return route is our next task."
+      ]
+    },
+    "ranger": {
+      "travel": [
+        "Watch the ground ahead; a quiet path still needs care.",
+        "I will check the way. Keep the packs close."
+      ],
+      "clue": [
+        "A trail mark. Someone passed here.",
+        "A clue by the roadside. Worth a closer look."
+      ],
+      "battleStart": [
+        "Danger ahead. Here we go.",
+        "Company ahead. Find your footing."
+      ],
+      "battleEnd": [
+        "Encounter over. Check on everyone.",
+        "Catch your breath. The road is still waiting."
+      ],
+      "ability": [
+        "Time for my special trick.",
+        "A practiced move, right on cue."
+      ],
+      "attack": [
+        "Making an opening. Watch my step.",
+        "A quick strike. Keep the pressure steady."
+      ],
+      "hit": [
+        "That one hurt. Still here.",
+        "Ouch. Better mind the next blow."
+      ],
+      "nearMiss": [
+        "That went wide. Lucky footwork.",
+        "A close one. Keep moving."
+      ],
+      "supplies": [
+        "Supplies tucked away. A welcome find.",
+        "A useful little find beside the trail."
+      ],
+      "return": [
+        "We can retrace our route from here.",
+        "Keep the same steady pace on the way home."
+      ]
+    },
+    "rogue": {
+      "travel": [
+        "I prefer a route with a little room to step aside.",
+        "Quiet feet save a surprising amount of trouble."
+      ],
+      "clue": [
+        "A trail mark. Someone passed here.",
+        "A clue by the roadside. Worth a closer look."
+      ],
+      "battleStart": [
+        "Danger ahead. Here we go.",
+        "Company ahead. Find your footing."
+      ],
+      "battleEnd": [
+        "Encounter over. Check on everyone.",
+        "Catch your breath. The road is still waiting."
+      ],
+      "ability": [
+        "Time for my special trick.",
+        "A practiced move, right on cue."
+      ],
+      "attack": [
+        "Making an opening. Watch my step.",
+        "A quick strike. Keep the pressure steady."
+      ],
+      "hit": [
+        "That one hurt. Still here.",
+        "Ouch. Better mind the next blow."
+      ],
+      "nearMiss": [
+        "That went wide. Lucky footwork.",
+        "A close one. Keep moving."
+      ],
+      "supplies": [
+        "Supplies tucked away. A welcome find.",
+        "A useful little find beside the trail."
+      ],
+      "return": [
+        "Home sounds like a sensible destination.",
+        "Let us keep our eyes open on the return, too."
+      ]
+    },
+    "mage": {
+      "travel": [
+        "A quick look at the map, then we carry on.",
+        "I can ponder the old stones while we walk."
+      ],
+      "clue": [
+        "A trail mark. Someone passed here.",
+        "A clue by the roadside. Worth a closer look."
+      ],
+      "battleStart": [
+        "Danger ahead. Here we go.",
+        "Company ahead. Find your footing."
+      ],
+      "battleEnd": [
+        "Encounter over. Check on everyone.",
+        "Catch your breath. The road is still waiting."
+      ],
+      "ability": [
+        "Time for my special trick.",
+        "A practiced move, right on cue."
+      ],
+      "attack": [
+        "Making an opening. Watch my step.",
+        "A quick strike. Keep the pressure steady."
+      ],
+      "hit": [
+        "That one hurt. Still here.",
+        "Ouch. Better mind the next blow."
+      ],
+      "nearMiss": [
+        "That went wide. Lucky footwork.",
+        "A close one. Keep moving."
+      ],
+      "supplies": [
+        "Supplies tucked away. A welcome find.",
+        "A useful little find beside the trail."
+      ],
+      "return": [
+        "I will put the field notes in order at camp.",
+        "The next mystery can wait until we are home."
+      ]
+    },
+    "cleric": {
+      "travel": [
+        "Say if you need a slower pace. We can keep together.",
+        "A sip of water before the next stretch?"
+      ],
+      "clue": [
+        "A trail mark. Someone passed here.",
+        "A clue by the roadside. Worth a closer look."
+      ],
+      "battleStart": [
+        "Danger ahead. Here we go.",
+        "Company ahead. Find your footing."
+      ],
+      "battleEnd": [
+        "Encounter over. Check on everyone.",
+        "Catch your breath. The road is still waiting."
+      ],
+      "ability": [
+        "Time for my special trick.",
+        "A practiced move, right on cue."
+      ],
+      "attack": [
+        "Making an opening. Watch my step.",
+        "A quick strike. Keep the pressure steady."
+      ],
+      "hit": [
+        "That one hurt. Still here.",
+        "Ouch. Better mind the next blow."
+      ],
+      "nearMiss": [
+        "That went wide. Lucky footwork.",
+        "A close one. Keep moving."
+      ],
+      "supplies": [
+        "Supplies tucked away. A welcome find.",
+        "A useful little find beside the trail."
+      ],
+      "return": [
+        "Take your time. We will reach camp together.",
+        "There will be time to rest once we are home."
+      ]
+    }
+  },
+  "legacyClasses": {
+    "vanguard": {
+      "attack": {
+        "text": "Keep your guard up, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Stand behind me. I'll break their line!",
+        "requires": []
+      }
+    },
+    "bruiser": {
+      "attack": {
+        "text": "Here comes {move}!",
+        "requires": [
+          "move"
+        ]
+      },
+      "signature": {
+        "text": "Let's shake the ground beneath them!",
+        "requires": []
+      }
+    },
+    "ranger": {
+      "attack": {
+        "text": "I have my mark, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "One clear shot. That's all I need.",
+        "requires": []
+      }
+    },
+    "duelist": {
+      "attack": {
+        "text": "Keep your guard up, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "An opening! Try to keep up.",
+        "requires": []
+      }
+    },
+    "support": {
+      "attack": {
+        "text": "Here comes {move}!",
+        "requires": [
+          "move"
+        ]
+      },
+      "signature": {
+        "text": "Steady, everyone. Dawn is on our side.",
+        "requires": []
+      }
+    },
+    "mage": {
+      "attack": {
+        "text": "I have my mark, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Storm, answer me!",
+        "requires": []
+      }
+    },
+    "guardian": {
+      "attack": {
+        "text": "Keep your guard up, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Hold fast. They won't move us!",
+        "requires": []
+      }
+    },
+    "skirmisher": {
+      "attack": {
+        "text": "Here comes {move}!",
+        "requires": [
+          "move"
+        ]
+      },
+      "signature": {
+        "text": "Their guard is open. Now!",
+        "requires": []
+      }
+    },
+    "mystic": {
+      "attack": {
+        "text": "I have my mark, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Even the moon knows when to strike.",
+        "requires": []
+      }
+    },
+    "brawler": {
+      "attack": {
+        "text": "Keep your guard up, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Hear that thunder? Here it comes!",
+        "requires": []
+      }
+    },
+    "bard": {
+      "attack": {
+        "text": "Here comes {move}!",
+        "requires": [
+          "move"
+        ]
+      },
+      "signature": {
+        "text": "Hear our resolve!",
+        "requires": []
+      }
+    },
+    "cleric": {
+      "attack": {
+        "text": "I have my mark, {target}.",
+        "requires": [
+          "target"
+        ]
+      },
+      "signature": {
+        "text": "Light, guide this strike.",
+        "requires": []
+      }
+    }
+  }
+}

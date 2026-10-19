@@ -1,0 +1,242 @@
+[
+  {
+    "id": "ada",
+    "name": "Ada",
+    "role": "Vanguard",
+    "level": 1,
+    "health": 140,
+    "maxHealth": 140,
+    "attack": 14,
+    "defense": 16,
+    "speed": 8,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Steadfast",
+      "description": "Holds her ground under pressure.",
+      "stat": "defense"
+    },
+    "basicAttack": "Shield Strike",
+    "signatureAttack": "Ironwall Charge",
+    "portrait": {
+      "sheet": "Actor2",
+      "index": 1
+    }
+  },
+  {
+    "id": "bram",
+    "name": "Bram",
+    "role": "Bruiser",
+    "level": 1,
+    "health": 125,
+    "maxHealth": 125,
+    "attack": 19,
+    "defense": 11,
+    "speed": 10,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Tenacious",
+      "description": "Keeps pushing through a tough fight.",
+      "stat": "attack"
+    },
+    "basicAttack": "Heavy Swing",
+    "signatureAttack": "Earthbreaker",
+    "portrait": {
+      "sheet": "Actor1",
+      "index": 4
+    }
+  },
+  {
+    "id": "cora",
+    "name": "Cora",
+    "role": "Ranger",
+    "level": 1,
+    "health": 90,
+    "maxHealth": 90,
+    "attack": 18,
+    "defense": 8,
+    "speed": 16,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Keen Eye",
+      "description": "Looks for an opening before striking.",
+      "stat": "attack"
+    },
+    "basicAttack": "Quick Shot",
+    "signatureAttack": "Piercing Volley",
+    "portrait": {
+      "sheet": "Actor2",
+      "index": 5
+    }
+  },
+  {
+    "id": "dax",
+    "name": "Dax",
+    "role": "Duelist",
+    "level": 1,
+    "health": 100,
+    "maxHealth": 100,
+    "attack": 17,
+    "defense": 10,
+    "speed": 18,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Lightfoot",
+      "description": "Always stays light on his feet.",
+      "stat": "speed"
+    },
+    "basicAttack": "Quick Cut",
+    "signatureAttack": "Flashing Lunge",
+    "portrait": {
+      "sheet": "Actor2",
+      "index": 6
+    }
+  },
+  {
+    "id": "elin",
+    "name": "Elin",
+    "role": "Support",
+    "level": 1,
+    "health": 95,
+    "maxHealth": 95,
+    "attack": 10,
+    "defense": 10,
+    "speed": 13,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Calm Presence",
+      "description": "Brings a steady voice to the team.",
+      "stat": "defense"
+    },
+    "basicAttack": "Staff Tap",
+    "signatureAttack": "Dawn Pulse",
+    "portrait": {
+      "sheet": "Actor1",
+      "index": 7
+    }
+  },
+  {
+    "id": "finn",
+    "name": "Finn",
+    "role": "Mage",
+    "level": 1,
+    "health": 80,
+    "maxHealth": 80,
+    "attack": 22,
+    "defense": 6,
+    "speed": 12,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Focused",
+      "description": "Tunes out distractions while preparing.",
+      "stat": "attack"
+    },
+    "basicAttack": "Spark",
+    "signatureAttack": "Storm Lance",
+    "portrait": {
+      "sheet": "Actor1",
+      "index": 5
+    }
+  },
+  {
+    "id": "gwen",
+    "name": "Gwen",
+    "role": "Guardian",
+    "level": 1,
+    "health": 150,
+    "maxHealth": 150,
+    "attack": 12,
+    "defense": 18,
+    "speed": 6,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Watchful",
+      "description": "Keeps an eye on vulnerable allies.",
+      "stat": "defense"
+    },
+    "basicAttack": "Mace Strike",
+    "signatureAttack": "Bastion Slam",
+    "portrait": {
+      "sheet": "Actor3",
+      "index": 7
+    }
+  },
+  {
+    "id": "hale",
+    "name": "Hale",
+    "role": "Skirmisher",
+    "level": 1,
+    "health": 105,
+    "maxHealth": 105,
+    "attack": 16,
+    "defense": 9,
+    "speed": 17,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Opportunist",
+      "description": "Is quick to notice an exposed target.",
+      "stat": "speed"
+    },
+    "basicAttack": "Spear Jab",
+    "signatureAttack": "Sweeping Rush",
+    "portrait": {
+      "sheet": "Actor2",
+      "index": 7
+    }
+  },
+  {
+    "id": "iris",
+    "name": "Iris",
+    "role": "Mystic",
+    "level": 1,
+    "health": 85,
+    "maxHealth": 85,
+    "attack": 20,
+    "defense": 7,
+    "speed": 14,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Patient",
+      "description": "Waits for the right moment to act.",
+      "stat": "attack"
+    },
+    "basicAttack": "Arcane Bolt",
+    "signatureAttack": "Moonfall",
+    "portrait": {
+      "sheet": "Actor3",
+      "index": 3
+    }
+  },
+  {
+    "id": "jory",
+    "name": "Jory",
+    "role": "Brawler",
+    "level": 1,
+    "health": 115,
+    "maxHealth": 115,
+    "attack": 18,
+    "defense": 12,
+    "speed": 11,
+    "stamina": 100,
+    "alive": true,
+    "passiveTrait": {
+      "name": "Bold",
+      "description": "Never hesitates to take the first step.",
+      "stat": "attack"
+    },
+    "basicAttack": "Straight Punch",
+    "signatureAttack": "Thunder Fist",
+    "portrait": {
+      "sheet": "Actor1",
+      "index": 2
+    }
+  }
+]

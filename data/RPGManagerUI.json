@@ -1,0 +1,60 @@
+{
+  "developerMode": false,
+  "hamlet": {
+    "title": "Pomodoro Chronicles",
+    "subtitle": "A little haven for great adventures",
+    "backgroundPicture": "",
+    "palette": {
+      "sky": "#253c32",
+      "ground": "#4b3d30",
+      "accent": "#e8c583",
+      "panel": "#292c26"
+    },
+    "locations": [
+      {
+        "symbol": "roster",
+        "name": "Guild Hall",
+        "caption": "Roster & careers",
+        "icon": 191
+      },
+      {
+        "symbol": "battle",
+        "name": "Quest Board",
+        "caption": "Contracts & dispatch",
+        "icon": 189
+      },
+      {
+        "symbol": "shop",
+        "name": "Shop",
+        "caption": "Equipment & supplies",
+        "icon": 96
+      },
+      {
+        "symbol": "recruit",
+        "name": "Tavern",
+        "caption": "Free replacements",
+        "icon": 75
+      },
+      {
+        "symbol": "altar",
+        "name": "Altar",
+        "caption": "Rituals & Arcana",
+        "icon": 76
+      },
+      {
+        "symbol": "graveyard",
+        "name": "Graveyard",
+        "caption": "Fallen adventurers",
+        "icon": 17
+      }
+    ]
+  },
+  "portrait": {
+    "largeSize": 144
+  },
+  "dialogue": {
+    "fontSize": 24,
+    "minimumLines": 4,
+    "waitForInput": false
+  }
+}

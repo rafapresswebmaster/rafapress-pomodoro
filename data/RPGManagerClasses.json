@@ -1,0 +1,1121 @@
+{
+  "classes": [
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "purpose": "Strong, durable striker",
+      "stats": {
+        "maxHealth": 4,
+        "attack": 10,
+        "defense": 0,
+        "speed": 10
+      },
+      "moves": [
+        {
+          "id": "bruiser_a",
+          "name": "Cleave",
+          "description": "Heavy main hit; 50% chance of 1 damage against another enemy.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "bruiser_b",
+          "name": "Rapid Smash",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          4,
+          4
+        ],
+        "attack": [
+          10,
+          10
+        ],
+        "defense": [
+          0,
+          0
+        ],
+        "speed": [
+          10,
+          10
+        ]
+      },
+      "combat": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 12,
+        "crit": 15,
+        "armorRecovery": 0,
+        "damage": 1
+      },
+      "growth": {
+        "2": {
+          "armor": 1
+        },
+        "3": {
+          "crit": 5
+        },
+        "4": {
+          "armor": 1,
+          "armorRecovery": 1
+        },
+        "5": {
+          "hp": 1
+        },
+        "6": {
+          "damage": 1
+        },
+        "7": {
+          "dodge": 5
+        },
+        "8": {
+          "armor": 1,
+          "armorRecovery": 1
+        }
+      }
+    },
+    {
+      "id": "knight",
+      "name": "Knight",
+      "purpose": "Armored front-line fighter",
+      "stats": {
+        "maxHealth": 3,
+        "attack": 5,
+        "defense": 3,
+        "speed": 8
+      },
+      "moves": [
+        {
+          "id": "vanguard_a",
+          "name": "Shield Bash",
+          "description": "Hit and reduce the next hit against the lowest-health living ally by 1.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "vanguard_b",
+          "name": "Shield Hammer",
+          "description": "A heavier single-target strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          3,
+          3
+        ],
+        "attack": [
+          5,
+          5
+        ],
+        "defense": [
+          3,
+          3
+        ],
+        "speed": [
+          8,
+          8
+        ]
+      },
+      "combat": {
+        "hp": 3,
+        "armor": 4,
+        "ward": 0,
+        "dodge": 8,
+        "crit": 5,
+        "armorRecovery": 1,
+        "damage": 1
+      },
+      "growth": {
+        "2": {
+          "armor": 1
+        },
+        "3": {
+          "ward": 1
+        },
+        "4": {
+          "armor": 1,
+          "armorRecovery": 1
+        },
+        "5": {
+          "hp": 1
+        },
+        "6": {
+          "armor": 1,
+          "damage": 1
+        },
+        "7": {
+          "dodge": 4
+        },
+        "8": {
+          "armor": 1,
+          "armorRecovery": 1
+        }
+      }
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "purpose": "Fast precision attacker",
+      "stats": {
+        "maxHealth": 3,
+        "attack": 15,
+        "defense": 1,
+        "speed": 16
+      },
+      "moves": [
+        {
+          "id": "ranger_a",
+          "name": "Pinning Shot",
+          "description": "Hit and reduce the target next attack damage by 1, minimum 1.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "ranger_b",
+          "name": "Double Draw",
+          "description": "A heavier single-target strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          3,
+          3
+        ],
+        "attack": [
+          15,
+          15
+        ],
+        "defense": [
+          1,
+          1
+        ],
+        "speed": [
+          16,
+          16
+        ]
+      },
+      "combat": {
+        "hp": 3,
+        "armor": 1,
+        "ward": 1,
+        "dodge": 24,
+        "crit": 18,
+        "armorRecovery": 0,
+        "damage": 1
+      },
+      "growth": {
+        "2": {
+          "dodge": 3
+        },
+        "3": {
+          "ward": 1
+        },
+        "4": {
+          "crit": 4
+        },
+        "5": {
+          "hp": 1
+        },
+        "6": {
+          "damage": 1
+        },
+        "7": {
+          "dodge": 4
+        },
+        "8": {
+          "ward": 1
+        }
+      }
+    },
+    {
+      "id": "rogue",
+      "name": "Rogue",
+      "purpose": "First-strike specialist",
+      "stats": {
+        "maxHealth": 3,
+        "attack": 20,
+        "defense": 0,
+        "speed": 18
+      },
+      "moves": [
+        {
+          "id": "duelist_a",
+          "name": "Opening Strike",
+          "description": "Deal 1 bonus damage when another ally has already hit the target.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "duelist_b",
+          "name": "Measured Thrust",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          3,
+          3
+        ],
+        "attack": [
+          20,
+          20
+        ],
+        "defense": [
+          0,
+          0
+        ],
+        "speed": [
+          18,
+          18
+        ]
+      },
+      "combat": {
+        "hp": 3,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 32,
+        "crit": 25,
+        "armorRecovery": 0,
+        "damage": 1
+      },
+      "growth": {
+        "2": {
+          "dodge": 3
+        },
+        "3": {
+          "armor": 1
+        },
+        "4": {
+          "crit": 5
+        },
+        "5": {
+          "ward": 1
+        },
+        "6": {
+          "damage": 1
+        },
+        "7": {
+          "dodge": 4
+        },
+        "8": {
+          "armor": 1
+        }
+      }
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "purpose": "Fragile heavy magic attacker",
+      "stats": {
+        "maxHealth": 2,
+        "attack": 20,
+        "defense": 0,
+        "speed": 12
+      },
+      "moves": [
+        {
+          "id": "mage_a",
+          "name": "Arcane Pulse",
+          "description": "Strong hit; 1 point bypasses Armor and Ward.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "mage_b",
+          "name": "Arcane Surge",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          2,
+          2
+        ],
+        "attack": [
+          20,
+          20
+        ],
+        "defense": [
+          0,
+          0
+        ],
+        "speed": [
+          12,
+          12
+        ]
+      },
+      "combat": {
+        "hp": 2,
+        "armor": 0,
+        "ward": 4,
+        "dodge": 10,
+        "crit": 12,
+        "armorRecovery": 0,
+        "damage": 1
+      },
+      "growth": {
+        "2": {
+          "ward": 1
+        },
+        "3": {
+          "dodge": 3
+        },
+        "4": {
+          "ward": 1
+        },
+        "5": {
+          "hp": 1
+        },
+        "6": {
+          "damage": 1
+        },
+        "7": {
+          "ward": 1
+        },
+        "8": {
+          "crit": 5
+        }
+      }
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "purpose": "Durable divine striker",
+      "stats": {
+        "maxHealth": 3,
+        "attack": 10,
+        "defense": 1,
+        "speed": 9
+      },
+      "moves": [
+        {
+          "id": "cleric_a",
+          "name": "Mending Light",
+          "description": "Heal the living ally with lowest HP ratio for 1 HP; otherwise attack.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "cleric_b",
+          "name": "Judgment",
+          "description": "A heavy strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          3,
+          3
+        ],
+        "attack": [
+          10,
+          10
+        ],
+        "defense": [
+          1,
+          1
+        ],
+        "speed": [
+          9,
+          9
+        ]
+      },
+      "combat": {
+        "hp": 3,
+        "armor": 1,
+        "ward": 3,
+        "dodge": 10,
+        "crit": 8,
+        "armorRecovery": 0,
+        "damage": 1
+      },
+      "growth": {
+        "2": {
+          "ward": 1
+        },
+        "3": {
+          "armor": 1
+        },
+        "4": {
+          "ward": 1
+        },
+        "5": {
+          "dodge": 4
+        },
+        "6": {
+          "armorRecovery": 1
+        },
+        "7": {
+          "ward": 1,
+          "damage": 1
+        },
+        "8": {
+          "armor": 1
+        }
+      }
+    }
+  ],
+  "defaults": {
+    "ada": {
+      "classId": "knight",
+      "sex": "female",
+      "race": "human",
+      "selectedMove": "vanguard_a"
+    },
+    "bram": {
+      "classId": "barbarian",
+      "sex": "male",
+      "race": "human",
+      "selectedMove": "bruiser_a"
+    },
+    "cora": {
+      "classId": "ranger",
+      "sex": "female",
+      "race": "human",
+      "selectedMove": "ranger_a"
+    },
+    "dax": {
+      "classId": "rogue",
+      "sex": "male",
+      "race": "human",
+      "selectedMove": "duelist_a"
+    },
+    "elin": {
+      "classId": "cleric",
+      "sex": "female",
+      "race": "human",
+      "selectedMove": "cleric_a"
+    },
+    "finn": {
+      "classId": "mage",
+      "sex": "male",
+      "race": "human",
+      "selectedMove": "mage_a"
+    },
+    "gwen": {
+      "classId": "knight",
+      "sex": "female",
+      "race": "human",
+      "selectedMove": "vanguard_a"
+    },
+    "hale": {
+      "classId": "rogue",
+      "sex": "male",
+      "race": "human",
+      "selectedMove": "duelist_a"
+    },
+    "iris": {
+      "classId": "mage",
+      "sex": "female",
+      "race": "human",
+      "selectedMove": "mage_a"
+    },
+    "jory": {
+      "classId": "barbarian",
+      "sex": "male",
+      "race": "human",
+      "selectedMove": "bruiser_a"
+    }
+  },
+  "legacyClasses": [
+    {
+      "id": "vanguard",
+      "name": "Vanguard",
+      "purpose": "Armored front-line fighter",
+      "stats": {
+        "maxHealth": 140,
+        "attack": 14,
+        "defense": 16,
+        "speed": 8
+      },
+      "moves": [
+        {
+          "id": "vanguard_a",
+          "name": "Ironwall Charge",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "vanguard_b",
+          "name": "Shield Hammer",
+          "description": "A heavier single-target strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          130,
+          150
+        ],
+        "attack": [
+          12,
+          16
+        ],
+        "defense": [
+          14,
+          18
+        ],
+        "speed": [
+          6,
+          10
+        ]
+      }
+    },
+    {
+      "id": "bruiser",
+      "name": "Bruiser",
+      "purpose": "Strong, durable striker",
+      "stats": {
+        "maxHealth": 125,
+        "attack": 19,
+        "defense": 11,
+        "speed": 10
+      },
+      "moves": [
+        {
+          "id": "bruiser_a",
+          "name": "Earthbreaker",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "bruiser_b",
+          "name": "Rapid Smash",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          115,
+          135
+        ],
+        "attack": [
+          17,
+          21
+        ],
+        "defense": [
+          9,
+          13
+        ],
+        "speed": [
+          8,
+          12
+        ]
+      }
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "purpose": "Fast precision attacker",
+      "stats": {
+        "maxHealth": 90,
+        "attack": 18,
+        "defense": 8,
+        "speed": 16
+      },
+      "moves": [
+        {
+          "id": "ranger_a",
+          "name": "Piercing Volley",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "ranger_b",
+          "name": "Double Draw",
+          "description": "A heavier single-target strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          80,
+          100
+        ],
+        "attack": [
+          16,
+          20
+        ],
+        "defense": [
+          6,
+          10
+        ],
+        "speed": [
+          14,
+          18
+        ]
+      }
+    },
+    {
+      "id": "duelist",
+      "name": "Duelist",
+      "purpose": "First-strike specialist",
+      "stats": {
+        "maxHealth": 100,
+        "attack": 17,
+        "defense": 10,
+        "speed": 18
+      },
+      "moves": [
+        {
+          "id": "duelist_a",
+          "name": "Flashing Lunge",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "duelist_b",
+          "name": "Measured Thrust",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          90,
+          110
+        ],
+        "attack": [
+          15,
+          19
+        ],
+        "defense": [
+          8,
+          12
+        ],
+        "speed": [
+          16,
+          20
+        ]
+      }
+    },
+    {
+      "id": "support",
+      "name": "Support",
+      "purpose": "Balanced steady fighter",
+      "stats": {
+        "maxHealth": 95,
+        "attack": 10,
+        "defense": 10,
+        "speed": 13
+      },
+      "moves": [
+        {
+          "id": "support_a",
+          "name": "Dawn Pulse",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "support_b",
+          "name": "Guiding Light",
+          "description": "A heavier single-target strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          85,
+          105
+        ],
+        "attack": [
+          8,
+          12
+        ],
+        "defense": [
+          8,
+          12
+        ],
+        "speed": [
+          11,
+          15
+        ]
+      }
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "purpose": "Fragile heavy magic attacker",
+      "stats": {
+        "maxHealth": 80,
+        "attack": 22,
+        "defense": 6,
+        "speed": 12
+      },
+      "moves": [
+        {
+          "id": "mage_a",
+          "name": "Storm Lance",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "mage_b",
+          "name": "Arcane Surge",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          70,
+          90
+        ],
+        "attack": [
+          20,
+          24
+        ],
+        "defense": [
+          4,
+          8
+        ],
+        "speed": [
+          10,
+          14
+        ]
+      }
+    },
+    {
+      "id": "guardian",
+      "name": "Guardian",
+      "purpose": "Slow, resilient defender",
+      "stats": {
+        "maxHealth": 150,
+        "attack": 12,
+        "defense": 18,
+        "speed": 6
+      },
+      "moves": [
+        {
+          "id": "guardian_a",
+          "name": "Bastion Slam",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "guardian_b",
+          "name": "Guard Break",
+          "description": "A heavier single-target strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          140,
+          160
+        ],
+        "attack": [
+          10,
+          14
+        ],
+        "defense": [
+          16,
+          20
+        ],
+        "speed": [
+          4,
+          8
+        ]
+      }
+    },
+    {
+      "id": "skirmisher",
+      "name": "Skirmisher",
+      "purpose": "Fast flexible striker",
+      "stats": {
+        "maxHealth": 105,
+        "attack": 16,
+        "defense": 9,
+        "speed": 17
+      },
+      "moves": [
+        {
+          "id": "skirmisher_a",
+          "name": "Sweeping Rush",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "skirmisher_b",
+          "name": "Swift Jab",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          95,
+          115
+        ],
+        "attack": [
+          14,
+          18
+        ],
+        "defense": [
+          7,
+          11
+        ],
+        "speed": [
+          15,
+          19
+        ]
+      }
+    },
+    {
+      "id": "mystic",
+      "name": "Mystic",
+      "purpose": "Measured magic striker",
+      "stats": {
+        "maxHealth": 85,
+        "attack": 20,
+        "defense": 7,
+        "speed": 14
+      },
+      "moves": [
+        {
+          "id": "mystic_a",
+          "name": "Moonfall",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "mystic_b",
+          "name": "Starfall",
+          "description": "A heavier single-target strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          75,
+          95
+        ],
+        "attack": [
+          18,
+          22
+        ],
+        "defense": [
+          5,
+          9
+        ],
+        "speed": [
+          12,
+          16
+        ]
+      }
+    },
+    {
+      "id": "brawler",
+      "name": "Brawler",
+      "purpose": "Durable close-range fighter",
+      "stats": {
+        "maxHealth": 115,
+        "attack": 18,
+        "defense": 12,
+        "speed": 11
+      },
+      "moves": [
+        {
+          "id": "brawler_a",
+          "name": "Thunder Fist",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "brawler_b",
+          "name": "Quick Combination",
+          "description": "A quicker, lighter single-target strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          105,
+          125
+        ],
+        "attack": [
+          16,
+          20
+        ],
+        "defense": [
+          10,
+          14
+        ],
+        "speed": [
+          9,
+          13
+        ]
+      }
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "purpose": "Fast versatile performer",
+      "stats": {
+        "maxHealth": 95,
+        "attack": 15,
+        "defense": 10,
+        "speed": 17
+      },
+      "moves": [
+        {
+          "id": "bard_a",
+          "name": "Resonant Chord",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "bard_b",
+          "name": "Staccato Strike",
+          "description": "A frequent light strike.",
+          "multiplier": 1.25,
+          "cooldown": 1
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          85,
+          105
+        ],
+        "attack": [
+          13,
+          17
+        ],
+        "defense": [
+          8,
+          12
+        ],
+        "speed": [
+          15,
+          19
+        ]
+      }
+    },
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "purpose": "Durable divine striker",
+      "stats": {
+        "maxHealth": 120,
+        "attack": 13,
+        "defense": 15,
+        "speed": 9
+      },
+      "moves": [
+        {
+          "id": "cleric_a",
+          "name": "Radiant Blow",
+          "description": "A strong single-target strike.",
+          "multiplier": 1.65,
+          "cooldown": 3
+        },
+        {
+          "id": "cleric_b",
+          "name": "Judgment",
+          "description": "A heavy strike with a longer recovery.",
+          "multiplier": 2.05,
+          "cooldown": 4
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          110,
+          130
+        ],
+        "attack": [
+          11,
+          15
+        ],
+        "defense": [
+          13,
+          17
+        ],
+        "speed": [
+          7,
+          11
+        ]
+      }
+    },
+    {
+      "id": "worker",
+      "name": "Worker",
+      "purpose": "Fragile expedition labor specialist",
+      "stats": {
+        "maxHealth": 88,
+        "attack": 9,
+        "defense": 7,
+        "speed": 9
+      },
+      "moves": [
+        {
+          "id": "worker_a",
+          "name": "Sledgehammer Swing",
+          "description": "A desperate heavy swing with a work hammer.",
+          "multiplier": 1.45,
+          "cooldown": 3
+        },
+        {
+          "id": "worker_b",
+          "name": "Hold the Line",
+          "description": "Uses tools and grit to strike from a braced stance.",
+          "multiplier": 1.25,
+          "cooldown": 2
+        }
+      ],
+      "ranges": {
+        "maxHealth": [
+          80,
+          98
+        ],
+        "attack": [
+          7,
+          11
+        ],
+        "defense": [
+          5,
+          9
+        ],
+        "speed": [
+          7,
+          11
+        ]
+      }
+    }
+  ]
+}
