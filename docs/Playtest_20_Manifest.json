@@ -1,0 +1,690 @@
+[
+  {
+    "path": "data/RPGManagerArtV5.json",
+    "sha256": "f7f28395e8810ed20b52ef0ff476a1b68230cbae1a46fabec0d29271dc14a462"
+  },
+  {
+    "path": "data/RPGManagerNarratives.json",
+    "sha256": "cd89781e7f1788b5c1e67c585bfd8d50505d9d9b8fa974334bc9c842a7d09e3b"
+  },
+  {
+    "path": "data/RPGManagerStage3.json",
+    "sha256": "630f3090d91ea26df400087be6391930665cbdad4b86ce6a18fa061aae8fe8f8"
+  },
+  {
+    "path": "img/characters/$RPGSkeleton_barbarian_v5.webp",
+    "sha256": "6ab883998c1cff1d26142ecfae93a44cbf619a7b975c9e3b602cc4d4941c0081"
+  },
+  {
+    "path": "img/characters/$RPGSkeleton_cleric_v5.webp",
+    "sha256": "f52e97f9cc6ae8e3fde5f244bf348c9bbd8c2000d0341dd8e7edbb5b9e09da0c"
+  },
+  {
+    "path": "img/characters/$RPGSkeleton_knight_v5.webp",
+    "sha256": "bfe50522635c616568e268be2a1fbf636901d02c5a7c380e92d43394d46a73eb"
+  },
+  {
+    "path": "img/characters/$RPGSkeleton_mage_v5.webp",
+    "sha256": "f76ceac70cc939fc55fc87ac95d7b38b89d15be45042b16589fbfb417e0ac738"
+  },
+  {
+    "path": "img/characters/$RPGSkeleton_ranger_v5.webp",
+    "sha256": "5305c49cfd37c8843f269233007a1b88bd168ce84631851bc77d2a13c9d60580"
+  },
+  {
+    "path": "img/characters/$RPGSkeleton_rogue_v5.webp",
+    "sha256": "ba16e5673795725b121571582ab1c558a76a5f13249ca70d50f418f8c5f6d73c"
+  },
+  {
+    "path": "img/characters/RPGFallen_barbarian_female_v5.webp",
+    "sha256": "6ffc462a76a0b3ad2bae95235e0e7700a8e4953fa1433e0085b1174f985068f3"
+  },
+  {
+    "path": "img/characters/RPGFallen_barbarian_male_v5.webp",
+    "sha256": "af5c059477a11eccc032c92d86d7d5dc77d12a126b58209355a7498df67ef908"
+  },
+  {
+    "path": "img/characters/RPGFallen_cleric_female_v5.webp",
+    "sha256": "ecc6922dba56ae6e4f7846a1d05e40a784f96d1688381d400ae9d657b0f2ec4a"
+  },
+  {
+    "path": "img/characters/RPGFallen_cleric_male_v5.webp",
+    "sha256": "b6e2d3b8b99f7c00f681cf1ddc5b347274c06250baba647d33f2b2f585cd431e"
+  },
+  {
+    "path": "img/characters/RPGFallen_knight_female_v5.webp",
+    "sha256": "493bafa891773db0dd7fa401605edc79bbbbb85e2e6ec05b7fd1d3ac1892351e"
+  },
+  {
+    "path": "img/characters/RPGFallen_knight_male_v5.webp",
+    "sha256": "702aebf844116d6b79f1c3dcf7f35a8b35f8dea80f293a911fea4510ea5428da"
+  },
+  {
+    "path": "img/characters/RPGFallen_mage_female_v5.webp",
+    "sha256": "7f7473940cf655a46488ee52069fb577f21515ab10ef0baee444a9d4231dd634"
+  },
+  {
+    "path": "img/characters/RPGFallen_mage_male_v5.webp",
+    "sha256": "8de703b18ee2700baf0fbeabca7c87e3c2e5ef087cfe181d01352a6e861df43a"
+  },
+  {
+    "path": "img/characters/RPGFallen_ranger_female_v5.webp",
+    "sha256": "20b94734ee9f4b10c6c8de57b5d1c9ad93d34318d3073ae6437d66e6e4d8ec70"
+  },
+  {
+    "path": "img/characters/RPGFallen_ranger_male_v5.webp",
+    "sha256": "bf7192e3cdf2190f7cbb07a78d1f5d4a270948431ee581822f1eea07423151e5"
+  },
+  {
+    "path": "img/characters/RPGFallen_rogue_female_v5.webp",
+    "sha256": "d51e52cd5b1ca2b0c45cd35a39a7781f3c9e55e7b91dc4f50819127f93e1856a"
+  },
+  {
+    "path": "img/characters/RPGFallen_rogue_male_v5.webp",
+    "sha256": "5bbb2fc328a36080224c87e0c20ae088bda1625d4738dc2c8528f0325d5ce87b"
+  },
+  {
+    "path": "img/characters/RPGWalk_barbarian_female_v5.webp",
+    "sha256": "2ac3ece895272d5e9acd5d854d3847f67d4ed7334611fb7fa8cff0aae8835818"
+  },
+  {
+    "path": "img/characters/RPGWalk_barbarian_male_v5.webp",
+    "sha256": "4de40f36cca28e00a0e84fedc8d53b4e38c0f0434e8f54cd7dcd882692b9534c"
+  },
+  {
+    "path": "img/characters/RPGWalk_cleric_female_v5.webp",
+    "sha256": "8705d1e73f73f1b3627ad8ec2307b50d89a0bdb3301348c0b9a4309046c89c83"
+  },
+  {
+    "path": "img/characters/RPGWalk_cleric_male_v5.webp",
+    "sha256": "e401330b4400b0a5858423d0468aeb912a071fe0d67f5ac6e4001c134122d441"
+  },
+  {
+    "path": "img/characters/RPGWalk_knight_female_v5.webp",
+    "sha256": "62825e2e7bd196b00c621de5d5e0d91ab3c5402a63d3821b2b25c4808b6f08b4"
+  },
+  {
+    "path": "img/characters/RPGWalk_knight_male_v5.webp",
+    "sha256": "f70b4c50566c9d9dba7eb7a940aafef10f0722f0b767b2d164fc064c63a10845"
+  },
+  {
+    "path": "img/characters/RPGWalk_mage_female_v5.webp",
+    "sha256": "71b9b46a3811eecb02a7e1d44c8f16fa1a97aaeb63b36cae873721c9b510f3e0"
+  },
+  {
+    "path": "img/characters/RPGWalk_mage_male_v5.webp",
+    "sha256": "13320c0416f4c83bb6471e0b69c8b5c65ae472e0a304f3ca31bdd15b7ab522f3"
+  },
+  {
+    "path": "img/characters/RPGWalk_ranger_female_v5.webp",
+    "sha256": "2d7bba5b188ebf91ce78c73432ffc8204d063a8a0a312a4a416d809020573e2d"
+  },
+  {
+    "path": "img/characters/RPGWalk_ranger_male_v5.webp",
+    "sha256": "0bc5337deb9e7c8ba87946b8ca37abd757b4026ce376f3b1db15b54feeee4688"
+  },
+  {
+    "path": "img/characters/RPGWalk_rogue_female_v5.webp",
+    "sha256": "c82f4f088e76a5b982537fd02c1dbd971cffd32de6f9a9c38d347036f47447e2"
+  },
+  {
+    "path": "img/characters/RPGWalk_rogue_male_v5.webp",
+    "sha256": "4ceb313d898e991a3e58f88fbe35043d7ef817835c9b3cc94015e52fe21b9bb3"
+  },
+  {
+    "path": "img/faces/RPGPortrait_barbarian_v5.webp",
+    "sha256": "0c614f0cd279189b628b6f64cc08f3d22face1b7c8ef51a8445523eec5e60ce0"
+  },
+  {
+    "path": "img/faces/RPGPortrait_cleric_v5.webp",
+    "sha256": "fb5812d9c0f6dc5c7e7aeec9ead7c93257f9c031b0485cdbb8d06d82867a3b25"
+  },
+  {
+    "path": "img/faces/RPGPortrait_knight_v5.webp",
+    "sha256": "d6777c15195b8714308320ada5d6e19720ea3a198dbf081ee1620b465963369e"
+  },
+  {
+    "path": "img/faces/RPGPortrait_mage_v5.webp",
+    "sha256": "f3e5ad4b86bf72fa0c7205fefdfce344579ce91f13401d91f17f7c6b2e11456d"
+  },
+  {
+    "path": "img/faces/RPGPortrait_ranger_v5.webp",
+    "sha256": "19631aea0f6cfe0d28eebc55bf457225b1807d823fa5f369065f39b459c94dcc"
+  },
+  {
+    "path": "img/faces/RPGPortrait_rogue_v5.webp",
+    "sha256": "218e2b9d93c38b5a13800680c9183867c1719e2da0e0ed6bfe5fa040554a167c"
+  },
+  {
+    "path": "img/faces/RPGSkeletons_v5.webp",
+    "sha256": "0e5d71d4a1692cc854ea8248bc295643201743521943b06fc13d4764bacc7074"
+  },
+  {
+    "path": "img/playtest-source/attack.webp",
+    "sha256": "ee3dfe092649a78bbb20f26fdebfee9aec696cf6d51a3a1d5c1def70dc3719fc"
+  },
+  {
+    "path": "img/playtest-source/cleric_strideB_spaced.webp",
+    "sha256": "a4b061ab83b5be875416bf1bbb36324b458222889805a2d6f635c7d1f5f61f7a"
+  },
+  {
+    "path": "img/playtest-source/fallen.webp",
+    "sha256": "ec0b2434ef9fe8acba036b6394630f381c5a4af654f9a12500c3ce8d581dca08"
+  },
+  {
+    "path": "img/playtest-source/front.webp",
+    "sha256": "41e4cd6fcc7b949bff17d530a32503ff5c0c878d8ff1302a21bda37673d7bd3d"
+  },
+  {
+    "path": "img/playtest-source/rear.webp",
+    "sha256": "beff9abc9fbfb5a721f7b1269e184c5ab53c5ed7918c9b368b48437fa938bcfd"
+  },
+  {
+    "path": "img/playtest-source/side.webp",
+    "sha256": "615ce7e0b559f96379cc732cee478f021905e1e3d6f1fb959862a0025816476e"
+  },
+  {
+    "path": "img/playtest-source/skeleton.webp",
+    "sha256": "afb7ab5da2ead4281b671e222bba5ddeeceff993f027269812a3f0cafccb52e0"
+  },
+  {
+    "path": "img/playtest-source/strideA.webp",
+    "sha256": "0b2b233a2f166c386244170198fd46cf0cd44a6b2b2ae1d2fafcf7d008239f99"
+  },
+  {
+    "path": "img/playtest-source/strideB.webp",
+    "sha256": "03a791ba355ffbc9b0680746fb3910ca3433dcf36bdb14343d5030c47bfb381b"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_0_v5.webp",
+    "sha256": "e6a39b6f1870d907aaced5170bdd5d4eb5ea959aa2f1519f2abfd7777aca5597"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_1_v5.webp",
+    "sha256": "9e692e5819f54702aa79ce52157c59feea26bf5f6160a34e869c900a5a38c85e"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_2_v5.webp",
+    "sha256": "41fe962ebd1ff03617f64f8035c8a73048a5656b6d132673b16ffc41c0ee9386"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_3_v5.webp",
+    "sha256": "c1ce7eb2b3e89d2d1e19193538027b252aeecc7731d4b79f1f6347c13744f7c0"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_4_v5.webp",
+    "sha256": "e4bb621fef76b770f7b3a9baac70c1278a76fa6a7637057fd3b3e83ca044b893"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_5_v5.webp",
+    "sha256": "fb91406a02a227565ba77f241903990bc1380c436f445401ee83470021bc2509"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_6_v5.webp",
+    "sha256": "8167a33d3f28d0c0cc64d23c70cac86a76920f6cd4df43c9d150c53cedad36e9"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_female_7_v5.webp",
+    "sha256": "a7c2d7c18502bfeaf19d8e22abb0099b40c5aebaa29946ad96a8f39ad754ffbc"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_0_v5.webp",
+    "sha256": "bfc29dacc30da4992456d3e2714e067ed597d10379abce34d4e02fdc5423a5da"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_1_v5.webp",
+    "sha256": "8810a088a897d73cd9a9736d9527a6664cf1962c119bc241b12dc09a1e53f02e"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_2_v5.webp",
+    "sha256": "bd4d6ec0603a5f5ab7b15c424527e42fa9a8dca54c728325fac2ab94000bc178"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_3_v5.webp",
+    "sha256": "dfe4644e712da15eb8a60367c2ebc38ec53ffbbae0e8bdf01a28c3ac6f5481a6"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_4_v5.webp",
+    "sha256": "14e70d851631b66e560d0a466b5f25adb9cd8c7f1990a85d67ccf787b8c7248f"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_5_v5.webp",
+    "sha256": "0f19fb8e812d5217a0062010cd802877f1b9ab6a880aabd76ae9ab28249642ae"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_6_v5.webp",
+    "sha256": "d195e1a8cb318b0da8d3268bc7be96577b46bfcefece6cefedc2857707dc770b"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_barbarian_male_7_v5.webp",
+    "sha256": "4b85a039d737b65d17cd0222a0ea0725e254f2dbfe3a757d36d7007514b4a663"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_0_v5.webp",
+    "sha256": "71dadef7f63ddb435284fbc4ba52d34a723d40a9c64e2ac3cf151cb20127d460"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_1_v5.webp",
+    "sha256": "937e411f357f5241073c384ffc934f0815261923871b9db3b036b37c641d1dec"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_2_v5.webp",
+    "sha256": "f97fe0ea8d302e771390dee4170187b54a9a6d309863d2a08a26a924028da92f"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_3_v5.webp",
+    "sha256": "73c790628a3a42f50b426df9c2180f1dbbd2f177d1a6d4348fd0a8c7eb5e4bc5"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_4_v5.webp",
+    "sha256": "359011b7cfaaafbf6e77c5d4994aef28be1a3b8bda4f6e9d584f061cd715ca71"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_5_v5.webp",
+    "sha256": "3d1223d8d01cca8f44667092bf8030e997c81de1d100532ab8afaaf0bf57015f"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_6_v5.webp",
+    "sha256": "8d99884d784f0f67442a3cc6b3011f044f59bbb996400586371919a1c33f51dc"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_female_7_v5.webp",
+    "sha256": "236544988ff4abf435d970ec30ac03b7f9c03cb71523e93eb33ff0c350c5a4ea"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_0_v5.webp",
+    "sha256": "f1eb3ca2c07ffecde063f4d0be2ccab94a32a42a59c16498a9cee6d658cedcae"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_1_v5.webp",
+    "sha256": "f63fe5545d2a6b16471d86d69ea109d73f9ae763e1efccddc0ec343e48905b6e"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_2_v5.webp",
+    "sha256": "644a638239e2156027dc9dd561dc5312e3aaa375809c129d7e1c48dbb1b3eeb4"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_3_v5.webp",
+    "sha256": "65dae82e3a200a1160bf04061573d1f931e48eb1e25b44ab5add46ab101d575d"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_4_v5.webp",
+    "sha256": "2dbe29d70a9e22d51e2371fdc641be7e4e4fecb7aab608553608a6c431e4b138"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_5_v5.webp",
+    "sha256": "90c51c40e7812f197ae675c4f98c3888214bc19b4e124484eefe8a0c2c1c418f"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_6_v5.webp",
+    "sha256": "6a6860a154524393d58e89d0d560dda21f948b678a79053c1972cdb37f9dfd0b"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_cleric_male_7_v5.webp",
+    "sha256": "9164ae2ed64e6a59bf29acd03e015e0b85ba939961ea87d0add47c6977df8f7a"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_0_v5.webp",
+    "sha256": "d31cb8ab9ad5849ed5f963685fd3966c7318579b0700d913dcfd1f55018b7fa4"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_1_v5.webp",
+    "sha256": "df88fefa1b136fc7ce06600122a5f7c1daf6ee6f8d36118d025839527f35e4f4"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_2_v5.webp",
+    "sha256": "26884c02ca0c0a811cdaaff1a0882f306656ae592baa7b08807e378ffa491f00"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_3_v5.webp",
+    "sha256": "715a50d3e6e309fc7cf92032f3dee834e873c2ef214a35047022403e3b9494c5"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_4_v5.webp",
+    "sha256": "411834458e0c4926107183b1491dc63ee863f361d273762cc925c54fe9f5414d"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_5_v5.webp",
+    "sha256": "a2c6d47f3c84d59ec25025a4aa35c4a62c7f58ff87b0fd47bb47745de7d89c6a"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_6_v5.webp",
+    "sha256": "ae53fc4b7453129f247abcfc31a3f3d4ef93e41a9382e4dec4fd07a3a920918c"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_female_7_v5.webp",
+    "sha256": "98974a667cd8cbedf6563290efaec89b08a1a585ae61ba109fcfa903a28d49ac"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_0_v5.webp",
+    "sha256": "ae9fc566a149959d9cbd7f06972c3fff69523c482922d366c31eac900104615c"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_1_v5.webp",
+    "sha256": "61606514b809349f94703cd2061cf2e9876e192bc2388baacc43fb7cafb969c5"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_2_v5.webp",
+    "sha256": "6ce612790673106e4bb0075b5a0473209d6e85071f517fbb149eae404acb4473"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_3_v5.webp",
+    "sha256": "62756ba6179ba4eda7823ff7ac41b0c2554b9ae0f644be72016064621297a33b"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_4_v5.webp",
+    "sha256": "4a12c0ad9eddd229e2f4ead05427fe864d23cc45b9cb2316dc12e20ea62c4780"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_5_v5.webp",
+    "sha256": "5898f296572b5bc88c43eaa124800e07595403eb2031c4ae408e4dd488787d42"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_6_v5.webp",
+    "sha256": "0503081f5ba7014d2f915e22765628f6ada38104bc13ee0b24347c812c13f089"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_knight_male_7_v5.webp",
+    "sha256": "20c5212a017dbd480db5753be3434e967a498568ebea8f5fce893db12f4f2bc5"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_0_v5.webp",
+    "sha256": "82f3acad2e824945433d871f99ded7e3511f6a591c637e3ef4d8aad3cb1f1341"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_1_v5.webp",
+    "sha256": "e73a7e583b871c33cff80f5bede822e87d87e94cf725d8b8ba5493edc07ff84b"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_2_v5.webp",
+    "sha256": "516309953c4367f2820365481c09dd0daf6561a0e39bdc2aa2cd190c3952c6ba"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_3_v5.webp",
+    "sha256": "d9c10d35ca3a7b7b43e575db532bfa4fba369e4e27732e396e6a8c5b85579be5"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_4_v5.webp",
+    "sha256": "15fe7310276a9ce25025407249e5c0cb684db8d14fb7983a7f2fd00568b4e08c"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_5_v5.webp",
+    "sha256": "3def64e547e2b0457e2bea60b04dbba1a83273adbc3ee3050c7acef80c067c16"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_6_v5.webp",
+    "sha256": "92da542487a4a249b6e017ccaaac8806f4ba025f8be6120ff96a1b5aeb094b02"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_female_7_v5.webp",
+    "sha256": "dafe82efa8e21afa5d34a7a14d4b76d3905ddce2408166bd1ab20abe981502ee"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_0_v5.webp",
+    "sha256": "13fa9e7b7415eca01621e2dc87f4cb056258a94b6556386d82c95508c748826b"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_1_v5.webp",
+    "sha256": "7f0e45fb1e749d71ba9fb52153b2eb6d1ddf3c3e296ffb3bd3921a562e4b2641"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_2_v5.webp",
+    "sha256": "9472b6a9ceeb7a426492559c299589dd5dac22294d5f44c17f8e97ad1fb3bfdb"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_3_v5.webp",
+    "sha256": "28ae7ff674d86f3e2a8728a9d569fb481d91b12a9e48776609a5d68bd497d233"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_4_v5.webp",
+    "sha256": "2f72d41d18fc1938f04b618ed28bb2c57438e4f4ed80701f2f20180a3bb08573"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_5_v5.webp",
+    "sha256": "d14027d84473e8dc34bdbc6d10f11424f0784e3272f36dc3a0061c96c32ed31b"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_6_v5.webp",
+    "sha256": "152342e69cc3de82603b2709d98d4eeffd7e201c52e145cf8e03fa41fe41fe07"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_mage_male_7_v5.webp",
+    "sha256": "7f4e7f1bb5385a0b54d7e9287617c39104d46bd35deee754a8bd2d277954babb"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_0_v5.webp",
+    "sha256": "1deacdf578dea11a45e72a677087069401c0e548bafd50498db8a59de0feccf3"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_1_v5.webp",
+    "sha256": "fd1c715a6466858d72e3de6d8efead8dfffa6f743e3a44ebf10111a1f4d68a21"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_2_v5.webp",
+    "sha256": "f5d8911f6dc4ab22a5a018d973148e5fd0f86d32494615c23a34fc49127382f5"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_3_v5.webp",
+    "sha256": "13b5ee49c9a3b3ac6b536ea917a72a402b7623b645328b9a2581191266af9c6a"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_4_v5.webp",
+    "sha256": "b682b02387962fc60d077dcac201460b41c757ab86d12832f13799c1bdbed92f"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_5_v5.webp",
+    "sha256": "843bdaaa9410b6f33f924c18f2ea8b3a60825b8290f339652214d6d19dd9526d"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_6_v5.webp",
+    "sha256": "5c985966f315591a29bceb1ba7da2e2284d5172cc2e31238b90a8daf0b42e7b8"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_female_7_v5.webp",
+    "sha256": "14c855e1175f5d769770b70b45789bd7da73e6434d29ac01d531a8e142769d42"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_0_v5.webp",
+    "sha256": "02144873f025c3b1cfc7f9609e89e1f831c6dab392b2ace0fff056a6ece87d36"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_1_v5.webp",
+    "sha256": "3ba5539dcc3e89900601a4d43347ab459f0d8840cc1c9b8a0afd5a71be8a90d2"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_2_v5.webp",
+    "sha256": "dac55b7377dcaf64e1279764d0804f7e2f84a58640ad8588293758b9be74abd7"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_3_v5.webp",
+    "sha256": "0d09cac1b047d70607eae8d9ae20dd04dc31f2e075069c1ac85854b7fcc95d8c"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_4_v5.webp",
+    "sha256": "c8ec8dee45f632f24e4b2deaf312f98ed47f0a1e290fd7bc3da19abfa51ac6a5"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_5_v5.webp",
+    "sha256": "7d6dfa2bca3c21f2925923323a7b13e2c98755df1058bfc9895971f03bf59888"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_6_v5.webp",
+    "sha256": "a0ea73ce73e9d8ff7507ad931e0c4c6bb739da13b6399fc111071c2ca5b9dbda"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_ranger_male_7_v5.webp",
+    "sha256": "765b56a40a3d9c23ae2b11a4dfed7f6d28f7a68b77a1a1d901310d259a8fcff1"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_0_v5.webp",
+    "sha256": "6da3f6dfaff4ce6885ba398965fb6bd4a1a9b76a75af7802d4d7182d40a8866d"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_1_v5.webp",
+    "sha256": "5840eaaedcd279909b1f5e517d4cf7a57febc300af44583536e9327b741d21ae"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_2_v5.webp",
+    "sha256": "a74e641d1a9088e0676c81e9ac51d3506a24c1f3e3a7f1111a7a6fce4b868e69"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_3_v5.webp",
+    "sha256": "a209866334961c2369c219d96aedefac2590a6e4204b43b06fa05678dc5c19a9"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_4_v5.webp",
+    "sha256": "d09e6004dc7456b542f92b3de56d0631f9e4dbdbe880da2ef3927d693392faa9"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_5_v5.webp",
+    "sha256": "cfb8141c73488cd08fb32a6bcbf986002702742c01e34986cc6160c9927a20d3"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_6_v5.webp",
+    "sha256": "0446727536c66873d64eb31014493a2ef1bc538a1612e0ce6becd90d4c961737"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_female_7_v5.webp",
+    "sha256": "c6043ab85bff4be69d61e6bd7a00814b6096f4928c785b67701327831e0775fe"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_0_v5.webp",
+    "sha256": "f5111f7168008c38df90398d8e89385299ed6f7256112373b9cc23baa755da41"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_1_v5.webp",
+    "sha256": "f4284221fd1c2eec39c23b980fcb541923ca7cd124922f663f2e8f02e7e428a7"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_2_v5.webp",
+    "sha256": "c19f923606d0aa0db7f6ff2a507b126126ad7780fcf14c0b8e8c825acc3dded7"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_3_v5.webp",
+    "sha256": "431db683e8be43d9b89d5dae8c6293e0fca3233382c3f84ec42de165f2a9663d"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_4_v5.webp",
+    "sha256": "679e5cb5267d2b3138db27140def63e9ff9285e5679b67c49c8b53fb0897e450"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_5_v5.webp",
+    "sha256": "1eb95fab28732da40b2a0fdce29e77dace738f95627954c628a7dd7b2b89b2ae"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_6_v5.webp",
+    "sha256": "b39286515ee7265827b578e0e1e3d02d7e1f573b2028a68128c666d90eb5ffb2"
+  },
+  {
+    "path": "img/sv_actors/RPGCombat_rogue_male_7_v5.webp",
+    "sha256": "633ea34000fcaa7294cb98b595b31ff7ae48a05a874d4d51fc77371401f7a336"
+  },
+  {
+    "path": "img/sv_actors/RPGSkeleton_barbarian_v5.webp",
+    "sha256": "fed2bbf2f92e6d37b8a79e9c956962bd8889f5b14c160d2fd954f7f850b0bf03"
+  },
+  {
+    "path": "img/sv_actors/RPGSkeleton_cleric_v5.webp",
+    "sha256": "40ac065d6ec43aa6746b13bb2349f354459d72d683e45f2aa17204e838e7f210"
+  },
+  {
+    "path": "img/sv_actors/RPGSkeleton_knight_v5.webp",
+    "sha256": "dbe6e08c44234f05818c7b704757f8fd9ea4e8bca9224d393a7080179d587536"
+  },
+  {
+    "path": "img/sv_actors/RPGSkeleton_mage_v5.webp",
+    "sha256": "ce602a6dbe3d9651d0b6a9b511c1539d9fd4b654e30aec13319a7b8219dc3c87"
+  },
+  {
+    "path": "img/sv_actors/RPGSkeleton_ranger_v5.webp",
+    "sha256": "35b05d812d253f5fb4c87f707ee0050d1b1cafcc02c039748c5dbc174b45a552"
+  },
+  {
+    "path": "img/sv_actors/RPGSkeleton_rogue_v5.webp",
+    "sha256": "7052b759300835acc065611185939c0e370c60bdfa3ebd21487c679c15d4303b"
+  },
+  {
+    "path": "js/plugins/RPGManager.js",
+    "sha256": "ebdbd801086e15ec77b28d1b6ceaf9a2356b1213ada58d4642552fa602bd415c"
+  },
+  {
+    "path": "js/plugins/RPGManagerBattleStage.js",
+    "sha256": "22152563d04ff94318f143c8c43045f9261476bac41ab995725e06ec557656fa"
+  },
+  {
+    "path": "js/plugins/RPGManagerProgression.js",
+    "sha256": "612115eea378dcad8cd8146e034a56c609b4be9f40680332124e9eaeaaa73bb8"
+  },
+  {
+    "path": "scripts/art_silhouettes.py",
+    "sha256": "a8c7d7d264cf948b103857e2bd290994e9407f2df53c46157519cf24bbd2c742"
+  },
+  {
+    "path": "scripts/pack_playtest_art.py",
+    "sha256": "777d4e42c1f1ec516c394ee4f364a12806b9299cdf12e2832539de90978fe76d"
+  },
+  {
+    "path": "scripts/playtest20_audit.js",
+    "sha256": "5ccba7de267b7f60f943b90adba66d71e65c429c1f3986553ac6cfc4c08b9dfb"
+  },
+  {
+    "path": "scripts/run_playtest20_regressions.py",
+    "sha256": "8cfc536b483473b3d4cdb3797bd54c115b05b1bd1eff4194f0ffe78482695304"
+  },
+  {
+    "path": "scripts/validate_playtest20_art.py",
+    "sha256": "0b488f84123d7fe371cfd0cb3594161eea3eadc633e30b383c2ecca5dcc4b807"
+  },
+  {
+    "path": "tests/art-clipping-validation.json",
+    "sha256": "ce8143e59bccbcf4a812a0a7aa79efea1d5872f67d978d27a4f042e8ed3830f1"
+  },
+  {
+    "path": "tests/art_clipping_validation.py",
+    "sha256": "676b1ab3ec73b8ce9df9f0be4fdcc9c2005268560a22b5a1ff7794e4c9e9e8c2"
+  },
+  {
+    "path": "tests/playtest20-art-validation.json",
+    "sha256": "d2dcb414a1c2502d9a96022ab96f9e655985df1822941f67d2cb14530204620f"
+  },
+  {
+    "path": "tests/playtest20-audit.json",
+    "sha256": "ac822c76d3700eb67dbccff5030a2fb3da79b4decd4e01c453d4dd54df85dc65"
+  },
+  {
+    "path": "tests/playtest20-audit.txt",
+    "sha256": "67db136c297bd9a576b1298398014ccf84bfcfa5496926b4ce66559152684266"
+  },
+  {
+    "path": "tests/playtest20-browser.json",
+    "sha256": "3a0c86e3e565478b375da7652f63e538b1114e5172a8a940083a3d880cb634c8"
+  },
+  {
+    "path": "tests/playtest20-browser.txt",
+    "sha256": "e7f37cd471964afaee230570bb7eacf30bfbd2ea7d8fb9def39ac6017389f4f8"
+  },
+  {
+    "path": "tests/playtest20-initial.txt",
+    "sha256": "ba1b3305039b495838b325e98a4e678b9256a73a4b3011fa0c0f427acb48e96b"
+  },
+  {
+    "path": "tests/playtest20-regressions.json",
+    "sha256": "6bbdf182b4f3eab1670c72e5c2de9808f1c34f65866b217145ecdb29b263a706"
+  },
+  {
+    "path": "tests/playtest20-regressions.txt",
+    "sha256": "e46d7cbcb05663222befe64a44000a58ffa454a764eec0bc83603ad27c0118f3"
+  },
+  {
+    "path": "tests/playtest20-results.txt",
+    "sha256": "d7332316aaa0dd54dba538f400d464bc52b0e135e4eb8169b6da9d509a8c33c0"
+  },
+  {
+    "path": "tests/playtest20.test.js",
+    "sha256": "97df3530a43f296c0a7b9c18ed8f6b008feb2855b4a73329a10005741b709c58"
+  },
+  {
+    "path": "tests/playtest20_smoke.py",
+    "sha256": "06aba0e1ef3f41f5b1f0cebc374af8f3205715bfdc7432bf641837085f4abdf6"
+  }
+]

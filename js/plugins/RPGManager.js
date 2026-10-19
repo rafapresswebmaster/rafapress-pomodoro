@@ -28,7 +28,7 @@
     const managerArtCache=new Map();
     function managerArt(folder,name){
         const key=`${folder}/${String(name||"missing")}`;
-        if(!managerArtCache.has(key))managerArtCache.set(key,Bitmap.load(`img/${folder}/${encodeURIComponent(name||"missing")}.png`));
+        if(!managerArtCache.has(key))managerArtCache.set(key,Bitmap.load(`img/${folder}/${encodeURIComponent(name||"missing")}.webp`));
         return managerArtCache.get(key);
     }
     const MIN_TEAM_SIZE = progression.MIN_PARTY_SIZE || 1;
@@ -147,7 +147,7 @@
     };
 
     // Optional art bypasses ImageManager's required-asset cache: failure keeps procedural scenery.
-    const cozyCampArt = Bitmap.load("img/pictures/CozyGuildCamp.png");
+    const cozyCampArt = Bitmap.load("img/pictures/CozyGuildCamp.webp");
     let cozyWindowskin = null;
     function managerVisualWindow(win) {
         return /^Window_RPG/.test(win.constructor.name) || win.constructor.name==="Window_TitleCommand" || win.constructor.name==="Window_Options" || !!(typeof Scene_File!=="undefined" && SceneManager._scene instanceof Scene_File);
@@ -1325,7 +1325,7 @@
             if(n){
                 card.dataset.memberId=n.id;card.setAttribute("aria-label",`Select ${n.name}`);
                 const face=n.portrait,cols=face.columns||4,rows=face.rows||2,portrait=document.createElement("div");
-                portrait.style.cssText=`width:48px;height:48px;margin:0 auto 4px;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.png');background-size:${cols*48}px ${rows*48}px;background-position:-${face.index%cols*48}px -${Math.floor(face.index/cols)*48}px;border-radius:5px`;card.appendChild(portrait);
+                portrait.style.cssText=`width:48px;height:48px;margin:0 auto 4px;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*48}px ${rows*48}px;background-position:-${face.index%cols*48}px -${Math.floor(face.index/cols)*48}px;border-radius:5px`;card.appendChild(portrait);
                 for(const text of [n.name,`${progression.classLabel(n)} · Level ${n.level}`,`HP ${n.health}/${n.maxHealth}`,`Armor ${n.classArmor+progression.equipmentArmor(n)}`,`Ward ${(n.innateWard||0)+(n.temporaryWard||0)}`]){const label=document.createElement("div");label.textContent=text;label.style.cssText="line-height:19px;overflow-wrap:anywhere";card.appendChild(label);}
                 card.onclick=()=>{if(selected.has(n.id))selected.delete(n.id);else if(selected.size<3)selected.add(n.id);else{modal.error.textContent="Deselect a companion before choosing another.";return;}modal.error.textContent="";refresh();};
                 cards.push({card,id:n.id});
@@ -1347,7 +1347,7 @@
         line(quest.name,true);line(`${quest.durationMinutes} minutes · ${progression.dangerLabel(quest)} · Estimated party level ${progression.dangerRating(quest)}`);
         const primary=progression.primaryReward(quest);line(`Primary: ${primary.value} ${primary.label} · ${quest.rewardGold.victory} Gold / ${quest.rewardArcana?.victory||0} Arcana / ${quest.xpPool??quest.xpReward*3} shared completion XP + enemy XP`,true);
         line(quest.riskExplanation||quest.danger);const grid=document.createElement("div");grid.style.cssText="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0";content.appendChild(grid);
-        for(const n of partyIds.map(findNpc)){const card=document.createElement("div"),face=n.portrait,cols=face.columns||4,rows=face.rows||2;card.style.cssText="background:#e3d1ab;border:1px solid #b99c64;border-radius:7px;padding:8px;text-align:center";const portrait=document.createElement("div");portrait.style.cssText=`width:54px;height:54px;margin:0 auto;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.png');background-size:${cols*54}px ${rows*54}px;background-position:-${face.index%cols*54}px -${Math.floor(face.index/cols)*54}px;border-radius:5px`;card.appendChild(portrait);for(const text of [n.name,`${n.role} · L${n.level}`,`HP ${n.health}/${n.maxHealth}`,`Armor ${n.classArmor+progression.equipmentArmor(n)} · Ward ${n.innateWard+n.temporaryWard}`,n.injury||"Healthy"]){const label=document.createElement("div");label.textContent=text;label.title=text;label.style.cssText="font-size:14px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap";card.appendChild(label);}grid.appendChild(card);}
+        for(const n of partyIds.map(findNpc)){const card=document.createElement("div"),face=n.portrait,cols=face.columns||4,rows=face.rows||2;card.style.cssText="background:#e3d1ab;border:1px solid #b99c64;border-radius:7px;padding:8px;text-align:center";const portrait=document.createElement("div");portrait.style.cssText=`width:54px;height:54px;margin:0 auto;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*54}px ${rows*54}px;background-position:-${face.index%cols*54}px -${Math.floor(face.index/cols)*54}px;border-radius:5px`;card.appendChild(portrait);for(const text of [n.name,`${n.role} · L${n.level}`,`HP ${n.health}/${n.maxHealth}`,`Armor ${n.classArmor+progression.equipmentArmor(n)} · Ward ${n.innateWard+n.temporaryWard}`,n.injury||"Healthy"]){const label=document.createElement("div");label.textContent=text;label.title=text;label.style.cssText="font-size:14px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap";card.appendChild(label);}grid.appendChild(card);}
         line("XP pools are split across the selected party. Embark starts the timer; Cancel starts nothing.");
     }
     async function saveCampaignForExit(){
@@ -1397,7 +1397,7 @@
             this._background = new Sprite(bitmap);
             this.addChild(this._background);
             const pictureName = $dataRPGManagerUI?.hamlet?.backgroundPicture;
-            if (pictureName) { this._optionalArt=Bitmap.load(`img/pictures/${encodeURIComponent(pictureName)}.png`);this._artBackground = new Sprite(this._optionalArt); this._artBackground.opacity = 90; this.addChild(this._artBackground); }
+            if (pictureName) { this._optionalArt=Bitmap.load(`img/pictures/${encodeURIComponent(pictureName)}.webp`);this._artBackground = new Sprite(this._optionalArt); this._artBackground.opacity = 90; this.addChild(this._artBackground); }
             this.createWindowLayer();
         }
 
@@ -1829,7 +1829,7 @@
             CozyUI.text(p,`${quest.rewardGold.victory} Gold / ${arcana.victory} Arcana / ${quest.xpPool??quest.xpReward*3} shared completion XP + enemy XP`,16,350,w-32,14,"#405239");
             CozyUI.text(p,`Draw: ${quest.rewardGold.draw} Gold + ${arcana.draw||0} Arcana`,16,372,w-32,12,muted,"left",16);
             const enemy=quest.combatMode==="none"||Number(quest.durationMinutes)===1?null:(quest.enemyIds||[]).map(id=>$dataRPGManagerQuests.enemies.find(e=>e.id===id)).filter(Boolean).sort((a,b)=>(b.boss?100:0)+b.health-((a.boss?100:0)+a.health))[0];
-            if(enemy?.portrait?.sheet){const face=enemy.portrait,cols=face.columns||4,rows=face.rows||2,el=document.createElement("div"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;el.title=enemy.name;el.setAttribute("aria-label",enemy.name);el.style.cssText=`position:fixed;pointer-events:none;z-index:21;left:${r.left+(p.x+p.width-94)*scale}px;top:${r.top+(p.y+124)*scale}px;width:${68*scale}px;height:${68*scale}px;background-image:url('img/faces/${face.sheet}.png');background-size:${cols*68*scale}px ${rows*68*scale}px;background-position:-${face.index%cols*68*scale}px -${Math.floor(face.index/cols)*68*scale}px;border:2px solid #b39b6c;border-radius:8px`;document.body.appendChild(el);this._questEnemyPicture=el;}
+            if(enemy?.portrait?.sheet){const face=enemy.portrait,cols=face.columns||4,rows=face.rows||2,el=document.createElement("div"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;el.title=enemy.name;el.setAttribute("aria-label",enemy.name);el.style.cssText=`position:fixed;pointer-events:none;z-index:21;left:${r.left+(p.x+p.width-94)*scale}px;top:${r.top+(p.y+124)*scale}px;width:${68*scale}px;height:${68*scale}px;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*68*scale}px ${rows*68*scale}px;background-position:-${face.index%cols*68*scale}px -${Math.floor(face.index/cols)*68*scale}px;border:2px solid #b39b6c;border-radius:8px`;document.body.appendChild(el);this._questEnemyPicture=el;}
             refreshFocusTimer(true);
             if(this._footer)this._footer.setLines([unavailable?`Locked: ${unavailable}`:"Select this contract to review and confirm departure.","Authored duration includes travel, encounters, objective, and return."]);
         }
@@ -2897,7 +2897,7 @@
         }
         canHire(){return !managerState().trips.A&&!managerState().activeQuest&&progression.vacantSlots(managerState()).length>0;}
         usedPortraits(){return new Set([...progression.activeRoster(managerState()).filter(n=>n.id!==this._replaceId),...this._drafts.filter((n,i)=>i!==this._creationIndex)].filter(Boolean).map(n=>n.portraitKey));}
-        faceElement(n,size=84){const face=n.portrait||progression.portraitOptions(n.classId,n.sex).find(p=>p.key===n.portraitKey)||progression.portraitOptions(n.classId,n.sex)[0],el=document.createElement('div'),cols=face.columns||4,rows=face.rows||2;el.style.cssText=`width:${size}px;height:${size}px;margin:0 auto;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.png');background-size:${cols*size}px ${rows*size}px;background-position:-${face.index%cols*size}px -${Math.floor(face.index/cols)*size}px;border-radius:6px`;return el;}
+        faceElement(n,size=84){const face=n.portrait||progression.portraitOptions(n.classId,n.sex).find(p=>p.key===n.portraitKey)||progression.portraitOptions(n.classId,n.sex)[0],el=document.createElement('div'),cols=face.columns||4,rows=face.rows||2;el.style.cssText=`width:${size}px;height:${size}px;margin:0 auto;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*size}px ${rows*size}px;background-position:-${face.index%cols*size}px -${Math.floor(face.index/cols)*size}px;border-radius:6px`;return el;}
         showCreator(){
             this._nameForm?.remove();const r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width,form=document.createElement('form');form.id='character-creation';form.setAttribute('aria-label',this._tavern?'Create tavern recruit':'Create party');form.dataset.step=this._step;
             form.style.cssText=`position:fixed;left:${r.left+18*scale}px;top:${r.top+112*scale}px;width:${(Graphics.boxWidth-36)*scale}px;height:${(Graphics.boxHeight-212)*scale}px;z-index:30;box-sizing:border-box;padding:${14*scale}px;background:#302248;color:#fff0ce;border:2px solid #c6ae65;border-radius:12px;font:${16*scale}px Trebuchet MS;display:flex;flex-direction:column;gap:10px;overflow:hidden`;
