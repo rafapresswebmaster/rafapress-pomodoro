@@ -1029,10 +1029,24 @@ Graphics._createPixiApp = function() {
             view: this._canvas,
             autoStart: false
         });
+    } catch (webglError) {
+        console.warn("Default WebGL renderer initialization failed; retrying WebGL 1.", webglError);
+        try {
+            PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL_LEGACY;
+            this._app = new PIXI.Application({
+                view: this._canvas,
+                autoStart: false,
+                antialias: false,
+                powerPreference: "low-power"
+            });
+        } catch (fallbackError) {
+            console.error("WebGL 1 renderer initialization failed.", fallbackError);
+            this._app = null;
+        }
+    }
+    if (this._app) {
         this._app.ticker.remove(this._app.render, this._app);
         this._app.ticker.add(this._onTick, this);
-    } catch (e) {
-        this._app = null;
     }
 };
 
@@ -1042,7 +1056,7 @@ Graphics._setupPixi = function() {
 };
 
 Graphics._createEffekseerContext = function() {
-    if (this._app && window.effekseer) {
+    if (this._app && this._app.renderer.gl && window.effekseer) {
         try {
             this._effekseer = effekseer.createContext();
             if (this._effekseer) {
@@ -1050,7 +1064,8 @@ Graphics._createEffekseerContext = function() {
                 this._effekseer.setRestorationOfStatesFlag(false);
             }
         } catch (e) {
-            this._app = null;
+            console.warn("Effekseer initialization failed; continuing without effects.", e);
+            this._effekseer = null;
         }
     }
 };
