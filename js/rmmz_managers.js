@@ -1934,8 +1934,8 @@ SceneManager.initialize = function() {
 };
 
 SceneManager.checkBrowser = function() {
-    if (!Utils.canUseWebGL()) {
-        throw new Error("Your browser does not support WebGL.");
+    if (!Utils.canUseWebGL() && !PIXI.CanvasRenderer) {
+        throw new Error("Your browser does not support WebGL or Canvas rendering.");
     }
     if (!Utils.canUseWebAudioAPI()) {
         throw new Error("Your browser does not support Web Audio API.");

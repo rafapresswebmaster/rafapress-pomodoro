@@ -1030,17 +1030,16 @@ Graphics._createPixiApp = function() {
             autoStart: false
         });
     } catch (webglError) {
-        console.warn("Default WebGL renderer initialization failed; retrying WebGL 1.", webglError);
+        console.warn("WebGL renderer initialization failed; retrying with Canvas.", webglError);
         try {
-            PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL_LEGACY;
             this._app = new PIXI.Application({
                 view: this._canvas,
                 autoStart: false,
-                antialias: false,
-                powerPreference: "low-power"
+                forceCanvas: true,
+                antialias: false
             });
         } catch (fallbackError) {
-            console.error("WebGL 1 renderer initialization failed.", fallbackError);
+            console.error("Canvas renderer initialization failed.", fallbackError);
             this._app = null;
         }
     }
