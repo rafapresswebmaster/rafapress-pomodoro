@@ -1,5 +1,6 @@
 .env
 .env.production
+.config
 node_modules/
 dist/
 backups/
