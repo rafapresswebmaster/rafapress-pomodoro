@@ -1,0 +1,194 @@
+[
+  {
+    "id": "abandoned_shrine",
+    "name": "Abandoned Shrine",
+    "minutes": 10,
+    "skulls": 2,
+    "before": 5,
+    "after": 6
+  },
+  {
+    "id": "spider_nest",
+    "name": "Spider Nest",
+    "minutes": 10,
+    "skulls": 4,
+    "before": 6,
+    "after": 7
+  },
+  {
+    "id": "patrol_cemetery",
+    "name": "Patrol the Cemetery",
+    "minutes": 10,
+    "skulls": 3,
+    "before": 5,
+    "after": 7
+  },
+  {
+    "id": "recover_stolen_ledger",
+    "name": "Recover the Stolen Ledger",
+    "minutes": 10,
+    "skulls": 5,
+    "before": 6,
+    "after": 8
+  },
+  {
+    "id": "broken_watchtower",
+    "name": "The Broken Watchtower",
+    "minutes": 10,
+    "skulls": 4,
+    "before": 6,
+    "after": 7
+  },
+  {
+    "id": "sunken_crypt",
+    "name": "The Sunken Crypt",
+    "minutes": 15,
+    "skulls": 5,
+    "before": 9,
+    "after": 11
+  },
+  {
+    "id": "orc_warcamp",
+    "name": "Orc Warcamp",
+    "minutes": 15,
+    "skulls": 5,
+    "before": 9,
+    "after": 11
+  },
+  {
+    "id": "necromancers_tower",
+    "name": "Necromancer's Tower",
+    "minutes": 15,
+    "skulls": 4,
+    "before": 8,
+    "after": 9
+  },
+  {
+    "id": "black_gate",
+    "name": "The Black Gate",
+    "minutes": 15,
+    "skulls": 5,
+    "before": 9,
+    "after": 11
+  },
+  {
+    "id": "lantern_index",
+    "name": "The Lantern Index",
+    "minutes": 25,
+    "skulls": 1,
+    "before": 9,
+    "after": 14
+  },
+  {
+    "id": "aqueduct_survey",
+    "name": "Survey of the Old Aqueduct",
+    "minutes": 25,
+    "skulls": 3,
+    "before": 12,
+    "after": 15
+  },
+  {
+    "id": "herbarium_circuit",
+    "name": "The Herbarium Circuit",
+    "minutes": 30,
+    "skulls": 3,
+    "before": 14,
+    "after": 19
+  },
+  {
+    "id": "evening_observatory",
+    "name": "An Evening at the Observatory",
+    "minutes": 30,
+    "skulls": 5,
+    "before": 19,
+    "after": 23
+  },
+  {
+    "id": "field_map_survey",
+    "name": "Field Map Survey",
+    "minutes": 10,
+    "skulls": 1,
+    "before": 4,
+    "after": 6
+  },
+  {
+    "id": "wayside_lantern_round",
+    "name": "Wayside Lantern Round",
+    "minutes": 15,
+    "skulls": 1,
+    "before": 5,
+    "after": 8
+  },
+  {
+    "id": "cemetery_boundary_watch",
+    "name": "Cemetery Boundary Watch",
+    "minutes": 15,
+    "skulls": 3,
+    "before": 7,
+    "after": 9
+  },
+  {
+    "id": "deep_crypt_vigil",
+    "name": "Deep Crypt Vigil",
+    "minutes": 25,
+    "skulls": 5,
+    "before": 15,
+    "after": 19
+  },
+  {
+    "id": "long_lantern_circuit",
+    "name": "Long Lantern Circuit",
+    "minutes": 30,
+    "skulls": 1,
+    "before": 11,
+    "after": 17
+  },
+  {
+    "id": "wayside_reliquary",
+    "name": "Wayside Reliquary",
+    "minutes": 15,
+    "skulls": 2,
+    "before": 6,
+    "after": 8
+  },
+  {
+    "id": "birchwater_samples",
+    "name": "Birchwater Samples",
+    "minutes": 25,
+    "skulls": 2,
+    "before": 10,
+    "after": 15
+  },
+  {
+    "id": "moonlit_barrow",
+    "name": "Moonlit Barrow",
+    "minutes": 25,
+    "skulls": 4,
+    "before": 13,
+    "after": 17
+  },
+  {
+    "id": "meadow_cartography",
+    "name": "Meadow Cartography",
+    "minutes": 30,
+    "skulls": 2,
+    "before": 14,
+    "after": 17
+  },
+  {
+    "id": "ridge_signal_fires",
+    "name": "Ridge Signal Fires",
+    "minutes": 30,
+    "skulls": 4,
+    "before": 16,
+    "after": 21
+  },
+  {
+    "id": "orchard_trackers",
+    "name": "Orchard Trackers",
+    "minutes": 10,
+    "skulls": 1,
+    "before": 4,
+    "after": 6
+  }
+]

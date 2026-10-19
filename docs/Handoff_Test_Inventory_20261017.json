@@ -1,0 +1,649 @@
+{
+  "date": "2026-10-17",
+  "method": "Each tests/*.test.js file runs in a fresh Node process using --test-isolation=none. Includes historical suites with superseded expectations. This is a test-debt inventory, not a claim that all legacy specifications should be restored.",
+  "seconds": 20.4,
+  "files": 54,
+  "passingFiles": 18,
+  "failingFiles": 36,
+  "timeouts": 0,
+  "passedTests": 612,
+  "failedTests": 132,
+  "rows": [
+    {
+      "file": "tests/altar_rituals.test.js",
+      "exit": 0,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/battlefield_status_icons.test.js",
+      "exit": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/camp_rendering_performance.test.js",
+      "exit": 0,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/complete_battle_sequence.test.js",
+      "exit": 1,
+      "passed": 4,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 initial snapshot and copied log drive replay once; arrival and replay load never resimulate or settle twice (59.5826ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/coordinated_sprint.test.js",
+      "exit": 1,
+      "passed": 14,
+      "failed": 3,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 injuries continue weakening initiative after Dodge reaches zero, without compounding on repeated preparation (2.0919ms)",
+        "\u2716 XP milestones are 30/120/360 cumulative with cap four retained (0.7191ms)",
+        "\u2716 Cleave records its seeded secondary hit rather than presentation damage (16.9539ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/day2_simulation.test.js",
+      "exit": 1,
+      "passed": 7,
+      "failed": 8,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 the shipped enemy team has three NPCs using the roster schema (2.793ms)",
+        "\u2716 targeting spreads each side's attacks across all living opponents (0.8234ms)",
+        "\u2716 Signature Attack opens each fighter's first turn, with three Basic Attacks before reuse (18.9613ms)",
+        "\u2716 defense cannot reduce damage below one and overkill clamps health and logged damage (1.0449ms)",
+        "\u2716 player elimination gives the correct result and terminal steps do nothing (4.8545ms)",
+        "\u2716 enemy elimination gives the correct result and terminal steps do nothing (5.5213ms)",
+        "\u2716 invalid teams and unusable NPC data are rejected before simulation (0.9792ms)",
+        "\u2716 all 120 roster combinations across three seeds finish with legal actions and readable events (1.5129ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/day3_balance.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 starter encounter has no knockouts or injuries across 3600 fresh-team battles (2.215ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/day3_progression.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 9,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 participation affects only the selected three; applying a result twice is harmless (5.348ms)",
+        "\u2716 two quests level up, improve traits, and bond surviving pairs without stacking bonuses (0.9547ms)",
+        "\u2716 first knockout wounds, next wounded knockout kills permanently and prunes the team (14.1111ms)",
+        "\u2716 low-HP survivors are wounded; Potions do not treat injuries; Medkits do (2.252ms)",
+        "\u2716 finite supplies clamp HP and reject invalid use without spending items (2.196ms)",
+        "\u2716 fatigue changes battle stats only; insufficient stamina blocks quests and rest never heals (1.2472ms)",
+        "\u2716 reject unfinished/mismatched results atomically and disallow supplies/rest during a quest (1.4189ms)",
+        "\u2716 JSON save round-trip preserves injuries, deaths, bonds, XP, supplies and result deduplication (4.1354ms)",
+        "\u2716 actual battle results feed progression across multiple quests with fresh enemies (0.965ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/day4_strategy.test.js",
+      "exit": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 2,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/day5_loop.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 6,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 shop purchases are affordable, atomic, and blocked during quests (4.3114ms)",
+        "\u2716 one equipment slot, stock conservation, battle-only stats and quest locks (1.1216ms)",
+        "\u2716 all outcomes pay the documented reward once; reports and saves retain it (2.5509ms)",
+        "\u2716 death recovers equipment, prunes teams, blocks dead recipients and ends depleted campaigns (12.3534ms)",
+        "\u2716 Day 3 migration retains XP, bonds, death, injuries and reports and grants starter gold only once (6.7951ms)",
+        "\u2716 repeatable fresh campaign can fund supplies and gear without stuck battles or stat accumulation (1.28ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/death_stabilization.test.js",
+      "exit": 0,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/dm_playtest_revision.test.js",
+      "exit": 1,
+      "passed": 1,
+      "failed": 4,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 death rolls alone use d20, DC is 14, tactics have no effect, and explicit instant death bypasses the roll (4.9022ms)",
+        "\u2716 failed death is authoritative through battle cleanup, assignment, graveyard source and save reload (2.6486ms)",
+        "\u2716 sorting, debug level floor, wound/death, recruit refresh and step travel are guarded (7.0757ms)",
+        "\u2716 camp membership derives from living roster minus away ids (2.453ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/dm_simulator.test.js",
+      "exit": 1,
+      "passed": 2,
+      "failed": 4,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 event wound persists at configured low HP and later KO resolves Death Save success/failure (4.0831ms)",
+        "\u2716 authored Mortal attack creates a Death Save even for a healthy target (1.5458ms)",
+        "\u2716 contract danger scales one quest instance, interruptions, rewards, and migration safely (0.9431ms)",
+        "\u2716 campaign totals use persisted settlement counters and remain stable on duplicate settlement (4.1139ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/fantasy_expansion.test.js",
+      "exit": 0,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/figurine_rendering.test.js",
+      "exit": 1,
+      "passed": 5,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 party slots reserve enough space for equal-height wide standing poses (0.9876ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/focus_companion.test.js",
+      "exit": 1,
+      "passed": 9,
+      "failed": 3,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 six 25/30-minute sessions and authored 3x3 difficulty coverage use existing enemies (1.8109ms)",
+        "\u2716 retreat rule has a narrow deterministic boundary and considers Armor/Ward/next threat (1.1228ms)",
+        "\u2716 a catastrophic later finale triggers retreat before simulation and cannot discard previous deaths or events (25.2204ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/illustrated_travel.test.js",
+      "exit": 1,
+      "passed": 4,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 travel renders the actual walking sheet frames and flips direction for the return path (1.9522ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/item_persistence.test.js",
+      "exit": 0,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/mission_background_clock.test.js",
+      "exit": 0,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/next_playtest.test.js",
+      "exit": 0,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/oct16.test.js",
+      "exit": 1,
+      "passed": 49,
+      "failed": 14,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 three study members yield six Arcana/minute; partial assignment/save fractions and no closed credit (1.6323ms)",
+        "\u2716 equipment ward_focus: effective bonus, no equip healing, restored only on return (0.6001ms)",
+        "\u2716 equipment cleric_circlet: effective bonus, no equip healing, restored only on return (0.4555ms)",
+        "\u2716 equipment owl_hood: effective bonus, no equip healing, restored only on return (4.4014ms)",
+        "\u2716 equipment duelist_hat: effective bonus, no equip healing, restored only on return (0.8597ms)",
+        "\u2716 equipment sage_crown: effective bonus, no equip healing, restored only on return (0.6839ms)",
+        "\u2716 equipment silk_mantle: effective bonus, no equip healing, restored only on return (0.928ms)",
+        "\u2716 equipment runic_coat: effective bonus, no equip healing, restored only on return (0.6132ms)",
+        "\u2716 equipment spellbook: effective bonus, no equip healing, restored only on return (0.6439ms)",
+        "\u2716 equipment parrying_dagger: effective bonus, no equip healing, restored only on return (0.4761ms)",
+        "\u2716 equipment cat_charm: effective bonus, no equip healing, restored only on return (0.8396ms)",
+        "\u2716 equipment hawk_charm: effective bonus, no equip healing, restored only on return (0.9418ms)",
+        "\u2716 equipment moonstone: effective bonus, no equip healing, restored only on return (0.6845ms)",
+        "\u2716 equipment wind_ring: effective bonus, no equip healing, restored only on return (0.916ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/party_leader_succession.test.js",
+      "exit": 1,
+      "passed": 3,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 one survivor automatically leads, wounded living members are eligible, and total death clears leader (2.1223ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/playtest20.test.js",
+      "exit": 1,
+      "passed": 58,
+      "failed": 19,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 ten-second warning and atomic opening: spider_nest (16.1503ms)",
+        "\u2716 ten-second warning and atomic opening: patrol_cemetery (19.033ms)",
+        "\u2716 ten-second warning and atomic opening: recover_stolen_ledger (9.7996ms)",
+        "\u2716 ten-second warning and atomic opening: broken_watchtower (8.6355ms)",
+        "\u2716 ten-second warning and atomic opening: orc_warcamp (7.9934ms)",
+        "\u2716 ten-second warning and atomic opening: necromancers_tower (11.965ms)",
+        "\u2716 ten-second warning and atomic opening: black_gate (6.7756ms)",
+        "\u2716 ten-second warning and atomic opening: watchpost_at_dusk (10.1411ms)",
+        "\u2716 ten-second warning and atomic opening: aqueduct_survey (19.9063ms)",
+        "\u2716 ten-second warning and atomic opening: evening_observatory (9.6039ms)",
+        "\u2716 ten-second warning and atomic opening: silken_crossing (6.7471ms)",
+        "\u2716 ten-second warning and atomic opening: cemetery_boundary_watch (20.6475ms)",
+        "\u2716 ten-second warning and atomic opening: ash_road_sentries (12.1092ms)",
+        "\u2716 ten-second warning and atomic opening: thornbank_trail (7.5945ms)",
+        "\u2716 ten-second warning and atomic opening: moonlit_barrow (13.0777ms)",
+        "\u2716 ten-second warning and atomic opening: ridge_signal_fires (8.632ms)",
+        "\u2716 healing removes an actual random wound, preserves earned traits, clears Wounded after last wound (1.4982ms)",
+        "\u2716 resurrection preserves powers/XP/wounds and replaces only after final confirmation (1.1347ms)",
+        "\u2716 ten new contracts fill missing duration/skull combinations (0.2199ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/polish25.test.js",
+      "exit": 0,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/polish_tuning.test.js",
+      "exit": 0,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/pomodoro_focus.test.js",
+      "exit": 1,
+      "passed": 12,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 zero innate Ward stays zero during normalization until the explicit between-battle restore (1.2918ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/pomodoro_sprint.test.js",
+      "exit": 1,
+      "passed": 11,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 existing Altar reanimation fills a vacancy without growing the active party or losing later dismissed equipment (1.9986ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/post_sprint_fixes.test.js",
+      "exit": 1,
+      "passed": 10,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 Work and Study produce per camper, persist fractions, and never accrue offline (5.3558ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/quest_followup.test.js",
+      "exit": 1,
+      "passed": 54,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 identity labels never show appearance type after creation; careers are in Overview (5.9349ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/quest_window_polish.test.js",
+      "exit": 0,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/readability_progression.test.js",
+      "exit": 1,
+      "passed": 9,
+      "failed": 4,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 exact six classes and approved cumulative progression through cap four (3.0684ms)",
+        "\u2716 Armor depletion, Ward refill and quoted restoration are separate from worn equipment (1.1785ms)",
+        "\u2716 long Hunts can schedule two small seeded skirmishes and deadline settlement remains once-only (25.011ms)",
+        "\u2716 all current contract reward tables match settlement including seeded finds, with no negative balances (1979.7521ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/recoverable_errors.test.js",
+      "exit": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/review.test.js",
+      "exit": 1,
+      "passed": 104,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 all 21 duration/difficulty combinations offer an unlocked authoritative contract (0.708ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/roster_revision.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 5,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 creation rolls within authored ranges once; saves never reroll identity or stats (4.2084ms)",
+        "\u2716 Team B unlock, independent assignments, capacity and quest locks are atomic (2.6769ms)",
+        "\u2716 all five types work in either slot with stock conservation and a two-item limit (1.1497ms)",
+        "\u2716 fatal wounded knockout remembers the actual lethal attacker and survives reload/deduplication (21.8242ms)",
+        "\u2716 actual archived Stage 2 campaign retains custom identity, two items and progression (41.3178ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/small_roster_rework.test.js",
+      "exit": 1,
+      "passed": 5,
+      "failed": 2,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 innate Ward restores but ritual Ward and Armor do not (1.5603ms)",
+        "\u2716 repair is disabled and full parties cannot recruit; existing ritual costs remain exact (1.56ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/sprint2.test.js",
+      "exit": 1,
+      "passed": 15,
+      "failed": 2,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 nineteen travel lines and one return line per contract are unique; shared pool is separate (1.0728ms)",
+        "\u2716 encounter pressure is real HP/damage, copied and independent of presentation (1.8407ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage1_battle.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 Stage 1 repeatable fight uses fewer consequential actions without one-hit eliminations (19.8582ms)",
+        "\u2716 Stage 1 dialogue covers existing identities and renders short plain text (1.8017ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage1_camp_home.test.js",
+      "exit": 0,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/stage1_next_sprint.test.js",
+      "exit": 1,
+      "passed": 1,
+      "failed": 4,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 schema 14 migration preserves established data, removes stamina, and is idempotent (8.7904ms)",
+        "\u2716 personality catalogue is readable, capped at two, and blocks explicit conflicts (4.4905ms)",
+        "\u2716 Hamlet config exposes quest-first destinations and quest intelligence fields (1.1021ms)",
+        "\u2716 expedition widget timing supports outbound, urgent-ready, and return progress (1.8983ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage2_identity.test.js",
+      "exit": 1,
+      "passed": 3,
+      "failed": 4,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 13 classes and all 26 selected moves retain authored power under one-use expedition scarcity (2.0564ms)",
+        "\u2716 real Stage 1 fixture migrates without lost progress and remains idempotent (4.0716ms)",
+        "\u2716 two slots conserve stock, apply bonuses once, reject duplicates and return both on death (1.1439ms)",
+        "\u2716 data validation rejects malformed stats, references, dialogue and placeholders (3.1445ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage2_next_sprint.test.js",
+      "exit": 1,
+      "passed": 4,
+      "failed": 2,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 traits visibly influence action weighting (0.9924ms)",
+        "\u2716 each adventurer spends at most one signature across an expedition (17.3593ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage2_realtime_loop.test.js",
+      "exit": 1,
+      "passed": 7,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 Stage 2 permits one locked expedition with only approved predictable durations (2.5786ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage2_strategy_ai.test.js",
+      "exit": 0,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 3,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/stage3_careers.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 5,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 new careers use authoritative event totals and duplicate settlement changes nothing (4.5502ms)",
+        "\u2716 old saves migrate with zero careers and bounded history does not fabricate the past (5.1772ms)",
+        "\u2716 badges persist once, including boss, injury survivor, and reliable sole return (1.3078ms)",
+        "\u2716 dismissal requires living idle unassigned status and cleans gear and bonds (1.3981ms)",
+        "\u2716 dismissal at cap permits replacement and Team A/B histories retain their team (1.0453ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage3_catalogue.test.js",
+      "exit": 1,
+      "passed": 5,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 authored catalogue has 41 categorized quests using only supported durations (1.5051ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage3_expeditions.test.js",
+      "exit": 1,
+      "passed": 1,
+      "failed": 5,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 schema 19 migration adds condition state and guarded multi-stage trip fields idempotently (9.6626ms)",
+        "\u2716 authored travel halts with a frozen clock and Worker changes labor eligibility (0.7237ms)",
+        "\u2716 parallel teams keep independent stage states and unavailable roster membership (0.6899ms)",
+        "\u2716 signatures and wounds persist across encounters; continuing after a wound permits lethal repeat KO (4.0615ms)",
+        "\u2716 Gold, Arcana and autonomous decisions settle once and remain in report history (1.7143ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage3_quests.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 5,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 quest catalogue has coherent undead, orc/goblin, and clearly labelled boss groups (4.4739ms)",
+        "\u2716 party sizes 1-5 battle and award transparent capped XP exactly once (0.5859ms)",
+        "\u2716 Team A/B assignments transfer atomically, cap at five, and migration removes conflicts (3.0904ms)",
+        "\u2716 Stage 2 campaign and Stage 3 selection survive JSON save/load migration (5.9573ms)",
+        "\u2716 each quest runs through battle, one report settlement, and returns to Home state (0.8373ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage4_realtime_presentation.test.js",
+      "exit": 0,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/stage4_timers.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 4,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 Team A/B dispatch independently, persist, and settle return/reward once (4.4821ms)",
+        "\u2716 natural expiry and every debug skip share guarded timer transitions (0.8524ms)",
+        "\u2716 recruit lineup is three stable candidates, hourly refreshes, and cannot double recruit (1.2557ms)",
+        "\u2716 stamina is absent and clock rollback preserves remaining travel time (1.1924ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage5_acceptance.test.js",
+      "exit": 1,
+      "passed": 0,
+      "failed": 4,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 old campaign migrates to Stage 5 without losing campaign progress (6.8939ms)",
+        "\u2716 arrival waits for explicit start, then boss battle and return settle once (1.6717ms)",
+        "\u2716 an ordinary KO on a later expedition remains a wound rather than unexplained death (0.6356ms)",
+        "\u2716 recruitment stops at the 15-adventurer roster cap (0.8267ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/stage5_equipment_repair.test.js",
+      "exit": 0,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    },
+    {
+      "file": "tests/strict_focus_sprint.test.js",
+      "exit": 1,
+      "passed": 90,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 level cap eight has increasing slow thresholds and bounded raw stats (2.122ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/tabletop_revision.test.js",
+      "exit": 1,
+      "passed": 12,
+      "failed": 1,
+      "skipped": 0,
+      "failingTitles": [
+        "\u2716 high difficulty quests have waves and new quests offer greater per-minute rewards than camp (6.2582ms)",
+        "\u2716 failing tests:"
+      ]
+    },
+    {
+      "file": "tests/visual_battle_stage.test.js",
+      "exit": 0,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "failingTitles": []
+    }
+  ]
+}

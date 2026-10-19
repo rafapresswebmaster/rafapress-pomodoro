@@ -1,0 +1,1703 @@
+{
+  "schema": 31,
+  "totalQuests": 264,
+  "newQuests": 189,
+  "excludedShortDurations": {
+    "oneMinute": 5,
+    "threeMinute": 8
+  },
+  "coverage": [
+    {
+      "minutes": 5,
+      "skulls": 1,
+      "count": 5,
+      "ids": [
+        "frontier_5_1_1",
+        "frontier_5_1_2",
+        "frontier_5_1_3",
+        "frontier_5_1_4",
+        "frontier_5_1_5"
+      ]
+    },
+    {
+      "minutes": 5,
+      "skulls": 2,
+      "count": 11,
+      "ids": [
+        "goblin_tracks",
+        "escort_apothecary",
+        "clear_cellar",
+        "salvage_abandoned_cart",
+        "fantasy_02",
+        "fantasy_05",
+        "fantasy_10",
+        "ritual_warding",
+        "ritual_greed",
+        "ritual_rebate",
+        "ritual_first_strike"
+      ]
+    },
+    {
+      "minutes": 5,
+      "skulls": 3,
+      "count": 5,
+      "ids": [
+        "frontier_5_3_1",
+        "frontier_5_3_2",
+        "frontier_5_3_3",
+        "frontier_5_3_4",
+        "frontier_5_3_5"
+      ]
+    },
+    {
+      "minutes": 5,
+      "skulls": 4,
+      "count": 5,
+      "ids": [
+        "frontier_5_4_1",
+        "frontier_5_4_2",
+        "frontier_5_4_3",
+        "frontier_5_4_4",
+        "frontier_5_4_5"
+      ]
+    },
+    {
+      "minutes": 5,
+      "skulls": 5,
+      "count": 5,
+      "ids": [
+        "frontier_5_5_1",
+        "frontier_5_5_2",
+        "frontier_5_5_3",
+        "frontier_5_5_4",
+        "frontier_5_5_5"
+      ]
+    },
+    {
+      "minutes": 5,
+      "skulls": 6,
+      "count": 5,
+      "ids": [
+        "millstream_watch",
+        "frontier_5_6_2",
+        "frontier_5_6_3",
+        "frontier_5_6_4",
+        "frontier_5_6_5"
+      ]
+    },
+    {
+      "minutes": 5,
+      "skulls": 7,
+      "count": 5,
+      "ids": [
+        "frontier_5_7_1",
+        "frontier_5_7_2",
+        "frontier_5_7_3",
+        "frontier_5_7_4",
+        "frontier_5_7_5"
+      ]
+    },
+    {
+      "minutes": 5,
+      "skulls": 8,
+      "count": 5,
+      "ids": [
+        "silken_crossing",
+        "thornbank_trail",
+        "frontier_5_8_3",
+        "frontier_5_8_4",
+        "frontier_5_8_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 1,
+      "count": 5,
+      "ids": [
+        "frontier_10_1_1",
+        "frontier_10_1_2",
+        "frontier_10_1_3",
+        "frontier_10_1_4",
+        "frontier_10_1_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 2,
+      "count": 5,
+      "ids": [
+        "field_map_survey",
+        "orchard_trackers",
+        "fantasy_06",
+        "frontier_10_2_4",
+        "frontier_10_2_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 3,
+      "count": 5,
+      "ids": [
+        "abandoned_shrine",
+        "ritual_healing",
+        "frontier_10_3_3",
+        "frontier_10_3_4",
+        "frontier_10_3_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 4,
+      "count": 5,
+      "ids": [
+        "ritual_fortune",
+        "frontier_10_4_2",
+        "frontier_10_4_3",
+        "frontier_10_4_4",
+        "frontier_10_4_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 5,
+      "count": 5,
+      "ids": [
+        "ritual_vanguard",
+        "frontier_10_5_2",
+        "frontier_10_5_3",
+        "frontier_10_5_4",
+        "frontier_10_5_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 6,
+      "count": 5,
+      "ids": [
+        "frontier_10_6_1",
+        "frontier_10_6_2",
+        "frontier_10_6_3",
+        "frontier_10_6_4",
+        "frontier_10_6_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 7,
+      "count": 5,
+      "ids": [
+        "fantasy_08",
+        "frontier_10_7_2",
+        "frontier_10_7_3",
+        "frontier_10_7_4",
+        "frontier_10_7_5"
+      ]
+    },
+    {
+      "minutes": 10,
+      "skulls": 8,
+      "count": 5,
+      "ids": [
+        "spider_nest",
+        "patrol_cemetery",
+        "recover_stolen_ledger",
+        "broken_watchtower",
+        "fantasy_13"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 1,
+      "count": 5,
+      "ids": [
+        "frontier_15_1_1",
+        "frontier_15_1_2",
+        "frontier_15_1_3",
+        "frontier_15_1_4",
+        "frontier_15_1_5"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 2,
+      "count": 5,
+      "ids": [
+        "wayside_lantern_round",
+        "frontier_15_2_2",
+        "frontier_15_2_3",
+        "frontier_15_2_4",
+        "frontier_15_2_5"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 3,
+      "count": 5,
+      "ids": [
+        "ritual_hymn",
+        "frontier_15_3_2",
+        "frontier_15_3_3",
+        "frontier_15_3_4",
+        "frontier_15_3_5"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 4,
+      "count": 5,
+      "ids": [
+        "wayside_reliquary",
+        "frontier_15_4_2",
+        "frontier_15_4_3",
+        "frontier_15_4_4",
+        "frontier_15_4_5"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 5,
+      "count": 5,
+      "ids": [
+        "frontier_15_5_1",
+        "frontier_15_5_2",
+        "frontier_15_5_3",
+        "frontier_15_5_4",
+        "frontier_15_5_5"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 6,
+      "count": 5,
+      "ids": [
+        "frontier_15_6_1",
+        "frontier_15_6_2",
+        "frontier_15_6_3",
+        "frontier_15_6_4",
+        "frontier_15_6_5"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 7,
+      "count": 5,
+      "ids": [
+        "fantasy_11",
+        "frontier_15_7_2",
+        "frontier_15_7_3",
+        "frontier_15_7_4",
+        "frontier_15_7_5"
+      ]
+    },
+    {
+      "minutes": 15,
+      "skulls": 8,
+      "count": 8,
+      "ids": [
+        "sunken_crypt",
+        "orc_warcamp",
+        "necromancers_tower",
+        "black_gate",
+        "cemetery_boundary_watch",
+        "fantasy_03",
+        "ritual_familiar",
+        "ritual_offering"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 1,
+      "count": 5,
+      "ids": [
+        "frontier_20_1_1",
+        "frontier_20_1_2",
+        "frontier_20_1_3",
+        "frontier_20_1_4",
+        "frontier_20_1_5"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 2,
+      "count": 5,
+      "ids": [
+        "frontier_20_2_1",
+        "frontier_20_2_2",
+        "frontier_20_2_3",
+        "frontier_20_2_4",
+        "frontier_20_2_5"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 3,
+      "count": 5,
+      "ids": [
+        "hunt_harpy",
+        "hunt_troll",
+        "hunt_imp",
+        "frontier_20_3_4",
+        "frontier_20_3_5"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 4,
+      "count": 5,
+      "ids": [
+        "frontier_20_4_1",
+        "frontier_20_4_2",
+        "frontier_20_4_3",
+        "frontier_20_4_4",
+        "frontier_20_4_5"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 5,
+      "count": 5,
+      "ids": [
+        "hunt_hobgoblin",
+        "frontier_20_5_2",
+        "frontier_20_5_3",
+        "frontier_20_5_4",
+        "frontier_20_5_5"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 6,
+      "count": 5,
+      "ids": [
+        "frontier_20_6_1",
+        "frontier_20_6_2",
+        "frontier_20_6_3",
+        "frontier_20_6_4",
+        "frontier_20_6_5"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 7,
+      "count": 5,
+      "ids": [
+        "frontier_20_7_1",
+        "frontier_20_7_2",
+        "frontier_20_7_3",
+        "frontier_20_7_4",
+        "frontier_20_7_5"
+      ]
+    },
+    {
+      "minutes": 20,
+      "skulls": 8,
+      "count": 5,
+      "ids": [
+        "hunt_wraith",
+        "fantasy_12",
+        "fantasy_14",
+        "ritual_reanimate",
+        "ritual_quickening"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 1,
+      "count": 5,
+      "ids": [
+        "frontier_25_1_1",
+        "frontier_25_1_2",
+        "frontier_25_1_3",
+        "frontier_25_1_4",
+        "frontier_25_1_5"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 2,
+      "count": 5,
+      "ids": [
+        "lantern_index",
+        "frontier_25_2_2",
+        "frontier_25_2_3",
+        "frontier_25_2_4",
+        "frontier_25_2_5"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 3,
+      "count": 5,
+      "ids": [
+        "frontier_25_3_1",
+        "frontier_25_3_2",
+        "frontier_25_3_3",
+        "frontier_25_3_4",
+        "frontier_25_3_5"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 4,
+      "count": 5,
+      "ids": [
+        "frontier_25_4_1",
+        "frontier_25_4_2",
+        "frontier_25_4_3",
+        "frontier_25_4_4",
+        "frontier_25_4_5"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 5,
+      "count": 5,
+      "ids": [
+        "frontier_25_5_1",
+        "frontier_25_5_2",
+        "frontier_25_5_3",
+        "frontier_25_5_4",
+        "frontier_25_5_5"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 6,
+      "count": 5,
+      "ids": [
+        "frontier_25_6_1",
+        "frontier_25_6_2",
+        "frontier_25_6_3",
+        "frontier_25_6_4",
+        "frontier_25_6_5"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 7,
+      "count": 5,
+      "ids": [
+        "frontier_25_7_1",
+        "frontier_25_7_2",
+        "frontier_25_7_3",
+        "frontier_25_7_4",
+        "frontier_25_7_5"
+      ]
+    },
+    {
+      "minutes": 25,
+      "skulls": 8,
+      "count": 7,
+      "ids": [
+        "aqueduct_survey",
+        "deep_crypt_vigil",
+        "birchwater_samples",
+        "moonlit_barrow",
+        "fantasy_09",
+        "ritual_mercy",
+        "ritual_last_rites"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 1,
+      "count": 5,
+      "ids": [
+        "frontier_30_1_1",
+        "frontier_30_1_2",
+        "frontier_30_1_3",
+        "frontier_30_1_4",
+        "frontier_30_1_5"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 2,
+      "count": 5,
+      "ids": [
+        "long_lantern_circuit",
+        "frontier_30_2_2",
+        "frontier_30_2_3",
+        "frontier_30_2_4",
+        "frontier_30_2_5"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 3,
+      "count": 5,
+      "ids": [
+        "frontier_30_3_1",
+        "frontier_30_3_2",
+        "frontier_30_3_3",
+        "frontier_30_3_4",
+        "frontier_30_3_5"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 4,
+      "count": 5,
+      "ids": [
+        "frontier_30_4_1",
+        "frontier_30_4_2",
+        "frontier_30_4_3",
+        "frontier_30_4_4",
+        "frontier_30_4_5"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 5,
+      "count": 5,
+      "ids": [
+        "frontier_30_5_1",
+        "frontier_30_5_2",
+        "frontier_30_5_3",
+        "frontier_30_5_4",
+        "frontier_30_5_5"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 6,
+      "count": 5,
+      "ids": [
+        "frontier_30_6_1",
+        "frontier_30_6_2",
+        "frontier_30_6_3",
+        "frontier_30_6_4",
+        "frontier_30_6_5"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 7,
+      "count": 5,
+      "ids": [
+        "frontier_30_7_1",
+        "frontier_30_7_2",
+        "frontier_30_7_3",
+        "frontier_30_7_4",
+        "frontier_30_7_5"
+      ]
+    },
+    {
+      "minutes": 30,
+      "skulls": 8,
+      "count": 5,
+      "ids": [
+        "herbarium_circuit",
+        "evening_observatory",
+        "meadow_cartography",
+        "ridge_signal_fires",
+        "fantasy_15"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "classId": "barbarian",
+      "bestJob": "work",
+      "basicKitCost": 38,
+      "strongKitCost": 305,
+      "levels": [
+        {
+          "level": 1,
+          "hp": 4,
+          "armor": 1,
+          "ward": 0,
+          "dodge": 12,
+          "crit": 15,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 7,
+          "xpToNext": 60
+        },
+        {
+          "level": 2,
+          "hp": 4,
+          "armor": 2,
+          "ward": 0,
+          "dodge": 12,
+          "crit": 15,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 7,
+          "xpToNext": 140
+        },
+        {
+          "level": 3,
+          "hp": 4,
+          "armor": 2,
+          "ward": 0,
+          "dodge": 12,
+          "crit": 20,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 8,
+          "xpToNext": 260
+        },
+        {
+          "level": 4,
+          "hp": 4,
+          "armor": 3,
+          "ward": 0,
+          "dodge": 12,
+          "crit": 20,
+          "armorRecovery": 1,
+          "damage": 1,
+          "speed": 8,
+          "xpToNext": 420
+        },
+        {
+          "level": 5,
+          "hp": 5,
+          "armor": 3,
+          "ward": 0,
+          "dodge": 12,
+          "crit": 20,
+          "armorRecovery": 1,
+          "damage": 1,
+          "speed": 9,
+          "xpToNext": 640
+        },
+        {
+          "level": 6,
+          "hp": 5,
+          "armor": 3,
+          "ward": 0,
+          "dodge": 12,
+          "crit": 20,
+          "armorRecovery": 1,
+          "damage": 2,
+          "speed": 9,
+          "xpToNext": 900
+        },
+        {
+          "level": 7,
+          "hp": 5,
+          "armor": 3,
+          "ward": 0,
+          "dodge": 17,
+          "crit": 20,
+          "armorRecovery": 1,
+          "damage": 2,
+          "speed": 10,
+          "xpToNext": 1200
+        },
+        {
+          "level": 8,
+          "hp": 5,
+          "armor": 4,
+          "ward": 0,
+          "dodge": 17,
+          "crit": 20,
+          "armorRecovery": 2,
+          "damage": 2,
+          "speed": 10,
+          "xpToNext": 0
+        }
+      ]
+    },
+    {
+      "classId": "knight",
+      "bestJob": "work",
+      "basicKitCost": 38,
+      "strongKitCost": 332,
+      "levels": [
+        {
+          "level": 1,
+          "hp": 3,
+          "armor": 4,
+          "ward": 0,
+          "dodge": 8,
+          "crit": 5,
+          "armorRecovery": 1,
+          "damage": 1,
+          "speed": 5,
+          "xpToNext": 60
+        },
+        {
+          "level": 2,
+          "hp": 3,
+          "armor": 5,
+          "ward": 0,
+          "dodge": 8,
+          "crit": 5,
+          "armorRecovery": 1,
+          "damage": 1,
+          "speed": 5,
+          "xpToNext": 140
+        },
+        {
+          "level": 3,
+          "hp": 3,
+          "armor": 5,
+          "ward": 1,
+          "dodge": 8,
+          "crit": 5,
+          "armorRecovery": 1,
+          "damage": 1,
+          "speed": 6,
+          "xpToNext": 260
+        },
+        {
+          "level": 4,
+          "hp": 3,
+          "armor": 6,
+          "ward": 1,
+          "dodge": 8,
+          "crit": 5,
+          "armorRecovery": 2,
+          "damage": 1,
+          "speed": 6,
+          "xpToNext": 420
+        },
+        {
+          "level": 5,
+          "hp": 4,
+          "armor": 6,
+          "ward": 1,
+          "dodge": 8,
+          "crit": 5,
+          "armorRecovery": 2,
+          "damage": 1,
+          "speed": 7,
+          "xpToNext": 640
+        },
+        {
+          "level": 6,
+          "hp": 4,
+          "armor": 7,
+          "ward": 1,
+          "dodge": 8,
+          "crit": 5,
+          "armorRecovery": 2,
+          "damage": 2,
+          "speed": 7,
+          "xpToNext": 900
+        },
+        {
+          "level": 7,
+          "hp": 4,
+          "armor": 7,
+          "ward": 1,
+          "dodge": 12,
+          "crit": 5,
+          "armorRecovery": 2,
+          "damage": 2,
+          "speed": 8,
+          "xpToNext": 1200
+        },
+        {
+          "level": 8,
+          "hp": 4,
+          "armor": 8,
+          "ward": 1,
+          "dodge": 12,
+          "crit": 5,
+          "armorRecovery": 3,
+          "damage": 2,
+          "speed": 8,
+          "xpToNext": 0
+        }
+      ]
+    },
+    {
+      "classId": "ranger",
+      "bestJob": "work",
+      "basicKitCost": 38,
+      "strongKitCost": 305,
+      "levels": [
+        {
+          "level": 1,
+          "hp": 3,
+          "armor": 1,
+          "ward": 1,
+          "dodge": 24,
+          "crit": 18,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 11,
+          "xpToNext": 60
+        },
+        {
+          "level": 2,
+          "hp": 3,
+          "armor": 1,
+          "ward": 1,
+          "dodge": 27,
+          "crit": 18,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 11,
+          "xpToNext": 140
+        },
+        {
+          "level": 3,
+          "hp": 3,
+          "armor": 1,
+          "ward": 2,
+          "dodge": 27,
+          "crit": 18,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 12,
+          "xpToNext": 260
+        },
+        {
+          "level": 4,
+          "hp": 3,
+          "armor": 1,
+          "ward": 2,
+          "dodge": 27,
+          "crit": 22,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 12,
+          "xpToNext": 420
+        },
+        {
+          "level": 5,
+          "hp": 4,
+          "armor": 1,
+          "ward": 2,
+          "dodge": 27,
+          "crit": 22,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 13,
+          "xpToNext": 640
+        },
+        {
+          "level": 6,
+          "hp": 4,
+          "armor": 1,
+          "ward": 2,
+          "dodge": 27,
+          "crit": 22,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 13,
+          "xpToNext": 900
+        },
+        {
+          "level": 7,
+          "hp": 4,
+          "armor": 1,
+          "ward": 2,
+          "dodge": 31,
+          "crit": 22,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 14,
+          "xpToNext": 1200
+        },
+        {
+          "level": 8,
+          "hp": 4,
+          "armor": 1,
+          "ward": 3,
+          "dodge": 31,
+          "crit": 22,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 14,
+          "xpToNext": 0
+        }
+      ]
+    },
+    {
+      "classId": "rogue",
+      "bestJob": "work",
+      "basicKitCost": 38,
+      "strongKitCost": 305,
+      "levels": [
+        {
+          "level": 1,
+          "hp": 3,
+          "armor": 1,
+          "ward": 0,
+          "dodge": 32,
+          "crit": 25,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 13,
+          "xpToNext": 60
+        },
+        {
+          "level": 2,
+          "hp": 3,
+          "armor": 1,
+          "ward": 0,
+          "dodge": 35,
+          "crit": 25,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 13,
+          "xpToNext": 140
+        },
+        {
+          "level": 3,
+          "hp": 3,
+          "armor": 2,
+          "ward": 0,
+          "dodge": 35,
+          "crit": 25,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 14,
+          "xpToNext": 260
+        },
+        {
+          "level": 4,
+          "hp": 3,
+          "armor": 2,
+          "ward": 0,
+          "dodge": 35,
+          "crit": 30,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 14,
+          "xpToNext": 420
+        },
+        {
+          "level": 5,
+          "hp": 3,
+          "armor": 2,
+          "ward": 1,
+          "dodge": 35,
+          "crit": 30,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 15,
+          "xpToNext": 640
+        },
+        {
+          "level": 6,
+          "hp": 3,
+          "armor": 2,
+          "ward": 1,
+          "dodge": 35,
+          "crit": 30,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 15,
+          "xpToNext": 900
+        },
+        {
+          "level": 7,
+          "hp": 3,
+          "armor": 2,
+          "ward": 1,
+          "dodge": 39,
+          "crit": 30,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 16,
+          "xpToNext": 1200
+        },
+        {
+          "level": 8,
+          "hp": 3,
+          "armor": 3,
+          "ward": 1,
+          "dodge": 39,
+          "crit": 30,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 16,
+          "xpToNext": 0
+        }
+      ]
+    },
+    {
+      "classId": "mage",
+      "bestJob": "study",
+      "basicKitCost": 38,
+      "strongKitCost": 305,
+      "levels": [
+        {
+          "level": 1,
+          "hp": 2,
+          "armor": 0,
+          "ward": 4,
+          "dodge": 10,
+          "crit": 12,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 8,
+          "xpToNext": 60
+        },
+        {
+          "level": 2,
+          "hp": 2,
+          "armor": 0,
+          "ward": 5,
+          "dodge": 10,
+          "crit": 12,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 8,
+          "xpToNext": 140
+        },
+        {
+          "level": 3,
+          "hp": 2,
+          "armor": 0,
+          "ward": 5,
+          "dodge": 13,
+          "crit": 12,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 9,
+          "xpToNext": 260
+        },
+        {
+          "level": 4,
+          "hp": 2,
+          "armor": 0,
+          "ward": 6,
+          "dodge": 13,
+          "crit": 12,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 9,
+          "xpToNext": 420
+        },
+        {
+          "level": 5,
+          "hp": 3,
+          "armor": 0,
+          "ward": 6,
+          "dodge": 13,
+          "crit": 12,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 10,
+          "xpToNext": 640
+        },
+        {
+          "level": 6,
+          "hp": 3,
+          "armor": 0,
+          "ward": 6,
+          "dodge": 13,
+          "crit": 12,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 10,
+          "xpToNext": 900
+        },
+        {
+          "level": 7,
+          "hp": 3,
+          "armor": 0,
+          "ward": 7,
+          "dodge": 13,
+          "crit": 12,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 11,
+          "xpToNext": 1200
+        },
+        {
+          "level": 8,
+          "hp": 3,
+          "armor": 0,
+          "ward": 7,
+          "dodge": 13,
+          "crit": 17,
+          "armorRecovery": 0,
+          "damage": 2,
+          "speed": 11,
+          "xpToNext": 0
+        }
+      ]
+    },
+    {
+      "classId": "cleric",
+      "bestJob": "study",
+      "basicKitCost": 38,
+      "strongKitCost": 305,
+      "levels": [
+        {
+          "level": 1,
+          "hp": 3,
+          "armor": 1,
+          "ward": 3,
+          "dodge": 10,
+          "crit": 8,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 6,
+          "xpToNext": 60
+        },
+        {
+          "level": 2,
+          "hp": 3,
+          "armor": 1,
+          "ward": 4,
+          "dodge": 10,
+          "crit": 8,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 6,
+          "xpToNext": 140
+        },
+        {
+          "level": 3,
+          "hp": 3,
+          "armor": 2,
+          "ward": 4,
+          "dodge": 10,
+          "crit": 8,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 7,
+          "xpToNext": 260
+        },
+        {
+          "level": 4,
+          "hp": 3,
+          "armor": 2,
+          "ward": 5,
+          "dodge": 10,
+          "crit": 8,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 7,
+          "xpToNext": 420
+        },
+        {
+          "level": 5,
+          "hp": 3,
+          "armor": 2,
+          "ward": 5,
+          "dodge": 14,
+          "crit": 8,
+          "armorRecovery": 0,
+          "damage": 1,
+          "speed": 8,
+          "xpToNext": 640
+        },
+        {
+          "level": 6,
+          "hp": 3,
+          "armor": 2,
+          "ward": 5,
+          "dodge": 14,
+          "crit": 8,
+          "armorRecovery": 1,
+          "damage": 1,
+          "speed": 8,
+          "xpToNext": 900
+        },
+        {
+          "level": 7,
+          "hp": 3,
+          "armor": 2,
+          "ward": 6,
+          "dodge": 14,
+          "crit": 8,
+          "armorRecovery": 1,
+          "damage": 2,
+          "speed": 9,
+          "xpToNext": 1200
+        },
+        {
+          "level": 8,
+          "hp": 3,
+          "armor": 3,
+          "ward": 6,
+          "dodge": 14,
+          "crit": 8,
+          "armorRecovery": 1,
+          "damage": 2,
+          "speed": 9,
+          "xpToNext": 0
+        }
+      ]
+    }
+  ],
+  "gear": [
+    {
+      "id": "padded_vest",
+      "name": "Padded Vest",
+      "type": "body",
+      "buy": 20,
+      "sell": 10,
+      "repair": 7,
+      "hits": 13,
+      "bonuses": "+1 Armor"
+    },
+    {
+      "id": "leather_armor",
+      "name": "Leather Armor",
+      "type": "body",
+      "buy": 30,
+      "sell": 15,
+      "repair": 11,
+      "hits": 15,
+      "bonuses": "+1 Armor, +2% Dodge"
+    },
+    {
+      "id": "chainmail",
+      "name": "Chainmail",
+      "type": "body",
+      "buy": 60,
+      "sell": 30,
+      "repair": 21,
+      "hits": 18,
+      "bonuses": "+2 Armor"
+    },
+    {
+      "id": "plate_armor",
+      "name": "Plate Armor",
+      "type": "body",
+      "buy": 110,
+      "sell": 55,
+      "repair": 39,
+      "hits": 20,
+      "bonuses": "+3 Armor"
+    },
+    {
+      "id": "leather_cap",
+      "name": "Leather Cap",
+      "type": "head",
+      "buy": 20,
+      "sell": 10,
+      "repair": 7,
+      "hits": 8,
+      "bonuses": "+1 Armor"
+    },
+    {
+      "id": "iron_helmet",
+      "name": "Iron Helmet",
+      "type": "head",
+      "buy": 35,
+      "sell": 17,
+      "repair": 13,
+      "hits": 12,
+      "bonuses": "+1 Armor, +1% Critical"
+    },
+    {
+      "id": "great_helm",
+      "name": "Great Helm",
+      "type": "head",
+      "buy": 70,
+      "sell": 35,
+      "repair": 25,
+      "hits": 18,
+      "bonuses": "+2 Armor"
+    },
+    {
+      "id": "buckler",
+      "name": "Buckler",
+      "type": "offHand",
+      "buy": 25,
+      "sell": 12,
+      "repair": 9,
+      "hits": 8,
+      "bonuses": "+1 Armor"
+    },
+    {
+      "id": "wooden_shield",
+      "name": "Wooden Shield",
+      "type": "offHand",
+      "buy": 30,
+      "sell": 15,
+      "repair": 11,
+      "hits": 10,
+      "bonuses": "+1 Armor, +1% Dodge"
+    },
+    {
+      "id": "iron_shield",
+      "name": "Iron Shield",
+      "type": "offHand",
+      "buy": 65,
+      "sell": 32,
+      "repair": 23,
+      "hits": 15,
+      "bonuses": "+2 Armor"
+    },
+    {
+      "id": "reinforced_cloak",
+      "name": "Reinforced Cloak",
+      "type": "accessory",
+      "buy": 40,
+      "sell": 20,
+      "repair": 14,
+      "hits": 10,
+      "bonuses": "+1 Armor"
+    },
+    {
+      "id": "mage_robes",
+      "name": "Mage Robes",
+      "type": "body",
+      "buy": 25,
+      "sell": 12,
+      "repair": 9,
+      "hits": 16,
+      "bonuses": "+1 Ward"
+    },
+    {
+      "id": "ward_focus",
+      "name": "Ward Focus",
+      "type": "accessory",
+      "buy": 50,
+      "sell": 25,
+      "repair": 18,
+      "hits": 9,
+      "bonuses": "+1 Armor, +1 Ward"
+    },
+    {
+      "id": "thick_fur_cloak",
+      "name": "Thick Fur Cloak",
+      "type": "body",
+      "buy": 18,
+      "sell": 9,
+      "repair": 7,
+      "hits": 12,
+      "bonuses": "+1 Armor, +1 Ward"
+    },
+    {
+      "id": "life_giving_amulet",
+      "name": "Life-Giving Amulet",
+      "type": "accessory",
+      "buy": 30,
+      "sell": 15,
+      "repair": 11,
+      "hits": 10,
+      "bonuses": "+1 Ward"
+    },
+    {
+      "id": "mage_hat",
+      "name": "Mage Hat",
+      "type": "head",
+      "buy": 24,
+      "sell": 12,
+      "repair": 9,
+      "hits": 12,
+      "bonuses": "+1 Armor"
+    },
+    {
+      "id": "cleric_circlet",
+      "name": "Cleric Circlet",
+      "type": "head",
+      "buy": 24,
+      "sell": 12,
+      "repair": 9,
+      "hits": 11,
+      "bonuses": "+1 Armor, +1 Ward"
+    },
+    {
+      "id": "owl_hood",
+      "name": "Owl Hood",
+      "type": "head",
+      "buy": 59,
+      "sell": 29,
+      "repair": 21,
+      "hits": 9,
+      "bonuses": "+1 Ward, +2% Critical"
+    },
+    {
+      "id": "duelist_hat",
+      "name": "Duelist Hat",
+      "type": "head",
+      "buy": 50,
+      "sell": 25,
+      "repair": 18,
+      "hits": 16,
+      "bonuses": "+3% Dodge, +2% Critical"
+    },
+    {
+      "id": "sage_crown",
+      "name": "Sage Crown",
+      "type": "head",
+      "buy": 71,
+      "sell": 35,
+      "repair": 25,
+      "hits": 8,
+      "bonuses": "+2 Ward"
+    },
+    {
+      "id": "scout_band",
+      "name": "Scout Band",
+      "type": "head",
+      "buy": 56,
+      "sell": 28,
+      "repair": 20,
+      "hits": 10,
+      "bonuses": "+1 Ward, +2% Dodge"
+    },
+    {
+      "id": "war_mask",
+      "name": "War Mask",
+      "type": "head",
+      "buy": 64,
+      "sell": 32,
+      "repair": 23,
+      "hits": 12,
+      "bonuses": "+1 Armor, +3% Critical"
+    },
+    {
+      "id": "silk_mantle",
+      "name": "Silk Mantle",
+      "type": "body",
+      "buy": 65,
+      "sell": 32,
+      "repair": 23,
+      "hits": 20,
+      "bonuses": "+1 Ward, +4% Dodge"
+    },
+    {
+      "id": "runic_coat",
+      "name": "Runic Coat",
+      "type": "body",
+      "buy": 73,
+      "sell": 36,
+      "repair": 26,
+      "hits": 13,
+      "bonuses": "+1 Armor, +1 Ward"
+    },
+    {
+      "id": "duelist_vest",
+      "name": "Duelist Vest",
+      "type": "body",
+      "buy": 62,
+      "sell": 31,
+      "repair": 22,
+      "hits": 15,
+      "bonuses": "+1 Ward, +4% Dodge"
+    },
+    {
+      "id": "hunter_coat",
+      "name": "Hunter Coat",
+      "type": "body",
+      "buy": 67,
+      "sell": 33,
+      "repair": 24,
+      "hits": 12,
+      "bonuses": "+1 Armor, +4% Critical"
+    },
+    {
+      "id": "pilgrim_robe",
+      "name": "Pilgrim Robe",
+      "type": "body",
+      "buy": 83,
+      "sell": 41,
+      "repair": 30,
+      "hits": 20,
+      "bonuses": "+3 Ward"
+    },
+    {
+      "id": "spellbook",
+      "name": "Spellbook",
+      "type": "offHand",
+      "buy": 80,
+      "sell": 40,
+      "repair": 28,
+      "hits": 15,
+      "bonuses": "+2 Ward, +3% Critical"
+    },
+    {
+      "id": "parrying_dagger",
+      "name": "Parrying Dagger",
+      "type": "offHand",
+      "buy": 59,
+      "sell": 29,
+      "repair": 21,
+      "hits": 8,
+      "bonuses": "+5% Dodge, +3% Critical"
+    },
+    {
+      "id": "lantern",
+      "name": "Runic Lantern",
+      "type": "offHand",
+      "buy": 68,
+      "sell": 34,
+      "repair": 24,
+      "hits": 11,
+      "bonuses": "+2 Ward"
+    },
+    {
+      "id": "thorn_shield",
+      "name": "Thorn Shield",
+      "type": "offHand",
+      "buy": 70,
+      "sell": 35,
+      "repair": 25,
+      "hits": 10,
+      "bonuses": "+1 Armor, +5% Critical"
+    },
+    {
+      "id": "prayer_beads",
+      "name": "Prayer Beads",
+      "type": "offHand",
+      "buy": 71,
+      "sell": 35,
+      "repair": 25,
+      "hits": 15,
+      "bonuses": "+2 Ward, +2% Dodge"
+    },
+    {
+      "id": "cat_charm",
+      "name": "Cat Charm",
+      "type": "accessory",
+      "buy": 53,
+      "sell": 26,
+      "repair": 19,
+      "hits": 8,
+      "bonuses": "+6% Dodge"
+    },
+    {
+      "id": "hawk_charm",
+      "name": "Hawk Charm",
+      "type": "accessory",
+      "buy": 53,
+      "sell": 26,
+      "repair": 19,
+      "hits": 9,
+      "bonuses": "+6% Critical"
+    },
+    {
+      "id": "moonstone",
+      "name": "Moonstone",
+      "type": "accessory",
+      "buy": 71,
+      "sell": 35,
+      "repair": 25,
+      "hits": 10,
+      "bonuses": "+2 Ward"
+    },
+    {
+      "id": "ruby_pendant",
+      "name": "Ruby Pendant",
+      "type": "accessory",
+      "buy": 71,
+      "sell": 35,
+      "repair": 25,
+      "hits": 5,
+      "bonuses": "+2 Ward, +2% Critical"
+    },
+    {
+      "id": "wind_ring",
+      "name": "Wind Ring",
+      "type": "accessory",
+      "buy": 65,
+      "sell": 32,
+      "repair": 23,
+      "hits": 7,
+      "bonuses": "+1 Ward, +3% Dodge, +1% Critical"
+    }
+  ],
+  "economy": {
+    "productionPeriodSeconds": 60,
+    "bestClassYield": 2,
+    "otherClassYield": 1,
+    "maxFiveCampersCombinedPerMinute": 10,
+    "maxTwoBenchedCampersCombinedPerMinute": 4,
+    "starterGold": 100,
+    "fiveBasicKitsCost": 190,
+    "examples": [
+      {
+        "minutes": 5,
+        "skulls": 1,
+        "gold": 50,
+        "arcana": 16,
+        "xpPool": 29,
+        "maxTwoBenchedWorkersIncome": 20
+      },
+      {
+        "minutes": 15,
+        "skulls": 4,
+        "gold": 240,
+        "arcana": 105,
+        "xpPool": 252,
+        "maxTwoBenchedWorkersIncome": 60
+      },
+      {
+        "minutes": 30,
+        "skulls": 8,
+        "gold": 720,
+        "arcana": 360,
+        "xpPool": 1440,
+        "maxTwoBenchedWorkersIncome": 120
+      }
+    ],
+    "rituals": {
+      "protection_ward": {
+        "name": "Warding",
+        "arcana": 80,
+        "description": "One shared party Ward absorbs one entire hit, then disappears. An unused Ward remains until hit."
+      },
+      "healing_ritual": {
+        "name": "Healing",
+        "arcana": 120,
+        "description": "Remove one permanent wound and its injury stack from a chosen adventurer. Does not restore HP."
+      },
+      "greed_prayer": {
+        "name": "Greed Prayer",
+        "arcana": 100,
+        "description": "Pay 100 Arcana to receive 100 coins immediately."
+      },
+      "reanimate": {
+        "name": "Reanimate",
+        "arcana": 450,
+        "description": "Return a fallen companion as their skeleton appearance, with their living health, armor and ward. Heals normally; cannot level. Death permanently bars further reanimation."
+      },
+      "fortunes_favor": {
+        "name": "Fortune's Favor",
+        "arcana": 40,
+        "description": "Next quest: +25% coin reward, rounded down. No Ward requirement or penalty."
+      },
+      "battle_hymn": {
+        "name": "Battle Hymn",
+        "arcana": 60,
+        "description": "Party attacks deal +1 damage throughout the next battle. Remains pending until a battle occurs."
+      },
+      "veil_of_mercy": {
+        "name": "Veil of Mercy",
+        "arcana": 260,
+        "description": "Once next quest, the first adventurer who would die instead survives at 1 HP with a serious permanent wound."
+      },
+      "last_rites": {
+        "name": "Last Rites",
+        "arcana": 650,
+        "description": "Return one fallen adventurer to camp at 1 HP with an injury. Preserves their living or skeleton identity."
+      },
+      "arcane_rebate": {
+        "name": "Arcane Rebate",
+        "arcana": 25,
+        "description": "After the next expedition with a battle victory: +50 Arcana and no coins, including gathered coins. Carries through combatless trips."
+      },
+      "oath_of_vanguard": {
+        "name": "Oath of the Vanguard",
+        "arcana": 60,
+        "description": "One chosen adventurer gains +1 Armor for the next quest. No targeting or party-protection effect."
+      },
+      "familiars_vigil": {
+        "name": "Familiar's Vigil",
+        "arcana": 110,
+        "description": "Next quest, a summoned spirit absorbs the first hit aimed at any party member, then disappears."
+      },
+      "first_strike": {
+        "name": "First Strike",
+        "arcana": 60,
+        "description": "The party's first attack in its next quest deals +2 damage. A missed attack still uses the blessing."
+      },
+      "quickening_prayer": {
+        "name": "Quickening Prayer",
+        "arcana": 180,
+        "description": "Next quest: each adventurer has a seeded 25% chance per battle to use their special twice. Never more than two uses; no extra ability unlocks."
+      },
+      "arcane_offering": {
+        "name": "Arcane Offering",
+        "arcana": 30,
+        "description": "After the next quest, receive 12 bonus Arcana per actual battle victory. No bonus for waves or combatless trips."
+      }
+    }
+  }
+}

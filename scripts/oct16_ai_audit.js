@@ -1,0 +1,13 @@
+﻿const fs=require('node:fs'),P=require('../js/plugins/RPGManagerProgression'),Now=require('../js/plugins/RPGManagerBattle'),Before=require('../backups/oct16-source/RPGManagerBattle');
+const roster=require('../data/RPGManagerRoster.json'),stage=require('../data/RPGManagerStage3.json'),base=require('../data/RPGManagerQuests.json'),content={...base,...stage},rows=[];
+for(const [version,B] of [['before',Before],['after',Now]])for(const size of [1,2,3])for(const level of [1,2,4])for(const difficulty of ['Easy','Normal','Hard'])for(const gear of ['none','ordinary']){
+ const row={version,size,level,difficulty,gear,runs:0,wins:0,knockouts:0,meanConcentration:0,firstEightConcentration:0};
+ for(const classes of [['knight','barbarian','ranger'],['rogue','mage','cleric'],['mage','mage','mage']])for(let seed=1;seed<=20;seed++){
+  const s=P.createState(roster,()=>.5),party=s.roster.slice(0,size);party.forEach((n,i)=>{n.classId=classes[i];n.level=level;P.ensureLife(n);n.health=n.maxHealth;n.classArmor=n.classArmorMax;n.innateWard=n.innateWardMax;if(gear==='ordinary'){s.equipmentStock.leather_cap++;P.equipSlot(s,n.id,'leather_cap','head');}});
+  const q=stage.quests.find(q=>q.difficulty===difficulty&&q.durationMinutes===5)||stage.quests.find(q=>q.difficulty===difficulty),stages=P.buildJourneyStages(q,'trip-'+seed),battleStage=stages.find(s=>s.type==='battle');
+  const enemies=battleStage?P.encounterEnemies(battleStage,content,q):[{...party[0],id:'spar',name:'Raider',intelligence:difficulty==='Hard'?'high':'normal',health:4,maxHealth:4}];
+  const b=new B.Battle(party,enemies,{seed,maxActions:200});while(b.snapshot().status==='running')b.step();
+  const events=b.events.filter(e=>e.type==='attack'&&e.side==='enemy'),share=events=>{const counts={};for(const e of events)counts[e.targetKey]=(counts[e.targetKey]||0)+1;return events.length?Math.max(...Object.values(counts))/events.length:0;};row.meanConcentration+=share(events);row.firstEightConcentration+=share(events.slice(0,8));row.wins+=b.snapshot().status==='victory';row.knockouts+=b.snapshot().fighters.filter(f=>f.side==='player'&&f.health<=0).length;row.runs++;
+ }row.meanConcentration/=row.runs;row.firstEightConcentration/=row.runs;rows.push(row);
+}
+fs.writeFileSync('tests/oct16-ai.json',JSON.stringify({runs:rows.reduce((n,r)=>n+r.runs,0),rows},null,2));for(const version of ['before','after']){const sample=rows.filter(r=>r.version===version&&r.size===3),n=sample.reduce((n,r)=>n+r.runs,0);console.log(JSON.stringify({version,runs:n,concentration:sample.reduce((n,r)=>n+r.meanConcentration*r.runs,0)/n,firstEight:sample.reduce((n,r)=>n+r.firstEightConcentration*r.runs,0)/n,wins:sample.reduce((n,r)=>n+r.wins,0),knockouts:sample.reduce((n,r)=>n+r.knockouts,0)}));}

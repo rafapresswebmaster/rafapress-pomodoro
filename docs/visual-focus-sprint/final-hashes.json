@@ -1,0 +1,70 @@
+[
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\js\\plugins\\RPGManager.js",
+        "Hash":  "79B089EA4C806988BEF5320BC391A5F8B9E135C48DEF8BFC43DE7CAF53D3B9BD"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\js\\plugins\\RPGManagerBattle.js",
+        "Hash":  "0707D0997DD37D5CEA2C9F0CA40AFEC600B14DF0261E3649E89EAC0E0DFE5A38"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\js\\plugins\\RPGManagerBattleStage.js",
+        "Hash":  "A258DE68104FE8265EF23364A9895019E8648315C5A13E25D3D7317469FBFF71"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\js\\plugins\\RPGManagerProgression.js",
+        "Hash":  "53992785917EDB8EECA0796BCE64C567B50E4E58834D942D24E0E118983EAA17"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerArtV4.json",
+        "Hash":  "827ACB9F8B69E0BD78F66EDEFE0BB64C8F7015B00B8CC2DF93071DC36D1FBD0F"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerArtV5.json",
+        "Hash":  "F7F28395E8810ED20B52EF0FF476A1B68230CBAE1A46FABEC0D29271DC14A462"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerClasses.json",
+        "Hash":  "707A76648C35C2D64D6A1F4665947440207BB747D86CA2CDC3DFCF05C14872B3"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerDialogue.json",
+        "Hash":  "AB57F0C235CB7271FC0A469FE450C1D18AC9390A516F2FA437B21631B84B0858"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerEnemyTeam.json",
+        "Hash":  "A95BF3402ED2E09C171B719B686150D2EB2FB3C07CE845770ACB76703E7F2D6B"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerIdentity.json",
+        "Hash":  "3F0E23009EC9CF189864647CE041DB9DB0536B7B09D966DC731DC9761925D074"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerNarratives.json",
+        "Hash":  "94FE5F83F9B17F039F209A72ED359B8A6E7457C48C3B2FC35A54830D24DCC222"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerPresentation.json",
+        "Hash":  "4599E78917ADD8AB2C0DC6EF30319B7C2E8A48AEB1A6D865E091180BCC738BF9"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerQuests.json",
+        "Hash":  "FDEAAE97D013C9E9D8224C6C88459CE6ACFC43698A79E4C5500593B20821D373"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerRoster.json",
+        "Hash":  "C44469199445C9D4CEE359E0103A3E2222AF63E33AEC73BD4F8A8D08B35DC6C8"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerSkeletonArtV7.json",
+        "Hash":  "A3CCD7A7513BF72C28A1FC4963DFACC6B34D7827999C29B891B0106FAA388C46"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerStage3.json",
+        "Hash":  "3E586881BC8205B2715E5A5FA41062BC554277153D6667CEF3414581C1871562"
+    },
+    {
+        "Path":  "C:\\Users\\rafae\\Documents\\RMMZ\\RPG Manager\\data\\RPGManagerUI.json",
+        "Hash":  "E21FC643A32ADDC0D30DD88BEAE91A85ABDE4B556E3C13D8882ED11F020BF315"
+    }
+]

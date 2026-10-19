@@ -4,3 +4,14 @@
 node_modules/
 dist/
 backups/
+tests/
+context/
+save/
+**/__pycache__/
+*.py[cod]
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.pub

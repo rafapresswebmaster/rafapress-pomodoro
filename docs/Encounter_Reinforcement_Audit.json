@@ -1,0 +1,72 @@
+{
+  "balanceVersion": 33,
+  "method": "All authored three-to-eight-skull quests; every planned main encounter, patrol, split wave and reinforcement. Initial pools before battle damage. Wave frequency is deterministic per quest, with patrol waves reserved for long high-tier missions.",
+  "tiers": [
+    {
+      "rating": 3,
+      "quests": 31,
+      "battles": 81,
+      "twoWaveBattles": 0,
+      "objectives": 31,
+      "twoWaveObjectives": 0,
+      "enemies": 126,
+      "twoHpEnemies": 0,
+      "minHp": 3
+    },
+    {
+      "rating": 4,
+      "quests": 31,
+      "battles": 80,
+      "twoWaveBattles": 16,
+      "objectives": 31,
+      "twoWaveObjectives": 16,
+      "enemies": 170,
+      "twoHpEnemies": 0,
+      "minHp": 3
+    },
+    {
+      "rating": 5,
+      "quests": 31,
+      "battles": 113,
+      "twoWaveBattles": 31,
+      "objectives": 31,
+      "twoWaveObjectives": 31,
+      "enemies": 219,
+      "twoHpEnemies": 0,
+      "minHp": 4
+    },
+    {
+      "rating": 6,
+      "quests": 31,
+      "battles": 114,
+      "twoWaveBattles": 31,
+      "objectives": 31,
+      "twoWaveObjectives": 31,
+      "enemies": 223,
+      "twoHpEnemies": 0,
+      "minHp": 4
+    },
+    {
+      "rating": 7,
+      "quests": 31,
+      "battles": 115,
+      "twoWaveBattles": 47,
+      "objectives": 31,
+      "twoWaveObjectives": 31,
+      "enemies": 271,
+      "twoHpEnemies": 0,
+      "minHp": 4
+    },
+    {
+      "rating": 8,
+      "quests": 33,
+      "battles": 118,
+      "twoWaveBattles": 48,
+      "objectives": 33,
+      "twoWaveObjectives": 33,
+      "enemies": 268,
+      "twoHpEnemies": 0,
+      "minHp": 4
+    }
+  ]
+}
