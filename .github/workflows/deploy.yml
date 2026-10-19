@@ -25,6 +25,16 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Remove legacy image formats
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ vars.SCP_HOST }}
+          port: ${{ vars.SCP_PORT }}
+          username: ${{ vars.SCP_USERNAME }}
+          key: ${{ secrets.PRIVATE_DEPLOY_KEY }}
+          script: |
+            find "${{ vars.SCP_DIRECTORY_APP }}" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.bmp' \) -delete
+
       - name: Deploy application files
         uses: appleboy/scp-action@v1
         with:
