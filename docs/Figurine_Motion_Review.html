@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Figurine motion review</title>
+<style>body{margin:20px;background:#202940;color:#ffe9b5;font:16px system-ui}button,select{font:inherit;margin:5px;padding:7px;background:#35466b;color:#ffe9b5;border:1px solid #aa8a51}canvas{display:block;max-width:100%;background:#344937;border:1px solid #ae935b}p{max-width:1000px}</style>
+<h1>Figurine motion review</h1><p>Clean standing artwork, equal visible height, and one rigid transform for each figure and wooden base. Walking uses slower, smooth rocking with small hops. Dark wood bases are centered beneath the feet.</p>
+<label>Variant <select id="variant"></select></label><label>Motion <select id="motion"><option value="walk">Smooth rocking and hops</option><option value="idle">Rest on table</option><option value="combat">Combat poses</option></select></label><button id="pause">Pause</button>
+<canvas id="preview" width="1024" height="500"></canvas>
+<script src="../js/plugins/RPGManagerBattleStage.js"></script>
+<script>
+const V=RPGManagerBattleStage,classes=['barbarian','knight','cleric','rogue','ranger','mage'],sexes=['male','female'],cache=new Map(),canvas=document.getElementById('preview'),c=canvas.getContext('2d');
+for(let i=0;i<8;i++)variant.add(new Option('Portrait '+(i+1),i));
+let playing=true,time=0,last=null;pause.onclick=()=>{playing=!playing;pause.textContent=playing?'Pause':'Play'};
+function load(path){if(!cache.has(path)){const im=new Image();im.src='../img/'+path+'.webp';cache.set(path,im);}return cache.get(path);}
+function draw(now){if(last!==null&&playing)time+=Math.min(6,(now-last)*.06);last=now;c.clearRect(0,0,1024,500);const i=Number(variant.value);
+ for(let si=0;si<2;si++)for(let ci=0;ci<6;ci++){
+  const cls=classes[ci],sex=sexes[si],x=85+ci*170,y=180+si*240,w=84,h=100;
+  c.fillStyle='#fff0c9';c.textAlign='center';c.font='15px system-ui';c.fillText(cls[0].toUpperCase()+cls.slice(1)+' / '+(si?'B':'A'),x,y+40);
+  c.fillStyle='#1c2d2366';c.beginPath();c.ellipse(x,y+3,25,7,0,0,Math.PI*2);c.fill();
+  if(motion.value==='combat'){
+   const im=load(`sv_actors/RPGCombat_${cls}_${sex}_${i}_v5`);if(!im.complete||!im.naturalWidth)continue;
+   const pose=Math.floor(time/44)%18,p=Math.floor(time/10)%3,frame=V.isolatedFrame(im,(Math.floor(pose/6)*3+p)*64,pose%6*64,64,64),rect=V.figureRect(frame,w,h);
+   c.save();c.translate(x,y);c.rotate(Math.sin(time/22)*.035);V.woodenBase(c,0,0,w);c.imageSmoothingEnabled=false;c.drawImage(frame.image,frame.sx,frame.sy,frame.sw,frame.sh,rect.x,rect.y,rect.width,rect.height);c.restore();
+  }else{
+   const im=load(`characters/RPGWalk_${cls}_${sex}_v5`);if(!im.complete||!im.naturalWidth)continue;
+   V.drawWalkingFrame(c,im,(i%4*3+1)*64,(Math.floor(i/4)*4+2)*64,64,64,x-w/2,y-h,w,h,1,{time,moving:motion.value==='walk',seed:ci*.6});
+  }
+ }requestAnimationFrame(draw);
+}requestAnimationFrame(draw);
+window.auditFigures=async()=>{
+ const read=path=>new Promise((resolve,reject)=>{const im=load(path);if(im.complete&&im.naturalWidth)return resolve(im);im.onload=()=>resolve(im);im.onerror=reject;});
+ let frames=0,heights=[];
+ for(const cls of classes)for(const sex of sexes){const walk=await read(`characters/RPGWalk_${cls}_${sex}_v5`);for(let i=0;i<8;i++)for(let d=0;d<4;d++){
+  const f=V.isolatedFrame(walk,(i%4*3+1)*64,(Math.floor(i/4)*4+d)*64,64,64),r=V.figureRect(f,84,100);heights.push(r.height);
+  if(f.image===walk)throw Error('Frame was not isolated');if(f!==V.isolatedFrame(walk,(i%4*3+1)*64,(Math.floor(i/4)*4+d)*64,64,64))throw Error('Frame cache missed');frames++;
+ }
+ for(let i=0;i<8;i++){const im=await read(`sv_actors/RPGCombat_${cls}_${sex}_${i}_v5`);for(let row=0;row<6;row++)for(let col=0;col<9;col++){const f=V.isolatedFrame(im,col*64,row*64,64,64),r=V.figureRect(f,84,100);heights.push(r.height);frames++;}}
+ }
+ if(Math.max(...heights)-Math.min(...heights)>1e-8)throw Error('Unequal party heights');
+ return {frames,identities:96,visibleHeight:heights[0],minHeight:Math.min(...heights),maxHeight:Math.max(...heights)};
+};
+</script></html>

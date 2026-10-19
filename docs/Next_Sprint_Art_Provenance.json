@@ -1,0 +1,45 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "date": "2026-10-16",
+  "skill": "C:/Users/rafae/.codex/skills/.system/imagegen/SKILL.md",
+  "sourceDirectory": "img/sprint-source",
+  "packingScript": "scripts/pack_sprint_art.py",
+  "catalogue": "data/RPGManagerArtV4.json",
+  "generatedSourceDirectory": "C:/Users/rafae/.codex/generated_images/01a14645-6612-7f73-a0c3-252f036916de",
+  "prompts": [
+    {
+      "output": "img/sprint-source/front.webp",
+      "generatedFile": "exec-96c9b47b-e7a7-4871-a643-dc612bdd7fe7.webp",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Production RPG Maker SNES cute pixel fantasy character identity catalogue on transparent background. Exactly 8 columns and 12 rows of evenly spaced cells, no text, no borders. Each cell contains ONE complete tiny chibi full body fantasy adventurer, front facing, feet fully visible, including weapon. Every cell a DISTINCT character, varied hair, skin, facial hair, costume and silhouette. Order rows: male Barbarian, female Barbarian, male Knight, female Knight, male Cleric, female Cleric, male Rogue, female Rogue, male Ranger, female Ranger, male Mage, female Mage. Eight different identities per row. Barbarians fur axe, Knights sword shield plate, Clerics white gold robes staff, Rogues dark leather daggers, Rangers green cloaks bow, Mages blue purple robes staff. Chunky crisp SNES pixel-art low resolution shapes, adorable simple faces large heads, consistent scale. Each character centered in its cell with transparent padding, no shadows outside cell. Uniform precisely aligned grid. This is a source catalogue to build matching portraits and full body walking and combat sheets. Maximal useful resolution."
+    },
+    {
+      "output": "img/sprint-source/side.webp",
+      "generatedFile": "exec-8f8b2a89-f304-42c8-932e-34ef9e0ef813.webp",
+      "reference": "front.webp",
+      "transparent_background": true,
+      "prompt": "Edit this RPG character catalogue into a SIDE VIEW catalogue. Preserve EXACT 8 columns by12 rows grid and all96 distinct character identities and order, original1024x1536 sheet geometry. Every character now faces LEFT in full profile, standing combat ready, facing left, weapon aimed left, feet visible, preserve matching hair/skin/outfit/equipment each corresponding cell. Cute crisp SNES pixel style. No front facing characters, each looks toward left edge. Transparent background with empty space between cells, no labels."
+    },
+    {
+      "output": "img/sprint-source/rear.webp",
+      "generatedFile": "exec-904e0807-cfdd-4943-bfee-f013544be215.webp",
+      "reference": "front.webp",
+      "transparent_background": true,
+      "prompt": "Edit reference into REAR VIEW sprite catalogue. Exact same 8 columns12 rows, all96 unique corresponding characters, same1024x1536 geometry, same order and consistent scale. Every character faces AWAY from viewer, backs of heads hair cloaks hats armor visible, NO faces visible, weapons carried at side. Preserve identity clothing colors hair skin matching each reference cell, varied gender and class. Full body feet visible, centered in own128x128 cell with transparent padding. Cute SNES chunky pixel sprites. No text, no borders. Actual transparent background."
+    },
+    {
+      "output": "img/sprint-source/attack.webp",
+      "generatedFile": "exec-53119b32-d018-4376-be7a-80e662b24a4f.webp",
+      "reference": "side.webp",
+      "transparent_background": true,
+      "prompt": "Edit this left-facing96character catalogue into ATTACK POSE catalogue for RPG side view combat. Exact8columns12rows grid1024x1536, preserve all corresponding distinct characters positions and identities. Every character faces LEFT, lunging with weapon, axe slash barbarians, sword slash knights/rogues, bows drawn rangers, staff casting light clerics/mages. Each cell128x128, fully contained weapon and body, centered feet on same baseline, empty transparent padding. Cute crisp SNES pixel fantasy. NO text. Transparent background. Preserve skin hair costume class equipment in every cell, only change pose."
+    }
+  ],
+  "processing": "Deterministic source-cell extraction, head/shoulder portrait crops, nearest-neighbor atlas packing, mirrored right-facing views, shared MZ key-pose/frame mapping and small bob offsets. Models use full-body source cells. No portrait crop is used as a body. All old artwork retained under original filenames.",
+  "sourceHashes": {
+    "attack.webp": "ee3dfe092649a78bbb20f26fdebfee9aec696cf6d51a3a1d5c1def70dc3719fc",
+    "front.webp": "41e4cd6fcc7b949bff17d530a32503ff5c0c878d8ff1302a21bda37673d7bd3d",
+    "rear.webp": "beff9abc9fbfb5a721f7b1269e184c5ab53c5ed7918c9b368b48437fa938bcfd",
+    "side.webp": "615ce7e0b559f96379cc732cee478f021905e1e3d6f1fb959862a0025816476e"
+  }
+}

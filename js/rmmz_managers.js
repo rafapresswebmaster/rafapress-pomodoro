@@ -962,7 +962,7 @@ ImageManager.loadTitle2 = function(filename) {
 
 ImageManager.loadBitmap = function(folder, filename) {
     if (filename) {
-        const url = folder + Utils.encodeURI(filename) + ".png";
+        const url = folder + Utils.encodeURI(filename) + ".webp";
         return this.loadBitmapFromUrl(url);
     } else {
         return this._emptyBitmap;

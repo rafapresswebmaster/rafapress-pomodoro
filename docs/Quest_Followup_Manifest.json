@@ -1,0 +1,158 @@
+[
+  {
+    "path": "img/characters/RPGWalk_barbarian_female_v5.webp",
+    "sha256": "82222ab01b64776bfcdb2af1fca045b64d1dd0bb8c6f87238dd0318b66a2c6b8"
+  },
+  {
+    "path": "img/characters/RPGWalk_barbarian_male_v5.webp",
+    "sha256": "472de1222040fee5cef8cef7d71fa20f96080de750d76c31d7c2180599dc4742"
+  },
+  {
+    "path": "img/characters/RPGWalk_cleric_female_v5.webp",
+    "sha256": "92cae9a72c6a03328079f947509d71fc425e0ed76a9e0f8636688deb700cfad7"
+  },
+  {
+    "path": "img/characters/RPGWalk_cleric_male_v5.webp",
+    "sha256": "d83db5e1063339501f37c534183e0df3f7dc0ecb071b2b557d0b505c4843db42"
+  },
+  {
+    "path": "img/characters/RPGWalk_knight_female_v5.webp",
+    "sha256": "bbab7ecbc03d3d52a4ee08a48fd0b1bd6c63366fa7a60f6575eb4c4b03d10bd0"
+  },
+  {
+    "path": "img/characters/RPGWalk_knight_male_v5.webp",
+    "sha256": "4955c91a43c7cc81d78dd89eebb97073b17369fbadc0b69e9948a8b6b7829359"
+  },
+  {
+    "path": "img/characters/RPGWalk_mage_female_v5.webp",
+    "sha256": "faacd8f8a3bfeb148eb934c36f22b2a6d873dc7023a782c8a59d1d2a89f13efe"
+  },
+  {
+    "path": "img/characters/RPGWalk_mage_male_v5.webp",
+    "sha256": "7bbb010235b42a1c47dea6a8ab7db362ec86287bde6bd2e08f7ddeeb9416a563"
+  },
+  {
+    "path": "img/characters/RPGWalk_ranger_female_v5.webp",
+    "sha256": "5da7bf22ac7e68c6490cc9d697fe1f1c1d977c4e81ee6817480501dde6014b64"
+  },
+  {
+    "path": "img/characters/RPGWalk_ranger_male_v5.webp",
+    "sha256": "e9e7376cc5ea6d24537f8ffd34db952ae73f8f86017be7074e4100222847fac6"
+  },
+  {
+    "path": "img/characters/RPGWalk_rogue_female_v5.webp",
+    "sha256": "700669a1dd06d49a96ff2ea79605caaf1a31b465aab6218af64306e5073afb94"
+  },
+  {
+    "path": "img/characters/RPGWalk_rogue_male_v5.webp",
+    "sha256": "cf39a8fab68d1e5fb895d23605758a7f272dd3b3978f9fc3b04b23906db9c5b2"
+  },
+  {
+    "path": "img/quest-followup-source/barbarian_opposite.webp",
+    "sha256": "3b3eea2f2639ca7f5080cb21870e444ca5dafe440ed6467f5617c99a40f2f9bc"
+  },
+  {
+    "path": "img/quest-followup-source/cleric_opposite.webp",
+    "sha256": "cc03eafd6b9b94b2beeeaa4f1a8b5e163db31a9be7f1f3da178d7705427b9ed1"
+  },
+  {
+    "path": "img/quest-followup-source/knight_opposite.webp",
+    "sha256": "ce93d67c81b64ca68bb6645ed6b48da32dd531a64f3630f9894a7cb101a34624"
+  },
+  {
+    "path": "img/quest-followup-source/mage_opposite.webp",
+    "sha256": "20bd9f9d1d05c39882b496fdd62ec92de59169e42573a4e9e903d2535ee7fb79"
+  },
+  {
+    "path": "img/quest-followup-source/provenance.json",
+    "sha256": "890b9c353e39fbf467dd7a4deabc6d86271e83a4a609f48dd9ce3f1f59c8bd0a"
+  },
+  {
+    "path": "img/quest-followup-source/ranger_opposite.webp",
+    "sha256": "847d3be793b414fec0de6e7f2f1a1badea1afdd787b7869ebf73339b1b41bdb3"
+  },
+  {
+    "path": "img/quest-followup-source/rogue_opposite.webp",
+    "sha256": "af53380344108dcfdf4926ab2e2726c05b674bd1663b6947b206ec59d927ec2c"
+  },
+  {
+    "path": "js/plugins/RPGManager.js",
+    "sha256": "153ef92672b28100c261034cf2c627aba8c9260cc9debbf6c39c8a14e9b2b1b6"
+  },
+  {
+    "path": "js/plugins/RPGManagerBattleStage.js",
+    "sha256": "d3858e4a70677231326d68caa92821cd1880ee9311883fde8b8420ee5d724e35"
+  },
+  {
+    "path": "js/plugins/RPGManagerProgression.js",
+    "sha256": "3ed2d23df32b0a23be84a9701a9a18d1b8cd94d41ca2f93a36eb87f5135cfe9a"
+  },
+  {
+    "path": "scripts/art_silhouettes.py",
+    "sha256": "1b0555b6924c08b1a0b6228a2ab54b272049a7bbf5f9a498e4aafb57931be7a2"
+  },
+  {
+    "path": "scripts/pack_playtest_art.py",
+    "sha256": "42a36aca9a67a57ff569b4fba2dfcbea0a47a1e06f211582c26709c757bdd8b2"
+  },
+  {
+    "path": "scripts/quest_followup_audit.js",
+    "sha256": "0eac74bbe6ef05d98a4c13bce0f9e142c6aa6361617acc6c2bf23485d9fc5163"
+  },
+  {
+    "path": "scripts/run_quest_followup_regressions.py",
+    "sha256": "e50c4d28b61ac91100e7c436a76b46ab8d09d86d730686c2cfaeab7afc35686a"
+  },
+  {
+    "path": "tests/illustrated_travel.test.js",
+    "sha256": "422a89f99e2ff39750f4e07f457d19cb2aacb481ac2755a371bbfb7b8e426b32"
+  },
+  {
+    "path": "tests/quest-followup-art.json",
+    "sha256": "83dfcb2c5e5ff0f326eba538322ffa7519060655342269f85d72cf7ad88588cb"
+  },
+  {
+    "path": "tests/quest-followup-audit.json",
+    "sha256": "ab5b857553ab83b0e1e5e80f8fb2680b8b627b36a37e20ca64f8f820a285d0d7"
+  },
+  {
+    "path": "tests/quest-followup-browser.json",
+    "sha256": "3a0c86e3e565478b375da7652f63e538b1114e5172a8a940083a3d880cb634c8"
+  },
+  {
+    "path": "tests/quest-followup-regressions.json",
+    "sha256": "e1626f4a969b45e3c734814f5dfd2d9fe2c72a67901885b2087b5c3cc65db2ee"
+  },
+  {
+    "path": "tests/quest-followup-regressions.txt",
+    "sha256": "2ab68fde733197549662e6aa05f15e6516cffccb1210a129c15cf9758023c32b"
+  },
+  {
+    "path": "tests/quest-followup-walking-browser.json",
+    "sha256": "b83d0575b9550bcff5cd8ea11c99b65b554ee531c7f5acf9112232a5b4cd075d"
+  },
+  {
+    "path": "tests/quest_followup.test.js",
+    "sha256": "d3d275cc2d83cbb3a512a9ae372088bae9a8dd3c6c1f2af467bbc086cd612c50"
+  },
+  {
+    "path": "tests/quest_followup_art.py",
+    "sha256": "e0fefefb8f98e067311345b50b6764714ab73258132b8d1fbee65ff2353f92be"
+  },
+  {
+    "path": "tests/quest_followup_smoke.py",
+    "sha256": "c22f574347855fa063b3ba341c4605619f14842091bbe47c4f096b2dcb1f25e4"
+  },
+  {
+    "path": "tests/quest_followup_walking_smoke.py",
+    "sha256": "101d8d438e3c8d09d6e42d10e27fcd73f50d291cf696a6773cdc8388689f8ffe"
+  },
+  {
+    "path": "tests/review.test.js",
+    "sha256": "76fd0130f218af0dea3b17fa8e63b262c09c23f72eba7c6cef7b80e43c4f42ef"
+  },
+  {
+    "path": "tests/visual_battle_stage.test.js",
+    "sha256": "3d774c4ab723988375c838cacb149e8e473cfb71cc5dcd08ae7ec10e7919b7b6"
+  }
+]

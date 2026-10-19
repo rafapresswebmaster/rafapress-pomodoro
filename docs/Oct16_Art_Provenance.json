@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-16",
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "path": "img/pictures/BattleRoad_v1.webp",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "Cozy fantasy RPG painted environment background, wide landscape 1536x1024. A quiet winding dirt trade road passing meadow herb beds, woodcutters' forest edge and a distant small watchpost, warm daylight. Storybook hand-painted detailed style, moss greens warm earth gold, consistent with classic fantasy RPG. Side-on battlefield composition, lower half broad uncluttered level earthen verge for three walking sprites, distant background upper half. No people, no enemies, no text, no UI, no borders.",
+      "sourceArtifact": "exec-40216fca-33c6-42b7-a344-92f5e3d8db87.webp"
+    },
+    {
+      "path": "img/pictures/BattleGraveyard_v1.webp",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "Cozy fantasy RPG hand-painted environment background, wide landscape 1536x1024. An old peaceful but dangerous fantasy cemetery, leaning carved gravestones with moss, bare twisted trees and a small sealed crypt chapel, blue dusk with warm lanterns. Muted teal purple and moss, detailed storybook brushwork, readable foreground contrast. Side-on battlefield composition lower half broad uncluttered flat stone and earth path for walking sprites, landmarks upper half. No characters, no skull piles, no gore, no text, no UI, no borders.",
+      "sourceArtifact": "exec-e9d8afa4-9477-4038-9290-beb431e1983b.webp"
+    },
+    {
+      "path": "img/pictures/BattleGate_v1.webp",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "Cozy fantasy RPG hand-painted environment background, wide landscape 1536x1024. Fortified frontier warcamp and imposing ancient dark stone gate with a distant ruined wizard tower, rugged stone ramparts and canvas tents at edge, amber lanterns under overcast violet dusk. Slight danger yet inviting storybook fantasy detailed brushwork, warm earth and muted green blue. Side-on battlefield composition, lower half broad uncluttered level dirt and cobble courtyard for three walking sprites, buildings upper half. No people, no enemies, no text, no UI, no borders.",
+      "sourceArtifact": "exec-5616ed5a-a8a6-4a74-9e13-37cbcd2e6892.webp"
+    }
+  ]
+}

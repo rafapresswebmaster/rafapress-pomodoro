@@ -1,0 +1,1055 @@
+{
+  "baseline": "backups/next-sprint-source",
+  "files": [
+    {
+      "path": "context/README.md",
+      "bytes": 3742,
+      "sha256": "1fbf34d3992e46da42661002f425314a19af004c313048907b355eac178aff4a"
+    },
+    {
+      "path": "context/Teamfight_Manager_Post_Sprint_Handoff.md",
+      "bytes": 7155,
+      "sha256": "f40e4183b8bf5b3f132cc22e1c89eb0f2c6b1576a6eb4fac77427f869a7ce02a"
+    },
+    {
+      "path": "data/RPGManagerArtV4.json",
+      "bytes": 56619,
+      "sha256": "827acb9f8b69e0bd78f66edefe0bb64c8f7015b00b8cc2df93071dc36d1fbd0f"
+    },
+    {
+      "path": "data/RPGManagerStage3.json",
+      "bytes": 59703,
+      "sha256": "28d3d123b76f7f9e1c219ecfdab7b4deca98c9d0657356927c859291f0367c8e"
+    },
+    {
+      "path": "data/RPGManagerUI.json",
+      "bytes": 1298,
+      "sha256": "7381b65a6c0d2e34293b2bd54718dbf0d54a7d4e5a2d8980fca12b025115c25a"
+    },
+    {
+      "path": "docs/Next_Sprint_Art_Contact.webp",
+      "bytes": 1729723,
+      "sha256": "ca275ab4bcdd56938111826bdadafebee39f361000b8a89d7ad95bb2a71725f0"
+    },
+    {
+      "path": "docs/Next_Sprint_Art_Provenance.json",
+      "bytes": 4824,
+      "sha256": "52b870b4553e0a5573f28b57efbd9fd77bfc4fe89c3c18ab2d7e45d1dcd8ff2b"
+    },
+    {
+      "path": "docs/Strict_Focus_Progression_Sprint.md",
+      "bytes": 16146,
+      "sha256": "b09689f4cdcaba2a075c7d56292448eef60883da74f5faf9c3fc96acd94e0fa7"
+    },
+    {
+      "path": "img/characters/RPGWalk_barbarian_female_v4.webp",
+      "bytes": 348007,
+      "sha256": "28925a7eb75c4bcf6c831995e31f462e6cebb27b4400861b3d481facd027d0de"
+    },
+    {
+      "path": "img/characters/RPGWalk_barbarian_male_v4.webp",
+      "bytes": 338989,
+      "sha256": "e1f51c09caadeb5eda2ed71fd89c9d9e15c9d985421ac3b32551a4790581074a"
+    },
+    {
+      "path": "img/characters/RPGWalk_cleric_female_v4.webp",
+      "bytes": 370532,
+      "sha256": "f9d315bb209eed04429d8288d4b9511e0bdbaf26c26f3f02b61054a12a6e8182"
+    },
+    {
+      "path": "img/characters/RPGWalk_cleric_male_v4.webp",
+      "bytes": 354172,
+      "sha256": "0374475cf1eee6d496ce2f51aeb6c9943529407bc9182e850272d3b70e436555"
+    },
+    {
+      "path": "img/characters/RPGWalk_knight_female_v4.webp",
+      "bytes": 349753,
+      "sha256": "5869b8fa82d647e460d9bbb06a62476f4a8a310ae133c6d787c64aeb5bc07309"
+    },
+    {
+      "path": "img/characters/RPGWalk_knight_male_v4.webp",
+      "bytes": 360406,
+      "sha256": "c3810620b7d410d2917348b0e52d708018f3c4a8cec343e669940cf7533ff0e4"
+    },
+    {
+      "path": "img/characters/RPGWalk_mage_female_v4.webp",
+      "bytes": 369122,
+      "sha256": "93a338362f5215e8c672b7cff2f712074a193320e8c3acf6908a6964ec35424b"
+    },
+    {
+      "path": "img/characters/RPGWalk_mage_male_v4.webp",
+      "bytes": 379070,
+      "sha256": "3302dd3f5a6d8acc1141b8291ca88eae7640a52b974b2baec6e34841d7f489af"
+    },
+    {
+      "path": "img/characters/RPGWalk_ranger_female_v4.webp",
+      "bytes": 378905,
+      "sha256": "c1cda448fdc34d911990b3fc7b88d99796dc66892dc7237c15b19f33cbeaf522"
+    },
+    {
+      "path": "img/characters/RPGWalk_ranger_male_v4.webp",
+      "bytes": 353273,
+      "sha256": "198acf691406e4a73259682d3d9a726985187b69694830060b9d8aefdda41a71"
+    },
+    {
+      "path": "img/characters/RPGWalk_rogue_female_v4.webp",
+      "bytes": 368298,
+      "sha256": "a2a3cfa5eba0b58ee1b74581b537265217220dc215ca0f8f3a310311d27171f0"
+    },
+    {
+      "path": "img/characters/RPGWalk_rogue_male_v4.webp",
+      "bytes": 353138,
+      "sha256": "926de4e021fa2a3bb3b12532350ebc6f4ee9ad7f99658e2fbe89ec0b46334190"
+    },
+    {
+      "path": "img/faces/RPGPortrait_barbarian_v4.webp",
+      "bytes": 377328,
+      "sha256": "584ca1af78d7658547bfeb49d40c1381ae0d30603049dd3f8c25685a222b6aee"
+    },
+    {
+      "path": "img/faces/RPGPortrait_cleric_v4.webp",
+      "bytes": 407851,
+      "sha256": "051cedd466c1317890eef8205dcb141d17467a9def2ea74a932968dfdb86374f"
+    },
+    {
+      "path": "img/faces/RPGPortrait_knight_v4.webp",
+      "bytes": 405343,
+      "sha256": "f19a76c6d88535734cf6cf874cf6382bcb27773e6b97359ee934fe0028d56881"
+    },
+    {
+      "path": "img/faces/RPGPortrait_mage_v4.webp",
+      "bytes": 416747,
+      "sha256": "810d6829625509e06a895b6fc1c06a401e6e428d93ee11032b6abe3ac40a6a84"
+    },
+    {
+      "path": "img/faces/RPGPortrait_ranger_v4.webp",
+      "bytes": 382635,
+      "sha256": "61d46b4c129f2fe1f3d99b7acb1905a264698c3249ebff8e4011685e1ba672d6"
+    },
+    {
+      "path": "img/faces/RPGPortrait_rogue_v4.webp",
+      "bytes": 376262,
+      "sha256": "5c6c9c59ac90a1c4abd5afd9944231a0031331eb9438101650baeb9e6b24aa50"
+    },
+    {
+      "path": "img/sprint-source/attack.webp",
+      "bytes": 3581348,
+      "sha256": "ee3dfe092649a78bbb20f26fdebfee9aec696cf6d51a3a1d5c1def70dc3719fc"
+    },
+    {
+      "path": "img/sprint-source/front.webp",
+      "bytes": 3369360,
+      "sha256": "41e4cd6fcc7b949bff17d530a32503ff5c0c878d8ff1302a21bda37673d7bd3d"
+    },
+    {
+      "path": "img/sprint-source/rear.webp",
+      "bytes": 3351795,
+      "sha256": "beff9abc9fbfb5a721f7b1269e184c5ab53c5ed7918c9b368b48437fa938bcfd"
+    },
+    {
+      "path": "img/sprint-source/side.webp",
+      "bytes": 3393591,
+      "sha256": "615ce7e0b559f96379cc732cee478f021905e1e3d6f1fb959862a0025816476e"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_0_v4.webp",
+      "bytes": 124151,
+      "sha256": "786d0f9dca2d8b6839a9b9413f395b38e86391c3503160d8d4ea9e484a0ef9af"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_1_v4.webp",
+      "bytes": 135068,
+      "sha256": "6f8e8c50ad27bd9ec3475230b761d40488d51be9d83cdc9942d963290456f81a"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_2_v4.webp",
+      "bytes": 135559,
+      "sha256": "809cb4bbf870e5eb42457cd0d047f45a346a92d6c27209ba23abdfe7230436da"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_3_v4.webp",
+      "bytes": 128776,
+      "sha256": "bd8517057655e0595a08f43072ece533d1241b3dab08b8c1040a6d9a80e22c7f"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_4_v4.webp",
+      "bytes": 130132,
+      "sha256": "2fa947cb1cae4f21f29e06f8443e8eacec356cf4ddd00798623a53f57fd6e2b2"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_5_v4.webp",
+      "bytes": 134367,
+      "sha256": "bc31a0b3f26450049e3b60fee460ad32b9d0faafaf60e0e05f0ef0bb9a19d79c"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_6_v4.webp",
+      "bytes": 140394,
+      "sha256": "240fe931025f80001c801c8ca2c91926f29aaf502dc8eb44a3cbc7c58ccaedec"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_female_7_v4.webp",
+      "bytes": 136969,
+      "sha256": "ac78fcecc252bbc73e3f40973a9f9a34dadab777f1ec15d8c0ea4890c51084eb"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_0_v4.webp",
+      "bytes": 122392,
+      "sha256": "d535612f377cf1b6f9286c0cc375d141696dba5c6c701b05339259ec5c666a8b"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_1_v4.webp",
+      "bytes": 130693,
+      "sha256": "a2535914b9777652cb2b2ccd922b173052163085a30dcb32cb06b97b0f8c2cfd"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_2_v4.webp",
+      "bytes": 126802,
+      "sha256": "4b125baead9099d283f9525b70e88b855e94e5a053fb5441d17fa8d78b1740d2"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_3_v4.webp",
+      "bytes": 128186,
+      "sha256": "81e12a74ce1df2f83a348d06921d44be78c24a7c691740b92d8af2a77d48d4ef"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_4_v4.webp",
+      "bytes": 116846,
+      "sha256": "9a915c01854e070a9e0c7b69ecc37186dac0cecda82b77d7235036029a9ab0fa"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_5_v4.webp",
+      "bytes": 124653,
+      "sha256": "d3c894cfbe240cdfbe2a3601b05faed85c8470d5080e801147b3c0f42518913d"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_6_v4.webp",
+      "bytes": 126968,
+      "sha256": "e0d349a99aa30599771bd5e0de408d64666efffc8531630a379ef097f206aca4"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_barbarian_male_7_v4.webp",
+      "bytes": 130476,
+      "sha256": "24cdd9dda6a1fbf6ed147171d60b94ef8738017ec83ed0eb2a35cd6a412c9305"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_0_v4.webp",
+      "bytes": 134649,
+      "sha256": "0c0f87bbb616085acfa09b43898b32f4f3154a754cc33767d900ea396d7b531c"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_1_v4.webp",
+      "bytes": 149652,
+      "sha256": "404520e91a1ad9dfc6ddb1cb2d6d2d3fccabc4beafe834087a0107d90d986da6"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_2_v4.webp",
+      "bytes": 148993,
+      "sha256": "ab24c63052d9e0db83b8f5ebef48193b8a628da14bf0417def5e2aa60d693274"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_3_v4.webp",
+      "bytes": 149797,
+      "sha256": "5bf00fd784c0fe833137d0d81575a5acef2da30d7b146555393d83424c2f9368"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_4_v4.webp",
+      "bytes": 156126,
+      "sha256": "7dacb3ccca5d6e69998b8c8a495efbc1def0ee230f247ce09b13fe8f297a4865"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_5_v4.webp",
+      "bytes": 149723,
+      "sha256": "9a9e19204876520da93b181e8521f2b66ab75bde5d2ac18849d05330195da879"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_6_v4.webp",
+      "bytes": 151913,
+      "sha256": "15205474968459f5feee27dfb8bce4f9f2efbce7e048b5b9019e0255a6bd4d11"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_female_7_v4.webp",
+      "bytes": 146340,
+      "sha256": "6af427efb5149850ae7422bf2796a74f9c5486e42edd4924f53b6d7432f48ef9"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_0_v4.webp",
+      "bytes": 142775,
+      "sha256": "0d21ca339aae5375f085c04a28723d253fb57aebcb949c40f122a058c466333d"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_1_v4.webp",
+      "bytes": 149553,
+      "sha256": "1e1d3e01b633d5f7bc017866f0c71f1e1dbc0260ed3cfe1ad2f65e6c94849399"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_2_v4.webp",
+      "bytes": 141801,
+      "sha256": "467301f550ff5502577ce871937f02c052dde4f52f4ec629af6dbfc338594ac2"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_3_v4.webp",
+      "bytes": 142339,
+      "sha256": "960882243abf0df929d043851b80609895e8373422dad4a070f33b4c3760e5a4"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_4_v4.webp",
+      "bytes": 147574,
+      "sha256": "517def994ee1c66ec61b8e59e93276616857ec17ead873d886e4a8a591ffcd5f"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_5_v4.webp",
+      "bytes": 141355,
+      "sha256": "747c05bfb06ca902f9241191ae4a941b27167f59b918280cabeae27cbae26fc1"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_6_v4.webp",
+      "bytes": 140942,
+      "sha256": "c871e43e6c2fe30297db554ae34235e4c66d95a8edb8f57a0f8b7d576675b122"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_cleric_male_7_v4.webp",
+      "bytes": 134876,
+      "sha256": "e5f7c8bd2c0f4487e18820bfe45db7d54f06c29ac558edf24e002ad039ad85ce"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_0_v4.webp",
+      "bytes": 132371,
+      "sha256": "f95ad9a93eed37ee61be6b1f9bf9217952014a2dd1cdeebad430f9a9f963b8e1"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_1_v4.webp",
+      "bytes": 139298,
+      "sha256": "059811965f8f202824d334603ea9429e8a9b17265ba5ef22bd463dbb169f64ae"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_2_v4.webp",
+      "bytes": 134384,
+      "sha256": "005e6e0af941c8551fc011c5ac8d85c64c1b2ee80729ce4f74aadf2803177d2c"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_3_v4.webp",
+      "bytes": 144029,
+      "sha256": "22222290c58a349c69d67d349eddfccfe0f0c22492f1378071994479ce53813e"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_4_v4.webp",
+      "bytes": 142942,
+      "sha256": "7924905855005cde1bfbf7a8289e4a39ce3aff07160ab83e3846e928c1609567"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_5_v4.webp",
+      "bytes": 139144,
+      "sha256": "367de7c27d0dfd33338df583e781104558fc12aaa421f75abda8ae6fd4e48781"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_6_v4.webp",
+      "bytes": 136248,
+      "sha256": "2f69824d71b19b2d89d180af691f5bab7e54f68b9c8d0a795809833cf467187a"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_female_7_v4.webp",
+      "bytes": 142593,
+      "sha256": "a25386aea4941bc22ebcb63f1547404e258bd6393ecd9817811f6e054b2ce843"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_0_v4.webp",
+      "bytes": 134218,
+      "sha256": "a7eafdf5ca678aa412b27fb528c5a89aa73be648f24dfd2d22b4c4ab9562e12a"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_1_v4.webp",
+      "bytes": 139225,
+      "sha256": "b93705c5abc02f890368eeaba169319142a5b7c9145f46624468124b9f12f72d"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_2_v4.webp",
+      "bytes": 132635,
+      "sha256": "9dda69a11085792021df3eb4dddf5b96171a33438a7bb09d7cd28b5c0ec40466"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_3_v4.webp",
+      "bytes": 138040,
+      "sha256": "b8d49e4d5c023ea19df26e388a9d5ab0e0851176612df4b2724a8692c5145a41"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_4_v4.webp",
+      "bytes": 141524,
+      "sha256": "750edb81d58fd3858220e4dc269a76db1f3d4bd550c574e1b27c17e03a12e8a0"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_5_v4.webp",
+      "bytes": 136431,
+      "sha256": "98eecfe5da5cddbc50f3390a91923ec506c306013d67fcf699c5eb9fcec77410"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_6_v4.webp",
+      "bytes": 139520,
+      "sha256": "d5d1fb523d73c7437e4b0655537ea4da3f7a4042892ceef4a2b79448b913b8b7"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_knight_male_7_v4.webp",
+      "bytes": 139741,
+      "sha256": "5b3dad387cd6551591f80d1dd902aac70d96923d075ed1384dfe7aa0d166576c"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_0_v4.webp",
+      "bytes": 123246,
+      "sha256": "d3182c8477d526c6f03bc326d5b95296ec53d4e7459f21f04e01f7410ec00c71"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_1_v4.webp",
+      "bytes": 131358,
+      "sha256": "fe20d164cd4e713f8c06efc786d2281b77b969f91332d87cfa617b2bfac15616"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_2_v4.webp",
+      "bytes": 124119,
+      "sha256": "2a3f67a0c383b60c7dfcb36a3ebc94944c07d57f172e1542b3021451deac0de0"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_3_v4.webp",
+      "bytes": 126699,
+      "sha256": "02a8aeffe6dfb17e0edec837d2a04b4ec08f0fafba40fc61fce49433c1547fe6"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_4_v4.webp",
+      "bytes": 132941,
+      "sha256": "c1c42fee0fb62071eef650c06ea6a10631495868bfef81e2dd31c9017dbb2cfd"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_5_v4.webp",
+      "bytes": 124221,
+      "sha256": "0364431e619e5927d87f33dd5262046cb191299e826c4ffe5544fde97c73c3e6"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_6_v4.webp",
+      "bytes": 136255,
+      "sha256": "2183bd6606cb4f60b47e2a805b7cf3541214784b20dd8c6e43d305888f6120a5"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_female_7_v4.webp",
+      "bytes": 129622,
+      "sha256": "a538aa3a10b57258488d163fcf3300745121dd47907d968637c97fdc893debbf"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_0_v4.webp",
+      "bytes": 141073,
+      "sha256": "0d7692b0b75f96045b0d5f6d12fafff3215b6c0d07e61ddefbe553c0987dabd9"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_1_v4.webp",
+      "bytes": 156548,
+      "sha256": "87452367cb2bf94dadbb5aeeaf960d41408b00eff4bd507855608f46841ed523"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_2_v4.webp",
+      "bytes": 146629,
+      "sha256": "2c55c72105de2f953c39b4d6b9112afa07f857c0d9debabcafcf29447f8bd4a0"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_3_v4.webp",
+      "bytes": 146848,
+      "sha256": "8aea2a768246a335ca66ac5dcc67320abd00996925595887a7de9e39d63d8e64"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_4_v4.webp",
+      "bytes": 153410,
+      "sha256": "7a61fbc16acae4714d9ae895a8bddafeb2fec6261417d27c40b30dccb5532dc9"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_5_v4.webp",
+      "bytes": 150333,
+      "sha256": "aa29bd2029fb5947d97440a4910a8ae084bf9283f832e59c4f0e446bd51fab3f"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_6_v4.webp",
+      "bytes": 146649,
+      "sha256": "24546ca4bd0dc6a5b1486ab7559e80aea9f5cad016b1c08cd0b7a40418e2d644"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_mage_male_7_v4.webp",
+      "bytes": 144946,
+      "sha256": "cfce0ad6772a386be08325252a6d077f1eaddfdcd9495782b6efbf11b3adb35d"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_0_v4.webp",
+      "bytes": 137404,
+      "sha256": "6b81a3c4ac4a035b43c27a9d3d3d17795c070581acfbfe396d98620a317882cd"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_1_v4.webp",
+      "bytes": 145969,
+      "sha256": "5338b4d2ce90376fa6af3d9569a2d27e35926683c55c8ee8cf442e8b4d8ef580"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_2_v4.webp",
+      "bytes": 145311,
+      "sha256": "4c6a9c136429c376e491cc313548d0bc777b8b5ded693f37b70f7697ecebb14c"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_3_v4.webp",
+      "bytes": 148823,
+      "sha256": "9bd2c55185b463ee7c441a499830355a71e0a58e658553d9f3581540cc6d7b0e"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_4_v4.webp",
+      "bytes": 148441,
+      "sha256": "d7431c02ef106ff528539d112ef5e3f0236391055900d649d58c4906cc737a51"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_5_v4.webp",
+      "bytes": 144893,
+      "sha256": "91e126cc3391774c03d4ab17c9d658b793a085a1ff2ce79941d9a33a116624d4"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_6_v4.webp",
+      "bytes": 148963,
+      "sha256": "b79ca05e15b8a64475553fd6483784cb4177a8985be93ea2a5e5860b0fd7e3c4"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_female_7_v4.webp",
+      "bytes": 149207,
+      "sha256": "5cf57236dea2eb6312e62222a082ae3ca121ac908602be75f280ebb8663ef8b6"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_0_v4.webp",
+      "bytes": 125880,
+      "sha256": "bed5eb202dc602aa70a6948b6b994cb0b6946fd0115c224d367480f156475d79"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_1_v4.webp",
+      "bytes": 141359,
+      "sha256": "4564140a3145b1dfdad0308c0959488f2d02f8b686528d9c72ff1f0f238e523a"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_2_v4.webp",
+      "bytes": 131571,
+      "sha256": "22af8a6995ff451e38eabf27357d294d21e97110abf961920295a09de970a8e0"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_3_v4.webp",
+      "bytes": 134926,
+      "sha256": "ce70d8496e8a049a35b710aed982eccb76d294eddb35af1af1b5c40125c64c5e"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_4_v4.webp",
+      "bytes": 146949,
+      "sha256": "1f60e62517b38729dad1f310223319649f997620606a96897b424dcac1392f53"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_5_v4.webp",
+      "bytes": 134973,
+      "sha256": "25d168ddbd9f90a8c777c96d553bffb312bd4734605ca2163298d3d67cce13fa"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_6_v4.webp",
+      "bytes": 137243,
+      "sha256": "a967dca3658431507346675a13765d0813b4f83573752f6184b01f599889184f"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_ranger_male_7_v4.webp",
+      "bytes": 136079,
+      "sha256": "776b2bcc116479fadaf6dbebab5a93826e561a1aee66e892992f3b8079e64140"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_0_v4.webp",
+      "bytes": 127035,
+      "sha256": "64d7a189c567eac525327384d9a20e09a062b11b7ac1e53e6d2fea1bc497cbb8"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_1_v4.webp",
+      "bytes": 135086,
+      "sha256": "126c1bb1e14af7de6892a78b40da53cd51d4ecd26febf80f6f386bdd2819778c"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_2_v4.webp",
+      "bytes": 135441,
+      "sha256": "8347918d2e50ea4c3c37b697af8561c81faef9d5997b8977f8d3542d98b8f86b"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_3_v4.webp",
+      "bytes": 139901,
+      "sha256": "0cc0977b140f09ade43925170c69204d50438c6d2b06afaddb3e76d8321bace5"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_4_v4.webp",
+      "bytes": 141023,
+      "sha256": "e7c85cab498343c9ab04a1c754f711715dd2c2add7e0d5307e8c4c3ab8418e74"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_5_v4.webp",
+      "bytes": 137817,
+      "sha256": "a6764c3741d903fd26a5c6b7635cfbd929443db709e38408eed3ca9053085869"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_6_v4.webp",
+      "bytes": 147835,
+      "sha256": "dd9d82f3c0ce6c7a2aaa00ffd4aad815c27d65d8b34c6d0aec3e86ef817eba4b"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_female_7_v4.webp",
+      "bytes": 130154,
+      "sha256": "d67089b29b18476d44b10309b9fe3cdcbd3d31d21ef23179d896c2667f7036ec"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_0_v4.webp",
+      "bytes": 129805,
+      "sha256": "a51b130b355371daf58f830a394eddd3cc15da80db7e33dbe0de1ba9914782b6"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_1_v4.webp",
+      "bytes": 133997,
+      "sha256": "91d1f6cde8f7e4021741635eeb0c18a87b38093b006ebe0488b6028df4cef60b"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_2_v4.webp",
+      "bytes": 137580,
+      "sha256": "7d875fe047d07cc012533382ff0577a503301bbfd07d46397d2e354d11680a8f"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_3_v4.webp",
+      "bytes": 128293,
+      "sha256": "cc90fcb5e37f33890bbe9c3baef30838fc31fdc7bf7f782cbcf4d37ac090d486"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_4_v4.webp",
+      "bytes": 146731,
+      "sha256": "b549a2903ac2f777c759b1e21ec5ce3695a1d5a707ac03315061bfab472b1af2"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_5_v4.webp",
+      "bytes": 141375,
+      "sha256": "4d618d34c7e897d4df3e9c5ddeb81c8599ff3220b49b07a9c042d592d5c504d0"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_6_v4.webp",
+      "bytes": 129966,
+      "sha256": "1aced708d6f24eed861f3f3fd7e6e033df591147fd74905fefe5b9589ba70966"
+    },
+    {
+      "path": "img/sv_actors/RPGCombat_rogue_male_7_v4.webp",
+      "bytes": 131996,
+      "sha256": "b05ae4cc88001280dd80c54bc9492e793429325b4d6e41adb1f8156fa5fcf482"
+    },
+    {
+      "path": "js/plugins/RPGManager.js",
+      "bytes": 297826,
+      "sha256": "5e5052dad94e85974608f5747a717fc935ddfaa438a0dfb51028c414d614747e"
+    },
+    {
+      "path": "js/plugins/RPGManagerBattle.js",
+      "bytes": 50914,
+      "sha256": "79e28201be584a2dc50d6ef185f09d76b0a339974311a474ec67e69799bc289f"
+    },
+    {
+      "path": "js/plugins/RPGManagerBattleStage.js",
+      "bytes": 33990,
+      "sha256": "1fb59a1c819d2bfe9f177be71504fc65f6c8a7f8ce762ce1c2b645a2a5d415d8"
+    },
+    {
+      "path": "js/plugins/RPGManagerProgression.js",
+      "bytes": 189308,
+      "sha256": "fe72ae01a600799a104aaf69512084cc15c567ae322c4ac8c5b33fd5be264502"
+    },
+    {
+      "path": "scripts/pack_sprint_art.py",
+      "bytes": 3905,
+      "sha256": "1eeeb4f1d33f0f6a241acf9e8c488edaea440321b99dd73594976d3b3606f177"
+    },
+    {
+      "path": "scripts/run_sprint_regressions.py",
+      "bytes": 1111,
+      "sha256": "54a99e4c142ca266d7d4ebc46c00c356aaba3647e951d14557b7f0168f643013"
+    },
+    {
+      "path": "scripts/strict_focus_audit.js",
+      "bytes": 4158,
+      "sha256": "9940646992788f9f1b6d4d49e4c365df82b32d0b8998529428165724017471b8"
+    },
+    {
+      "path": "scripts/strict_focus_plans.js",
+      "bytes": 802,
+      "sha256": "09f9f75c55445ee40380af32c625a0f233f06170cf2badef728e461d5d975294"
+    },
+    {
+      "path": "scripts/summarize_strict_focus.py",
+      "bytes": 542,
+      "sha256": "2b58f63105246cc9a70ae9220ccd6d2a524d5fe397c753aadc152af0a2d92249"
+    },
+    {
+      "path": "scripts/validate_sprint_art.py",
+      "bytes": 1434,
+      "sha256": "8b6ae66104b51e4a0774ab927e52aafa20b7afe0c1383df5fab1ec808a6f6912"
+    },
+    {
+      "path": "scripts/write_sprint_handoff.py",
+      "bytes": 8086,
+      "sha256": "d21cc5a43824ac057f8f3790eed88c3883244c4ac485ac2e89fdccee77bcaecf"
+    },
+    {
+      "path": "scripts/write_strict_focus_report.py",
+      "bytes": 14856,
+      "sha256": "58af8261d75ff421eb04ac5fb8c3f6688fe20109d250e20ca33d48d3ce70e88f"
+    },
+    {
+      "path": "tests/complete_battle_sequence.test.js",
+      "bytes": 4964,
+      "sha256": "1b126555b1aafd542b44672bf32f7d9591aceb78076e53735fad71575794babe"
+    },
+    {
+      "path": "tests/coordinated_sprint.test.js",
+      "bytes": 10734,
+      "sha256": "b20af18045c13eb71f7abe9ee0b95b9b852eeb9522a2f09e980d153caee08684"
+    },
+    {
+      "path": "tests/focus_companion.test.js",
+      "bytes": 10212,
+      "sha256": "a0205f42e7dab6bd0485fb44a7f89402a217102b883939c89608016ebd7618b9"
+    },
+    {
+      "path": "tests/mission_background_clock.test.js",
+      "bytes": 5261,
+      "sha256": "7b45cf83b442b372cdf235676d2aac644a9e0fad3219980f0d12524f4128b898"
+    },
+    {
+      "path": "tests/next_playtest.test.js",
+      "bytes": 7792,
+      "sha256": "fa847e4c9722bd4fcb05b4ef2f07418b7cc824feb93a1a6e7d770ba0a559d314"
+    },
+    {
+      "path": "tests/pomodoro_focus.test.js",
+      "bytes": 13146,
+      "sha256": "a14fc441e243fe2654765c9ee6cf114baeab1de42f828f221a3c89869f7e190d"
+    },
+    {
+      "path": "tests/pomodoro_sprint.test.js",
+      "bytes": 9361,
+      "sha256": "c7b47779983959ec4250d372f77342f79ac32b2efef4d2c1db33279cd5128172"
+    },
+    {
+      "path": "tests/post_sprint_fixes.test.js",
+      "bytes": 8445,
+      "sha256": "4dfbd75a5885a8a1d7b59dc8ea28811859cf85e6db912f7711c69713e2f724f2"
+    },
+    {
+      "path": "tests/quest_window_polish.test.js",
+      "bytes": 4470,
+      "sha256": "9c4f4d70d418687bc92dbc53983504371ff1af8e1ad12c92c6be4f44f3a0957c"
+    },
+    {
+      "path": "tests/readability_progression.test.js",
+      "bytes": 10094,
+      "sha256": "e7a15add5c51797727f157e0e76725231bfedd2b7af082278385184b0f5546b7"
+    },
+    {
+      "path": "tests/review.test.js",
+      "bytes": 6368,
+      "sha256": "7ed51a400111665dab45bf80c81d0482c34ac836892fd5044a4852143ffb1ba7"
+    },
+    {
+      "path": "tests/small_roster_rework.test.js",
+      "bytes": 3943,
+      "sha256": "bc0309f5b5113e5605b9ceb6f5b8ee1d549341ff62f3137c31fd28f10ebfdc06"
+    },
+    {
+      "path": "tests/stage2_realtime_loop.test.js",
+      "bytes": 5100,
+      "sha256": "d78e0adcbc0be5127546bdf54d038f2dc2b36837ea0d174c33504d1b113008ff"
+    },
+    {
+      "path": "tests/stage3_catalogue.test.js",
+      "bytes": 3622,
+      "sha256": "4f57f27206c8fea4aeccd4f3e964850c85c6771779f201dce483c47f1702e7f3"
+    },
+    {
+      "path": "tests/stage5_equipment_repair.test.js",
+      "bytes": 2709,
+      "sha256": "3edc4f6c6992748982a2e4a730a30d16abb1580cd39aa054f27ef976e0202154"
+    },
+    {
+      "path": "tests/strict-focus-art-validation.json",
+      "bytes": 311,
+      "sha256": "a248587fa4fb2b2fcf0ef00f928f755a70b25b51ba5b06e26e2420ed9a4175eb"
+    },
+    {
+      "path": "tests/strict-focus-audit.json",
+      "bytes": 128791,
+      "sha256": "e46bb7ccc3a0e5f1fe3ae82515a6bc42fd74665a6c26b4e9e0468527fe068d24"
+    },
+    {
+      "path": "tests/strict-focus-audit.txt",
+      "bytes": 22958,
+      "sha256": "947e4595871254eefe36d49c226b93f17001f760362756cb813716c4e2ee9671"
+    },
+    {
+      "path": "tests/strict-focus-browser.json",
+      "bytes": 186,
+      "sha256": "c3b832d85fe890c176d9fcfe67dc6dbb1cae252e43f0582829b3cdf3252db778"
+    },
+    {
+      "path": "tests/strict-focus-browser.txt",
+      "bytes": 256,
+      "sha256": "9e12b471fc81c8715b0bfc4563c24137a77a55eb5b937bc3575a42b4f09fe78a"
+    },
+    {
+      "path": "tests/strict-focus-followup.txt",
+      "bytes": 34576,
+      "sha256": "0bb5903f94027701b565e497487144419e85239f043ecc7617e1d4101b6af6bd"
+    },
+    {
+      "path": "tests/strict-focus-initial-tuning.json",
+      "bytes": 128694,
+      "sha256": "b4be4f235ddf49080553e8ce7a236ddc79a8c65285c7edfe97c228674b69c127"
+    },
+    {
+      "path": "tests/strict-focus-plans.json",
+      "bytes": 74575,
+      "sha256": "dc0ac8393594d42047214f08aa6a13a2135be5f6dcd485261ac7dea861f4f8cc"
+    },
+    {
+      "path": "tests/strict-focus-regressions.json",
+      "bytes": 3710,
+      "sha256": "350f95f435cec0c640022130a493be1d272739829cbc77a19f79cbc6015e1215"
+    },
+    {
+      "path": "tests/strict-focus-regressions.txt",
+      "bytes": 40713,
+      "sha256": "90b3b944a37429c102b74dab2d1444714c57645967607ac6b3781e8bc13481d3"
+    },
+    {
+      "path": "tests/strict-focus-results.txt",
+      "bytes": 11602,
+      "sha256": "4b021ca5fac5ee14ae27f4730e4d82080b04935c2b1f9b4288c293099b25d5a0"
+    },
+    {
+      "path": "tests/strict-focus-summary.txt",
+      "bytes": 7664,
+      "sha256": "1b72f999ffc3957fd4f168acbd9a6e63a323f932c9a22c80b260744db0d7ebe1"
+    },
+    {
+      "path": "tests/strict_focus_smoke.py",
+      "bytes": 8402,
+      "sha256": "fc628ae3402f07f831c640b95c252533c953701512399c599e4a7df3717bd08e"
+    },
+    {
+      "path": "tests/strict_focus_sprint.test.js",
+      "bytes": 12560,
+      "sha256": "4c96f01b495e6c852f95cb1b35acb277d0aee884c3a2f5900b819a3869a72daf"
+    },
+    {
+      "path": "tests/visual_battle_stage.test.js",
+      "bytes": 8547,
+      "sha256": "1720adebcd43cdb66bcf3e9af64302cc3a9d739bc923311fbddf795ad6ccd696"
+    },
+    {
+      "path": "tests/visuals/strict-1280-battle.webp",
+      "bytes": 991087,
+      "sha256": "a432f00c34793bea85b07982c89d8aeada41cde720d45d36c687ce7203ca1a76"
+    },
+    {
+      "path": "tests/visuals/strict-1280-board.webp",
+      "bytes": 161067,
+      "sha256": "bbc88ae1d949724da4a16dbd3c5f3efbbeb5fee6c77b59ae12a905a6091594b7"
+    },
+    {
+      "path": "tests/visuals/strict-1280-camp.webp",
+      "bytes": 750371,
+      "sha256": "7d14d7823eaa6db073b76c62aa92dba90787316a6fcc055362366e3226fe392a"
+    },
+    {
+      "path": "tests/visuals/strict-1280-campfire.webp",
+      "bytes": 944102,
+      "sha256": "e63f1c63974e3cca6faf831fd930f4b380c11b2d4389f9580d169966539764fa"
+    },
+    {
+      "path": "tests/visuals/strict-1280-creation-0.webp",
+      "bytes": 99333,
+      "sha256": "0be7952a4c490b1bb851625682283a05f6d05597410fac4dea6befb1207a29a2"
+    },
+    {
+      "path": "tests/visuals/strict-1280-creation-1.webp",
+      "bytes": 98415,
+      "sha256": "3c7e30ce9d2ab4deb3069e524d0284b79ed9d8744529650880157d1825ddb0bb"
+    },
+    {
+      "path": "tests/visuals/strict-1280-creation-2.webp",
+      "bytes": 94655,
+      "sha256": "c67fe12915ff3a964f24f5037f7eee1f2682b15d0030603643ecbbc15d7f7217"
+    },
+    {
+      "path": "tests/visuals/strict-1280-embark.webp",
+      "bytes": 124965,
+      "sha256": "96cb292ef263ef060d5e15aa26091808eea8eb6fafe0d8c0cc8398804a5f5f28"
+    },
+    {
+      "path": "tests/visuals/strict-1280-recall-cancel.webp",
+      "bytes": 133645,
+      "sha256": "cad45e64aa93c6c47a11a57809232ad1d2314c7fe8ed0c3e2d666df249d23856"
+    },
+    {
+      "path": "tests/visuals/strict-1280-recall-recap.webp",
+      "bytes": 752799,
+      "sha256": "92bbc8499091e7d4b13109fc6b91d5d395872d32548780842cbb7476f182bf6f"
+    },
+    {
+      "path": "tests/visuals/strict-1280-sheet-care.webp",
+      "bytes": 97907,
+      "sha256": "13e897c9b897dbe24d156f24a4af1270dbd1d11dbb80ee235234dc2246ee595c"
+    },
+    {
+      "path": "tests/visuals/strict-1280-sheet-gear.webp",
+      "bytes": 100273,
+      "sha256": "cb161fd6aea3c2fa2f5b3a474e3b78310bf07bf19ed2e25725d976c2cf8ffd3f"
+    },
+    {
+      "path": "tests/visuals/strict-1280-sheet-overview.webp",
+      "bytes": 99180,
+      "sha256": "7d8b1eaa5d020911d36db461a5862beac823f05f7ea386ca122cb169139ec635"
+    },
+    {
+      "path": "tests/visuals/strict-1280-sheet-powers.webp",
+      "bytes": 96041,
+      "sha256": "3993c893729576440458bc6c4ae31ebd33a2afa658830bf4cc26ee12abdfdd64"
+    },
+    {
+      "path": "tests/visuals/strict-1280-shop-0.webp",
+      "bytes": 144136,
+      "sha256": "e19af051dd0523b8242ae9ae8fde032d7e8c2f22203aaa680b2b2bbcad8e1f21"
+    },
+    {
+      "path": "tests/visuals/strict-1280-shop-1.webp",
+      "bytes": 149443,
+      "sha256": "dd0d9d6fa623560f9b467a0f3d06514738abb2df99c63faf2d78e863c077dcd3"
+    },
+    {
+      "path": "tests/visuals/strict-1280-shop-2.webp",
+      "bytes": 134697,
+      "sha256": "b1e5a8770612947c69e48241d7152be4fdb877ec2bb5ae71bfecab69d0b63261"
+    },
+    {
+      "path": "tests/visuals/strict-1280-shop-3.webp",
+      "bytes": 139368,
+      "sha256": "34a65425cce561d4f6a1b1682c4085f0ea1d482e822f569ed13a8a3864d044ae"
+    },
+    {
+      "path": "tests/visuals/strict-1280-shop-4.webp",
+      "bytes": 126753,
+      "sha256": "4228604dc48a35439e53bb31b3fe1093c6ab13392a500e835d0a84a7e9ebf250"
+    },
+    {
+      "path": "tests/visuals/strict-1280-shop-5.webp",
+      "bytes": 121653,
+      "sha256": "67618a82ab404572ea390c9ec5983e706dfcde29bb57764d947de8e09d1e96e4"
+    },
+    {
+      "path": "tests/visuals/strict-1280-travel.webp",
+      "bytes": 1037332,
+      "sha256": "2b36e77737fa084310619465540012bbd2dd9b3c2c6f09fac0f164e131e0e945"
+    },
+    {
+      "path": "tests/visuals/strict-816-battle.webp",
+      "bytes": 549767,
+      "sha256": "8c1e74ff000ebd7cde52b0ea6d4b1a044dd638a6ee77f955fa883c945a564a01"
+    },
+    {
+      "path": "tests/visuals/strict-816-board.webp",
+      "bytes": 148875,
+      "sha256": "8148d17c3043921ddaf1e9d702a76f4f6f72aa1b80dd11e3dfb6451b52bce557"
+    },
+    {
+      "path": "tests/visuals/strict-816-camp.webp",
+      "bytes": 407130,
+      "sha256": "bea796dac59f77c8230be5c58fc0c897761ce688f58b9604736ff501454f7416"
+    },
+    {
+      "path": "tests/visuals/strict-816-campfire.webp",
+      "bytes": 524929,
+      "sha256": "546886d7c667e76745d3d8ced9f0658146abc9b4760dd9dd2d4eddf857ebb54d"
+    },
+    {
+      "path": "tests/visuals/strict-816-creation-0.webp",
+      "bytes": 93648,
+      "sha256": "7413bdabf2f5762351a0b7c4059f5e1af391df8666c674f54b1063dea352aa95"
+    },
+    {
+      "path": "tests/visuals/strict-816-creation-1.webp",
+      "bytes": 92498,
+      "sha256": "82f102dc2cbd9301f9e0cebafbbcf5db53cbbea971fedc4acdfc4547dbad9086"
+    },
+    {
+      "path": "tests/visuals/strict-816-creation-2.webp",
+      "bytes": 88369,
+      "sha256": "ed9ab2877e9c279e445577934484a3a17ca358d628df8fbb83b81e930d193d38"
+    },
+    {
+      "path": "tests/visuals/strict-816-embark.webp",
+      "bytes": 82156,
+      "sha256": "3e1e19f593e503ffe321ea887c9aef8955154f03bc244a3f69dd7ea272376ab3"
+    },
+    {
+      "path": "tests/visuals/strict-816-recall-cancel.webp",
+      "bytes": 119149,
+      "sha256": "eba145ebcaf36b5c6571fbe9198c36275a2aaee6e575e1fdc13f1df10b8bb685"
+    },
+    {
+      "path": "tests/visuals/strict-816-recall-recap.webp",
+      "bytes": 396501,
+      "sha256": "7ee7a9fb79dc9255638fb841d706b0de8470be23e1d288c7d4f254b01e1f02f3"
+    },
+    {
+      "path": "tests/visuals/strict-816-sheet-care.webp",
+      "bytes": 86982,
+      "sha256": "3e57f1ec3c3e4059c133fd2307d99003eb354ee3ffd3dd78d98f901886232620"
+    },
+    {
+      "path": "tests/visuals/strict-816-sheet-gear.webp",
+      "bytes": 89257,
+      "sha256": "15db1cb6860bf154bc3418e654abf1a296bf7c33103adb5d0aeb40efccf8004b"
+    },
+    {
+      "path": "tests/visuals/strict-816-sheet-overview.webp",
+      "bytes": 87981,
+      "sha256": "708291fbe559c08693ed8d3c1e9f2c30185fd3cbdadcb368882af9f62d888789"
+    },
+    {
+      "path": "tests/visuals/strict-816-sheet-powers.webp",
+      "bytes": 84915,
+      "sha256": "a0acf8c3486e6457e426e76aed9df2f03999a035b257baa7a4b2826db872a9da"
+    },
+    {
+      "path": "tests/visuals/strict-816-shop-0.webp",
+      "bytes": 128641,
+      "sha256": "b6ebe25112aa43c0c52e399cb3f986971e08b3aff110515033bcd4abf3a7f7ae"
+    },
+    {
+      "path": "tests/visuals/strict-816-shop-1.webp",
+      "bytes": 133550,
+      "sha256": "517bdd2521a54b6c85f352629838ace95d8dd53bb36f59988ee87797e2556400"
+    },
+    {
+      "path": "tests/visuals/strict-816-shop-2.webp",
+      "bytes": 120113,
+      "sha256": "8aaf048d6d28fc4ee765f9d67a2ea4e2f834cd1225a067be4f564c2d8ba68612"
+    },
+    {
+      "path": "tests/visuals/strict-816-shop-3.webp",
+      "bytes": 124188,
+      "sha256": "15a3f1da3e42fc5db50f4031ae629480b59d142573a507abe9412bc415040e68"
+    },
+    {
+      "path": "tests/visuals/strict-816-shop-4.webp",
+      "bytes": 111007,
+      "sha256": "ef8c710ea9cf64ee2c1f73ac3644676e322055a239ff1086a6d47af74605c84b"
+    },
+    {
+      "path": "tests/visuals/strict-816-shop-5.webp",
+      "bytes": 106089,
+      "sha256": "f78f50750cdefda2e4157f8bc7a3ee2c49f141a94abd79727dbffdb74dd7c3a4"
+    },
+    {
+      "path": "tests/visuals/strict-816-travel.webp",
+      "bytes": 548624,
+      "sha256": "2b4c1241d532d72647f5137e77e073d2cf3a51b48eb505dff787e947b7c49495"
+    }
+  ]
+}
