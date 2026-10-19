@@ -1,0 +1,98 @@
+{
+  "dialogue": {
+    "BATTLE_START": [
+      "Stay close. We leave together.",
+      "Something heard us coming."
+    ],
+    "ALLY_TARGETED": [
+      "Eyes on me, not them!"
+    ],
+    "ALLY_WOUNDED": [
+      "Still standing."
+    ],
+    "LOW_HP": [
+      "I need a moment-no, I don't have one."
+    ],
+    "DODGE": [
+      "Too slow."
+    ],
+    "ARMOR_ABSORBS": [
+      "That all you have?"
+    ],
+    "WARD_BREAKS": [
+      "The ward is gone!"
+    ],
+    "SIGNATURE": [
+      "Make this count."
+    ],
+    "BOND_ALLY_DANGER": [
+      "You get away from them!"
+    ],
+    "BOND_ALLY_DEATH": [
+      "No. No, get up."
+    ],
+    "BOSS_START": [
+      "That is larger than the report suggested."
+    ],
+    "ALLY_DEATH": [
+      "..."
+    ],
+    "VICTORY": [
+      "Count heads. Then we move."
+    ],
+    "SOLE_SURVIVOR": [
+      "I brought them here."
+    ]
+  },
+  "importance": {
+    "NORMAL": {
+      "priority": 10,
+      "holdMs": 450,
+      "color": "#ffffff"
+    },
+    "INTERESTING": {
+      "priority": 20,
+      "holdMs": 700,
+      "color": "#8edaff"
+    },
+    "DANGEROUS": {
+      "priority": 40,
+      "holdMs": 950,
+      "color": "#ffd27d"
+    },
+    "CRITICAL": {
+      "priority": 60,
+      "holdMs": 1200,
+      "color": "#ff9b8e"
+    },
+    "DEATH": {
+      "priority": 100,
+      "holdMs": 1500,
+      "color": "#ff6f6f"
+    },
+    "SIGNATURE": {
+      "priority": 50,
+      "holdMs": 900,
+      "color": "#d9a7ff"
+    },
+    "BOSS": {
+      "priority": 70,
+      "holdMs": 1100,
+      "color": "#ffb070"
+    },
+    "TRAVEL": {
+      "priority": 20,
+      "holdMs": 750,
+      "color": "#9fe3a4"
+    }
+  },
+  "speedMultipliers": {
+    "standard": 1,
+    "reduced": 0.45,
+    "skip": 0
+  },
+  "maxDialoguePerBattle": 4,
+  "triggerCooldownEvents": 3,
+  "enemyDefeatMs": 650,
+  "bossDefeatMs": 1400
+}

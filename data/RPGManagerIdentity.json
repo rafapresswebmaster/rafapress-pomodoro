@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "names": {
+    "barbarian": {
+      "male": [
+        "Bram",
+        "Tor",
+        "Ulric",
+        "Gunn",
+        "Rolf",
+        "Hakon",
+        "Sten",
+        "Bjorn",
+        "Eirik",
+        "Korr"
+      ],
+      "female": [
+        "Hilda",
+        "Runa",
+        "Kara",
+        "Bera",
+        "Astrid",
+        "Freya",
+        "Sigrid",
+        "Ylva",
+        "Thora",
+        "Vala"
+      ]
+    },
+    "knight": {
+      "male": [
+        "Alden",
+        "Gareth",
+        "Leon",
+        "Roland",
+        "Cedric",
+        "Oswin",
+        "Tristan",
+        "Percival",
+        "Hugo",
+        "Edric"
+      ],
+      "female": [
+        "Ada",
+        "Celia",
+        "Elise",
+        "Mira",
+        "Vera",
+        "Isolde",
+        "Sabine",
+        "Helena",
+        "Lenora",
+        "Rosamund"
+      ]
+    },
+    "ranger": {
+      "male": [
+        "Rowan",
+        "Orin",
+        "Hollis",
+        "Linden",
+        "Alder",
+        "Flint",
+        "Reed",
+        "Sylvan",
+        "Hawke",
+        "Fen"
+      ],
+      "female": [
+        "Cora",
+        "Aster",
+        "Bryn",
+        "Fern",
+        "Kestrel",
+        "Linn",
+        "Wren",
+        "Sylva",
+        "Hazel",
+        "Juniper"
+      ]
+    },
+    "rogue": {
+      "male": [
+        "Jory",
+        "Quill",
+        "Vex",
+        "Kit",
+        "Finn",
+        "Corvin",
+        "Dax",
+        "Locke",
+        "Rook",
+        "Jace"
+      ],
+      "female": [
+        "Nia",
+        "Rhea",
+        "Sable",
+        "Nell",
+        "Tess",
+        "Lysette",
+        "Nyx",
+        "Vesper",
+        "Faye",
+        "Zinnia"
+      ]
+    },
+    "mage": {
+      "male": [
+        "Marek",
+        "Soren",
+        "Elwin",
+        "Rune",
+        "Alaric",
+        "Caelum",
+        "Dorian",
+        "Emrys",
+        "Lucan",
+        "Valen"
+      ],
+      "female": [
+        "Esme",
+        "Iris",
+        "Lyra",
+        "Selene",
+        "Talia",
+        "Zora",
+        "Elara",
+        "Celeste",
+        "Iona",
+        "Opal"
+      ]
+    },
+    "cleric": {
+      "male": [
+        "Dev",
+        "Galen",
+        "Benedict",
+        "Ansel",
+        "Tobias",
+        "Lucius",
+        "Pascal",
+        "Simeon",
+        "Amos",
+        "Oren"
+      ],
+      "female": [
+        "Cassia",
+        "Pella",
+        "Alma",
+        "Dawn",
+        "Hope",
+        "Lucia",
+        "Seren",
+        "Mercy",
+        "Verity",
+        "Clara"
+      ]
+    }
+  }
+}

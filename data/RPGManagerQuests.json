@@ -1,0 +1,3214 @@
+{
+  "xp": {
+    "basePerMember": 12,
+    "openSlotBonus": 0,
+    "totalCap": 36,
+    "maxPartySize": 3
+  },
+  "enemies": [
+    {
+      "id": "goblin_1",
+      "name": "Goblin",
+      "role": "Raider",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 10,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Dagger Stab",
+      "signatureAttack": "Dagger Stab",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 0,
+        "columns": 3,
+        "rows": 1
+      },
+      "xpReward": 6,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Dagger Stab",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "goblin_2",
+      "name": "Goblin",
+      "role": "Raider",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 10,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Dagger Stab",
+      "signatureAttack": "Dagger Stab",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 0,
+        "columns": 3,
+        "rows": 1
+      },
+      "xpReward": 6,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Dagger Stab",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "goblin_3",
+      "name": "Goblin",
+      "role": "Raider",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 10,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Dagger Stab",
+      "signatureAttack": "Dagger Stab",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 0,
+        "columns": 3,
+        "rows": 1
+      },
+      "xpReward": 6,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Dagger Stab",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "goblin_archer",
+      "name": "Goblin Archer",
+      "role": "Marksman",
+      "level": 1,
+      "health": 1,
+      "maxHealth": 1,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 12,
+      "intelligence": "Normal",
+      "position": "Back",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Archer",
+        "description": "Fires from the backline.",
+        "stat": "speed"
+      },
+      "basicAttack": "Shortbow",
+      "signatureAttack": "Shortbow",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 0,
+        "columns": 3,
+        "rows": 1
+      },
+      "xpReward": 4,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Shortbow",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "orc_1",
+      "name": "Orc",
+      "role": "Warrior",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 8,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Armored",
+        "description": "Wears physical armor.",
+        "stat": "defense"
+      },
+      "basicAttack": "Axe Chop",
+      "signatureAttack": "Axe Chop",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 1
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Axe Chop",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "orc_2",
+      "name": "Orc",
+      "role": "Warrior",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 8,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Armored",
+        "description": "Wears physical armor.",
+        "stat": "defense"
+      },
+      "basicAttack": "Axe Chop",
+      "signatureAttack": "Axe Chop",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 1
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Axe Chop",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "orc_3",
+      "name": "Orc",
+      "role": "Warrior",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 8,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Armored",
+        "description": "Wears physical armor.",
+        "stat": "defense"
+      },
+      "basicAttack": "Axe Chop",
+      "signatureAttack": "Axe Chop",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 1
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Axe Chop",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "ogre",
+      "name": "Ogre",
+      "role": "Brute",
+      "level": 2,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 2,
+      "damage": 2,
+      "defense": 0,
+      "armor": 2,
+      "speed": 6,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Huge",
+        "description": "Hits for 2 damage.",
+        "stat": "attack"
+      },
+      "basicAttack": "Crushing Club",
+      "signatureAttack": "Crushing Club",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 1
+      },
+      "xpReward": 14,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Crushing Club",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "skeleton_1",
+      "name": "Skeleton",
+      "role": "Undead Warrior",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 9,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Undead",
+        "description": "A relentless corpse.",
+        "stat": "attack"
+      },
+      "basicAttack": "Rusty Slash",
+      "signatureAttack": "Rusty Slash",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 1,
+        "columns": 3,
+        "rows": 1
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Rusty Slash",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead"
+      ]
+    },
+    {
+      "id": "skeleton_2",
+      "name": "Skeleton",
+      "role": "Undead Warrior",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 9,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Undead",
+        "description": "A relentless corpse.",
+        "stat": "attack"
+      },
+      "basicAttack": "Rusty Slash",
+      "signatureAttack": "Rusty Slash",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 1,
+        "columns": 3,
+        "rows": 1
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Rusty Slash",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead"
+      ]
+    },
+    {
+      "id": "skeleton_archer_1",
+      "name": "Skeleton Archer",
+      "role": "Undead Marksman",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 10,
+      "intelligence": "Normal",
+      "position": "Back",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Undead Archer",
+        "description": "Fires from the backline.",
+        "stat": "speed"
+      },
+      "basicAttack": "Bone Arrow",
+      "signatureAttack": "Bone Arrow",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 2
+      },
+      "xpReward": 6,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Bone Arrow",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead"
+      ]
+    },
+    {
+      "id": "skeleton_archer_2",
+      "name": "Skeleton Archer",
+      "role": "Undead Marksman",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 10,
+      "intelligence": "Normal",
+      "position": "Back",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Undead Archer",
+        "description": "Fires from the backline.",
+        "stat": "speed"
+      },
+      "basicAttack": "Bone Arrow",
+      "signatureAttack": "Bone Arrow",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 2
+      },
+      "xpReward": 6,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Bone Arrow",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead"
+      ]
+    },
+    {
+      "id": "necromancer",
+      "name": "Necromancer",
+      "role": "Undead Commander",
+      "level": 2,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "arcaneArmor": 3,
+      "speed": 9,
+      "intelligence": "High",
+      "position": "Back",
+      "dodge": "Normal",
+      "signatureDamage": 3,
+      "signatureUseLimit": 2,
+      "alive": true,
+      "passiveTrait": {
+        "name": "Death Magic",
+        "description": "Death Hex deals 3 damage, twice per encounter.",
+        "stat": "attack"
+      },
+      "basicAttack": "Withering Bolt",
+      "signatureAttack": "Death Hex",
+      "portrait": {
+        "sheet": "Evil",
+        "index": 5
+      },
+      "innateWard": 1,
+      "xpReward": 11,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Death Hex",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead"
+      ]
+    },
+    {
+      "id": "dire_wolf_1",
+      "name": "Dire Wolf",
+      "role": "Beast",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 14,
+      "intelligence": "High",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Pack Hunter",
+        "description": "Hunts vulnerable prey.",
+        "stat": "speed"
+      },
+      "basicAttack": "Bite",
+      "signatureAttack": "Bite",
+      "portrait": {
+        "sheet": "Nature",
+        "index": 0
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Bite",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt"
+      ]
+    },
+    {
+      "id": "dire_wolf_2",
+      "name": "Dire Wolf",
+      "role": "Beast",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 14,
+      "intelligence": "High",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Pack Hunter",
+        "description": "Hunts vulnerable prey.",
+        "stat": "speed"
+      },
+      "basicAttack": "Bite",
+      "signatureAttack": "Bite",
+      "portrait": {
+        "sheet": "Nature",
+        "index": 0
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Bite",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt"
+      ]
+    },
+    {
+      "id": "dire_wolf_3",
+      "name": "Dire Wolf",
+      "role": "Beast",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 14,
+      "intelligence": "High",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Pack Hunter",
+        "description": "Hunts vulnerable prey.",
+        "stat": "speed"
+      },
+      "basicAttack": "Bite",
+      "signatureAttack": "Bite",
+      "portrait": {
+        "sheet": "Nature",
+        "index": 0
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Bite",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt"
+      ]
+    },
+    {
+      "id": "cultist_1",
+      "name": "Cultist",
+      "role": "Fanatic",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 9,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Fanatic",
+        "description": "Fights without fear.",
+        "stat": "attack"
+      },
+      "basicAttack": "Ritual Knife",
+      "signatureAttack": "Ritual Knife",
+      "portrait": {
+        "sheet": "Evil",
+        "index": 1
+      },
+      "innateWard": 1,
+      "xpReward": 10,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Ritual Knife",
+        "special": null
+      },
+      "encounterGroups": [
+        "demon_cult"
+      ]
+    },
+    {
+      "id": "cultist_2",
+      "name": "Cultist",
+      "role": "Fanatic",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 9,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Fanatic",
+        "description": "Fights without fear.",
+        "stat": "attack"
+      },
+      "basicAttack": "Ritual Knife",
+      "signatureAttack": "Ritual Knife",
+      "portrait": {
+        "sheet": "Evil",
+        "index": 1
+      },
+      "innateWard": 1,
+      "xpReward": 10,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Ritual Knife",
+        "special": null
+      },
+      "encounterGroups": [
+        "demon_cult"
+      ]
+    },
+    {
+      "id": "mage_cultist",
+      "name": "Mage Cultist",
+      "role": "Enchanter",
+      "level": 2,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "arcaneArmor": 1,
+      "speed": 11,
+      "intelligence": "High",
+      "position": "Back",
+      "dodge": "Normal",
+      "special": "enchantment",
+      "signatureUseLimit": 1,
+      "alive": true,
+      "passiveTrait": {
+        "name": "Enchantment",
+        "description": "Neutralizes one member for one turn, once.",
+        "stat": "attack"
+      },
+      "basicAttack": "Dark Bolt",
+      "signatureAttack": "Enchantment",
+      "portrait": {
+        "sheet": "Evil",
+        "index": 2
+      },
+      "innateWard": 1,
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Enchantment",
+        "special": "enchantment"
+      },
+      "encounterGroups": [
+        "demon_cult"
+      ]
+    },
+    {
+      "id": "summoned_demon",
+      "name": "Summoned Demon",
+      "role": "Demon",
+      "level": 3,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 2,
+      "damage": 2,
+      "defense": 0,
+      "armor": 2,
+      "speed": 8,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Very Evil",
+        "description": "Speaks with very evil dialogue.",
+        "stat": "attack"
+      },
+      "basicAttack": "Hell Claw",
+      "signatureAttack": "Hell Claw",
+      "portrait": {
+        "sheet": "Evil",
+        "index": 7
+      },
+      "xpReward": 14,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Hell Claw",
+        "special": null
+      },
+      "encounterGroups": [
+        "demon_cult"
+      ]
+    },
+    {
+      "id": "bandit_fighter_1",
+      "name": "Bandit Fighter",
+      "role": "Bandit",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 10,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Bandit",
+        "description": "An opportunistic fighter.",
+        "stat": "attack"
+      },
+      "basicAttack": "Sword Slash",
+      "signatureAttack": "Sword Slash",
+      "portrait": {
+        "sheet": "Actor1",
+        "index": 0
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Sword Slash",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws"
+      ]
+    },
+    {
+      "id": "bandit_fighter_2",
+      "name": "Bandit Fighter",
+      "role": "Bandit",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 10,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Bandit",
+        "description": "An opportunistic fighter.",
+        "stat": "attack"
+      },
+      "basicAttack": "Sword Slash",
+      "signatureAttack": "Sword Slash",
+      "portrait": {
+        "sheet": "Actor1",
+        "index": 0
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Sword Slash",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws"
+      ]
+    },
+    {
+      "id": "bandit_rogue",
+      "name": "Bandit Rogue",
+      "role": "Bandit Rogue",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 14,
+      "intelligence": "High",
+      "position": "Back",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Rogue",
+        "description": "Finishes vulnerable targets.",
+        "stat": "speed"
+      },
+      "basicAttack": "Backstab",
+      "signatureAttack": "Backstab",
+      "portrait": {
+        "sheet": "Actor1",
+        "index": 1
+      },
+      "xpReward": 6,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Backstab",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws"
+      ]
+    },
+    {
+      "id": "giant_spider_1",
+      "name": "Giant Spider",
+      "role": "Beast",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 12,
+      "intelligence": "High",
+      "position": "Front",
+      "dodge": "Normal",
+      "special": "web",
+      "signatureUseLimit": 1,
+      "alive": true,
+      "passiveTrait": {
+        "name": "Web",
+        "description": "Incapacitates one member for their next turn, once.",
+        "stat": "speed"
+      },
+      "basicAttack": "Bite",
+      "signatureAttack": "Web",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 4
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Web",
+        "special": "web"
+      },
+      "encounterGroups": [
+        "wild_hunt",
+        "cavern_brood",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "giant_spider_2",
+      "name": "Giant Spider",
+      "role": "Beast",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 12,
+      "intelligence": "High",
+      "position": "Front",
+      "dodge": "Normal",
+      "special": "web",
+      "signatureUseLimit": 1,
+      "alive": true,
+      "passiveTrait": {
+        "name": "Web",
+        "description": "Incapacitates one member for their next turn, once.",
+        "stat": "speed"
+      },
+      "basicAttack": "Bite",
+      "signatureAttack": "Web",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 4
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Web",
+        "special": "web"
+      },
+      "encounterGroups": [
+        "wild_hunt",
+        "cavern_brood",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "mimic",
+      "name": "Mimic",
+      "role": "Monster",
+      "level": 2,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 2,
+      "damage": 2,
+      "defense": 0,
+      "armor": 2,
+      "speed": 7,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "False Chest",
+        "description": "A heavily armored ambusher.",
+        "stat": "defense"
+      },
+      "basicAttack": "Bite",
+      "signatureAttack": "Bite",
+      "portrait": {
+        "sheet": "Monster",
+        "index": 5
+      },
+      "xpReward": 12,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Bite",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws",
+        "cavern_brood"
+      ]
+    },
+    {
+      "id": "hobgoblin",
+      "name": "Hobgoblin",
+      "role": "Soldier",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 9,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Spear Thrust",
+      "signatureAttack": "Shield Rush",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 0,
+        "columns": 3,
+        "rows": 1
+      },
+      "innateWard": 0,
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "xpReward": 12,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 5,
+        "crit": 0.08,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Shield Rush",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "wraith",
+      "name": "Wraith",
+      "role": "Caster",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 15,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Chilling Touch",
+      "signatureAttack": "Soul Wail",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 5,
+        "columns": 3,
+        "rows": 1
+      },
+      "innateWard": 2,
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "xpReward": 12,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Soul Wail",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead"
+      ]
+    },
+    {
+      "id": "harpy",
+      "name": "Harpy",
+      "role": "Raider",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 18,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Talon Rake",
+      "signatureAttack": "Bewitching Shriek",
+      "portrait": {
+        "sheet": "RPGHarpy_v6",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "innateWard": 0,
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": "enchantment",
+      "enemyArt": {
+        "sheet": "RPGHarpy_v6",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Bewitching Shriek",
+        "special": "enchantment"
+      },
+      "encounterGroups": [
+        "highland_monsters",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "troll",
+      "name": "Troll",
+      "role": "Brute",
+      "level": 1,
+      "health": 7,
+      "maxHealth": 7,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "speed": 4,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Club Swing",
+      "signatureAttack": "Crushing Blow",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 2,
+        "columns": 3,
+        "rows": 1
+      },
+      "innateWard": 0,
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "xpReward": 16,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Crushing Blow",
+        "special": null
+      },
+      "encounterGroups": [
+        "greenskin_warband"
+      ]
+    },
+    {
+      "id": "imp",
+      "name": "Imp",
+      "role": "Caster",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "speed": 17,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Ember Dart",
+      "signatureAttack": "Cinder Hex",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 4,
+        "columns": 3,
+        "rows": 1
+      },
+      "innateWard": 1,
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": "enchantment",
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Cinder Hex",
+        "special": "enchantment"
+      },
+      "encounterGroups": [
+        "demon_cult"
+      ]
+    },
+    {
+      "id": "masked_jester",
+      "name": "Masked Jester",
+      "role": "Boss Caster",
+      "level": 1,
+      "health": 12,
+      "maxHealth": 12,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 3,
+      "speed": 19,
+      "intelligence": "Low",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Direct",
+        "description": "Favors the frontline.",
+        "stat": "attack"
+      },
+      "basicAttack": "Razor Card",
+      "signatureAttack": "Last Laugh",
+      "portrait": {
+        "sheet": "RPGManagerMonsters",
+        "index": 7,
+        "columns": 3,
+        "rows": 1
+      },
+      "innateWard": 4,
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "xpReward": 40,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Last Laugh",
+        "special": null
+      },
+      "encounterGroups": [
+        "demon_cult"
+      ]
+    },
+    {
+      "id": "slime",
+      "name": "Slime",
+      "role": "Guardian",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 0,
+      "speed": 5,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Acid Splash",
+      "signatureAttack": "Engulf",
+      "signatureDamage": 1,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 0,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 0,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Engulf",
+        "special": null
+      },
+      "encounterGroups": [
+        "cavern_brood",
+        "haunted_fen",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "giant_bat",
+      "name": "Giant Bat",
+      "role": "Skirmisher",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 0,
+      "speed": 17,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Fang Bite",
+      "signatureAttack": "Sonic Screech",
+      "signatureDamage": 1,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 1,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 1,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 6,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Sonic Screech",
+        "special": null
+      },
+      "encounterGroups": [
+        "cavern_brood",
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost",
+      "role": "Caster",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 2,
+      "speed": 12,
+      "intelligence": "Normal",
+      "position": "Back",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Cold Touch",
+      "signatureAttack": "Grave Whisper",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 2,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 2,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 10,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Grave Whisper",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead",
+        "haunted_fen",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "wyrmling",
+      "name": "Wyrmling",
+      "role": "Boss",
+      "level": 1,
+      "health": 8,
+      "maxHealth": 8,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 1,
+      "speed": 13,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Tiny Talons",
+      "signatureAttack": "Ember Breath",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 3,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 3,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 30,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Ember Breath",
+        "special": null
+      },
+      "encounterGroups": [
+        "highland_monsters",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "hill_giant",
+      "name": "Hill Giant",
+      "role": "Boss",
+      "level": 1,
+      "health": 9,
+      "maxHealth": 9,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 0,
+      "speed": 6,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Club Swing",
+      "signatureAttack": "Boulder Throw",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 4,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 4,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 28,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Boulder Throw",
+        "special": null
+      },
+      "encounterGroups": [
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "pirate",
+      "name": "Pirate",
+      "role": "Guardian",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 0,
+      "speed": 12,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Cutlass Slash",
+      "signatureAttack": "Dirty Trick",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 5,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 5,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 10,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Dirty Trick",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "pirate_captain",
+      "name": "Pirate Captain",
+      "role": "Boss",
+      "level": 1,
+      "health": 7,
+      "maxHealth": 7,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 0,
+      "speed": 15,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Captain Cutlass",
+      "signatureAttack": "Flintlock Volley",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 6,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 6,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 26,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Flintlock Volley",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "wolf",
+      "name": "Wolf",
+      "role": "Skirmisher",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 0,
+      "speed": 16,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Pack Bite",
+      "signatureAttack": "Pouncing Fangs",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 7,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 7,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Pouncing Fangs",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt"
+      ]
+    },
+    {
+      "id": "owlbear",
+      "name": "Owlbear",
+      "role": "Guardian",
+      "level": 1,
+      "health": 6,
+      "maxHealth": 6,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 0,
+      "speed": 11,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Raking Claws",
+      "signatureAttack": "Beak and Talon",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 8,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 8,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 14,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Beak and Talon",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt"
+      ]
+    },
+    {
+      "id": "dwarf_prospector",
+      "name": "Dwarf Prospector",
+      "role": "Guardian",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 0,
+      "speed": 7,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Pickaxe Swing",
+      "signatureAttack": "Blasting Charge",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 9,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 9,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 13,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Blasting Charge",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws",
+        "cavern_brood"
+      ]
+    },
+    {
+      "id": "ghoul",
+      "name": "Ghoul",
+      "role": "Guardian",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 0,
+      "speed": 13,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Grave Claws",
+      "signatureAttack": "Ravenous Bite",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 10,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 10,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 10,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Ravenous Bite",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "ratman",
+      "name": "Ratman",
+      "role": "Skirmisher",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 0,
+      "speed": 14,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Scrap Knife",
+      "signatureAttack": "Sewer Ambush",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 11,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 11,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 7,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Sewer Ambush",
+        "special": null
+      },
+      "encounterGroups": [
+        "outlaws",
+        "cavern_brood",
+        "haunted_fen",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "role": "Guardian",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 0,
+      "speed": 13,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Short Spear",
+      "signatureAttack": "Trap Spring",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 12,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 12,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 10,
+        "crit": 0.08,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Trap Spring",
+        "special": null
+      },
+      "encounterGroups": [
+        "cavern_brood",
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "minotaur",
+      "name": "Minotaur",
+      "role": "Boss",
+      "level": 1,
+      "health": 7,
+      "maxHealth": 7,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 0,
+      "speed": 10,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Labyrinth Axe",
+      "signatureAttack": "Goring Charge",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 13,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 13,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 26,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Goring Charge",
+        "special": null
+      },
+      "encounterGroups": [
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "basilisk",
+      "name": "Basilisk",
+      "role": "Guardian",
+      "level": 1,
+      "health": 5,
+      "maxHealth": 5,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 0,
+      "speed": 9,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Venom Fang",
+      "signatureAttack": "Stone Gaze",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 14,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 14,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 14,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Stone Gaze",
+        "special": null
+      },
+      "encounterGroups": [
+        "cavern_brood",
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "gargoyle",
+      "name": "Gargoyle",
+      "role": "Guardian",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 3,
+      "innateWard": 0,
+      "speed": 8,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Stone Talon",
+      "signatureAttack": "Diving Strike",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 15,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 15,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 14,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Diving Strike",
+        "special": null
+      },
+      "encounterGroups": [
+        "demon_cult",
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "swamp_hag",
+      "name": "Swamp Hag",
+      "role": "Caster",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 2,
+      "speed": 10,
+      "intelligence": "Normal",
+      "position": "Back",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Bog Hex",
+      "signatureAttack": "Marsh Curse",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 16,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 16,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 14,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Marsh Curse",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "gnoll",
+      "name": "Gnoll",
+      "role": "Skirmisher",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 0,
+      "speed": 14,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Notched Axe",
+      "signatureAttack": "Hyena Rush",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 17,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 17,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 12,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Hyena Rush",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt"
+      ]
+    },
+    {
+      "id": "will_o_wisp",
+      "name": "Will-o-Wisp",
+      "role": "Caster",
+      "level": 1,
+      "health": 2,
+      "maxHealth": 2,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 3,
+      "speed": 18,
+      "intelligence": "Normal",
+      "position": "Back",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Spark Touch",
+      "signatureAttack": "Lantern Flare",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 18,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 18,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 12,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.08,
+        "speed": 7,
+        "crit": 0.05,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Lantern Flare",
+        "special": null
+      },
+      "encounterGroups": [
+        "restless_dead",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "treant",
+      "name": "Treant",
+      "role": "Boss",
+      "level": 1,
+      "health": 8,
+      "maxHealth": 8,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 3,
+      "innateWard": 0,
+      "speed": 4,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Branch Slam",
+      "signatureAttack": "Root Crush",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 19,
+        "columns": 5,
+        "rows": 4
+      },
+      "enemyArt": {
+        "sheet": "RPGFantasyEnemies_v6",
+        "index": 19,
+        "columns": 5,
+        "rows": 4
+      },
+      "xpReward": 30,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.04,
+        "speed": 5,
+        "crit": 0.04,
+        "damage": 2,
+        "specialDamage": 3,
+        "specialAttack": "Root Crush",
+        "special": null
+      },
+      "encounterGroups": [
+        "wild_hunt",
+        "haunted_fen"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "random_hidden_stash",
+      "name": "Hidden Stash",
+      "interactionId": "sealed_lock",
+      "danger": "A concealed cache may be trapped or claimed by bandits.",
+      "outcomes": {
+        "force_lock": {
+          "text": "The party forces the cache and takes what it can carry.",
+          "gold": 8
+        },
+        "mark_lock": {
+          "text": "The party marks the cache and continues safely."
+        },
+        "empty_cache": {
+          "text": "The party carefully empties the hidden cache.",
+          "gold": 12
+        },
+        "trace_passage": {
+          "text": "The cache contains a minor arcane clue.",
+          "arcana": 1
+        },
+        "default": {
+          "text": "The hidden stash is left undisturbed."
+        }
+      }
+    },
+    {
+      "id": "random_rune",
+      "name": "Ancient Rune",
+      "interactionId": "arcane_scroll",
+      "danger": "Unstable magic surrounds an old roadside rune.",
+      "outcomes": {
+        "unleash": {
+          "text": "The rune releases a burst of useful arcane energy.",
+          "arcana": 2
+        },
+        "seal": {
+          "text": "The rune is sealed before it can harm anyone.",
+          "arcana": 1
+        },
+        "extract": {
+          "text": "Fragments of the rune are recovered for sale.",
+          "gold": 8
+        },
+        "study": {
+          "text": "Careful study reveals an arcane secret.",
+          "arcana": 2
+        },
+        "default": {
+          "text": "The rune fades before it can be understood."
+        }
+      }
+    },
+    {
+      "id": "random_caravan",
+      "name": "Passing Caravan",
+      "interactionId": "perilous_route",
+      "danger": "A stranded caravan offers opportunity, but the road is exposed.",
+      "outcomes": {
+        "charge": {
+          "text": "The party clears the dangerous road and earns a reward.",
+          "gold": 8
+        },
+        "detour": {
+          "text": "The caravan is guided around the danger safely.",
+          "gold": 5
+        },
+        "loot": {
+          "text": "Abandoned cargo is recovered from the roadside.",
+          "gold": 10
+        },
+        "scout": {
+          "text": "Scouting reveals a safer route and a small cache.",
+          "gold": 6
+        },
+        "default": {
+          "text": "The caravan moves on without incident."
+        }
+      }
+    },
+    {
+      "id": "random_swimming",
+      "name": "River Crossing",
+      "interactionId": "perilous_route",
+      "danger": "A swift river offers a shortcut with uncertain footing.",
+      "outcomes": {
+        "charge": {
+          "text": "The party powers through the current and reaches the far bank."
+        },
+        "detour": {
+          "text": "The party takes a slower but safe crossing."
+        },
+        "loot": {
+          "text": "Something valuable is recovered from the shallows.",
+          "gold": 6
+        },
+        "scout": {
+          "text": "A hidden ford and an old rune are discovered.",
+          "arcana": 1
+        },
+        "default": {
+          "text": "The party crosses without finding anything unusual."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "id": "goblins_on_the_road",
+      "name": "Goblins on the Road",
+      "description": "Goblins have been attacking caravans carrying supplies on the nearby road. You will be paid to protect the roads.",
+      "risk": "Low",
+      "challenge": "Low",
+      "chance": "Normal",
+      "xpReward": 50,
+      "rewardGold": {
+        "victory": 5,
+        "draw": 0,
+        "defeat": 0
+      },
+      "rewardArcana": {
+        "victory": 0,
+        "draw": 0,
+        "defeat": 0
+      },
+      "travelSeconds": 6,
+      "faction": "Goblins",
+      "boss": false,
+      "enemyIds": [
+        "goblin_1",
+        "goblin_2",
+        "goblin_3",
+        "goblin_archer"
+      ],
+      "knownThreats": [
+        "Goblin",
+        "Goblin",
+        "Goblin",
+        "Goblin Archer"
+      ],
+      "knownConditions": [
+        "Low battle encounter chance"
+      ],
+      "rumors": [
+        "Caravans may need aid"
+      ],
+      "journey": "A few seconds along the nearby road.",
+      "danger": "Goblins attack caravans on the road.",
+      "randomEncounters": [
+        "bandits",
+        "goblins",
+        "caravan"
+      ],
+      "balanceVersion": 33,
+      "rewardTypes": [
+        "5 Gold",
+        "0 Arcana",
+        "50 shared completion XP"
+      ],
+      "battleback": "QuestWoodland_v8",
+      "battlebackFolder": "pictures",
+      "encounterGroup": "greenskin_warband",
+      "skirmishEnemyIds": [
+        "goblin_1"
+      ],
+      "encounterType": "Greenskin Warband"
+    },
+    {
+      "id": "big_bad_wolf",
+      "name": "Big Bad Wolf",
+      "description": "It began with animals being taken in the night. Then it was men and women and children. Something bigger than a wolf is out there.",
+      "risk": "Normal",
+      "challenge": "Normal",
+      "chance": "Normal",
+      "xpReward": 50,
+      "rewardGold": {
+        "victory": 5,
+        "draw": 0,
+        "defeat": 0
+      },
+      "rewardArcana": {
+        "victory": 0,
+        "draw": 0,
+        "defeat": 0
+      },
+      "travelSeconds": 7,
+      "faction": "Beasts",
+      "boss": false,
+      "enemyIds": [
+        "dire_wolf_1",
+        "dire_wolf_2",
+        "dire_wolf_3"
+      ],
+      "knownThreats": [
+        "Dire Wolf",
+        "Dire Wolf",
+        "Dire Wolf"
+      ],
+      "knownConditions": [
+        "Normal encounter chance"
+      ],
+      "rumors": [
+        "A hidden stash and old runes lie nearby"
+      ],
+      "journey": "A short march into wolf country.",
+      "danger": "High-intelligence wolves hunt vulnerable prey.",
+      "randomEncounters": [
+        "hidden_stash",
+        "spiders",
+        "swimming",
+        "bandits",
+        "rune"
+      ],
+      "balanceVersion": 33,
+      "rewardTypes": [
+        "5 Gold",
+        "0 Arcana",
+        "50 shared completion XP"
+      ],
+      "battleback": "QuestWoodland_v8",
+      "battlebackFolder": "pictures",
+      "encounterGroup": "wild_hunt",
+      "skirmishEnemyIds": [
+        "dire_wolf_1"
+      ],
+      "encounterType": "Wild Hunt"
+    },
+    {
+      "id": "back_on_the_menu",
+      "name": "Back on the Menu",
+      "description": "An orc party has been scouted camping nearby. You must travel there and ambush them in the night before they report back to their army.",
+      "risk": "Normal",
+      "challenge": "Normal",
+      "chance": "Low",
+      "xpReward": 100,
+      "rewardGold": {
+        "victory": 12,
+        "draw": 0,
+        "defeat": 0
+      },
+      "rewardArcana": {
+        "victory": 0,
+        "draw": 0,
+        "defeat": 0
+      },
+      "travelSeconds": 8,
+      "faction": "Orcs & Goblins",
+      "boss": false,
+      "enemyIds": [
+        "orc_1",
+        "orc_2",
+        "orc_3",
+        "ogre",
+        "goblin_1"
+      ],
+      "knownThreats": [
+        "Orc",
+        "Orc",
+        "Orc",
+        "Ogre",
+        "Goblin"
+      ],
+      "knownConditions": [
+        "Ambush before they report"
+      ],
+      "rumors": [
+        "Goblins and spiders range nearby"
+      ],
+      "journey": "A brief march to the orc camp.",
+      "danger": "The Ogre deals 2 damage.",
+      "randomEncounters": [
+        "swimming",
+        "hidden_stash",
+        "rune",
+        "goblins",
+        "spiders"
+      ],
+      "balanceVersion": 33,
+      "rewardTypes": [
+        "12 Gold",
+        "0 Arcana",
+        "100 shared completion XP"
+      ],
+      "battleback": "QuestWoodland_v8",
+      "battlebackFolder": "pictures",
+      "encounterGroup": "greenskin_warband",
+      "skirmishEnemyIds": [
+        "orc_1"
+      ],
+      "encounterType": "Greenskin Warband"
+    },
+    {
+      "id": "death_is_his_name",
+      "name": "Death is his name",
+      "description": "An abandoned castle has been taken over by a necromancer. Nothing good can come of this. Rid these lands of this corruption at once.",
+      "risk": "Normal",
+      "challenge": "Normal",
+      "chance": "Normal",
+      "xpReward": 200,
+      "rewardGold": {
+        "victory": 50,
+        "draw": 0,
+        "defeat": 0
+      },
+      "rewardArcana": {
+        "victory": 1,
+        "draw": 0,
+        "defeat": 0
+      },
+      "travelSeconds": 9,
+      "faction": "Undead",
+      "boss": true,
+      "enemyIds": [
+        "skeleton_1",
+        "skeleton_2",
+        "skeleton_archer_1",
+        "skeleton_archer_2",
+        "necromancer"
+      ],
+      "knownThreats": [
+        "Skeleton",
+        "Skeleton",
+        "Skeleton Archer",
+        "Skeleton Archer",
+        "Necromancer"
+      ],
+      "knownConditions": [
+        "Death Hex may be used twice"
+      ],
+      "rumors": [
+        "A mimic may guard a hidden stash"
+      ],
+      "journey": "A short march to the abandoned castle.",
+      "danger": "Death Hex deals 3 damage.",
+      "randomEncounters": [
+        "skeletons",
+        "hidden_stash",
+        "mimic",
+        "rune"
+      ],
+      "balanceVersion": 33,
+      "rewardTypes": [
+        "50 Gold",
+        "1 Arcana",
+        "200 shared completion XP"
+      ],
+      "battleback": "QuestCrypt_v8",
+      "battlebackFolder": "pictures",
+      "encounterGroup": "restless_dead",
+      "skirmishEnemyIds": [
+        "skeleton_1"
+      ],
+      "encounterType": "Restless Dead"
+    },
+    {
+      "id": "dont_let_it_wake",
+      "name": "Dont let it wake",
+      "description": "Cultists have taken over a nearby village and are conducting a blood sacrifice. We dont know what they are trying to summon but we need to stop it.",
+      "risk": "High",
+      "challenge": "High",
+      "chance": "Normal",
+      "xpReward": 200,
+      "rewardGold": {
+        "victory": 50,
+        "draw": 0,
+        "defeat": 0
+      },
+      "rewardArcana": {
+        "victory": 1,
+        "draw": 0,
+        "defeat": 0
+      },
+      "travelSeconds": 10,
+      "faction": "Cultists",
+      "boss": true,
+      "enemyIds": [
+        "cultist_1",
+        "cultist_2",
+        "mage_cultist",
+        "summoned_demon"
+      ],
+      "knownThreats": [
+        "Cultist",
+        "Cultist",
+        "Mage Cultist",
+        "Summoned Demon"
+      ],
+      "knownConditions": [
+        "Enchantment can neutralize one member once"
+      ],
+      "rumors": [
+        "Runes remain near the village"
+      ],
+      "journey": "A brief march to the occupied village.",
+      "danger": "The Summoned Demon deals 2 damage.",
+      "randomEncounters": [
+        "hidden_stash",
+        "cultists",
+        "rune",
+        "caravan"
+      ],
+      "balanceVersion": 33,
+      "rewardTypes": [
+        "50 Gold",
+        "1 Arcana",
+        "200 shared completion XP"
+      ],
+      "battleback": "QuestWoodland_v8",
+      "battlebackFolder": "pictures",
+      "encounterGroup": "demon_cult",
+      "skirmishEnemyIds": [
+        "cultist_1"
+      ],
+      "encounterType": "Demon Cult"
+    }
+  ],
+  "globalEncounters": {
+    "opportunities": [
+      "Hidden Stash",
+      "Rune",
+      "Caravan",
+      "Swimming"
+    ],
+    "battles": [
+      "Mimic",
+      "Goblins",
+      "Cultists",
+      "Skeletons",
+      "Bandits",
+      "Spiders"
+    ]
+  },
+  "enemyGroups": {
+    "greenskin_warband": {
+      "name": "Greenskin Warband",
+      "enemyIds": [
+        "goblin_1",
+        "goblin_2",
+        "goblin_3",
+        "goblin_archer",
+        "orc_1",
+        "orc_2",
+        "orc_3",
+        "hobgoblin",
+        "ogre",
+        "troll"
+      ]
+    },
+    "demon_cult": {
+      "name": "Demon Cult",
+      "enemyIds": [
+        "cultist_1",
+        "cultist_2",
+        "mage_cultist",
+        "imp",
+        "summoned_demon",
+        "gargoyle",
+        "masked_jester"
+      ]
+    },
+    "restless_dead": {
+      "name": "Restless Dead",
+      "enemyIds": [
+        "skeleton_1",
+        "skeleton_2",
+        "skeleton_archer_1",
+        "skeleton_archer_2",
+        "necromancer",
+        "ghoul",
+        "ghost",
+        "wraith",
+        "will_o_wisp"
+      ]
+    },
+    "outlaws": {
+      "name": "Outlaws",
+      "enemyIds": [
+        "bandit_fighter_1",
+        "bandit_fighter_2",
+        "bandit_rogue",
+        "pirate",
+        "pirate_captain",
+        "ratman",
+        "mimic",
+        "dwarf_prospector"
+      ]
+    },
+    "wild_hunt": {
+      "name": "Wild Hunt",
+      "enemyIds": [
+        "wolf",
+        "dire_wolf_1",
+        "dire_wolf_2",
+        "dire_wolf_3",
+        "owlbear",
+        "giant_spider_1",
+        "giant_spider_2",
+        "treant",
+        "swamp_hag",
+        "gnoll"
+      ]
+    },
+    "cavern_brood": {
+      "name": "Cavern Brood",
+      "enemyIds": [
+        "kobold",
+        "ratman",
+        "giant_bat",
+        "slime",
+        "giant_spider_1",
+        "giant_spider_2",
+        "basilisk",
+        "dwarf_prospector",
+        "mimic"
+      ]
+    },
+    "highland_monsters": {
+      "name": "Highland Monsters",
+      "enemyIds": [
+        "harpy",
+        "gargoyle",
+        "wyrmling",
+        "hill_giant",
+        "minotaur",
+        "basilisk",
+        "giant_bat",
+        "kobold"
+      ]
+    },
+    "haunted_fen": {
+      "name": "Haunted Fen",
+      "enemyIds": [
+        "swamp_hag",
+        "slime",
+        "will_o_wisp",
+        "ghost",
+        "ghoul",
+        "giant_spider_1",
+        "giant_spider_2",
+        "ratman",
+        "treant"
+      ]
+    },
+    "corsair_coast": {
+      "name": "Corsair Coast",
+      "enemyIds": [
+        "pirate",
+        "pirate_captain",
+        "harpy",
+        "ghost",
+        "slime",
+        "wyrmling",
+        "ratman"
+      ]
+    }
+  }
+}

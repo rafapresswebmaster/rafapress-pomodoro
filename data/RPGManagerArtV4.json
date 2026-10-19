@@ -1,0 +1,2114 @@
+[
+  {
+    "key": "barbarian:male:default",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 0,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "11319bdf84667862425bb3f741b49e8e42ea55b71f826cdcb085d5d474fcca9f",
+    "walkingHash": "4f399e5af54aeb965179970b16c1f747783835c67c504a172d814b35fee606d1"
+  },
+  {
+    "key": "barbarian:male:v2:0",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 1,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "9b7980e069ab7a06c6e65a129ca3e7ea03aefd7e4cf868a7ac54c5b082a81c3d",
+    "walkingHash": "c6b81f113b5437021f0e1d290495f9fa5e4c98df9027a66bf8fed379636d3154"
+  },
+  {
+    "key": "barbarian:male:v2:1",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 2,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "47df5d8cd0ed0cdb2f272911c8aea04506941175dab92289e1f662ab9a89ddb0",
+    "walkingHash": "5644c4f570a27e9b157798d45a766d66df2a18fc445a9f7920a24062e03e97de"
+  },
+  {
+    "key": "barbarian:male:v2:2",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 3,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "bb2126bb91f3b7193ff8f67a1191d3bd09d3b47958d4cd4b048c28d9aa0ae098",
+    "walkingHash": "f0ca571e6f17fe737a279a07a2f5c069e62b2deba5c403f21287182bc6fdb4df"
+  },
+  {
+    "key": "barbarian:male:v4:4",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 4,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "c703ba4888c89d698cd8bf3ed91f896a73ce2ae3959b3cd469a5872712349cd1",
+    "walkingHash": "2360b63bb052e1416bb88d59db0ddf3560520a29e8e7e963361bda9f16a295b2"
+  },
+  {
+    "key": "barbarian:male:v4:5",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 5,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "3cbc80c9339a3d3028e11b9825a0cebc843449e055db253fa877fb7512beb0fd",
+    "walkingHash": "8f40cd098fcf6f08eff6fa1ab32b067e212d9188af85d9f2626ef4b72a78b645"
+  },
+  {
+    "key": "barbarian:male:v4:6",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 6,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "0df8f85857a54331d0145aacfdf088a5573ed66854118ad90b444a73ade53dae",
+    "walkingHash": "73394bf4eed8d37a8f76b74ae150165279ca4b7fcf9ab890ddc72442108dcc68"
+  },
+  {
+    "key": "barbarian:male:v4:7",
+    "classId": "barbarian",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 7,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_male_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_male_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "40d916a3bdfce92c2ad720102c51f6b7f08b05da4e24f19e386dd118c297c552",
+    "walkingHash": "a2f0ee4d8dd0095ebefe1915ac226454fed28febeb4f178d21174d1d17a6593c"
+  },
+  {
+    "key": "barbarian:female:default",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 8,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "37984ceb9adb66f987481c351c3644a473045a05e85117eb42e347d45fa7f41e",
+    "walkingHash": "5cdb17cf2b2e8509c75dfd133cbab90ffdbb098795febd0f7f683eb6868c603b"
+  },
+  {
+    "key": "barbarian:female:v2:0",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 9,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "09e27bc091d04c1117ca1eca685082623ae8386dcd5a663aa04deaa4d29f6a5a",
+    "walkingHash": "5ba14d6ba4210bd2c9ff09021e2aea16b61133e18905e4551125e4f7e8e3aac7"
+  },
+  {
+    "key": "barbarian:female:v2:1",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 10,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "fe0a08a4ede174d4df746daa06dc7bb1dcc7944c62ae1bdef2e0d48c5a9c0ae5",
+    "walkingHash": "7ea9d9d1b6a20fa3e15d6a6b05e1322b91c8cd1b7816fc291b3d8bcec193a486"
+  },
+  {
+    "key": "barbarian:female:v2:2",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 11,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "2424f9f076e3b3286a7257b0b2fcb494fbc71b506dc63f6ff62df80e160a23a1",
+    "walkingHash": "76754436a7b2695a5206f5b9f716d094310ed683d0439b9323f5e8f901c5e865"
+  },
+  {
+    "key": "barbarian:female:v4:4",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 12,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "ae1a2129722b7f34d6d5f8e9029b1cca5107d77d69839416b9f8dfd5b1ea6530",
+    "walkingHash": "77bb3c0e61d5dd5aaa9a4545d97ef04c3e5680444a32ce4cbbdb58cd147c040d"
+  },
+  {
+    "key": "barbarian:female:v4:5",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 13,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "f90108a7d7e1dc57d78cc171c192d490d5dee623a80b3355e325a13c3e36b3ab",
+    "walkingHash": "e956fbd379d4f7662e51a83dda162ec84073f7e56ea6bfa7e4d5c3e36bd95d2e"
+  },
+  {
+    "key": "barbarian:female:v4:6",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 14,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "e197101b5ec5a682a4236a1def5877fd4526f632ec3199fcde3cd1861f7179c5",
+    "walkingHash": "57a24237207ea6faedef7c6cd85b21362702fe4d3a49d7af23804a8613a779f4"
+  },
+  {
+    "key": "barbarian:female:v4:7",
+    "classId": "barbarian",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_barbarian_v4",
+      "index": 15,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_barbarian_female_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_barbarian_female_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "29dc30e0946327d3cde6fac791d099254be2daa07473d2365a6c7334691d582e",
+    "walkingHash": "8e0ee1507654859995dba76e0672b1b5c8b731eb58fc8fe61cf03fabdfe74926"
+  },
+  {
+    "key": "knight:male:default",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 0,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "13a9a51cda95d0c815994a2e8ee3c3e187db6fb9fb4a7239dcfdfd09c7a9ecde",
+    "walkingHash": "32e88941a1d4b900e98824436dea0fea58980a206861b5a2472ce6b15db4c8ad"
+  },
+  {
+    "key": "knight:male:v2:0",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 1,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "b272f371621c9fc0428d3264361e4a949f0f95904092f3729e07602426742511",
+    "walkingHash": "28f970df1ac1431668ca54bdb8cf5a8ee55f4c955bda606b022c18c5994fb511"
+  },
+  {
+    "key": "knight:male:v2:1",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 2,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "ecce414add6147f71eb1b15a15c28531458540d055537eb94d54f236f15d5d80",
+    "walkingHash": "bb194d060cacf988155fe7f9b51fa023b81c801f0be9737095706299f128f4d4"
+  },
+  {
+    "key": "knight:male:v2:2",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 3,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "9ba481795a3b48b896cbeb178cc11fd1519522245ee3793b48267371e83cbf4b",
+    "walkingHash": "e1a8dea1127ac2d41ddf3716bdc69e8afe911047f4df7e92fdbb6ff6851eb6c9"
+  },
+  {
+    "key": "knight:male:v4:4",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 4,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "e2fc68746397f2e0c408b569b072e8aecf4126b76644550c42bd85074d3f7681",
+    "walkingHash": "abf2335881ae81fcf27c71a1e069540939733f2ef95595fe08a0c9ccaf1a603c"
+  },
+  {
+    "key": "knight:male:v4:5",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 5,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "a23e847e1902e641c49142978c1bfabab668032f0cf5d10ddf7935b6cebff646",
+    "walkingHash": "6d004bb8dd5ab5a7aa29ca5b2776470dbf84e96f3af00f0f279c4c97082d1d10"
+  },
+  {
+    "key": "knight:male:v4:6",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 6,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "4c5b05bfe8f079ea5ec4860df4ee9370dcdb910683338434789e69a5ee7a06ac",
+    "walkingHash": "ae3252aafae678199e9b565be375a1cc4fa209d488e780b9ed3fc0b7e096f2fa"
+  },
+  {
+    "key": "knight:male:v4:7",
+    "classId": "knight",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 7,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_male_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_male_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "a3c07e0906916f6bc2a2aad656e9515415633d5050b24641dd46a6af6cb0eacb",
+    "walkingHash": "d95d197c14eb99241181fe02a231bffd7fe6ff1267dc1410ee779390f9a08c20"
+  },
+  {
+    "key": "knight:female:default",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 8,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "21dc859dbf07cf84b593a6880a56e45513682d0f9ffa42b83faee19f80824a60",
+    "walkingHash": "439d39c607892c75f86acffb6e866d9883ae982814e4a491f066d23c773de607"
+  },
+  {
+    "key": "knight:female:v2:0",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 9,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "6cbdf968e70a580dfb901a0b80ad4abdc3e846a52f6a70d60ed7c4b5bc079f71",
+    "walkingHash": "2090a9d7d412fcbe7935233cc6b58191941f16511dea6d676fd2381dac0fd280"
+  },
+  {
+    "key": "knight:female:v2:1",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 10,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "b4511ae4be805935fc6347569ae1dbbee6504f009ddbf2a107b2e48bdf56935a",
+    "walkingHash": "aa4643fb13e69b9124f7b6e7884eacd0b1f369e58cffd9a60ad25f568d94e85c"
+  },
+  {
+    "key": "knight:female:v2:2",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 11,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "a272b1dad1625d1f5925dd6f72a5eba6f571565f8381ecfe9a927897b947fbf2",
+    "walkingHash": "bfca8f66ea55e1db7283ac87120135798788496331a9563ae36c4d07c8591566"
+  },
+  {
+    "key": "knight:female:v4:4",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 12,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "15e8bf132f577aeba11eb403983ea4a94495b5361dc2553bb07cb10a489e878d",
+    "walkingHash": "7b5a92f35b1f852ab3ea2996f91f24b8a7890a3596852d30fbaf12926a7191b5"
+  },
+  {
+    "key": "knight:female:v4:5",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 13,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "15d0d6c56ae7a38e3aee1d0f7a70f3f92e247a8d9b97d11f55a5df6e3d6cbcc3",
+    "walkingHash": "536df25291735a91ee0442a4063a190158b762d59f73205de4134f9e41b0fb7a"
+  },
+  {
+    "key": "knight:female:v4:6",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 14,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "235fa467134d72b4362e16d2e9df32e244d0c3a3311fab136ffc7acf02dd4668",
+    "walkingHash": "2bc09be8c6137c3323637a9d06b2d3e29e8e26322f2e84848cd411d794c65283"
+  },
+  {
+    "key": "knight:female:v4:7",
+    "classId": "knight",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_knight_v4",
+      "index": 15,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_knight_female_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_knight_female_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "eed5ff5faa70be036cf50bb1dfe74f1a217dd44e3b98e9d53e32c59117cb8f7e",
+    "walkingHash": "1d4afbc7c47320e4a22778d0c61988cdb4bdca52eff295cb1bbad7eef570adcf"
+  },
+  {
+    "key": "cleric:male:default",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 0,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "b21dd174e226dc6e34717fe0a236f7641d32adcf524dd5cc7fd260d5a221b3cb",
+    "walkingHash": "f6922025aed22f146b4419f89f6b030bb6de89e11468fca3fdf1380c7acfcfab"
+  },
+  {
+    "key": "cleric:male:v2:0",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 1,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "4bc39862e3597e7a0d59e6ff5a4e981638856cb733f40ad6787a7d616d6be7c8",
+    "walkingHash": "ebcce009100484b3cbf55382ab5fd8970ce02bce0f8c08b12fe4780e44cbfc3f"
+  },
+  {
+    "key": "cleric:male:v2:1",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 2,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "437276a83f65bc215d3c52c54a562fce8e7be4514eba9d9c10e9ab1ae56c100d",
+    "walkingHash": "aaca43b4ea086d2052da852b2cc7119c7446f6e96f08c2f6f7d90dac2686bad3"
+  },
+  {
+    "key": "cleric:male:v2:2",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 3,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "7bafcf995e1c18b437682b31c6fc2dbbafbe348c5b6278c4287175fc074c8e3f",
+    "walkingHash": "dd4b858131a778fb8b0777b1cdaa2c078f859b8c411902f3bb12153b4bc22bc7"
+  },
+  {
+    "key": "cleric:male:v4:4",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 4,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "7b818fc6714fe8906c136409ac6b6b93816fb7e903774db56087cb198462b275",
+    "walkingHash": "9c394dea72a0a3aba2752a7fda6cb5a0fd658cf915f11e83109c231e8c1eef05"
+  },
+  {
+    "key": "cleric:male:v4:5",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 5,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "b48543dc34c4fdf1c21c2cd12feebf38028c71ecc7e48bbca91c05ad9c78da27",
+    "walkingHash": "83024f41e30ccf048b0c522a4527786c269a549f4a57119433efdef5f901247b"
+  },
+  {
+    "key": "cleric:male:v4:6",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 6,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "9b3da78a0ec38b810d7ec6ba1f7bdc22c7c4dbc42e37712765dc6e0192ecb3a9",
+    "walkingHash": "7ae9890535f7bdead5f46863b944fac0030e8c670872eb1b1c9bce94c77396ce"
+  },
+  {
+    "key": "cleric:male:v4:7",
+    "classId": "cleric",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 7,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_male_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_male_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "1f5137403c564a58aafde46d0ca5b2905687bb5e72efc1f1a70fd5cbb7a50375",
+    "walkingHash": "db155c8b9c5a1fd67f68d96f2395e5e8c617b831247f71f865de3742c995f828"
+  },
+  {
+    "key": "cleric:female:default",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 8,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "f91a785d6639b73f430b2d266c84dcb0cca15d63155c893c6af5b7cfe90d5369",
+    "walkingHash": "25843ed6500de668cd7b689464d1475dd045cfc5d269be4a7d518f324b5e5b4a"
+  },
+  {
+    "key": "cleric:female:v2:0",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 9,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "fab1bf3ea14181573a5a156828b5b10062c2a070794a696c3c148e868cb086a9",
+    "walkingHash": "77faf8781455b8c2a98140a33af8840a8ffab2743c4e24be14a6e897225a9a11"
+  },
+  {
+    "key": "cleric:female:v2:1",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 10,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "bdae76dd3fd42653afa6fe6a6cbdae0f7b61769b1338b530cc5573839142b71a",
+    "walkingHash": "75f3be135e00770c1f0eee67a12c110da0efcf4e565dcbd08c55ab736c2c95b7"
+  },
+  {
+    "key": "cleric:female:v2:2",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 11,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "54b00270a8beb0a687b68a1514adc4533e26fc7eef1249a196c44cb1fd37bf0b",
+    "walkingHash": "597bdade5ea1f3af5829627d1dc19bbc228d742f5db2d24d7feb9cb13e89a735"
+  },
+  {
+    "key": "cleric:female:v4:4",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 12,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "4dc1c6e8e7b554e3cb967ba52f8920ab9904309a640d81170421dd0c6397484b",
+    "walkingHash": "73dac73b0d8f86c3944561c951537f33d2b25ae20d62d6c31f21cfe597995acd"
+  },
+  {
+    "key": "cleric:female:v4:5",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 13,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "ec2babd7f3ac0f202cf08d9df62bd43c836e6ade261e816f608c31c588d41139",
+    "walkingHash": "2bc266d569e882d4f15a58f23f7d8bdb53f315243b461c4f128fbadc592eb803"
+  },
+  {
+    "key": "cleric:female:v4:6",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 14,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "0cf42c5b4d48d140589c536ade14fdd61154f8e402556e8a0ebef5d6feb662c4",
+    "walkingHash": "3087cd08a4853f8af06a4703f7e73e0e0ed097326416f9c57eeb39093641f5a7"
+  },
+  {
+    "key": "cleric:female:v4:7",
+    "classId": "cleric",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_cleric_v4",
+      "index": 15,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_cleric_female_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_cleric_female_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "4907cde8a339d743a4ea3ffb2c76ee51311d6a756f1159fbd2df153f21769105",
+    "walkingHash": "5443118ed359dab58a3a5b6510e925f2e8cc8576862a732c9b4589679a03eb33"
+  },
+  {
+    "key": "rogue:male:default",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 0,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "cf5cfe9253b4c28e891bb5056010e850737c9350461164265204bdb97970b80b",
+    "walkingHash": "9d83a34b774863d028b29bf2b7fe08e0f7f747d2f0db1cab5e1f151eae96a8bc"
+  },
+  {
+    "key": "rogue:male:v2:0",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 1,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "cb8b0e160bba0b0c52a1db9714321db302a017f3da57bd039bafc43452a676df",
+    "walkingHash": "286da74a73a2366f283aba3da224cfadaff8d15130825f0d996ab03427d737e8"
+  },
+  {
+    "key": "rogue:male:v2:1",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 2,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "d355fd0792e1bf0196c184c7d110bad3b3c4f97795dd68000c7438aa3ec5bd52",
+    "walkingHash": "36383002f55e458dfcc0a5b5f1c5a92b6633181da6f7dfcbc067d04dcfc272e2"
+  },
+  {
+    "key": "rogue:male:v2:2",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 3,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "660c755336abb9eaa9468b8faf0ed12bce294027ceb0547dce42b5ae316ba456",
+    "walkingHash": "ef782fca2e1bb4d5f7def081ff83627766fb9899b442752888203f121cf070e6"
+  },
+  {
+    "key": "rogue:male:v4:4",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 4,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "b7e1a980c1fa99463ff6b35e1ccf9f98ab25107c58fe5537e80230a293917e8e",
+    "walkingHash": "8669fb4627c116501b513a2c583f78edb037147b6e6856aa222e67f8f97f4db1"
+  },
+  {
+    "key": "rogue:male:v4:5",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 5,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "9341807732534e3d8a530df8368f56479f9c6d6f986ee7bec0ccbcf9a22309cd",
+    "walkingHash": "fb7d1ac388ef6fbc5b623cb36f6d9ff3763205b8bf03a8e1765fafc200849ada"
+  },
+  {
+    "key": "rogue:male:v4:6",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 6,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "497830fd67268cc74cbd67bbe8243681576cdd773d8a7d8b9d3a7aa062bc78ce",
+    "walkingHash": "351ffae29ac00b5565d61f40e59c08dc33eaf247ae312273b14f4456652a89bb"
+  },
+  {
+    "key": "rogue:male:v4:7",
+    "classId": "rogue",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 7,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_male_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_male_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "ebc9fa9e62d74c53147b108d181231dcf6240915364f47fbca8f44c3f7b78ac1",
+    "walkingHash": "90e5c8c67b204fd8f07f35ccb9774965c33cfb13b23c571000aa683aae93a2a4"
+  },
+  {
+    "key": "rogue:female:default",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 8,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "b58c8d7135d63a4da1b250b00847b0503decab535b2889b82931577456314b0a",
+    "walkingHash": "0564b80f3d4cbf76e70bcaea2295ab4ef692332bc0a015d3fd61048e915de457"
+  },
+  {
+    "key": "rogue:female:v2:0",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 9,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "187c702b27e73e2ab03a00e2b87b35f750bc8487aec194db3ae42548bbe0a079",
+    "walkingHash": "1afe39b4c625c273a6b56f782014fc37a6b56436dc470589cbc4afc481f55974"
+  },
+  {
+    "key": "rogue:female:v2:1",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 10,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "27c70da3d182e6b92097f825ed12f7f31c02365085307c223cf4bb3aa863d52f",
+    "walkingHash": "d9dda2c12a6ff911f6afaa152fb97e98e35bfec12bd33cb4701483ef4903c52c"
+  },
+  {
+    "key": "rogue:female:v2:2",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 11,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "fa5ed57f2f0cab6caf81cf8de301b8cc1e4198ff0f2a0deb88c980e85b58876f",
+    "walkingHash": "771a9a5e560a10cd3e61d161042303cde69d6bb4f6d82a589bae45bc26805e6e"
+  },
+  {
+    "key": "rogue:female:v4:4",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 12,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "6acb18b5b1a4ef00822a2926ffd62f86555088801951f2bbdb5e3c75c8d22c2b",
+    "walkingHash": "4aada6c052367da2218ffd42b87a3d10a3a3513a2a12858b6f93d48a44ff312c"
+  },
+  {
+    "key": "rogue:female:v4:5",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 13,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "d0d6973b7f77d8853530a4cb6f96694eaa010bbb014abc75633929e0e8a0a3e6",
+    "walkingHash": "b23a1fdc2d6b1faea4d546501b35c96d9228d2dd94cce04fc47ecc6e4541d48e"
+  },
+  {
+    "key": "rogue:female:v4:6",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 14,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "046d78b07186f4376fef3250351b7cf27f860f4a725608e1cece43acfd1bb2d0",
+    "walkingHash": "865a26201a2f3b5e13ee5a7117268811cb4d5f3f97bd8be7de521c248f38bc8e"
+  },
+  {
+    "key": "rogue:female:v4:7",
+    "classId": "rogue",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_rogue_v4",
+      "index": 15,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_rogue_female_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_rogue_female_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "1d3db7bbf03a29bac0731d698e867fc320b89dfb65fdd0b9a79599b519debba2",
+    "walkingHash": "4d7bc4caddd7fce12ffce0f7b2b9d4a7cec08bb536d3c5cc5b2d2b27a82f439e"
+  },
+  {
+    "key": "ranger:male:default",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 0,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "9370c9539b2c82e935487dd8532e70f633c9f4e007f77d1a710e2e3007d0afc0",
+    "walkingHash": "2b25c0bfde0748e27aa95bbff3a29d834ae4d2c48eefa06bef13e7962789a977"
+  },
+  {
+    "key": "ranger:male:v2:0",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 1,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "5cc80f6895a85c29a9fad2b6c7eccd9d9a46ac39a28c124d341bde53aeeaf06c",
+    "walkingHash": "a2db58250b3000e36f20fddad8962e0a3fe364b41456cb1e5f4487ddf590453d"
+  },
+  {
+    "key": "ranger:male:v2:1",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 2,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "44047629cc3921ccdc68a14655a4ad21f28631696a4282d92681a06cb2855d64",
+    "walkingHash": "a89a693e0c9c563b5f2d79a6fb4d5da0dac5d2e84b63a8c7114848b2d8ad1011"
+  },
+  {
+    "key": "ranger:male:v2:2",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 3,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "3315ffa7dfb7f30723411ac2b4e6209665d8ccf4e588fd5efb36463ba410382c",
+    "walkingHash": "207f297c82d0a48bc0cfbafa1d0badaced62ca436606a39c5fd7c27ea15b2a7c"
+  },
+  {
+    "key": "ranger:male:v4:4",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 4,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "2bd63b3b5a15f1b850a1f1b0797e0d1632e402529a6fde0f6e8b2c8305c97764",
+    "walkingHash": "0809f16cdecaa6caf852d3e119ebaef3aae04f10b3a63d325087140ca2831437"
+  },
+  {
+    "key": "ranger:male:v4:5",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 5,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "a6c9130345f36cde0d6ff1f4f39305b411bbb4d0f6e0cd255a477f14e3f8e0fc",
+    "walkingHash": "457d46a6335dd9d15f90208c9c10acafd8d104e7d882f53b9135be703e86dcab"
+  },
+  {
+    "key": "ranger:male:v4:6",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 6,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "144aae869df22c37637d19d881a4be474a1fa446a306fa85150903e9f4d3e4bc",
+    "walkingHash": "4354aeb0675e39bf54253c82b827a7d77ddf70c69dfca345798e3abd93f39b7a"
+  },
+  {
+    "key": "ranger:male:v4:7",
+    "classId": "ranger",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 7,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_male_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_male_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "59c90ebbd9aa140c8586b293c0613f4d75fdca1d675f4fa9c8818f26e83d44b3",
+    "walkingHash": "dbfd695f23c15ad12784973b8150475ae29612f1d5f7c6616432493e6cfb40a7"
+  },
+  {
+    "key": "ranger:female:default",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 8,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "0ce2282a7974f9bc75da74b473b804793d460db36c4179c84ec318544220ec89",
+    "walkingHash": "390643d2a0e333321f254b417292f128ed16bb9e6c58154e227c9cabbeaeb361"
+  },
+  {
+    "key": "ranger:female:v2:0",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 9,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "f5386e980dee3cdf62c461a5e98c4f8400f4780bbf6ab8e6025c44422b8e0cee",
+    "walkingHash": "43c3c78209218995d3169216ab16c1b4f31ba9a396dfa45b4e50e5a2f4fd64e1"
+  },
+  {
+    "key": "ranger:female:v2:1",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 10,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "81435ea1e64f20bbd71a3932b8db634ba300fc101be9a46882247968447d94fd",
+    "walkingHash": "a39124de39995f1cd9993993b1dd4f2caaa0d8b15474b6c80124e1fad19696d1"
+  },
+  {
+    "key": "ranger:female:v2:2",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 11,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "5a3104185d9278a918afdb252a4696799a16fa7951853a2eb05d90f247e5e649",
+    "walkingHash": "64b35442753f9f9fa853c5bf069d233dfd55b70bda6c30ad7e151bc4e625387a"
+  },
+  {
+    "key": "ranger:female:v4:4",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 12,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "0b03b2e784339d1d7208afe0ece6b986a56db3dbe2288896e56f53aad1139fa1",
+    "walkingHash": "7a2005d29eeebe8343a36c138b8557255ed1d359e7d00ca5542e79a2ee975271"
+  },
+  {
+    "key": "ranger:female:v4:5",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 13,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "4274c5353e6d6a616dae6e0c391889e140c20bd328ca103920e46aa3464491d7",
+    "walkingHash": "54cf74f9897f0745c26d0c5a20de762e9cfd8c8fd6a1cfa8ff4f34c9c2305e3f"
+  },
+  {
+    "key": "ranger:female:v4:6",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 14,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "8e478e6c957f09bcc603f87fe05539e5892c4605475415761739606290583a06",
+    "walkingHash": "761ba8a98d6aa915acdefae42db717091665f1a6066082544d9e7cd42b101291"
+  },
+  {
+    "key": "ranger:female:v4:7",
+    "classId": "ranger",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_ranger_v4",
+      "index": 15,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_ranger_female_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_ranger_female_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "fd81f43311af5452c2f8d397024f4a4d1cda12e226a9d138b3feddf09121c9c7",
+    "walkingHash": "f3047424f73d3d2bffdbbb2f3db4964c7f185b2f1c436b6022da447224129e55"
+  },
+  {
+    "key": "mage:male:default",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 0,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "b426dada7af30dfe0b7bda118ae2db0ac9742ff60ddc321a6a6b264a556f5a02",
+    "walkingHash": "99aa61132cba9e4325f58cb181feb46fdb571f2f3aede710ee1b98ea0be7baaa"
+  },
+  {
+    "key": "mage:male:v2:0",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 1,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "d3aa223aa247f640b4d8245348e4a167ba48cc7df2ab24138946825f944ab9eb",
+    "walkingHash": "26b90d00f38839df26d21a8c5987450861dc067f93d0ec412f57efe80eea8923"
+  },
+  {
+    "key": "mage:male:v2:1",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 2,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "e82c66f9a5e9b0358557f56b84adc459ebca8d9f46174191004fcc2ff76f94c5",
+    "walkingHash": "f42fdee872460065384df13ccce7bbb294edb6355a2649f3e8276e054edad430"
+  },
+  {
+    "key": "mage:male:v2:2",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 3,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "cede1adf2174dac7fd4f3273ab977e25ce1cbd3bbd0f0eaa041d18014a52db07",
+    "walkingHash": "2bf554613ff74f4b8e6bf8c7f66c9fadb219a779e8090757f91409d4908bfcd8"
+  },
+  {
+    "key": "mage:male:v4:4",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 4,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "f8f56c7acff1902da099b367e234f6ab1491888c8ca6128cd564459f5c77bbec",
+    "walkingHash": "922d54fc30075f09cdecf45657078bb01101e735f38329a31b2d65fcdd5df2ce"
+  },
+  {
+    "key": "mage:male:v4:5",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 5,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "a41aa917b2a05350d41b1ba93608a18c724c84fbfe9417e831cc0e2ad75fb416",
+    "walkingHash": "1238dab643a29dfc482d8fa247042a07298a821585ac05d48f6ad9285f58c465"
+  },
+  {
+    "key": "mage:male:v4:6",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 6,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "be49c0750f3924e9cae7c15c19f19bc5a4d195f9371b26b436cb85a62943e113",
+    "walkingHash": "67f07bfeecfaba66d80be6e3452169d15af4647d720ec980fb3251e0517f6d0e"
+  },
+  {
+    "key": "mage:male:v4:7",
+    "classId": "mage",
+    "sex": "male",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 7,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_male_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_male_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "05e22bd392ab47b6992377851f0956cad68432a1758659aa4d4107de073eed16",
+    "walkingHash": "e2ab064cf7a1597bbe6767339965a564d25053edcc656c1bda4a8ff1f9ffdb22"
+  },
+  {
+    "key": "mage:female:default",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 8,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 0
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_0_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "2758d0172b901085e16d5de4c680e37162ac8fbfca8f8e6c8b80f970b91c5827",
+    "walkingHash": "4b24316b247bd4e2b9227d60975c9a875da896e100e7881201e04184a08917a7"
+  },
+  {
+    "key": "mage:female:v2:0",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 9,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 1
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_1_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "3dbb6fe7df839bca5d8ba7fcef1ee06e016050c27b7c8e6e5f2062723b9c879c",
+    "walkingHash": "9ca697de2e4054d707e2ce57f415afbd4fffb5030b4e978f8b218120210f45bb"
+  },
+  {
+    "key": "mage:female:v2:1",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 10,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 2
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_2_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "acfaf9e9d980dc762853b24e665e291672d16e864cd9b71ecea86adf4457cbfa",
+    "walkingHash": "9768602a52158082028038dffbaee1753bf6472ab2055b5a84f5cfb4adf9ae4e"
+  },
+  {
+    "key": "mage:female:v2:2",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 11,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 3
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_3_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "f3ba74a1cedf3305d66085d22ed80a3c97d4790a8baeb2a2926a72116f87e372",
+    "walkingHash": "dcdf1c83ad53ab7582d9a27d50e7a1ba8528823deb8f1fe0ade4170c32d0b05e"
+  },
+  {
+    "key": "mage:female:v4:4",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 12,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 4
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_4_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "06439795030c6da391b6b7b96e97fd58c1fad705502e6391164fb87ff1b94c77",
+    "walkingHash": "8a07ba64f5b93346bc79455f16dfdd261abe7c3c7fb0105d6fcce5eeec4efc59"
+  },
+  {
+    "key": "mage:female:v4:5",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 13,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 5
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_5_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "32bc8c35a1c581a960cc01d76c4cc470c684ec0e2645a9f151a45ca9ed53e571",
+    "walkingHash": "05da2428cb000f1399cfd3e2a7282f26122c9a5ff52ca6496bab20406388ff5c"
+  },
+  {
+    "key": "mage:female:v4:6",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 14,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 6
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_6_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "2572f8be76fded54b86e8b1f8c15f4247ee536898d1e96f51bbd5a921d542262",
+    "walkingHash": "8cc55a98aa3018ead0cbb035387145320cfaf7b14e48a7cd86e1afe87aa33feb"
+  },
+  {
+    "key": "mage:female:v4:7",
+    "classId": "mage",
+    "sex": "female",
+    "portrait": {
+      "sheet": "RPGPortrait_mage_v4",
+      "index": 15,
+      "columns": 8,
+      "rows": 2
+    },
+    "walking": {
+      "sheet": "RPGWalk_mage_female_v4",
+      "index": 7
+    },
+    "combat": {
+      "sheet": "RPGCombat_mage_female_7_v4",
+      "columns": 9,
+      "rows": 6
+    },
+    "portraitHash": "f2e3cb2558cb93bd8669832db2c58a8582c850a84731978033d2e961cb212546",
+    "walkingHash": "dabc7fd035295a6a67f943237c8f9e09917f3f21ef9b806366fbb73ce9d9283c"
+  }
+]
