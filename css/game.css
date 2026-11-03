@@ -55,7 +55,9 @@ button:not(:disabled):focus-visible, select:not(:disabled):focus-visible, input:
 #manager-confirmation { overflow-y: auto !important; overscroll-behavior: contain; }
 @media (max-width: 700px), (max-height: 560px) {
     #manager-confirmation { width: calc(100vw - 16px) !important; max-height: calc(100vh - 16px) !important; padding: 10px !important; font-size: 14px !important; }
-    #rpg-focus-timer { transform-origin: top right !important; }
+    /* Positioning is calculated from the canvas's left edge. Keeping that same
+       origin while the canvas scales prevents the HUD from drifting right. */
+    #rpg-focus-timer { transform-origin: top left !important; }
 }
 /* Mobile-only usability layer. The game canvas keeps its canonical simulation
    coordinates; DOM controls use CSS pixels so their targets do not shrink with it. */
