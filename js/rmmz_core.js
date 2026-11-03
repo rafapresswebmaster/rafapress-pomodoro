@@ -6073,6 +6073,7 @@ TouchInput.clear = function() {
     this._screenPressed = false;
     this._pressedTime = 0;
     this._clicked = false;
+    this._lastTouchTime = this._lastTouchTime || 0;
     this._newState = this._createNewState();
     this._currentState = this._createNewState();
     this._x = 0;
@@ -6279,6 +6280,7 @@ TouchInput._setupEventHandlers = function() {
 };
 
 TouchInput._onMouseDown = function(event) {
+    if (Date.now() - this._lastTouchTime < 1000) return;
     if (event.button === 0) {
         this._onLeftButtonDown(event);
     } else if (event.button === 1) {
@@ -6321,6 +6323,7 @@ TouchInput._onMouseMove = function(event) {
 };
 
 TouchInput._onMouseUp = function(event) {
+    if (Date.now() - this._lastTouchTime < 1000) return;
     if (event.button === 0) {
         const x = Graphics.pageToCanvasX(event.pageX);
         const y = Graphics.pageToCanvasY(event.pageY);
@@ -6336,6 +6339,7 @@ TouchInput._onWheel = function(event) {
 };
 
 TouchInput._onTouchStart = function(event) {
+    this._lastTouchTime = Date.now();
     for (const touch of event.changedTouches) {
         const x = Graphics.pageToCanvasX(touch.pageX);
         const y = Graphics.pageToCanvasY(touch.pageY);
@@ -6347,15 +6351,15 @@ TouchInput._onTouchStart = function(event) {
             } else {
                 this._onTrigger(x, y);
             }
-            event.preventDefault();
         }
     }
-    if (window.cordova || window.navigator.standalone) {
+    if (window.cordova) {
         event.preventDefault();
     }
 };
 
 TouchInput._onTouchMove = function(event) {
+    this._lastTouchTime = Date.now();
     for (const touch of event.changedTouches) {
         const x = Graphics.pageToCanvasX(touch.pageX);
         const y = Graphics.pageToCanvasY(touch.pageY);
@@ -6364,6 +6368,7 @@ TouchInput._onTouchMove = function(event) {
 };
 
 TouchInput._onTouchEnd = function(event) {
+    this._lastTouchTime = Date.now();
     for (const touch of event.changedTouches) {
         const x = Graphics.pageToCanvasX(touch.pageX);
         const y = Graphics.pageToCanvasY(touch.pageY);
