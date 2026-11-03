@@ -16,6 +16,8 @@ Canvas lists continue to use RPG Maker MZ's shared `Window_Scrollable` drag impl
 
 DOM overlays use the browser's single native click path on coarse pointers; no synthetic click is generated. Creation/review, confirmations, manual tabs, quest launch, timer and camp navigation therefore react once per tap. Movement beyond 10 CSS pixels, release outside the original control or `pointercancel` cancels the candidate, so swiping a long overlay never invokes the row where the gesture began. The creation footer is sticky inside the form, keeping Back and Review/Confirm reachable above long portrait lists and phone keyboard resizing.
 
+A coarse-pointer contact gate tracks each touch or pen pointer from down through release. It permits at most one trusted browser click, one RPG Maker trigger and one RPG Maker release for that physical contact, including compatibility events that arrive after release. Noisy repeated contacts at the same location are ignored for 600 ms, while a different control remains immediately available. Touch pseudo-repeat and long-press acceleration are disabled, so holding a finger down cannot retrigger an action. Mouse and keyboard paths are unchanged.
+
 ## Supported use
 
 The supported target is a foreground mobile browser session: create or recruit a companion, configure and dispatch a quest, leave the journey visible, Recall if desired, review results and use camp screens. Existing elapsed-time, catch-up, save and once-only settlement rules are unchanged. This work does not promise locked-screen timers, offline play, background alarms, wake locks or push notifications.
