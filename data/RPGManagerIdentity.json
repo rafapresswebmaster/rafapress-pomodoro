@@ -12,7 +12,17 @@
         "Sten",
         "Bjorn",
         "Eirik",
-        "Korr"
+        "Korr",
+        "Arne",
+        "Brand",
+        "Dag",
+        "Erik",
+        "Frode",
+        "Gorm",
+        "Ivar",
+        "Leif",
+        "Njal",
+        "Vidar"
       ],
       "female": [
         "Hilda",
@@ -24,7 +34,17 @@
         "Sigrid",
         "Ylva",
         "Thora",
-        "Vala"
+        "Vala",
+        "Brynja",
+        "Dagny",
+        "Eira",
+        "Gerda",
+        "Ingrid",
+        "Liv",
+        "Nanna",
+        "Solveig",
+        "Thyra",
+        "Yrsa"
       ]
     },
     "knight": {
@@ -38,7 +58,17 @@
         "Tristan",
         "Percival",
         "Hugo",
-        "Edric"
+        "Edric",
+        "Baldwin",
+        "Conrad",
+        "Everard",
+        "Godfrey",
+        "Hadrian",
+        "Leofric",
+        "Osmund",
+        "Reynard",
+        "Theodric",
+        "Wulfric"
       ],
       "female": [
         "Ada",
@@ -47,10 +77,20 @@
         "Mira",
         "Vera",
         "Isolde",
-        "Sabine",
+        "Maelis",
         "Helena",
         "Lenora",
-        "Rosamund"
+        "Rosamund",
+        "Adela",
+        "Beatrix",
+        "Clarice",
+        "Eleanor",
+        "Giselle",
+        "Matilda",
+        "Odette",
+        "Rowena",
+        "Theodora",
+        "Yvette"
       ]
     },
     "ranger": {
@@ -64,7 +104,17 @@
         "Reed",
         "Sylvan",
         "Hawke",
-        "Fen"
+        "Fen",
+        "Ash",
+        "Briar",
+        "Cedar",
+        "Forrest",
+        "Glen",
+        "Heath",
+        "Lark",
+        "Peregrin",
+        "Thorne",
+        "Vale"
       ],
       "female": [
         "Cora",
@@ -76,7 +126,17 @@
         "Wren",
         "Sylva",
         "Hazel",
-        "Juniper"
+        "Juniper",
+        "Autumn",
+        "Clover",
+        "Dahlia",
+        "Elowen",
+        "Holly",
+        "Ivy",
+        "Laurel",
+        "Meadow",
+        "Sorrel",
+        "Willow"
       ]
     },
     "rogue": {
@@ -90,7 +150,17 @@
         "Dax",
         "Locke",
         "Rook",
-        "Jace"
+        "Jace",
+        "Blaise",
+        "Crispin",
+        "Drake",
+        "Eamon",
+        "Fox",
+        "Gray",
+        "Milo",
+        "Nico",
+        "Silas",
+        "Talon"
       ],
       "female": [
         "Nia",
@@ -102,7 +172,17 @@
         "Nyx",
         "Vesper",
         "Faye",
-        "Zinnia"
+        "Zinnia",
+        "Cleo",
+        "Delphine",
+        "Echo",
+        "Juno",
+        "Larkspur",
+        "Moxie",
+        "Petra",
+        "Quinn",
+        "Raven",
+        "Trix"
       ]
     },
     "mage": {
@@ -116,7 +196,17 @@
         "Dorian",
         "Emrys",
         "Lucan",
-        "Valen"
+        "Rufus",
+        "Aldous",
+        "Bastian",
+        "Cassian",
+        "Evander",
+        "Ilyan",
+        "Leander",
+        "Magnus",
+        "Oberon",
+        "Peregrine",
+        "Theron"
       ],
       "female": [
         "Esme",
@@ -128,8 +218,26 @@
         "Elara",
         "Celeste",
         "Iona",
-        "Opal"
+        "Opal",
+        "Aurelia",
+        "Briony",
+        "Calista",
+        "Evadne",
+        "Isadora",
+        "Melisande",
+        "Nerissa",
+        "Octavia",
+        "Seraphine",
+        "Violetta"
       ]
+    },
+    "bard": {
+      "male": ["Aurel","Bellamy","Cadrin","Delwyn","Elvio","Fennel","Gavrel","Hadrio","Ilaro","Jasken","Kelvio","Lorian","Melric","Nerio","Orlan","Perris","Quillan","Ravel","Sorell","Tavian"],
+      "female": ["Avelise","Briala","Celandine","Delphine","Elowise","Fiora","Galienne","Hestelle","Ismerie","Jessamine","Kalira","Lirielle","Melisande","Nerissa","Orielle","Pavelle","Rosaline","Sylvette","Tindra","Virelle"]
+    },
+    "druid": {
+      "male": ["Alderic","Bracken","Cairn","Durnan","Eirwyn","Fenwick","Garran","Hawthorn","Iver","Junren","Keldan","Larch","Mossen","Nettle","Oaken","Peregrin","Reedan","Sorrel","Thistlen","Yarrow"],
+      "female": ["Aderyn","Bryony","Cerelle","Dewyn","Eirlys","Fernelle","Glenna","Hazelwen","Ivrine","Junelle","Kestrelle","Luneth","Mosswyn","Nerwen","Olwenna","Petrelle","Rowenna","Sedge","Tanselle","Willowyn"]
     },
     "cleric": {
       "male": [
@@ -142,7 +250,17 @@
         "Pascal",
         "Simeon",
         "Amos",
-        "Oren"
+        "Oren",
+        "Abel",
+        "Clement",
+        "Elias",
+        "Jerome",
+        "Matthias",
+        "Nathaniel",
+        "Raphael",
+        "Solomon",
+        "Theophil",
+        "Zachary"
       ],
       "female": [
         "Cassia",
@@ -154,7 +272,17 @@
         "Seren",
         "Mercy",
         "Verity",
-        "Clara"
+        "Clara",
+        "Agnes",
+        "Beatrice",
+        "Charity",
+        "Dorothea",
+        "Esther",
+        "Judith",
+        "Magdalena",
+        "Prudence",
+        "Ruth",
+        "Temperance"
       ]
     }
   }

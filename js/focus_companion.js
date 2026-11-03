@@ -21,12 +21,17 @@
         const area=screens.slice().sort((a,b)=>distance(a)-distance(b))[0];
         return {x:Math.round(Math.max(area.x,Math.min(p.x,area.x+Math.max(0,area.width-width)))),y:Math.round(Math.max(area.y,Math.min(p.y,area.y+Math.max(0,area.height-height))))};
     }
-    const dialMarkup='<svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="33" fill="#fff0c8" stroke="#cdb474" stroke-width="4"/><circle class="focus-ring" cx="40" cy="40" r="28" fill="none" stroke="#386baf" stroke-width="8" stroke-linecap="round" transform="rotate(-90 40 40)"/><path d="M40 9v7M71 40h-7M40 71v-7M9 40h7" stroke="#634c30" stroke-width="2"/><circle cx="40" cy="40" r="4" fill="#c58b38"/></svg>';
+    const dialMarkup='<svg class="focus-hourglass" viewBox="0 0 80 80" aria-hidden="true"><defs><linearGradient id="hgGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a8"/><stop offset=".45" stop-color="#d79a2d"/><stop offset="1" stop-color="#7d4a13"/></linearGradient><linearGradient id="hgSand" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9ee9ff"/><stop offset="1" stop-color="#397dcc"/></linearGradient><clipPath id="hgUpper"><path d="M28 23h24c-1 10-6 13-12 17-6-4-11-7-12-17Z"/></clipPath><clipPath id="hgLower"><path d="M28 57h24c-1-10-6-13-12-17-6 4-11 7-12 17Z"/></clipPath></defs><circle cx="40" cy="40" r="36" fill="#172b55" stroke="url(#hgGold)" stroke-width="3"/><circle class="focus-ring" cx="40" cy="40" r="32" fill="none" stroke="#75c8ff" stroke-width="3" stroke-linecap="round" transform="rotate(-90 40 40)"/><path d="M22 17h36v6H22Zm0 40h36v6H22Z" fill="url(#hgGold)" stroke="#fff0a8" stroke-width="1"/><path d="M27 23c1 9 5 13 11 17-6 4-10 8-11 17M53 23c-1 9-5 13-11 17 6 4 10 8 11 17" fill="#e9f8ff18" stroke="#f7e5b0" stroke-width="2"/><rect class="hourglass-upper-sand" x="27" y="23" width="26" height="17" fill="url(#hgSand)" clip-path="url(#hgUpper)"/><rect class="hourglass-lower-sand" x="27" y="57" width="26" height="0" fill="url(#hgSand)" clip-path="url(#hgLower)"/><path class="hourglass-stream" d="M40 39v13" stroke="#8ee5ff" stroke-width="2" stroke-linecap="round"><animate attributeName="stroke-dasharray" values="1 3;3 1;1 3" dur=".8s" repeatCount="indefinite"/></path><circle cx="40" cy="53" r="1.4" fill="#bff3ff"><animate attributeName="cy" values="44;54" dur=".7s" repeatCount="indefinite"/></circle><path d="M19 16h42M19 64h42" stroke="#6c4319" stroke-width="2" stroke-linecap="round"/></svg>';
     function renderReadout(element,view){
         element.querySelector('.focus-time').textContent=view.digital;
         element.querySelector('.focus-state').textContent=view.label;
-        element.querySelector('.focus-ring').setAttribute('stroke-dasharray',`${Math.max(0,Math.min(1,view.fraction))*176} 176`);
-        element.dataset.phase=view.phase;element.dataset.remaining=String(view.remainingMs);element.dataset.session=view.sessionId||"";
+        const fraction=Math.max(0,Math.min(1,view.fraction));
+        element.querySelector('.focus-ring').setAttribute('stroke-dasharray',`${fraction*201} 201`);
+        const upper=element.querySelector('.hourglass-upper-sand'),lower=element.querySelector('.hourglass-lower-sand'),stream=element.querySelector('.hourglass-stream');
+        if(upper){upper.setAttribute('y',String(23+17*(1-fraction)));upper.setAttribute('height',String(17*fraction));}
+        if(lower){lower.setAttribute('y',String(57-17*(1-fraction)));lower.setAttribute('height',String(17*(1-fraction)));}
+        if(stream)stream.style.opacity=view.active&&fraction>0?"1":"0";
+        element.dataset.phase=view.phase;element.dataset.remaining=String(view.remainingMs);element.dataset.session=view.sessionId||"";element.classList.toggle("focus-low-time",view.active&&view.remainingMs>0&&view.remainingMs<=60000);
     }
     class FloatingTimer {
         constructor(nwApi,doc=globalThis.document){this.nw=nwApi;this.doc=doc;this.widget=null;this.pending=false;this.generation=0;this.state=null;this.view=null;this.fallback=null;this.lastPayload=null;this.displayHandler=()=>this.reposition();this.screenReady=false;}

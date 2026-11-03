@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "filtering": "nearest-neighbor",
+  "assets": [
+    {"logicalIds":"portrait.bard.{male|female}.{00..07}.living","path":"img/faces/RPGPortrait_bard_v5.png","width":1152,"height":384,"columns":8,"rows":2,"effectiveCellPixels":"36x48","upscale":"4x nearest-neighbor","identitySource":"matching Bard walking sheet index","transparent":true,"provenance":"reference-guided generation from project v5 portrait and walking art"},
+    {"logicalIds":"portrait.druid.{male|female}.{00..07}.living","path":"img/faces/RPGPortrait_druid_v5.png","width":1152,"height":384,"columns":8,"rows":2,"effectiveCellPixels":"36x48","upscale":"4x nearest-neighbor","typeBTransparentTopMargin":24,"identitySource":"matching Druid walking sheet index","transparent":true,"provenance":"reference-guided generation from project v5 portrait and walking art"},
+    {"logicalIds":"actor.bard.male.{00..07}.living","path":"img/characters/RPGWalk_bard_male_v5.png","width":768,"height":512,"columns":12,"rows":8,"identityGrid":"4x2","framesPerIdentity":"3x4","transparent":true,"pivot":"bottom-center","provenance":"generated from project v5 walking reference"},
+    {"logicalIds":"actor.bard.female.{00..07}.living","path":"img/characters/RPGWalk_bard_female_v5.png","width":768,"height":512,"columns":12,"rows":8,"identityGrid":"4x2","framesPerIdentity":"3x4","transparent":true,"pivot":"bottom-center","provenance":"generated from project v5 walking reference"},
+    {"logicalIds":"actor.druid.male.{00..07}.living","path":"img/characters/RPGWalk_druid_male_v5.png","width":768,"height":512,"columns":12,"rows":8,"identityGrid":"4x2","framesPerIdentity":"3x4","transparent":true,"pivot":"bottom-center","provenance":"generated from project v5 walking reference"},
+    {"logicalIds":"actor.druid.female.{00..07}.living","path":"img/characters/RPGWalk_druid_female_v5.png","width":768,"height":512,"columns":12,"rows":8,"identityGrid":"4x2","framesPerIdentity":"3x4","transparent":true,"pivot":"bottom-center","provenance":"generated from project v5 walking reference"}
+  ]
+}
