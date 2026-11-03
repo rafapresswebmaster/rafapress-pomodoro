@@ -289,23 +289,24 @@
     window.$dataRPGManagerQuests = null;
     window.$dataRPGManagerManual = null;
     window.$dataRPGManagerManualImages = null;
-    function loadOptionalManagerData(name,file){const xhr=new XMLHttpRequest();xhr.open("GET",`data/${file}`);xhr.overrideMimeType("application/json");xhr.onload=()=>{try{window[name]=xhr.status<400?JSON.parse(xhr.responseText):{};}catch(error){window[name]={};}};xhr.onerror=()=>window[name]={};xhr.send();}
+    const managerDataSource = file => typeof assetVersion !== "undefined" ? `${file}?v=${encodeURIComponent(assetVersion)}` : file;
+    function loadOptionalManagerData(name,file){const xhr=new XMLHttpRequest();xhr.open("GET",`data/${managerDataSource(file)}`);xhr.overrideMimeType("application/json");xhr.onload=()=>{try{window[name]=xhr.status<400?JSON.parse(xhr.responseText):{};}catch(error){window[name]={};}};xhr.onerror=()=>window[name]={};xhr.send();}
     window.$dataRPGManagerStage3 = null;window.$dataRPGManagerIdentity=null;window.$dataRPGManagerNarratives=null;
     window.$dataRPGManagerPresentation = null;
     window.$dataRPGManagerUI = null;
     const loadDatabase = DataManager.loadDatabase;
     DataManager.loadDatabase = function() {
         loadDatabase.call(this);
-        this.loadDataFile("$dataRPGManagerRoster", "RPGManagerRoster.json");
-        this.loadDataFile("$dataRPGManagerEnemyTeam", "RPGManagerEnemyTeam.json");
-        this.loadDataFile("$dataRPGManagerDialogue", "RPGManagerDialogue.json");
-        this.loadDataFile("$dataRPGManagerClasses", "RPGManagerClasses.json");
-        this.loadDataFile("$dataRPGManagerQuests", "RPGManagerQuests.json");
-        this.loadDataFile("$dataRPGManagerStage3", "RPGManagerStage3.json");this.loadDataFile("$dataRPGManagerIdentity","RPGManagerIdentity.json");loadOptionalManagerData("$dataRPGManagerNarratives","RPGManagerNarratives.json");
-        this.loadDataFile("$dataRPGManagerPresentation", "RPGManagerPresentation.json");
-        this.loadDataFile("$dataRPGManagerUI", "RPGManagerUI.json");
-        this.loadDataFile("$dataRPGManagerManual", "RPGManagerManual.json");
-        this.loadDataFile("$dataRPGManagerManualImages", "RPGManagerManualImages.json");
+        this.loadDataFile("$dataRPGManagerRoster", managerDataSource("RPGManagerRoster.json"));
+        this.loadDataFile("$dataRPGManagerEnemyTeam", managerDataSource("RPGManagerEnemyTeam.json"));
+        this.loadDataFile("$dataRPGManagerDialogue", managerDataSource("RPGManagerDialogue.json"));
+        this.loadDataFile("$dataRPGManagerClasses", managerDataSource("RPGManagerClasses.json"));
+        this.loadDataFile("$dataRPGManagerQuests", managerDataSource("RPGManagerQuests.json"));
+        this.loadDataFile("$dataRPGManagerStage3", managerDataSource("RPGManagerStage3.json"));this.loadDataFile("$dataRPGManagerIdentity",managerDataSource("RPGManagerIdentity.json"));loadOptionalManagerData("$dataRPGManagerNarratives","RPGManagerNarratives.json");
+        this.loadDataFile("$dataRPGManagerPresentation", managerDataSource("RPGManagerPresentation.json"));
+        this.loadDataFile("$dataRPGManagerUI", managerDataSource("RPGManagerUI.json"));
+        this.loadDataFile("$dataRPGManagerManual", managerDataSource("RPGManagerManual.json"));
+        this.loadDataFile("$dataRPGManagerManualImages", managerDataSource("RPGManagerManualImages.json"));
     };
     const isDatabaseLoaded = DataManager.isDatabaseLoaded;
     DataManager.isDatabaseLoaded = function() {
