@@ -23,15 +23,19 @@
     const conditionOf = npc => !npc || npc.condition === CONDITIONS.DEAD || npc.alive === false ? CONDITIONS.DEAD :
         npc.condition === CONDITIONS.WOUNDED || npc.injury === "Wounded" ? CONDITIONS.WOUNDED : CONDITIONS.HEALTHY;
     const living = npc => !!npc && conditionOf(npc) !== CONDITIONS.DEAD && npc.alive === true && npc.health > 0;
-    const LEVEL_CAP = 8;
-    const LEGACY_CLASSES = Object.freeze({"vanguard": "knight", "guardian": "knight", "bruiser": "barbarian", "brawler": "barbarian", "duelist": "rogue", "skirmisher": "rogue", "support": "cleric", "bard": "cleric", "mystic": "mage", "worker": "ranger"});
+    const LEVEL_CAP = 5;
+    const LEGACY_CLASSES = Object.freeze({"vanguard": "knight", "guardian": "knight", "bruiser": "barbarian", "brawler": "barbarian", "duelist": "rogue", "skirmisher": "rogue", "support": "cleric", "mystic": "mage", "worker": "ranger"});
     function classStats(npc) {
         const c=catalogue.classes.find(c=>c.id===(LEGACY_CLASSES[npc.classId]||npc.classId))||catalogue.classes[0];
-        const stats={...c.combat,speed:({barbarian:7,knight:5,cleric:6,mage:8,ranger:11,rogue:13}[c.id]||8)};
-        for(let level=2;level<=Math.min(8,npc.level||1);level++)for(const [key,value] of Object.entries(c.growth[level]||{}))stats[key]=(stats[key]||0)+value;
+        const stats={...c.combat,speed:({barbarian:7,knight:5,cleric:6,mage:8,ranger:11,rogue:13,bard:9,druid:7}[c.id]||8)};
+        for(let level=2;level<=Math.min(5,npc.level||1);level++)for(const [key,value] of Object.entries(c.growth[level]||{}))stats[key]=(stats[key]||0)+value;
         stats.speed+=Math.floor(((npc.level||1)-1)/2);return stats;
     }
-    const xpRequired = npc => npc.level >= LEVEL_CAP ? 0 : ({1:60,2:140,3:260,4:420,5:640,6:900,7:1200}[npc.level]||0);
+    // At one XP per completed minute, plus a modest completion bonus, this
+    // 245-XP curve reaches level five in about four hours of ordinary play.
+    const XP_THRESHOLDS = Object.freeze({1:20,2:45,3:75,4:105});
+    const XP_DIFFICULTY_MULTIPLIERS = Object.freeze({1:1,2:1.1,3:1.2,4:1.35,5:1.5});
+    const xpRequired = npc => npc.level >= LEVEL_CAP ? 0 : (XP_THRESHOLDS[npc.level]||0);
     const pairKey = (a, b) => [a, b].sort().join("|");
     const SEXES = ["male", "female"];
     const RACES = ["human", "dwarf", "elf", "half elf", "half orc", "halfling", "gnome"];
@@ -97,7 +101,7 @@
     }
     const QUEST_HISTORY_LIMIT = 50;
     const SETTLED_TRIP_LIMIT = 50;
-    const SCHEMA_VERSION = 31;
+    const SCHEMA_VERSION = 32;
     const DM_CONFIG = () => globalThis.RPGManagerBattle?.CHECK_CONFIG || {
         deathSaveDC: 11, woundedContinuationHpRatio: 0.2,
         contractDanger: { cautious: { interruptionMin: -1, interruptionMax: -1, reward: 0.8, arcana: 0.8 }, standard: { interruptionMin: 0, interruptionMax: 0, reward: 1, arcana: 1 }, perilous: { interruptionMin: 1, interruptionMax: 1, reward: 1.3, arcana: 1.35 } }
@@ -160,12 +164,13 @@
         const text = (v, label, max = 80) => {
             if (typeof v !== "string" || !v.trim() || v.length > max || /[\x00-\x1f]/.test(v)) fail(`${label}: use 1-${max} printable characters.`);
         };
-        if (!Array.isArray(data?.classes) || data.classes.length !== 6) fail("exactly six approved classes required. ");
+        const approvedClasses=["barbarian","knight","ranger","rogue","mage","cleric","bard","druid"];
+        if (!Array.isArray(data?.classes) || data.classes.length !== approvedClasses.length) fail(`exactly ${approvedClasses.length} approved classes required.`);
         const ids = new Set(), moves = new Set();
-        if(!["barbarian","knight","ranger","rogue","mage","cleric"].every(id=>data.classes.some(c=>c.id===id)))fail("Use the six approved class IDs.");
+        if(!approvedClasses.every(id=>data.classes.some(c=>c.id===id)))fail("Use every approved class ID.");
         for (const c of data.classes) {
             for(const key of ["hp","armor","ward","dodge","crit"]){const value=c.combat?.[key];if(!Number.isInteger(value)||value<0||value>(["dodge","crit"].includes(key)?75:99)||key==="hp"&&value<1)fail(`${c.id}: invalid combat baseline ${key}.`);}
-            for(const [level,gains] of Object.entries(c.growth||{})){if(!["2","3","4","5","6","7","8"].includes(level))fail("Growth levels must be 2-8.");for(const [key,value] of Object.entries(gains))if(!["hp","armor","ward","dodge","crit","armorRecovery","damage"].includes(key)||!Number.isInteger(value)||value<0)fail("Invalid cumulative class gain.");}
+            for(const [level,gains] of Object.entries(c.growth||{})){if(!["2","3","4","5","6","7","8"].includes(level))fail("Growth levels must be 2-8.");for(const [key,value] of Object.entries(gains))if(!["hp","armor","ward","dodge","crit","armorRecovery","damage","speed"].includes(key)||!Number.isInteger(value)||value<0)fail("Invalid cumulative class gain.");}
             if (!c || typeof c.id !== "string" || !/^[a-z][a-z0-9_]*$/.test(c.id) || ids.has(c.id)) fail(`duplicate/invalid class ID ${c?.id}.`);
             ids.add(c.id); text(c.name, c.id + " name", 24); text(c.purpose, c.id + " purpose");
             for (const k of STATS) if (!Number.isInteger(c.stats?.[k]) || c.stats[k] < (k === "defense" ? 0 : 1) || c.stats[k] > 999) fail(`${c.id}.${k}: invalid stat (maximum 999).`);
@@ -256,17 +261,21 @@
     }
     function walkingPortrait(classId,sex,key=null){
         const keys=["default","v2:0","v2:1","v2:2","v4:4","v4:5","v4:6","v4:7"],suffix=String(key||"").replace(`${classId}:${sex}:`,"");
-        return {sheet:`RPGWalk_${classId}_${sex}_v5`,index:Math.max(0,keys.indexOf(suffix))};
+        const ext=["bard","druid"].includes(classId)?".png":"";
+        return {sheet:`RPGWalk_${classId}_${sex}_v5${ext}`,index:Math.max(0,keys.indexOf(suffix))};
     }
     function portraitOptions(classId,sex){
         if(!ALL_CLASSES.includes(classId)||!SEXES.includes(sex))return [];
-        return ["default","v2:0","v2:1","v2:2","v4:4","v4:5","v4:6","v4:7"].map((key,i)=>({key:`${classId}:${sex}:${key}`,sheet:`RPGPortrait_${classId}_v5`,index:i+(sex==="female"?8:0),columns:8,rows:2}));
+        const ext=["bard","druid"].includes(classId)?".png":"";
+        return ["default","v2:0","v2:1","v2:2","v4:4","v4:5","v4:6","v4:7"].map((key,i)=>({key:`${classId}:${sex}:${key}`,sheet:`RPGPortrait_${classId}_v5${ext}`,index:i+(sex==="female"?8:0),columns:8,rows:2}));
     }
     function normalizePortrait(npc){
         if(!npc)return;if(npc.reanimated){normalizeUndead(npc);return;}
         const options=portraitOptions(npc.classId,npc.sex);if(!options.length)return;
         const chosen=options.find(p=>p.key===(npc.portraitKey||npc.portrait?.key))||options[0];
-        npc.portraitKey=chosen.key;npc.portrait={...chosen};npc.combatPortrait={sheet:`RPGCombat_${npc.classId}_${npc.sex}_${chosen.index%8}_v5`};npc.walkPortrait=walkingPortrait(npc.classId,npc.sex,npc.portraitKey);npc.fallenPortrait={sheet:`RPGFallen_${npc.classId}_${npc.sex}_v5`,index:chosen.index%8,columns:4,rows:2};
+        npc.portraitKey=chosen.key;npc.portrait={...chosen};npc.walkPortrait=walkingPortrait(npc.classId,npc.sex,npc.portraitKey);
+        if(["bard","druid"].includes(npc.classId)){npc.combatPortrait={};delete npc.fallenPortrait;}
+        else{npc.combatPortrait={sheet:`RPGCombat_${npc.classId}_${npc.sex}_${chosen.index%8}_v5`};npc.fallenPortrait={sheet:`RPGFallen_${npc.classId}_${npc.sex}_v5`,index:chosen.index%8,columns:4,rows:2};}
     }
     function recruitCreated(state,draft){
         const error=nameError(state,draft?.name),option=portraitOptions(draft?.classId,draft?.sex).find(p=>p.key===draft.portraitKey);
@@ -390,7 +399,7 @@
     BASE_SHOP.life_giving_amulet={name:"Life-Giving Amulet",price:30,type:"armor",slot:"accessory",armor:0,hp:1,description:"Universal accessory. +1 maximum HP; does not heal on equip."};
     BASE_SHOP.mage_hat={name:"Mage Hat",price:24,type:"armor",slot:"head",armor:1,description:"Mage headgear. +1 Armor."};
     BASE_SHOP.cleric_circlet={name:"Cleric Circlet",price:24,type:"armor",slot:"head",armor:1,description:"Cleric headgear. +1 Armor."};
-    const ALL_CLASSES=Object.freeze(["barbarian","knight","ranger","rogue","mage","cleric"]);
+    const ALL_CLASSES=Object.freeze(["barbarian","knight","ranger","rogue","mage","cleric","bard","druid"]);
     const restrictions={chainmail:["knight","cleric"],plate_armor:["knight"],iron_helmet:["barbarian","knight"],great_helm:["knight"],iron_shield:["knight","cleric"],mage_robes:["mage","cleric"],ward_focus:["mage","cleric"],mage_hat:["mage"],cleric_circlet:["cleric"],blade:["barbarian","knight","ranger","rogue"]};
     const additions=[
  ["owl_hood","Owl Hood","head",0,0,1,0,2],["duelist_hat","Duelist Hat","head",0,0,0,3,2],["sage_crown","Sage Crown","head",0,0,2,0,0],["scout_band","Scout Band","head",0,1,0,2,0],["war_mask","War Mask","head",1,0,0,0,3],
@@ -471,14 +480,14 @@
             if(c.hitsRemaining===0){for(const slot of EQUIPMENT_SLOTS)if(npc.equipmentSlots[slot]===id)npc.equipmentSlots[slot]=null;delete npc.equipmentCondition[id];continue;}
             npc.equipmentStats[id]={name:item.name,armor:item.armor||0,ward:item.ward||0,dodge:item.dodge||0,crit:item.crit||0,durability:item.durability};
         }
-        const stats=classStats(npc);for(const id of Object.values(npc.equipmentSlots||{}).filter(id=>!npc.equipmentCondition?.[id]?.broken))for(const key of ["ward","dodge","crit"])stats[key]=(stats[key]||0)+(SHOP[id]?.[key]||0);npc.speed=(stats.speed||({barbarian:7,knight:5,cleric:6,mage:8,ranger:11,rogue:13}[npc.classId]));const hp=stats.hp;
+        const stats=classStats(npc);for(const id of Object.values(npc.equipmentSlots||{}).filter(id=>!npc.equipmentCondition?.[id]?.broken))for(const key of ["ward","dodge","crit"])stats[key]=(stats[key]||0)+(SHOP[id]?.[key]||0);npc.speed=(stats.speed||({barbarian:7,knight:5,cleric:6,mage:8,ranger:11,rogue:13,bard:9,druid:7}[npc.classId]));const hp=stats.hp;
         npc.maxHealth=hp; npc.health=conditionOf(npc)===CONDITIONS.DEAD?0:Math.max(1,Math.min(hp,Math.ceil(Number(npc.health)||hp)));
         npc.damage=stats.damage||1;npc.armorRecovery=stats.armorRecovery||0;
         npc.classArmorMax=stats.armor;
         npc.classArmor=Math.max(0,Math.min(stats.armor,Number.isFinite(npc.classArmor)?Math.floor(npc.classArmor):stats.armor));
         npc.critChance=stats.crit/100; npc.dodgeChance=Math.max(0,stats.dodge/100-(npc.lastingInjuries||0)*.02);
-        npc.signatureUnlocks=npc.level>=6?2:npc.level>=3?1:0;
-        npc.preferredPosition=["mage","cleric","ranger"].includes(npc.classId)?"back":"front";
+        npc.signatureUnlocks=["bard","druid"].includes(npc.classId)?1:npc.level>=6?2:npc.level>=3?1:0;
+        npc.preferredPosition=["mage","cleric","ranger","bard","druid"].includes(npc.classId)?"back":"front";
         npc.dodgeTier=["ranger","rogue"].includes(npc.classId)?"high":"low";
         npc.innateWardMax=stats.ward;
         npc.innateWard=Math.max(0,Math.min(stats.ward,Number.isFinite(npc.innateWard)?Math.floor(npc.innateWard):stats.ward));
@@ -510,13 +519,15 @@
                 ...npc, condition: CONDITIONS.HEALTHY, equipment: null, xp: 0, injury: null, injuryExpeditionId: null, quests: 0, deathQuest: null,
                 career: emptyCareer(), passiveTrait: { ...npc.passiveTrait, rank: 1 }
             })).map((npc, index) => { migrateIdentity(npc, true, random); ensureLife(npc, true); npc.history.joinedOrder = index + 1; return npc; }),
-            gold: 100, arcana: 0, equipmentStock: Object.fromEntries(gearIds().map(id => [id, 0])),
+            gold: 100, arcana: 0, magicalArtifacts: 0, equipmentStock: Object.fromEntries(gearIds().map(id => [id, 0])),
             teams: { A: [], B: [] }, activeTeam: "A", teamBUnlocked: false,
-            orders: { A: "exploration", B: "exploration" }, ritualsUnlocked: {}, ritualUnlockVersion:1, ritualEffects:{}, campJobs: {}, campJobElapsed: {},
+            orders: { A: "exploration", B: "exploration" }, ritualsUnlocked: {}, ritualUnlockVersion:2, ritualEffects:{}, campJobs: {}, campJobElapsed: {},
             teamIds: [], supplies: { potion: 6 }, bonds: {},
             questCount: 0, nextTripId: 1, activeQuest: null, trips: { A: null, B: null }, settledTrips: {},
             recruit: null, lastReport: null, questHistory: [], selectedQuestId: "restless_crypt",
-            expeditionReplay: null, contractDanger: "standard", presentationSpeed: "standard", currentThreads: [], campaignStats: { questsCompleted: 0, victories: 0, failures: 0, deaths: 0, bossesDefeated: 0, goldRecovered: 0, arcanaDiscovered: 0, legendaryItems: 0 }
+            expeditionReplay: null, contractDanger: "standard", presentationSpeed: "standard", currentThreads: [],
+            preparation:{durationMinutes:25,difficulty:1,partyIds:[],upgradeIds:[],seed:null,themeId:null},
+            campaignStats: { questsCompleted: 0, victories: 0, failures: 0, deaths: 0, bossesDefeated: 0, goldRecovered: 0, arcanaDiscovered: 0, legendaryItems: 0 }
         };
         ensureCampJobs(state);
         ensureRecruit(state, Date.now());
@@ -536,6 +547,12 @@
         }
 
         const loadedVersion=Math.max(0,Math.floor(Number(state.version)||0));
+        if(loadedVersion&&loadedVersion<32&&!state.overhaulMigrationAcknowledged){
+            state.recoveryNotice="This save predates the five-level procedural expedition overhaul. Equipment was retired; start a fresh campaign for the intended balance.";
+            state.overhaulMigrationAcknowledged=true;
+        }
+        state.preparation ||= {durationMinutes:25,difficulty:1,partyIds:[],upgradeIds:[],seed:null,themeId:null};
+        state.version=SCHEMA_VERSION;
         if(loadedVersion<30){
             const seen=new Set(),rescale=record=>{
                 if(!record||typeof record!=="object"||seen.has(record))return;seen.add(record);
@@ -553,11 +570,9 @@
         state.supplies ||= { potion: 6 }; state.bonds = {}; state.ritualsUnlocked ||= {}; state.campJobElapsed ||= {};
         state.questCount ??= 0; state.activeQuest ??= null; state.lastReport ??= null;
         state.questHistory = Array.isArray(state.questHistory) ? state.questHistory.slice(-QUEST_HISTORY_LIMIT) : [];
-        if(state.ritualUnlockVersion!==1){state.ritualsUnlocked={};state.ritualUnlockVersion=1;}
-        // Reconcile earned unlocks on every load, including saves already migrated.
-        for(const report of [...state.questHistory,state.lastReport,...Object.values(state.settledTrips||{})]){
-            if(!report)continue;
-            grantRitualUnlocks(state,{questId:report.questDefinitionId,abandoned:report.abandoned,autoRetreat:report.autoRetreat,endKind:report.endKind,recalled:report.recalled},(report.outcome||report.status)==="victory");
+        if(state.ritualUnlockVersion!==2){
+            state.ritualsUnlocked=Object.fromEntries(Object.entries(state.ritualsUnlocked||{}).filter(([id,value])=>value===true&&RITUALS[id]));
+            state.ritualUnlockVersion=2;
         }
         state.ritualEffects||={};
         state.contractDanger = CONTRACT_DANGERS.includes(state.contractDanger) ? state.contractDanger : "standard";
@@ -585,6 +600,7 @@
         state.selectedQuestId = typeof state.selectedQuestId === "string" ? state.selectedQuestId : "restless_crypt";
         if (!Number.isSafeInteger(state.gold) || state.gold < 0) state.gold = 100;
         if (!Number.isSafeInteger(state.arcana) || state.arcana < 0) state.arcana = 0;
+        if (!Number.isSafeInteger(state.magicalArtifacts) || state.magicalArtifacts < 0) state.magicalArtifacts = 0;
         if(loadedVersion<22){
             for(const trip of Object.values(state.trips||{}).filter(Boolean)){trip.returnNarrated=trip.phase==="return";if(trip.battleSnapshot)(trip.recordedBattleStages||={})[String(trip.stageIndex)]=true;for(const npc of trip.preparedTeam||[]){migrateIdentity(npc);ensureLife(npc);npc.armor=npc.classArmor+equipmentArmor(npc);npc.maxArmor=npc.classArmorMax+equipmentArmorMax(npc);}}
             for(const npc of state.recruit?.candidates||[]){migrateIdentity(npc);ensureLife(npc);}
@@ -821,7 +837,8 @@
             const hadInjury = !!npc.injury && !expeditionInjury, stats = combatById[npc.id], career = ensureCareer(npc);
             const authoritativeDead = !!quest.expeditionDeaths?.[npc.id] || conditionOf(npc) === CONDITIONS.DEAD;
             if (!authoritativeDead) npc.health = fighter.health;
-            if(!npc.reanimated)npc.xp += xp.perMember+(xp.total>0&&quest.xpRemainderIds?.includes(npc.id)?1:0);
+            const participationXp=quest.realtime?Math.max(0,Math.floor(Number(quest.participationXpById?.[npc.id])||0)):0;
+            if(!npc.reanimated&&!authoritativeDead)npc.xp += participationXp+(snapshot.status==="victory"?(xp.perMember+(xp.total>0&&quest.xpRemainderIds?.includes(npc.id)?1:0)):0);
             npc.quests++;
             career.questsParticipated++; career.questsCompleted++;
             if (snapshot.status === "victory") career.victories++;
@@ -872,13 +889,14 @@
         state.nextTripId = Math.max(state.nextTripId || 1, state.questCount + 1);
         state.activeQuest = null;
         const ritualReward=ritualRewards(quest,(quest.rewardGold || { victory: 60, defeat: 15, draw: 20 })[snapshot.status] + Math.max(0, Math.floor(Number(quest.pendingRewards?.gold) || 0)),((quest.rewardArcana || { victory: 0, defeat: 0, draw: 0 })[snapshot.status] || 0) + Math.max(0, Math.floor(Number(quest.pendingRewards?.arcana) || 0)));
-        const rewardGold=ritualReward.gold,rewardArcana=ritualReward.arcana;
+        const rewardGold=ritualReward.gold,rewardArcana=ritualReward.arcana,rewardMagicalArtifacts=magicalArtifactDrop(quest,snapshot.status);
         const ritualUnlocks=grantRitualUnlocks(state,quest,snapshot.status==="victory");
         if(ritualUnlocks.length)lines.push(`Rituals unlocked: ${ritualUnlocks.join(", ")}.`);
         returnUnusedRituals(state,quest);
         state.gold += rewardGold;
         state.arcana = Math.max(0, Math.floor(Number(state.arcana) || 0)) + rewardArcana;
-        lines.splice(1, 0, `Rewards: +${rewardGold} Gold, +${rewardArcana} Arcana. Treasury: ${state.gold} Gold / ${state.arcana} Arcana.`);
+        state.magicalArtifacts = Math.max(0, Math.floor(Number(state.magicalArtifacts) || 0)) + rewardMagicalArtifacts;
+        lines.splice(1, 0, `Rewards: +${rewardGold} Gold, +${rewardArcana} Arcana${rewardMagicalArtifacts?`, +${rewardMagicalArtifacts} Magical Artifact${rewardMagicalArtifacts===1?"":"s"}`:""}. Treasury: ${state.gold} Gold / ${state.arcana} Arcana / ${state.magicalArtifacts} Artifacts.`);
         if (quest.abandoned) lines.splice(1, 0, "Expedition abandoned: authored partial-failure rewards applied.");
         if (quest.chronicle?.length) lines.push("EXPEDITION CHRONICLE", ...quest.chronicle.map(entry => `- ${entry.text || entry}`));
         const memberStats = quest.team.map(start => {
@@ -899,7 +917,7 @@
             completedAt: validNow(completedAt), outcome: snapshot.status, participantIds: quest.team.map(member => member.id),
             participants: quest.team.map(member => ({ id: member.id, name: state.roster.find(n => n.id === member.id).name })),
             deaths, injuries, memberStats, bondChanges, badgesAwarded, highlight,
-            rewardGold, rewardArcana, ritualUnlocks, abandoned: !!quest.abandoned, chronicle: copy(quest.chronicle || []),
+            rewardGold, rewardArcana, rewardMagicalArtifacts, ritualUnlocks, abandoned: !!quest.abandoned, chronicle: copy(quest.chronicle || []),
             goldGathered: rewardGold, enemiesDefeated: memberStats.reduce((sum, member) => sum + member.kills, 0),
             bossesDefeated: snapshot.status === "victory" && quest.boss ? 1 : 0, legendaryItems: copy(quest.legendaryItems || []),
             xpPerMember: xp.perMember, xpTotal: xp.total, partySize: xp.partySize, lines };
@@ -923,19 +941,21 @@
         return copy(state.lastReport);
     }
 
-    function dispatchQuest(state, teamKey, questDefinition, xpRules = DEFAULT_XP_RULES, now = Date.now(), orderId = null, contractDanger = null, leaderId = null, durationMinutes = null, partyIds = null) {
+    function dispatchQuest(state, teamKey, questDefinition, xpRules = DEFAULT_XP_RULES, now = Date.now(), orderId = null, contractDanger = null, leaderId = null, durationMinutes = null, partyIds = null, upgradeIds = []) {
         now = validNow(now);
         if (teamKey !== "A") throw new Error("Only one fixed expedition party is available.");
         const ids = Array.isArray(partyIds)?partyIds.slice():(state.teamIds||[]).slice();
         const error = teamError(state, ids, teamKey);
         if (error) throw new Error(error);
+        const upgradeError=upgradeSelectionError(state,upgradeIds);if(upgradeError)throw new Error(upgradeError);
+        const upgradeCost=upgradeIds.reduce((sum,id)=>sum+EXPEDITION_UPGRADES[id].cost,0);
         state.teams.A = ids.slice(); state.teamIds = ids.slice(); state.activeTeam = "A";
         state.presentationSpeed = "standard";
         const questError = questUnavailableReason(state, questDefinition?.id, teamKey);
         if (questError) throw new Error(questError);
         if (questDefinition?.unlock?.questsCompleted > (state.campaignStats?.questsCompleted || 0)) throw new Error(questDefinition.unlock.label || "This quest is locked.");
         if (!questDefinition || !Number.isSafeInteger(questDefinition.travelSeconds) || questDefinition.travelSeconds < 1) throw new Error("Invalid quest travel duration.");
-        const preparedTeam = prepareTeam(state, ids, teamKey);
+        const preparedTeam = applyExpeditionUpgrades(prepareTeam(state, ids, teamKey),upgradeIds);
         const selectedLeader = preparedTeam.find(member => member.id === leaderId) || preparedTeam[0];
         if (!selectedLeader) throw new Error("Choose a valid Party Leader before dispatch.");
         const leaderRecord=state.roster.find(n=>n.id===selectedLeader.id);if(leaderRecord){ensureLife(leaderRecord);leaderRecord.history.leaderships++;leaderRecord.history.events.push({type:"partyLeadership"});evaluateEarnedTraits(leaderRecord);}
@@ -968,12 +988,13 @@
             outboundElapsedMs: 0, pendingRewards: { gold: 0, arcana: 0 },
             chronicle: [], expeditionInjuries: {}, expeditionDeaths: {}, deathSaveResults: {}, contractDanger: dangerId, abandoned: false,
             skulls:dangerRating(questDefinition),encounterTier:encounterTier(questDefinition),intendedLevel:dangerRating(questDefinition),difficulty:authoredDifficulty(questDefinition),risk:questDefinition.risk, bonusRewards: copy(questDefinition.bonusRewards || {}), rewardTypes: copy(questDefinition.rewardTypes || []), combatMode: questDefinition.combatMode || "required",
-            objectiveReturnText:questDefinition.objectiveReturnText, minorEncounterEnemyIds: copy((questDefinition.randomEncounters || []).map(id => RANDOM_BATTLE_ENEMIES[id]).find(Boolean) || [])
+            objectiveReturnText:questDefinition.objectiveReturnText, minorEncounterEnemyIds: copy((questDefinition.randomEncounters || []).map(id => RANDOM_BATTLE_ENEMIES[id]).find(Boolean) || []),
+            upgradeIds:copy(upgradeIds),upgradeCost,generatorVersion:questDefinition.generatorVersion||0,generatorSeed:questDefinition.generatorSeed||null,generatedPlan:copy(questDefinition),ritualObjectiveId:questDefinition.ritualObjectiveId||null,ritualQuestId:questDefinition.ritualQuestId||null,participationXp:questDefinition.participationXp||0,victoryBonusXp:questDefinition.victoryBonusXp||0
         };
         durationMinutes=questDefinition.durationMinutes??durationMinutes;
         if(durationMinutes!==null){
             durationMinutes=questDefinition.durationMinutes??durationMinutes;const minutes=EXPEDITION_DURATIONS.includes(Number(durationMinutes))?Number(durationMinutes):Math.min(30,Math.max(1,Math.floor(Number(durationMinutes)||1)));
-            Object.assign(state.trips[teamKey],{realtime:true,returnNarrated:false,durationMinutes:minutes,totalDurationMs:minutes*60000,remainingMs:minutes*60000,elapsedMs:0,sessionLastAt:null,lastProgressAtMs:null,phase:"travel",latestEvent:"The expedition departed camp.",timeline:["Departed camp."],milestones:{travelEvent:false,encounter:false,battle:false,return:false},lockedPlan:{questId:questDefinition.id,teamIds:ids.slice(),leaderId:selectedLeader.id,order:order.id,contractDanger:dangerId,difficulty:authoredDifficulty(questDefinition),durationMinutes:minutes}});
+            Object.assign(state.trips[teamKey],{realtime:true,returnNarrated:false,durationMinutes:minutes,totalDurationMs:minutes*60000,remainingMs:minutes*60000,elapsedMs:0,sessionLastAt:null,lastProgressAtMs:null,phase:"travel",latestEvent:"The expedition departed camp.",timeline:["Departed camp."],milestones:{travelEvent:false,encounter:false,battle:false,return:false},lockedPlan:{questId:questDefinition.id,seed:questDefinition.generatorSeed||null,generatorVersion:questDefinition.generatorVersion||0,balanceVersion:questDefinition.balanceVersion||0,planFingerprint:questDefinition.planFingerprint||null,teamIds:ids.slice(),upgradeIds:copy(upgradeIds),leaderId:selectedLeader.id,order:order.id,contractDanger:dangerId,difficulty:authoredDifficulty(questDefinition),durationMinutes:minutes}});
         }
         activateRituals(state,state.trips[teamKey]);
         if(state.campTimer?.active){state.campTimer.active=false;state.campTimer.pendingBell=false;state.campTimer.stopReason="quest_started";}
@@ -986,6 +1007,8 @@
             trip.presentationQueue=[{schema:1,kind:"travel",importance:"TRAVEL",holdMs:3500,color:"#c8dfbc",text:"Your companions set out together.",...expeditionLine(trip,"travel")}];
         }
         if (stages.length&&!state.trips[teamKey].realtime) enterStage(state.trips[teamKey], 0, now);
+        state.gold-=upgradeCost;
+        state.preparation={durationMinutes:questDefinition.durationMinutes,difficulty:dangerRating(questDefinition),partyIds:ids.slice(),upgradeIds:copy(upgradeIds),seed:questDefinition.generatorSeed||null,themeId:questDefinition.sourceIngredients?.theme||null};
         state.lastClockAt = now;
         delete state.recoveryNotice;
         return id;
@@ -1230,7 +1253,7 @@
         const battles=(trip.chronicle||[]).filter(e=>e.type==="battle");
         return {endKind:trip.endKind||(trip.autoRetreat?"auto_retreat":"complete"),autoRetreat:!!trip.autoRetreat,retreatReason:trip.retreatReason||null,
             plannedDurationMs:trip.totalDurationMs||trip.plannedDurationMs||0,sessionElapsedMs:trip.sessionElapsedMs??trip.elapsedMs??0,
-            skulls:dangerRating(trip),difficulty:authoredDifficulty(trip),gearLosses:copy(trip.gearLosses||[]),enemyXpEarned:trip.enemyXpEarned||0,battleCount:battles.length,skirmishCount:battles.filter(e=>e.skirmish||/skirmish/i.test(e.text||"")).length,
+            skulls:dangerRating(trip),difficulty:authoredDifficulty(trip),upgradeIds:copy(trip.upgradeIds||[]),upgradeCost:trip.upgradeCost||0,enemyXpEarned:trip.enemyXpEarned||0,battleCount:battles.length,skirmishCount:battles.filter(e=>e.skirmish||/skirmish/i.test(e.text||"")).length,
             objectiveState:trip.autoRetreat?"Returned before the objective":trip.endKind==="early"?"Session ended early":trip.battleSnapshot?.status==="defeat"?"Expedition concluded":"Objective reached"};
     }
     function retreatAssessment(trip,stage,content){
@@ -1269,9 +1292,9 @@
         for (const name of report.bonusRewards || []) items.set(name, (items.get(name) || 0) + 1);
         const result={
             questId: report.questId, questName: report.questName, outcome: report.outcome || report.status,
-            ...Object.fromEntries(["endKind","autoRetreat","retreatReason","plannedDurationMs","sessionElapsedMs","skulls","gearLosses","enemyXpEarned","difficulty","battleCount","skirmishCount","objectiveState"].map(k=>[k,report[k]])),
-            recalled: !!report.recalled, rewardGold: report.rewardGold || 0, rewardArcana: report.rewardArcana || 0,
-            totalGold: state.gold, totalArcana: state.arcana, vacancies: vacantSlots(state).length,
+            ...Object.fromEntries(["endKind","autoRetreat","retreatReason","plannedDurationMs","sessionElapsedMs","skulls","upgradeIds","upgradeCost","enemyXpEarned","difficulty","battleCount","skirmishCount","objectiveState"].map(k=>[k,report[k]])),
+            recalled: !!report.recalled, rewardGold: report.rewardGold || 0, rewardArcana: report.rewardArcana || 0, rewardMagicalArtifacts: report.rewardMagicalArtifacts || 0,
+            totalGold: state.gold, totalArcana: state.arcana, totalMagicalArtifacts: state.magicalArtifacts || 0, vacancies: vacantSlots(state).length,
             items: [...items].map(([name, quantity]) => ({ name, quantity,itemId:Object.keys(SHOP).find(id=>SHOP[id].name===name)||null })),
             enemiesDefeated:(report.memberStats||[]).reduce((sum,n)=>sum+n.kills,0), xpPerMember:report.xp?.perMember||report.xpPerMember||0,
             members: ids.map(id => {
@@ -1304,6 +1327,7 @@
         }
         const trip = tripForTeam(state, teamKey);
         if (!trip || trip.id !== tripId || trip.phase !== "return" || now < trip.deadlineMs) return null;
+        trip.participationXpById=Object.fromEntries((trip.team||[]).map(n=>[n.id,participationXpFor(trip,trip.elapsedMs,true)]));
         if (!trip.battleSnapshot) {
             trip.battleSnapshot = { status: trip.abandoned ? "defeat" : "draw", fighters: trip.preparedTeam.map(member => ({ ...copy(member), side: "player", alive: member.health > 0 })) };
         } else {
@@ -1871,7 +1895,7 @@
         return{ok:true,completed:false,delta,phase:trip.phase,remainingMs:trip.remainingMs};
     }
     const POWER_TRACKS={"barbarian": ["Heavy melee", "Fury: after damage, next hit +1, once/battle", "Cleave: 50% chance of 1 splash damage, once/battle", "Cleave chance 60%", "Bloodied Resolve: first low-HP hit reduced by 1", "Quake: 1 damage to each enemy; 15% stagger, once/battle", "Wounded Resolve: low-HP protection refreshes once", "Relentless: one 1-damage follow-up after a takedown/battle"], "knight": ["Sturdy melee", "Guard: first hit reduced by 1", "Shield Bash: 20% stagger, once/battle", "Guard also protects second hit", "Interpose: 15% chance to protect vulnerable ally", "Rallying Guard: party next hit -1, once/battle", "Interpose chance 20%", "Last Stand: one party protection at under 30% HP/battle"], "cleric": ["Kind Word: heal 1 or ward 1, once/battle", "Kind Word once/battle", "Blessing: ally next hit -1 and Ward 1, once/battle", "Prefer exposed ally when none wounded", "Renewal: heal 1 and ensure 1 Ward", "Sanctuary: party next hit -1 and Ward 1, once/battle", "Blessing grants 2 Ward; Sanctuary once/battle", "Grace: party guard and Ward when ally at 1 HP, once/battle"], "rogue": ["Fast single-target attack", "Quickstep: +3 percentage points Dodge", "Feint: 20% chance to suppress 1 Armor for 2 target turns", "Quickstep +4pp and Feint chance 25%", "Venom Edge: 15% chance of 1 nonlethal damage on next target turn", "Smoke Bomb: 15% chance per enemy to weaken next attack, once/battle", "Feint chance 30%; Venom 20%", "Opportunist: +1 against debuffed target, once/action"], "ranger": ["Ranged attack", "Steady Aim: +2 percentage points crit chance", "Pinning Shot: next enemy attack -1, once/battle", "Pinning Shot: 20% chance to stagger", "Mark Target: 20% chance, next allied hit +1", "Volley: 1 damage per enemy, once/battle", "Mark chance 25%; Volley prefers live enemies", "Hunters Opening: mark transfers once/battle at 50% reliability"], "mage": ["Fragile ranged magic", "Focus: 10% chance to weaken next enemy attack", "Fireburst and Ward Spark: damage enemies or protect an exposed ally", "Focus chance 15%", "Ward Spark: ward 1 on exposed ally, once/battle", "Frost Ring: 1 damage/enemy, 15% weaken next attack, once/battle", "Frost Ring weaken chance 20%", "Arcane Echo: 15% chance of 1 on different enemy; no chains"]};
-    function powerTrack(npc){const labels={hp:"HP",armor:"Armor",ward:"Ward",dodge:"% Dodge",crit:"% Critical",armorRecovery:"Armor restored before battle",damage:"attack damage",speed:"Speed"},c=classFor(npc);return (POWER_TRACKS[npc.classId]||[]).slice(0,Math.min(8,npc.level||1)).map((text,i)=>{const gains=i?c.growth?.[i+1]:c.combat;return `L${i+1} ${text}. ${Object.entries(gains||{}).map(([k,v])=>`${i?"+":""}${v} ${labels[k]||k}`).join(" / ")}`;});}
+    function powerTrack(npc){const labels={hp:"HP",armor:"Armor",ward:"Ward",dodge:"% Dodge",crit:"% Critical",armorRecovery:"Armor restored before battle",damage:"attack damage",speed:"Speed"},extra={bard:["Encore — Renews one non-Bard ally's spent primary special.","Ward growth.","Resonance — Encore ensures 1 temporary Ward.","Ward growth.","Resonance — Encore ensures 2 temporary Ward."],druid:["Entangling Bloom — Delays an enemy and heals the most injured ally for 1 HP.","Ward growth.","Sheltering Leaves — A Bloom heal ensures 1 temporary Ward.","Ward growth.","Sheltering Leaves — A Bloom heal ensures 2 temporary Ward."]},c=classFor(npc);return (extra[npc.classId]||POWER_TRACKS[npc.classId]||[]).slice(0,Math.min(8,npc.level||1)).map((text,i)=>{const gains=i?c.growth?.[i+1]:c.combat;return `L${i+1} ${text} ${Object.entries(gains||{}).map(([k,v])=>`${i?"+":""}${v} ${labels[k]||k}`).join(" / ")}`;});}
     function repairGear(state,npcId,itemId){
         const npc=state.roster.find(n=>n.id===npcId),item=SHOP[itemId];
         if(!npc||isUnavailable(state,npcId)||!Object.values(npc.equipmentSlots||{}).includes(itemId)||!npc.equipmentCondition[itemId]?.broken)return{ok:false,message:"Choose broken equipped gear on a companion at camp."};
@@ -2034,28 +2058,28 @@
     ]);
     const EARNED_TRAITS = [];
     const RITUALS = Object.freeze({
-        protection_ward:{name:"Warding",castCost:80,level:4,questId:"ritual_warding",questName:"The Unbroken Seal",description:"One shared party Ward absorbs one entire hit, then disappears. An unused Ward remains until hit."},
-        healing_ritual:{name:"Healing",castCost:120,level:5,target:"living",questId:"ritual_healing",questName:"The Saint's Broken Hands",description:"Remove one permanent wound and its injury stack from a chosen adventurer. Does not restore HP."},
-        greed_prayer:{name:"Greed Prayer",castCost:100,level:4,questId:"ritual_greed",questName:"The Gilded Tithe",description:"Pay 100 Arcana to receive 100 coins immediately."},
-        reanimate:{name:"Reanimate",castCost:450,level:8,target:"fallen",questId:"ritual_reanimate",questName:"Names Beneath the Ossuary",description:"Return a fallen companion as their skeleton appearance, with their living health, armor and ward. Heals normally; cannot level. Death permanently bars further reanimation."},
-        fortunes_favor:{name:"Fortune's Favor",castCost:40,level:2,questId:"ritual_fortune",questName:"The Beggar's Silver Bell",description:"Next quest: +25% coin reward, rounded down. No Ward requirement or penalty."},
-        battle_hymn:{name:"Battle Hymn",castCost:60,level:3,questId:"ritual_hymn",questName:"The Choir of Rust",description:"Party attacks deal +1 damage throughout the next battle. Remains pending until a battle occurs."},
-        veil_of_mercy:{name:"Veil of Mercy",castCost:260,level:7,questId:"ritual_mercy",questName:"The Thread Before the Axe",description:"Once next quest, the first adventurer who would die instead survives at 1 HP with a serious permanent wound."},
-        last_rites:{name:"Last Rites",castCost:650,level:8,target:"fallen",questId:"ritual_last_rites",questName:"The Ferryman's Last Passenger",description:"Return one fallen adventurer to camp at 1 HP with an injury. Preserves their living or skeleton identity."},
-        arcane_rebate:{name:"Arcane Rebate",castCost:25,level:2,questId:"ritual_rebate",questName:"The Empty Treasury",description:"After the next expedition with a battle victory: +50 Arcana and no coins, including gathered coins. Carries through combatless trips."},
-        oath_of_vanguard:{name:"Oath of the Vanguard",castCost:60,level:3,target:"living",questId:"ritual_vanguard",questName:"The Shieldmaker's Promise",description:"One chosen adventurer gains +1 Armor for the next quest. No targeting or party-protection effect."},
-        familiars_vigil:{name:"Familiar's Vigil",castCost:110,level:5,questId:"ritual_familiar",questName:"The Lantern Without a Keeper",description:"Next quest, a summoned spirit absorbs the first hit aimed at any party member, then disappears."},
-        first_strike:{name:"First Strike",castCost:60,level:3,questId:"ritual_first_strike",questName:"The Dawn Duel",description:"The party's first attack in its next quest deals +2 damage. A missed attack still uses the blessing."},
-        quickening_prayer:{name:"Quickening Prayer",castCost:180,level:6,questId:"ritual_quickening",questName:"The Twice-Struck Chime",description:"Next quest: each adventurer has a seeded 25% chance per battle to use their special twice. Never more than two uses; no extra ability unlocks."},
-        arcane_offering:{name:"Arcane Offering",castCost:30,level:2,questId:"ritual_offering",questName:"Embers for the Altar",description:"After the next quest, receive 12 bonus Arcana per actual battle victory. No bonus for waves or combatless trips."}
+        protection_ward:{name:"Warding",unlockCost:2,castCost:80,level:4,description:"One shared party Ward absorbs one entire hit, then disappears. An unused Ward remains until hit."},
+        healing_ritual:{name:"Healing",unlockCost:3,castCost:120,level:5,target:"living",description:"Remove one permanent wound and its injury stack from a chosen adventurer. Does not restore HP."},
+        greed_prayer:{name:"Greed Prayer",unlockCost:2,castCost:100,level:4,description:"Pay 100 Arcana to receive 100 coins immediately."},
+        reanimate:{name:"Reanimate",unlockCost:6,castCost:450,level:5,target:"fallen",description:"Return a fallen companion as their skeleton appearance, with their living health, armor and ward. Heals normally; cannot level. Death permanently bars further reanimation."},
+        fortunes_favor:{name:"Fortune's Favor",unlockCost:1,castCost:40,level:2,description:"Next quest: +25% coin reward, rounded down. No Ward requirement or penalty."},
+        battle_hymn:{name:"Battle Hymn",unlockCost:2,castCost:60,level:3,description:"Party attacks deal +1 damage throughout the next battle. Remains pending until a battle occurs."},
+        veil_of_mercy:{name:"Veil of Mercy",unlockCost:5,castCost:260,level:5,description:"Once next quest, the first adventurer who would die instead survives at 1 HP with a serious permanent wound."},
+        last_rites:{name:"Last Rites",unlockCost:8,castCost:650,level:5,target:"fallen",description:"Return one fallen adventurer at 1 HP with an injury. Reanimation exhaustion remains permanent."},
+        arcane_rebate:{name:"Arcane Offering",unlockCost:1,castCost:25,level:2,description:"After the next completed quest, receive 20 bonus Arcana. Gold rewards are unchanged."},
+        oath_of_vanguard:{name:"Oath of the Vanguard",unlockCost:2,castCost:60,level:3,target:"living",description:"One chosen adventurer gains +1 Armor for the next quest. No targeting or party-protection effect."},
+        familiars_vigil:{name:"Familiar's Vigil",unlockCost:4,castCost:110,level:5,description:"Next quest, a summoned spirit absorbs the first hit aimed at any party member, then disappears."},
+        first_strike:{name:"First Strike",unlockCost:2,castCost:60,level:3,description:"The party's first attack in its next quest deals +2 damage. A missed attack still uses the blessing."},
+        quickening_prayer:{name:"Quickening Prayer",unlockCost:4,castCost:180,level:5,description:"Next quest: each adventurer has a seeded 25% chance per battle to use their special twice. Never more than two uses; no extra ability unlocks."}
     });
-    function ritualUnlock(state,id){const r=RITUALS[id];return{ok:false,message:r?`Beat ${r.questName} (Level ${r.level}) to unlock ${r.name}. Unlocks cannot be purchased.`:"Unknown ritual."};}
-    function grantRitualUnlocks(state,quest,won){
-        if(!won||quest.abandoned||quest.autoRetreat||quest.recalled||quest.endKind==="early")return [];
-        state.ritualsUnlocked||={};const gained=[];
-        for(const [id,r] of Object.entries(RITUALS))if(r.questId===quest.questId&&!state.ritualsUnlocked[id]){state.ritualsUnlocked[id]=true;gained.push(r.name);}
-        return gained;
+    function ritualUnlock(state,id){
+        const r=RITUALS[id];if(!r)return{ok:false,message:"Unknown ritual."};
+        state.ritualsUnlocked||={};if(state.ritualsUnlocked[id])return{ok:false,message:`${r.name} is already unlocked.`};
+        if(Object.values(state.trips||{}).some(Boolean)||state.activeQuest)return{ok:false,message:"Rituals cannot be unlocked while an expedition is active."};
+        const artifacts=Math.max(0,Math.floor(Number(state.magicalArtifacts)||0));if(artifacts<r.unlockCost)return{ok:false,message:`${r.name} requires ${r.unlockCost} Magical Artifact${r.unlockCost===1?"":"s"}; treasury has ${artifacts}.`};
+        state.magicalArtifacts=artifacts-r.unlockCost;state.ritualsUnlocked[id]=true;return{ok:true,message:`${r.name} unlocked permanently for ${r.unlockCost} Magical Artifact${r.unlockCost===1?"":"s"}. Activation costs ${r.castCost} Arcana.`};
     }
+    function grantRitualUnlocks(){return [];}
     function activateRituals(state,trip){
         trip.ritualEffects=copy(state.ritualEffects||{});state.ritualEffects={};trip.ritualBattlesWon=0;
         const team=trip.preparedTeam||[];
@@ -2067,13 +2091,18 @@
     function ritualRewards(trip,gold,arcana){
         const effects=trip.ritualEffects||{};
         if(effects.fortunes_favor)gold=Math.floor(gold*1.25);
-        if(effects.arcane_rebate&&(trip.ritualBattlesWon||0)>0){gold=0;arcana+=50;}
-        if(effects.arcane_offering)arcana+=12*(trip.ritualBattlesWon||0);
+        if(effects.arcane_rebate)arcana+=20;
         return{gold,arcana};
+    }
+    function magicalArtifactDrop(quest,status){
+        if(status!=="victory"||quest.abandoned||quest.autoRetreat||quest.recalled||quest.endKind==="early"||Number(quest.durationMinutes)<=1)return 0;
+        const duration=Math.max(1,Math.min(45,Number(quest.durationMinutes)||1)),difficulty=Math.max(1,Math.min(5,Number(quest.skulls||quest.encounterTier||quest.intendedLevel)||1));
+        const chance=Math.min(.28,.04+duration/300+(difficulty-1)*.025),seed=String(quest.id||quest.questId||quest.generatorSeed||quest.questName||"quest");
+        let found=0;for(let slot=0;slot<5;slot++)if(stableUnit(`magical-artifact-roll-${slot}:${seed}`)<chance)found++;
+        return found;
     }
     function returnUnusedRituals(state,trip){
         state.ritualEffects||={};for(const id of ["protection_ward","battle_hymn"])if(trip.ritualEffects?.[id])state.ritualEffects[id]=true;
-        if(trip.ritualEffects?.arcane_rebate&&!(trip.ritualBattlesWon>0))state.ritualEffects.arcane_rebate=true;
     }
     function seriousWound(npc){
         ensureLife(npc);npc.lastingInjuries++;const wound=WOUND_DEFINITIONS.find(w=>!npc.permanentWounds.includes(w.id));if(wound)addPermanentWound(npc,wound.id);
@@ -2088,8 +2117,10 @@
     }
     function returnSlottedEquipment(state,npc){normalizeInventory(state);ensureLife(npc);for(const slot of EQUIPMENT_SLOTS)returnEquipmentSlot(state,npc,slot);return state.equipmentStock;}
     const availableEquipmentArmor=(state,id)=>state.equipmentConditionStock?.[id]?.[0]??SHOP[id]?.armor??0;
-    function equipmentArmor(npc) { ensureLife(npc); return EQUIPMENT_SLOTS.reduce((sum,slot)=>{ const id=npc.equipmentSlots[slot], max=SHOP[id]?.armor||0; const current=npc.equipmentCondition[id]?.current; return sum + (npc.equipmentCondition[id]?.broken?0:Math.max(0, Math.min(max, Number.isFinite(current)?current:max))); },0); }
-    function equipmentArmorMax(npc) { ensureLife(npc); return EQUIPMENT_SLOTS.reduce((sum,slot)=>sum+(npc.equipmentCondition[npc.equipmentSlots[slot]]?.broken?0:SHOP[npc.equipmentSlots[slot]]?.armor||0),0); }
+    // Equipment is inert compatibility data in schema 32. New gameplay uses
+    // class defenses and expedition-only upgrades exclusively.
+    function equipmentArmor(npc) { ensureLife(npc); return 0; }
+    function equipmentArmorMax(npc) { ensureLife(npc); return 0; }
     function equipSlot(state,id,item,slot) { normalizeInventory(state);const npc=state.roster.find(n=>n.id===id); if(!living(npc)) return {ok:false,message:"Choose a living adventurer."};if(isUnavailable(state,id))return{ok:false,message:"Equipment is locked while this adventurer is away."}; if(!EQUIPMENT_SLOTS.includes(slot)||item&&SHOP[item]?.slot!==slot) return {ok:false,message:"That item does not fit this slot."}; ensureLife(npc); const old=npc.equipmentSlots[slot];if(old===(item||null))return{ok:false,message:item?`${SHOP[item].name} is already equipped.`:"This slot is already empty."}; if(item&&!compatible(npc,item))return{ok:false,message:`${SHOP[item]?.name||"Item"} cannot be used by ${npc.role}.`}; if(item&&!(state.equipmentStock[item]>0)) return {ok:false,message:"Buy this item first."}; const oldWardMax=npc.innateWardMax;if(old)returnEquipmentSlot(state,npc,slot); if(item){const queue=state.equipmentConditionStock[item];const current=queue.length?queue.shift():SHOP[item].armor;state.equipmentStock[item]--;npc.equipmentCondition[item]={current,max:SHOP[item].armor,hitsRemaining:state.equipmentDurabilityStock[item]?.shift()??SHOP[item].durability,maxHits:SHOP[item].durability,broken:!!state.equipmentBrokenStock[item]?.shift()};} npc.equipmentSlots[slot]=item||null; ensureLife(npc);npc.innateWard=Math.min(npc.innateWardMax,npc.innateWard+Math.max(0,npc.innateWardMax-oldWardMax)); return {ok:true,message:`${displayName(npc)}: ${item?SHOP[item].name:"slot cleared"}.${old?` ${SHOP[old]?.name||old} returned to stock.`:""}`}; }
     function resolveDamage(target,amount){ensureLife(target); let remaining=Math.max(0,Math.floor(Number(amount)||0)),wardLoss=0,armorLoss=0,hpLoss=0; const spend=(key)=>{const used=Math.min(target[key]||0,remaining);target[key]-=used;remaining-=used;wardLoss+=used;}; spend("temporaryWard"); spend("innateWard"); const classUsed=Math.min(target.classArmor,remaining);target.classArmor-=classUsed;remaining-=classUsed;armorLoss+=classUsed; for(const slot of EQUIPMENT_SLOTS){if(!remaining)break;const id=target.equipmentSlots[slot],max=SHOP[id]?.armor||0;if(!max)continue;const c=target.equipmentCondition[id]||={current:max,max};const used=Math.min(c.current,remaining);c.current-=used;remaining-=used;armorLoss+=used;} hpLoss=Math.min(target.health,remaining);target.health-=hpLoss;return{amount,wardLoss,armorLoss,hpLoss,remaining,targetHealth:target.health,ward:(target.temporaryWard||0)+(target.innateWard||0),armor:target.classArmor+equipmentArmor(target)};}
     function restoreBetweenBattles(npc){ensureLife(npc);npc.innateWard=Math.min(npc.innateWardMax,npc.innateWard+2);return npc;}
@@ -2099,7 +2130,7 @@
         return state.campJobs;
     }
     function campJobFor(state,id){ensureCampJobs(state);return state.campJobs[id]||null;}
-    function bestCampJob(npc){return ["mage","cleric"].includes(LEGACY_CLASSES[npc.classId]||npc.classId)?"study":"work";}
+    function bestCampJob(npc){return ["mage","cleric","druid"].includes(LEGACY_CLASSES[npc.classId]||npc.classId)?"study":"work";}
     function campJobYield(npc,job){return job==="idle"?0:job===bestCampJob(npc)?2:1;}
     function autoAssignCampJobs(state){
         ensureCampJobs(state);const assignments=[];
@@ -2124,6 +2155,9 @@
         npc.role=classLabel(npc);
         const sex=npc.sex==="female"?"female":"male",options=portraitOptions(npc.classId,sex);
         const chosen=options.find(p=>p.key===(npc.portraitKey||npc.portrait?.key))||options[0];
+        if(["bard","druid"].includes(npc.classId)){
+            const variant=(chosen?.index||0)%8;npc.portraitKey=chosen?.key||npc.portraitKey;npc.portrait={...chosen};npc.walkPortrait=walkingPortrait(npc.classId,sex,npc.portraitKey);npc.combatPortrait={};delete npc.fallenPortrait;return;
+        }
         const variant=(chosen?.index||0)%8,stem=`RPGSkeleton_${npc.classId}_${sex}`;
         npc.portraitKey=chosen?.key||npc.portraitKey;
         npc.portrait={sheet:`${stem}_faces_v7`,index:variant,columns:8,rows:1};
@@ -2194,6 +2228,39 @@
         return{ok:true,message:`${r.name} performed.`};
     }
 
+    const GENERATOR_VERSION=1,BALANCE_VERSION=34;
+    const EXPEDITION_UPGRADES=Object.freeze({
+        reinforced_clothing:Object.freeze({name:"Reinforced Clothing",cost:18,effect:"+1 Armor to every companion for this expedition",armor:1}),
+        protective_charms:Object.freeze({name:"Protective Charms",cost:16,effect:"+1 ordinary Ward to every companion for this expedition",ward:1}),
+        medical_supplies:Object.freeze({name:"Medical Supplies",cost:24,effect:"+1 maximum and current HP to every living companion for this expedition",hp:1}),
+        sharpening_kit:Object.freeze({name:"Sharpening Kit",cost:30,effect:"+1 damage to every companion for this expedition",damage:1}),
+        emergency_supplies:Object.freeze({name:"Emergency Supplies",cost:28,effect:"+1 Armor and +1 ordinary Ward to every companion for this expedition",armor:1,ward:1})
+    });
+    const JOURNEY_THEMES=Object.freeze([
+        {id:"woodland",name:"Mosswood",match:/forest|wood|road|wilderness|goblin|beast/i,background:"QuestWoodland_v9",titles:["Lanterns Through Mosswood","The Fern-Covered Road","Under the Old Boughs"]},
+        {id:"crypt",name:"Quiet Crypts",match:/crypt|cemetery|undead|skeleton|grave|cult/i,background:"QuestCrypt_v9",titles:["The Hushed Catacombs","Lanterns Below","The Kindly Dead Road"]},
+        {id:"cavern",name:"Glimmer Caverns",match:/cavern|cave|mine|cellar|spider/i,background:"QuestCavern_v9",titles:["Glimmerstone Descent","The Echoing Path","Below the Amber Rock"]},
+        {id:"coast",name:"Saltwind Coast",match:/coast|sea|beach|harbor|pirate/i,background:"QuestCoast_v9",titles:["The Saltwind Way","Lanterns by the Tide","Across the Gull Cliffs"]},
+        {id:"mountain",name:"Highland Pass",match:/mountain|peak|snow|highland|gate/i,background:"QuestMountain_v9",titles:["The Hearthward Pass","Clouds Over Stone","The High Lantern Road"]},
+        {id:"outlaws",name:"Briar Road",match:/bandit|outlaw|roadside|watch/i,background:"QuestRoad_v9",titles:["The Briar Road Patrol","Waystones at Dusk","The Old Coach Road"]}
+    ]);
+    function seededIndex(seed,label,length){return length?Math.floor(stableUnit(`${seed}:${label}`)*length)%length:0;}
+    function generateJourney(content,options={}){
+        const durationMinutes=EXPEDITION_DURATIONS.includes(Number(options.durationMinutes))?Number(options.durationMinutes):25;
+        const difficulty=durationMinutes===1?1:Math.max(1,Math.min(5,Math.floor(Number(options.difficulty)||1)));
+        const seed=String(options.seed??`${Date.now()}-${Math.floor(Math.random()*1e9)}`),quests=Array.isArray(content)?content:Array.isArray(content?.quests)?content.quests:[];
+        const themes=JOURNEY_THEMES.filter(t=>quests.some(q=>t.match.test(`${q.environment} ${q.faction} ${q.tags?.join(" ")}`))),theme=themes[seededIndex(seed,"theme",themes.length)]||JOURNEY_THEMES[0];
+        const pool=quests.filter(q=>theme.match.test(`${q.environment} ${q.faction} ${q.tags?.join(" ")}`)&&Number(q.durationMinutes)>1),tier=pool.filter(q=>Math.max(1,Math.min(5,Number(q.encounterTier)||Number(q.intendedLevel)||1))===difficulty),sources=tier.length?tier:pool;
+        const opposition=sources[seededIndex(seed,"opposition",sources.length)]||quests.find(q=>q.enemyIds?.length)||{},story=sources[seededIndex(seed,"story",sources.length)]||opposition;
+        const battles=durationMinutes===1?0:Math.max(1,Math.min(5,Math.floor(durationMinutes/6)+(difficulty>=4?1:0))),gold=Math.max(1,Math.round(durationMinutes*(1.4+difficulty*.35))),arcana=durationMinutes>=10?Math.floor(durationMinutes/10)+(difficulty>=4?1:0):0;
+        const participation=Math.max(1,Math.round(durationMinutes*XP_DIFFICULTY_MULTIPLIERS[difficulty])),victoryBonus=durationMinutes===1?0:Math.max(1,Math.round(durationMinutes*.1));
+        const journey={id:`generated-v${GENERATOR_VERSION}-${seed}`,name:theme.titles[seededIndex(seed,"title",theme.titles.length)],category:"Generated journey",durationMinutes,description:`A ${durationMinutes}-minute journey through ${theme.name}.`,risk:`${difficulty}-skull`,danger:difficulty===1?"A gentle route with generous spacing between dangers.":difficulty===5?"A severe fixed challenge for an expert company.":"A fixed challenge that does not adapt to the selected party.",rewardTypes:[`${gold} Gold`,`${arcana} Arcana`,`${participation} participation XP plus ${victoryBonus} victory XP`],encounterType:durationMinutes===1?"Peaceful travel; no combat":`${battles} paced encounters`,environment:theme.name,combatMode:durationMinutes===1?"none":"required",xpReward:victoryBonus,xpPool:victoryBonus*3,rewardGold:{victory:gold,draw:Math.floor(gold*.45),defeat:Math.floor(gold*.2)},rewardArcana:{victory:arcana,draw:0,defeat:0},bonusRewards:{},travelSeconds:3,faction:opposition.faction||theme.name,boss:difficulty===5&&durationMinutes>=20&&stableUnit(`${seed}:boss`)>.55,enemyIds:durationMinutes===1?[]:copy(opposition.enemyIds||[]),knownThreats:copy(opposition.knownThreats||[]),knownConditions:[`Fixed ${difficulty}-skull opposition`,`Balanced for three healthy level-${difficulty} companions`],rumors:copy(story.rumors||[]),journey:story.journey||`A measured route through ${theme.name}.`,chance:difficulty<=2?"low":"normal",randomEncounters:copy(opposition.randomEncounters||[]),tags:[theme.id,"procedural",`${difficulty}-skull`],objectiveReturnText:`The destination is reached. The company turns home through ${theme.name}.`,difficulty:["","Gentle","Steady","Demanding","Perilous","Heroic"][difficulty],riskExplanation:"Difficulty is fixed. Smaller, injured, or underleveled parties face greater risk; upgrades never strengthen enemies.",battleback:theme.background,battlebackFolder:"pictures",intendedLevel:difficulty,skulls:difficulty,encounterTier:difficulty,balanceVersion:BALANCE_VERSION,generatorVersion:GENERATOR_VERSION,generatorSeed:seed,participationXp:participation,victoryBonusXp:victoryBonus,encounterTuning:copy(opposition.encounterTuning||{}),sourceIngredients:{opposition:opposition.id||null,narrative:story.id||null,theme:theme.id}};
+        journey.planFingerprint=JSON.stringify([durationMinutes,difficulty,theme.id,journey.enemyIds,journey.name,gold,arcana]);return journey;
+    }
+    function upgradeSelectionError(state,ids){if(!Array.isArray(ids)||ids.length>3)return "Choose no more than three expedition upgrades.";if(new Set(ids).size!==ids.length)return "Each expedition upgrade may be selected only once.";if(ids.some(id=>!EXPEDITION_UPGRADES[id]))return "Unknown expedition upgrade.";const cost=ids.reduce((n,id)=>n+EXPEDITION_UPGRADES[id].cost,0);return state.gold<cost?`Requires ${cost} Gold; treasury has ${state.gold}.`:"";}
+    function applyExpeditionUpgrades(team,ids){for(const member of team)for(const id of ids){const u=EXPEDITION_UPGRADES[id];if(u?.armor){member.classArmor=(member.classArmor||0)+u.armor;member.classArmorMax=(member.classArmorMax||0)+u.armor;member.armor=(member.armor||0)+u.armor;member.maxArmor=(member.maxArmor||0)+u.armor;}if(u?.ward){member.innateWard=(member.innateWard||0)+u.ward;member.innateWardMax=(member.innateWardMax||0)+u.ward;}if(u?.hp){member.hp=(member.hp||member.maxHealth||1)+u.hp;member.health=(member.health||1)+u.hp;member.maxHealth=(member.maxHealth||1)+u.hp;}if(u?.damage)member.damage=(member.damage||1)+u.damage;}return team;}
+    function participationXpFor(trip,elapsedMs=trip.elapsedMs,completed=false){const minutes=Math.max(0,Number(elapsedMs)||0)/60000,mult=XP_DIFFICULTY_MULTIPLIERS[Math.max(1,Math.min(5,trip.skulls||1))]||1;return Math.floor(minutes*mult)+(completed?Math.max(0,Math.floor(Number(trip.victoryBonusXp)||0)):0);}
+
     function questDangerEstimate(state,quest,content,BattleClass,partyIds=state.teamIds){
         if(quest.combatMode==="none"||quest.durationMinutes===1)return {dangerous:false,samples:0,wipes:0};
         const preview=copy(state),ids=Array.isArray(partyIds)?partyIds.slice():[];if(ids.length<MIN_PARTY_SIZE||ids.length>MAX_PARTY_SIZE)return {dangerous:false,samples:0,wipes:0};
@@ -2205,8 +2272,8 @@
         const underlevel=team.reduce((n,x)=>n+x.level,0)/team.length<dangerRating(quest);
         return {dangerous:underlevel||losses>=samples*.5,wipes,samples,losses,allSamplesWiped:wipes===samples};
     }
-    const ritualEntries = () => Object.entries(RITUALS).sort((a,b)=>a[1].castCost-b[1].castCost);
-    const api = { autoAssignCampJobs, bestCampJob, campJobYield, encounterTier, ritualEntries, questDangerEstimate, itemBoosts, requestRecall, classLabel, normalizeUndead, startCampTimer, tickCampTimer, consumeCampBell, replaceCreated, dangerRating, dangerLabel, encounterPlan, finishBattlePlayback, repairGear, woundLines, powerTrack, SESSION_TIMING, walkingPortrait, recruitCreated, primaryReward, portraitOptions,createStartingParty,restoreReturnArmor, encounterEnemies,namePools,identityLabel,questNarrative,xpFieldNote, CLASS_NAMES, authoredDifficulty,sessionRecap,retreatAssessment,beginAutomaticRetreat,endSessionEarly, nameError, randomName, classStats, ALL_CLASSES, LEGACY_CLASSES, compatible, itemSummary, sellItem, beginStartingRoster, confirmStartingRoster, queueEventCue, consumeEventCues, expeditionLine, FOUNDER_IDS, activeSlotIds, activeRoster, vacantSlots, graveyard, replacementCandidates, consumeCompletionAlert, fixedRoster, normalizeFocusRoster, resultSnapshot, dismissQuestResults, availableEquipmentArmor, gearIds, armorGearIds, shopIds, normalizeInventory, returnSlottedEquipment, rating, assignTeam, selectTeam, SEXES, RACES, MIN_PARTY_SIZE, MAX_PARTY_SIZE, MAX_ROSTER_SIZE, LEVEL_CAP, QUEST_HISTORY_LIMIT, SETTLED_TRIP_LIMIT, BADGE_DEFINITIONS, DEFAULT_XP_RULES, SCHEMA_VERSION, TRAIT_DEFINITIONS, EXPEDITION_ORDERS, EQUIPMENT_SLOTS, DODGE_TIERS, MAX_EXPEDITION_WAIT_SECONDS, CAMP_JOBS, EXPEDITION_DURATIONS, MAX_SESSION_TICK_MS, ENCOUNTER_CHANCES, RANDOM_BATTLE_ENEMIES, RANDOM_OPPORTUNITY_EVENTS, PRESENTATION_LEVELS, WOUND_DEFINITIONS, EARNED_TRAITS, RITUALS,
+    const ritualEntries = () => Object.entries(RITUALS).sort((a,b)=>a[1].unlockCost-b[1].unlockCost||a[1].castCost-b[1].castCost);
+    const api = { GENERATOR_VERSION,BALANCE_VERSION,XP_THRESHOLDS,XP_DIFFICULTY_MULTIPLIERS,EXPEDITION_UPGRADES,JOURNEY_THEMES,generateJourney,upgradeSelectionError,applyExpeditionUpgrades,participationXpFor, autoAssignCampJobs, bestCampJob, campJobYield, encounterTier, ritualEntries, questDangerEstimate, itemBoosts, requestRecall, classLabel, normalizeUndead, startCampTimer, tickCampTimer, consumeCampBell, replaceCreated, dangerRating, dangerLabel, encounterPlan, finishBattlePlayback, repairGear, woundLines, powerTrack, SESSION_TIMING, walkingPortrait, recruitCreated, primaryReward, portraitOptions,createStartingParty,restoreReturnArmor, encounterEnemies,namePools,identityLabel,questNarrative,xpFieldNote, CLASS_NAMES, authoredDifficulty,sessionRecap,retreatAssessment,beginAutomaticRetreat,endSessionEarly, nameError, randomName, classStats, ALL_CLASSES, LEGACY_CLASSES, compatible, itemSummary, sellItem, beginStartingRoster, confirmStartingRoster, queueEventCue, consumeEventCues, expeditionLine, FOUNDER_IDS, activeSlotIds, activeRoster, vacantSlots, graveyard, replacementCandidates, consumeCompletionAlert, fixedRoster, normalizeFocusRoster, resultSnapshot, dismissQuestResults, availableEquipmentArmor, gearIds, armorGearIds, shopIds, normalizeInventory, returnSlottedEquipment, rating, assignTeam, selectTeam, SEXES, RACES, MIN_PARTY_SIZE, MAX_PARTY_SIZE, MAX_ROSTER_SIZE, LEVEL_CAP, QUEST_HISTORY_LIMIT, SETTLED_TRIP_LIMIT, BADGE_DEFINITIONS, DEFAULT_XP_RULES, SCHEMA_VERSION, TRAIT_DEFINITIONS, EXPEDITION_ORDERS, EQUIPMENT_SLOTS, DODGE_TIERS, MAX_EXPEDITION_WAIT_SECONDS, CAMP_JOBS, EXPEDITION_DURATIONS, MAX_SESSION_TICK_MS, ENCOUNTER_CHANCES, RANDOM_BATTLE_ENEMIES, RANDOM_OPPORTUNITY_EVENTS, PRESENTATION_LEVELS, WOUND_DEFINITIONS, EARNED_TRAITS, RITUALS,
         validateContent, configure, classes, classFor, moveFor, say, editProfile, classPreview, chooseClass, SHOP, upgradeState,
         purchaseError, purchase, equipmentError, equip, createState, living, xpRequired, teamError, bondPartners, prepareTeam,
         xpPreview, beginQuest, finishQuest, dispatchQuest, arriveQuest, startBattle, recordBattleResult, completeReturn, advanceTimers, skipTimer,
@@ -2215,7 +2282,7 @@
         itemError, useItem, traitFor, validateTraits, setTraits, migrateAutonomy, orderFor, RECRUIT_REFRESH_MS,
         questUnavailableReason, buildJourneyStages, scheduleStages, expeditionProgress, CONTRACT_DANGERS, campaignSummary, sortRoster,
         debugDamageEquipment, debugLevel, setHealthy, applyWound, applyDeath, killAdventurer, conditionOf, CONDITIONS, debugFastTravel, debugRefreshRecruits, assignReplacementLeader,
-        displayName, ensureLife, equipmentArmor, equipmentArmorMax, equipSlot, resolveDamage, restoreBetweenBattles, ensureCampJobs, campJobFor, assignCampJob, useBathhouse, formationFor, setNickname, evaluateEarnedTraits, addPermanentWound, ritualUnlock, ritualCast };
+        displayName, ensureLife, equipmentArmor, equipmentArmorMax, equipSlot, resolveDamage, restoreBetweenBattles, ensureCampJobs, campJobFor, assignCampJob, useBathhouse, formationFor, setNickname, evaluateEarnedTraits, addPermanentWound, magicalArtifactDrop, ritualUnlock, ritualCast };
     if (typeof module !== "undefined" && module.exports) module.exports = api;
     globalThis.RPGManagerProgression = api;
 })();

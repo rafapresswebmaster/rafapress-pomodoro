@@ -107,7 +107,7 @@
         }finally{c.restore();}
     }
     function layout(width,height,fighters){
-        const top=46,bottom=height-72,h=Math.max(32,bottom-top),rail=0,gap=7;
+        const top=24,bottom=height-72,h=Math.max(32,bottom-top),rail=0,gap=7;
         const scene={x:8+rail+gap,y:top,width:Math.max(60,width-16-2*(rail+gap)),height:h};
         const positions=new Map(),rows=[];
         for(const side of ["player","enemy"]){
@@ -289,7 +289,7 @@
             c.restore();b.baseTexture.update();
         }
         render(win,trip){
-            const a=this.api,b=win.contents,w=win.innerWidth,top=46,bottom=win.innerHeight-72,height=bottom-top,returning=trip.phase==="return"&&trip.returnNarrated!==false;
+            const a=this.api,b=win.contents,w=win.innerWidth,top=24,bottom=win.innerHeight-72,height=bottom-top,returning=trip.phase==="return"&&trip.returnNarrated!==false;
             this.advance(trip,a.frame(),a.active());this.moving=a.active()&&trip.phase!=="campfire"&&!trip.wiped;const theme=biome(trip,a.quest?.(trip.questId)||{});this.backdrop(win,theme,top,height,trip);
             a.text(win,trip.phase==="campfire"?"CAMPFIRE / ONE PEACEFUL MINUTE":trip.wiped?"EXPEDITION ENDED / FOCUS CONTINUES":returning?"THE ROAD HOME  <":"ON EXPEDITION  >",8,top-17,w-16,11,TOKENS.parchment,"left",14);
             if(trip.presentationCurrent?.trigger){a.round(b,w-134,top-19,126,18,"#eadbb8","#b39b6c",3);a.text(win,"FIELD NOTE / OBSERVED",w-130,top-18,118,10,TOKENS.ink,"center",16);}

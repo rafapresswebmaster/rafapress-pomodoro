@@ -5,7 +5,7 @@
  * @help RPGManager.js
  * Enable RPGManagerBattle and RPGManagerProgression above this plugin.
  * Camp-first Home with one autonomous background expedition and four open-session camp jobs.
- * Quest Board filters authoritative minutes and one to eight skull party-level estimates.
+ * Start Quest opens a duration-and-difficulty-only procedural launch hub.
  * Compact battlefield replays copied combat events; it never rolls or applies damage.
  * Five roster slots, one to three companions per quest, free Tavern recruitment.
  * Prominent live MM:SS, optional once-only completion chime, stable Quest Results.
@@ -26,9 +26,11 @@
     if (!progression) throw new Error("Enable RPGManagerProgression above RPGManager in Plugin Manager.");
     // Optional presentation art stays outside MZ's fatal database-image cache.
     const managerArtCache=new Map();
+    const managerImageFile=name=>/\.(?:png|webp)$/i.test(name||"")?name:`${name||"missing"}.webp`;
     function managerArt(folder,name){
         const key=`${folder}/${String(name||"missing")}`;
-        if(!managerArtCache.has(key))managerArtCache.set(key,Bitmap.load(`img/${folder}/${encodeURIComponent(name||"missing")}.webp`));
+        const file=managerImageFile(name);
+        if(!managerArtCache.has(key))managerArtCache.set(key,Bitmap.load(`img/${folder}/${encodeURIComponent(file)}`));
         return managerArtCache.get(key);
     }
     const MIN_TEAM_SIZE = progression.MIN_PARTY_SIZE || 1;
@@ -62,6 +64,20 @@
         ellipse(b,x,y,rx,ry,color) {
             const c=b.context;c.save();c.translate(x,y);c.scale(rx,ry);c.beginPath();c.arc(0,0,1,0,Math.PI*2);c.fillStyle=color;c.fill();c.restore();b.baseTexture.update();
         },
+        ledgerSurface(b,accent="#c6ae65") {
+            const w=b.width,h=b.height;if(w<8||h<8)return;
+            b.gradientFillRect(0,0,w,h,"#304779","#18284d",true);
+            // Restrained leather/fiber grain: visible up close, quiet behind text.
+            for(let y=7;y<h;y+=13)b.fillRect(3,y,w-6,1,y%26===7?"#ffffff08":"#07132b13");
+            for(let x=11;x<w;x+=31)for(let y=5+(x%17);y<h;y+=37)CozyUI.ellipse(b,x,y,1.2,.7,"#dbe8ff12");
+            CozyUI.round(b,2,2,w-4,h-4,null,"#ffffff22",7);CozyUI.round(b,5,5,w-10,h-10,null,accent,6);
+            const cap=(x,y,sx,sy)=>{const c=b.context;c.save();c.translate(x,y);c.scale(sx,sy);c.fillStyle="#c89b43";c.strokeStyle="#ffe3a0";c.lineWidth=1;c.beginPath();c.moveTo(0,0);c.lineTo(15,0);c.lineTo(8,3);c.lineTo(3,10);c.lineTo(0,15);c.closePath();c.fill();c.stroke();c.restore();};
+            cap(5,5,1,1);cap(w-5,5,-1,1);cap(5,h-5,1,-1);cap(w-5,h-5,-1,-1);
+            for(const [x,y] of [[11,11],[w-11,11],[11,h-11],[w-11,h-11]]){CozyUI.ellipse(b,x,y,2.2,2.2,"#f2ce77");CozyUI.ellipse(b,x-.6,y-.7,.7,.7,"#fff2b5");}
+        },
+        filigree(b,x,y,w,color="#c6ae65") {
+            if(w<40)return;const c=b.context;c.save();c.strokeStyle=color;c.lineWidth=1;c.globalAlpha=.75;c.beginPath();c.moveTo(x,y);c.lineTo(x+w*.38,y);c.quadraticCurveTo(x+w*.43,y,x+w*.46,y-4);c.quadraticCurveTo(x+w*.5,y-9,x+w*.54,y-4);c.quadraticCurveTo(x+w*.57,y,x+w*.62,y);c.lineTo(x+w,y);c.stroke();c.restore();b.baseTexture.update();
+        },
         icon(b, kind, x, y, size=18, color="#e8c583") {
             const c=b.context;c.save();c.translate(x,y);c.scale(size/24,size/24);c.strokeStyle=color;c.fillStyle=color;c.lineWidth=1.8;c.lineCap="round";c.lineJoin="round";
             const path=points=>{c.beginPath();points.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.stroke();};
@@ -77,6 +93,11 @@
             else if(kind==="title"||kind==="back"){path([[10,5],[3,12],[10,19]]);path([[3,12],[21,12]]);}
             else if(kind==="presentationSpeed"){path([[7,4],[19,12],[7,20],[7,4]]);}
             else if(kind==="completionAlert"){path([[5,17],[7,14],[7,8],[9,5],[15,5],[17,8],[17,14],[19,17],[5,17]]);path([[10,20],[14,20]]);}
+            else if(kind==="hp"){c.beginPath();c.moveTo(12,21);c.bezierCurveTo(9,17,3,14,3,8);c.bezierCurveTo(3,3,10,2,12,7);c.bezierCurveTo(14,2,21,3,21,8);c.bezierCurveTo(21,14,15,17,12,21);c.fill();}
+            else if(kind==="armor"){path([[12,2],[20,5],[19,14],[12,22],[5,14],[4,5],[12,2]]);path([[8,9],[12,13],[17,7]]);}
+            else if(kind==="ward"){path([[12,2],[20,12],[12,22],[4,12],[12,2]]);path([[8,12],[12,7],[16,12],[12,17],[8,12]]);}
+            else if(kind==="wound"){path([[7,3],[17,21]]);path([[17,3],[7,21]]);c.beginPath();c.arc(12,12,9,0,Math.PI*2);c.stroke();}
+            else if(kind==="difficulty"){for(let i=0;i<5;i++){const px=4+i*4;c.beginPath();c.moveTo(px,18);c.lineTo(px+2,7-(i%2)*2);c.lineTo(px+4,18);c.closePath();c.stroke();}}
             else if(kind==="debug"){path([[5,7],[19,7],[19,18],[5,18],[5,7]]);path([[8,11],[11,13],[8,15]]);path([[14,15],[16,15]]);}
             else {path([[12,3],[12,21]]);path([[12,14],[5,8],[5,4],[12,9],[19,4],[19,8],[12,14]]);}
             c.restore();b.baseTexture.update();
@@ -148,17 +169,28 @@
 
     // Optional art bypasses ImageManager's required-asset cache: failure keeps procedural scenery.
     const cozyCampArt = Bitmap.load("img/pictures/CozyGuildCamp.webp");
+    const titleKeyArt = Bitmap.load("img/pictures/PomodoroTitleKeyArt.png");
+    const rewardEmblemArt = Bitmap.load("img/pictures/QuestRewardEmblem.png");
     let cozyWindowskin = null;
     function managerVisualWindow(win) {
         return /^Window_RPG/.test(win.constructor.name) || win.constructor.name==="Window_TitleCommand" || win.constructor.name==="Window_Options" || !!(typeof Scene_File!=="undefined" && SceneManager._scene instanceof Scene_File);
+    }
+    function managerSceneAccent(){
+        const name=SceneManager._scene?.constructor?.name||"";
+        if(/Tavern|StartingRoster/.test(name))return "#d99755";
+        if(/Altar/.test(name))return "#b99be7";
+        if(/Grave|Roster/.test(name)&&SceneManager._scene?._graveyard)return "#aebbd0";
+        if(/Save|Load|File/.test(name))return "#73bfe8";
+        if(/Quest|Battle|Travel|Expedition|Recall/.test(name))return "#91c795";
+        return "#c6ae65";
     }
     function cozySkin() {
         if(cozyWindowskin)return cozyWindowskin;
         cozyWindowskin=new Bitmap(192,192);
         const stock=ImageManager.loadSystem("Window");
-        const paint=()=>{const b=cozyWindowskin;if(stock.isReady())b.blt(stock,0,0,192,192,0,0);b.clearRect(0,0,96,192);b.gradientFillRect(0,0,96,96,"#283658","#202a47",true);
-            b.clearRect(96,0,96,96);CozyUI.round(b,97,1,94,94,"#243969","#b39b6c",10);CozyUI.round(b,101,5,86,86,null,"#5f5d46",7);
-            b.clearRect(96,96,48,48);CozyUI.round(b,96.5,96.5,47,47,"#b79c5a40","#f1cf89",5);
+        const paint=()=>{const b=cozyWindowskin;if(stock.isReady())b.blt(stock,0,0,192,192,0,0);b.clearRect(0,0,96,192);b.gradientFillRect(0,0,96,96,"#344c7e","#182643",true);for(let y=5;y<96;y+=11)b.fillRect(0,y,96,1,"#ffffff08");
+            b.clearRect(96,0,96,96);CozyUI.round(b,97,1,94,94,"#223761","#d0ae61",10);CozyUI.round(b,100,4,88,88,null,"#fff0b440",8);CozyUI.round(b,104,8,80,80,null,"#49699b",6);
+            b.clearRect(96,96,48,48);b.gradientFillRect(96,96,48,48,"#5e78aa66","#1d315d99",true);CozyUI.round(b,96.5,96.5,47,47,null,"#f1cf89",5);CozyUI.round(b,99,99,42,42,null,"#ffffff35",4);
         };paint();stock.addLoadListener(paint);return cozyWindowskin;
     }
     const loadManagerWindowskin=Window_Base.prototype.loadWindowskin;
@@ -175,7 +207,26 @@
     const managerItemBackground=Window_Selectable.prototype.drawItemBackground;
     Window_Selectable.prototype.drawItemBackground=function(index){
         if(!this._cozyVisual){managerItemBackground.call(this,index);return;}
-        const r=this.itemRect(index);CozyUI.round(this.contentsBack,r.x+2,r.y+2,r.width-4,r.height-4,"#34477399","#b59c6355",4);
+        const r=this.itemRect(index),selected=index===this.index(),hover=selected&&this.active;
+        this.contentsBack.gradientFillRect(r.x+3,r.y+3,r.width-6,r.height-7,hover?"#5875ad":"#3b5285",hover?"#2a3e70":"#263a68",true);
+        CozyUI.round(this.contentsBack,r.x+2,r.y+2,r.width-4,r.height-5,null,hover?"#f0cf79":"#7087ae",5);
+        this.contentsBack.fillRect(r.x+7,r.y+5,r.width-14,1,hover?"#fff5c080":"#ffffff24");
+        if(hover)this.contentsBack.fillRect(r.x+4,r.y+6,3,r.height-13,managerSceneAccent());
+    };
+    // MZ's transient hover flag can be missed when the pointer crosses DOM overlays
+    // or a scaled canvas. Manager lists continuously resolve actual pointer movement.
+    const managerSelectableUpdate=Window_Selectable.prototype.update;
+    Window_Selectable.prototype.update=function(){
+        if(this._cozyVisual&&this.active&&this.visible&&this.openness>0){
+            const x=TouchInput.x,y=TouchInput.y;
+            if(this._managerHoverX!==x||this._managerHoverY!==y){
+                this._managerHoverX=x;this._managerHoverY=y;
+                const index=this.hitIndex();
+                if(index>=0&&index<this.maxItems()&&index!==this.index())this.select(index);
+            }
+        }
+        // Select the real pointer target before MZ consumes this frame's click.
+        managerSelectableUpdate.call(this);
     };
 
     const cozyTitleBackground=Scene_Title.prototype.createBackground;
@@ -183,16 +234,17 @@
         cozyTitleBackground.call(this);this._cozyTitleScenery=new Sprite(new Bitmap(Graphics.width,Graphics.height));this.addChild(this._cozyTitleScenery);this.paintCozyTitleScenery();
     };
     Scene_Title.prototype.paintCozyTitleScenery=function(){
-        const b=this._cozyTitleScenery.bitmap;CozyUI.scenery(b);this._cozyTitleArtReady=cozyCampArt.isReady();
-        if(this._cozyTitleArtReady){const scale=Math.max(b.width/cozyCampArt.width,b.height/cozyCampArt.height),sw=b.width/scale,sh=b.height/scale;b.blt(cozyCampArt,(cozyCampArt.width-sw)/2,0,sw,sh,0,0,b.width,b.height);}
+        const b=this._cozyTitleScenery.bitmap;b.smooth=false;CozyUI.scenery(b);this._cozyTitleArtReady=titleKeyArt.isReady();
+        if(this._cozyTitleArtReady){const scale=Math.max(b.width/titleKeyArt.width,b.height/titleKeyArt.height),sw=b.width/scale,sh=b.height/scale;b.blt(titleKeyArt,(titleKeyArt.width-sw)/2,(titleKeyArt.height-sh)/2,sw,sh,0,0,b.width,b.height);}
         b.fillRect(0,0,b.width,b.height,"#20352566");CozyUI.round(b,b.width*.12,72,b.width*.76,148,"#243969ed","#c1a16a",12);
     };
     Scene_Title.prototype.drawGameTitle=function(){
         const b=this._gameTitleSprite.bitmap;b.fontFace=`Georgia, ${$gameSystem.mainFontFace()}`;b.fontSize=46;b.outlineWidth=2;b.outlineColor="#263a28";b.textColor="#f4deb0";
-        b.drawText($dataSystem.gameTitle,24,110,b.width-48,56,"center");b.fontFace=`Trebuchet MS, ${$gameSystem.mainFontFace()}`;b.fontSize=17;b.textColor="#ddcfaa";b.drawText("A little haven for great adventures",24,178,b.width-48,24,"center");
+        b.drawText("Pomodoro Chronicles",24,110,b.width-48,56,"center");b.fontFace=`Trebuchet MS, ${$gameSystem.mainFontFace()}`;b.fontSize=17;b.textColor="#ddcfaa";b.drawText("A little haven for great adventures",24,178,b.width-48,24,"center");
     };
+    Scene_Title.prototype.playTitleMusic=function(){AudioManager.stopBgm();AudioManager.stopBgs();AudioManager.stopMe();};
     const cozyTitleUpdate=Scene_Title.prototype.update;
-    Scene_Title.prototype.update=function(){cozyTitleUpdate.call(this);if(!this._cozyTitleArtReady&&cozyCampArt.isReady())this.paintCozyTitleScenery();};
+    Scene_Title.prototype.update=function(){cozyTitleUpdate.call(this);if(!this._cozyTitleArtReady&&titleKeyArt.isReady())this.paintCozyTitleScenery();};
     const saveCampStart=Scene_Save.prototype.start;Scene_Save.prototype.start=function(){saveCampStart.call(this);mountCampNavigation(this);};
     const saveCampTerminate=Scene_Save.prototype.terminate;Scene_Save.prototype.terminate=function(){this._finishButton?.remove();this._returnVignette?.remove();this._campStatus?.remove();this._campNav?.remove();saveCampTerminate.call(this);};
     const pagedSaveStart=Scene_Save.prototype.start,pagedLoadStart=Scene_Load.prototype.start;
@@ -235,6 +287,8 @@
     window.$dataRPGManagerDialogue = null;
     window.$dataRPGManagerClasses = null;
     window.$dataRPGManagerQuests = null;
+    window.$dataRPGManagerManual = null;
+    window.$dataRPGManagerManualImages = null;
     function loadOptionalManagerData(name,file){const xhr=new XMLHttpRequest();xhr.open("GET",`data/${file}`);xhr.overrideMimeType("application/json");xhr.onload=()=>{try{window[name]=xhr.status<400?JSON.parse(xhr.responseText):{};}catch(error){window[name]={};}};xhr.onerror=()=>window[name]={};xhr.send();}
     window.$dataRPGManagerStage3 = null;window.$dataRPGManagerIdentity=null;window.$dataRPGManagerNarratives=null;
     window.$dataRPGManagerPresentation = null;
@@ -250,10 +304,12 @@
         this.loadDataFile("$dataRPGManagerStage3", "RPGManagerStage3.json");this.loadDataFile("$dataRPGManagerIdentity","RPGManagerIdentity.json");loadOptionalManagerData("$dataRPGManagerNarratives","RPGManagerNarratives.json");
         this.loadDataFile("$dataRPGManagerPresentation", "RPGManagerPresentation.json");
         this.loadDataFile("$dataRPGManagerUI", "RPGManagerUI.json");
+        this.loadDataFile("$dataRPGManagerManual", "RPGManagerManual.json");
+        this.loadDataFile("$dataRPGManagerManualImages", "RPGManagerManualImages.json");
     };
     const isDatabaseLoaded = DataManager.isDatabaseLoaded;
     DataManager.isDatabaseLoaded = function() {
-        return isDatabaseLoaded.call(this) && !!window.$dataRPGManagerRoster && !!window.$dataRPGManagerEnemyTeam && !!window.$dataRPGManagerDialogue && !!window.$dataRPGManagerClasses && !!window.$dataRPGManagerQuests && !!window.$dataRPGManagerStage3 && !!window.$dataRPGManagerPresentation && !!window.$dataRPGManagerUI&&!!window.$dataRPGManagerIdentity&&!!window.$dataRPGManagerNarratives;
+        return isDatabaseLoaded.call(this) && !!window.$dataRPGManagerRoster && !!window.$dataRPGManagerEnemyTeam && !!window.$dataRPGManagerDialogue && !!window.$dataRPGManagerClasses && !!window.$dataRPGManagerQuests && !!window.$dataRPGManagerStage3 && !!window.$dataRPGManagerPresentation && !!window.$dataRPGManagerUI&&!!window.$dataRPGManagerIdentity&&!!window.$dataRPGManagerNarratives&&!!window.$dataRPGManagerManual&&!!window.$dataRPGManagerManualImages;
     };
     const onDatabaseLoaded = Scene_Boot.prototype.onDatabaseLoaded;
     Scene_Boot.prototype.onDatabaseLoaded = function() {
@@ -464,9 +520,9 @@
     let focusHud=null,focusHudKey=null;
     function refreshFocusTimer(force=false){
         const state=globalThis.$gameSystem?._rpgManager,scene=SceneManager._scene;
-        const visible=!!state&&(scene instanceof Scene_RPGBase||scene instanceof Scene_Save)&&!(scene instanceof Scene_RPGStartingRoster);
+        const visible=!!state&&scene instanceof Scene_RPGBase&&!(scene instanceof Scene_RPGStartingRoster);
         if(scene instanceof Scene_Save&&scene._cancelButton){scene._cancelButton.x=Math.max(0,Graphics.boxWidth-280-scene._cancelButton.width);scene._cancelButton.y=4;}
-        const preview=scene instanceof Scene_RPGQuestBoard?findQuest(scene._choices?.currentExt())||selectedQuest():state?selectedQuest():{};
+        const preview=state?selectedQuest():{};
         let view=focusDisplay.clockView(state||{},preview);
         if(!state?.trips?.A){const t=state?.campTimer;view={...view,sessionId:`camp:${t?.id||0}`,active:!!t?.active,remainingMs:t?.remainingMs||0,totalMs:t?.totalMs||0,digital:focusDisplay.formatTime(t?.remainingMs||0),fraction:t?.totalMs?(t.remainingMs/t.totalMs):0,phase:t?.active?"camp_active":"camp_ready",label:t?.active?"Camp timer":"Click to set timer"};}
         const key=JSON.stringify([visible,scene?.constructor.name,state?.focusTimer?.enabled,view.sessionId,view.digital,view.phase,view.totalMs,Graphics.width,Graphics.height,innerWidth,innerHeight]);
@@ -474,28 +530,38 @@
         floatingTimer.refresh(state,view,visible);
         if(!focusHud){
             focusHud=document.createElement("section");focusHud.id="rpg-focus-timer";focusHud.setAttribute("role","timer");focusHud.setAttribute("aria-label","Focus session timer");
-            focusHud.innerHTML=focusDisplay.dialMarkup+'<div><strong class="focus-time"></strong><span class="focus-state"></span></div><button class="focus-recall" type="button">Recall</button><button class="focus-options" type="button" aria-label="Timer options" aria-expanded="false">⋯</button><div class="focus-menu" hidden><button class="focus-float" type="button"></button><button class="focus-end" type="button">Recall…</button><small class="focus-note"></small></div>';
-            const style=document.createElement('style');style.textContent='#rpg-focus-timer{position:fixed;z-index:30;width:256px;height:88px;display:flex;align-items:center;background:#243969;color:#fff0c8;border:2px solid #e8c583;border-radius:16px;font:16px "Trebuchet MS",sans-serif;box-sizing:border-box;transform-origin:top left}#rpg-focus-timer .focus-recall{position:absolute;right:8px;bottom:10px;background:#e8c583;color:#302248;border:1px solid #fff0ce;border-radius:5px;padding:5px 8px;font:bold 13px Trebuchet MS;cursor:pointer}#rpg-focus-timer svg{width:80px;height:80px;flex:none}#rpg-focus-timer .focus-time{display:block;font:bold 40px monospace;line-height:46px}#rpg-focus-timer .focus-state{display:block;font-size:15px}#rpg-focus-timer .focus-options{position:absolute;right:4px;top:0;font:bold 25px sans-serif;background:transparent;color:#ffe29b;border:0;cursor:pointer}#rpg-focus-timer .focus-menu{position:absolute;right:0;top:92px;width:280px;padding:10px;border:2px solid #e8c583;border-radius:10px;background:#243969;box-shadow:0 4px 14px #0008}#rpg-focus-timer .focus-menu button{display:block;width:100%;font:17px sans-serif;padding:9px;margin:4px 0;cursor:pointer}#rpg-focus-timer .focus-note{display:block;padding:5px;line-height:18px}#rpg-focus-timer [hidden]{display:none}';document.head.appendChild(style);document.body.appendChild(focusHud);
+            focusHud.innerHTML=focusDisplay.dialMarkup+'<div class="focus-readout"><strong class="focus-time"></strong><span class="focus-state"></span></div><button class="focus-recall" type="button">Recall</button><button class="focus-alerts" type="button" aria-label="Expedition alerts on" aria-pressed="true" title="Expedition alerts"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2.2V10a4.5 4.5 0 0 0-9 0v4.8L6 17Zm4 3h4"/></svg></button><button class="focus-options" type="button" aria-label="Timer options" aria-expanded="false">⋯</button><div class="focus-menu" hidden><button class="focus-float" type="button"></button><button class="focus-end" type="button">Recall…</button><small class="focus-note"></small></div>';
+            const style=document.createElement('style');style.textContent='#rpg-focus-timer{position:fixed;z-index:30;width:358px;height:96px;display:grid;grid-template-columns:62px 105px 1fr;align-items:center;padding:4px 9px;background:linear-gradient(145deg,#1b2b57,#304d87 62%,#1d315f);color:#fff4d1;border:2px solid #f2d487;border-radius:18px;box-shadow:0 8px 24px #090d1faa,inset 0 1px #ffffff55;font:16px "Trebuchet MS",sans-serif;box-sizing:border-box;transform-origin:top left}#rpg-focus-timer:focus-within{border-color:#fff2bd;box-shadow:0 8px 26px #090d1fcc,0 0 0 3px #e8c58355,inset 0 1px #fff8}#rpg-focus-timer .focus-readout{grid-column:2;align-self:center;min-width:0}#rpg-focus-timer .focus-recall{grid-column:3;grid-row:1;justify-self:start;width:94px;height:94px;margin-left:4px;background:transparent url("img/pictures/StartQuestEmerald.png") center/contain no-repeat;color:#fff4c8;border:0;border-radius:50%;filter:drop-shadow(0 5px 7px #07150dcc);font:bold 14px Georgia,serif;line-height:1.05;letter-spacing:.4px;cursor:pointer;text-shadow:0 2px 2px #062d18,0 0 7px #061;transition:transform .12s ease,filter .12s ease}#rpg-focus-timer .focus-recall:hover{filter:drop-shadow(0 7px 10px #07150d) brightness(1.1);transform:scale(1.05)}#rpg-focus-timer .focus-recall:active{transform:translateY(3px) scale(.97);filter:brightness(.93)}#rpg-focus-timer>svg{grid-column:1;width:60px;height:60px;cursor:pointer;filter:drop-shadow(0 3px 5px #0008)}#rpg-focus-timer .focus-time{display:block;font:bold 29px monospace;line-height:32px;letter-spacing:-2px;white-space:nowrap}#rpg-focus-timer .focus-state{display:block;font-size:11px;color:#d9e4ff;text-transform:uppercase;letter-spacing:.5px;line-height:14px}#rpg-focus-timer .focus-alerts{position:absolute;right:17px;bottom:10px;width:34px;height:34px;padding:0;display:grid;place-items:center;border:2px solid #ffe7a0;border-radius:50%;background:linear-gradient(#f2c85c,#b87817);color:#2d2442;box-shadow:inset 0 2px #fff5b8,0 3px 6px #09142caa;transition:transform .1s ease,filter .12s ease,background .15s ease}#rpg-focus-timer .focus-alerts svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:none}#rpg-focus-timer .focus-alerts[aria-pressed="false"]{background:linear-gradient(#65728e,#3a4664);color:#c4cbda;border-color:#8d9ab5;box-shadow:inset 0 2px #ffffff2e,0 3px 6px #09142c88}#rpg-focus-timer .focus-alerts:hover{filter:brightness(1.18);transform:scale(1.08)}#rpg-focus-timer .focus-alerts:active{transform:translateY(2px) scale(.96)}#rpg-focus-timer .focus-options{position:absolute;right:5px;top:1px;font:bold 22px sans-serif;background:transparent;color:#ffe29b;border:0;cursor:pointer;z-index:2}#rpg-focus-timer .focus-menu{position:absolute;right:0;top:102px;width:280px;padding:10px;border:2px solid #e8c583;border-radius:10px;background:#243969;box-shadow:0 8px 20px #000a}#rpg-focus-timer .focus-menu button{display:block;width:100%;font:17px sans-serif;padding:9px;margin:4px 0;cursor:pointer}#rpg-focus-timer .focus-note{display:block;padding:5px;line-height:18px}#rpg-focus-timer [hidden]{display:none}';document.head.appendChild(style);document.body.appendChild(focusHud);
+            focusHud.querySelector(".focus-recall").style.cssText+=";display:flex;align-items:center;justify-content:center;padding:0 16px 2px;text-align:center;margin-left:42px";
             const menu=focusHud.querySelector('.focus-menu'),options=focusHud.querySelector('.focus-options');options.onclick=()=>{menu.hidden=!menu.hidden;options.setAttribute('aria-expanded',String(!menu.hidden));};
             focusHud.querySelector('.focus-float').onclick=()=>{const state=managerState();state.focusTimer.enabled=!state.focusTimer.enabled;floatingTimer.failedState=null;menu.hidden=true;options.setAttribute('aria-expanded','false');refreshFocusTimer(true);};
+            focusHud.querySelector('.focus-alerts').onclick=()=>{const state=managerState();state.completionAlerts=state.completionAlerts===false;if(!state.completionAlerts){eventAudioQueue=[];releaseCompletionChime();}refreshFocusTimer(true);};
             focusHud.addEventListener('keydown',event=>{event.stopPropagation();if(event.key==='Escape'){event.preventDefault();menu.hidden=true;options.setAttribute('aria-expanded','false');}});
             focusHud.addEventListener('keyup',event=>event.stopPropagation());
             for(const event of ['mousedown','mouseup','touchstart','touchmove','touchend','wheel'])focusHud.addEventListener(event,e=>e.stopPropagation());
             document.addEventListener('pointerdown',event=>{if(!focusHud.contains(event.target)){menu.hidden=true;options.setAttribute('aria-expanded','false');}});
-            focusHud.querySelector('.focus-recall').onclick=focusHud.querySelector('.focus-end').onclick=()=>{document.activeElement?.blur();Input.clear();TouchInput.clear();menu.hidden=true;syncMissionClock();if(!managerState().trips?.A){showCampTimerDialog();return;}const trip=progression.tripForTeam(managerState(),'A');if(trip?.recalled){progression.requestRecall(managerState());SceneManager.goto(Scene_RPGHome);return;}if(trip&&!SceneManager.isSceneChanging()){SceneManager.push(Scene_RPGRecall);SceneManager.prepareNextScene(trip.id);}};
+            const recall=()=>{document.activeElement?.blur();Input.clear();TouchInput.clear();menu.hidden=true;syncMissionClock();const trip=progression.tripForTeam(managerState(),'A');if(!trip){if(!SceneManager.isSceneChanging())SceneManager.push(Scene_RPGQuestBoard);return;}if(trip.recalled){progression.requestRecall(managerState());SceneManager.goto(Scene_RPGHome);return;}if(!SceneManager.isSceneChanging()){SceneManager.push(Scene_RPGRecall);SceneManager.prepareNextScene(trip.id);}};
+            focusHud.querySelector('.focus-recall').onclick=recall;focusHud.querySelector('.focus-end').onclick=()=>managerState().trips?.A?recall():showCampTimerDialog();
         }
         focusHud.style.display=visible?'flex':'none';if(!visible){focusHud.querySelector('.focus-menu').hidden=true;return;}
         const canvas=Graphics._canvas||Graphics.app?.view,rect=canvas?.getBoundingClientRect(),scale=rect?rect.width/Graphics.width:1;
-        focusHud.style.left=((rect?.left||0)+(Graphics.boxWidth-268)*scale)+'px';focusHud.style.top=((rect?.top||0)+8*scale)+'px';focusHud.style.transform=`scale(${scale})`;
-        const dial=focusHud.querySelector("svg");dial.setAttribute("aria-hidden",state?.trips?.A?"true":"false");dial.style.cursor=state?.trips?.A?"default":"pointer";dial.setAttribute("role","button");dial.setAttribute("aria-label","Set camp timer");dial.setAttribute("tabindex",state?.trips?.A?"-1":"0");dial.onclick=()=>{if(!managerState().trips?.A)showCampTimerDialog();};dial.onkeydown=e=>{if(["Enter"," "].includes(e.key)&&!managerState().trips?.A){e.preventDefault();showCampTimerDialog();}};
-        focusHud.querySelector(".focus-time").onclick=()=>{if(!managerState().trips?.A)showCampTimerDialog();};
-        focusHud.querySelector(".focus-recall").textContent=state?.trips?.A?(state.trips.A.recalled?"Arrive now":"Recall"):"Set";
+        focusHud.style.left=((rect?.left||0)+(Graphics.boxWidth-376)*scale)+'px';focusHud.style.top=((rect?.top||0)+10*scale)+'px';focusHud.style.transform=`scale(${scale})`;
+        const dial=focusHud.querySelector("svg");dial.setAttribute("aria-hidden","false");dial.style.cursor="pointer";dial.setAttribute("role","button");dial.setAttribute("aria-label",state?.trips?.A?"Active expedition information":"Start Quest");dial.setAttribute("tabindex","0");dial.onclick=()=>{if(managerState().trips?.A){SceneManager.goto(Scene_RPGHome);return;}if(!SceneManager.isSceneChanging())SceneManager.push(Scene_RPGQuestBoard);};dial.onkeydown=e=>{if(["Enter"," "].includes(e.key)){e.preventDefault();dial.click();}};
+        focusHud.querySelector(".focus-time").onclick=()=>dial.click();
+        focusHud.querySelector(".focus-recall").textContent=state?.trips?.A?(state.trips.A.recalled?"Arrive Now":"Recall Quest"):"Start Quest";
+        const alerts=focusHud.querySelector(".focus-alerts"),alertsOn=state.completionAlerts!==false;alerts.hidden=!state?.trips?.A;alerts.setAttribute("aria-pressed",String(alertsOn));alerts.setAttribute("aria-label",`Expedition alerts ${alertsOn?"on":"off"}`);alerts.title=`Expedition alerts: ${alertsOn?"on":"off"}`;
         focusDisplay.renderReadout(focusHud,view);focusHud.querySelector('.focus-end').disabled=!view.active;focusHud.querySelector('.focus-recall').disabled=scene instanceof Scene_RPGRecall;
         focusHud.querySelector('.focus-float').textContent=state.focusTimer?.enabled?'Hide compact timer':globalThis.nw?.Window?'Show floating timer':'Show compact timer (browser)';
         focusHud.querySelector('.focus-note').textContent=floatingTimer.lastError?'Floating view unavailable. Your session and in-game timer continue.':globalThis.nw?.Window?'Read-only desktop timer. Drag to move; × hides it.':'Browser compact view stays inside this page; desktop floating requires NW.js.';
     }
     window.RPGManager.focus={view:()=>focusDisplay.clockView(managerState(),selectedQuest()),refresh:()=>refreshFocusTimer(true),floating:floatingTimer};
     window.addEventListener('resize',()=>{refreshFocusTimer(true);floatingTimer.reposition();});
+    // Native selects, dialogs, and window focus changes can leave MZ's cached
+    // pointer state held. Reset only the cached state at those boundaries so the
+    // next real mouse event is always accepted by the canvas or DOM control.
+    window.addEventListener('focus',()=>{Input.clear();TouchInput.clear();});
+    window.addEventListener('blur',()=>{Input.clear();TouchInput.clear();});
+    document.addEventListener('pointerup',event=>{if(event.pointerType==='mouse'&&event.buttons===0&&document.activeElement?.matches?.('button,[role="button"]'))document.activeElement.blur();});
     let managerClosing=false,managerMinimized=false;
     window.addEventListener('beforeunload',()=>{managerClosing=true;floatingTimer.destroy();});
     if(globalThis.nw?.Window)try{const mainWindow=nw.Window.get();mainWindow.on('minimize',()=>{managerMinimized=true;Graphics._app?.stop();});mainWindow.on('restore',()=>{managerMinimized=false;syncMissionClock();Graphics._app?.start();refreshSessionDisplay(true);});}catch(error){/* Browser and optional native lifecycle isolation. */}
@@ -526,7 +592,7 @@
         if(state.completionCue?.pending)eventAudioQueue=[];
         if(document.hidden||managerMinimized)eventAudioQueue=[];
         if(eventAudioQueue.length&&!completionChime&&now-eventAudioAt>=900&&!(eventAudioQueue[0].kind==="battleVictory"&&displayTrip?.presentationCurrent?.kind==="battle")){
-            const event=eventAudioQueue.shift(),sounds={wounded:["Damage1",30,90],death:["Collapse1",35,80],battleStart:["Book1",24,90],battleEnd:["Bell2",22,110],battleVictory:["Bell3",26,110,550],randomEvent:["Item1",22,100]};
+            const event=eventAudioQueue.shift(),sounds={wounded:["Damage1",30,90],death:["Collapse1",35,80],battleStart:["Book1",24,90],battleEnd:["Bell2",22,110],battleVictory:["Applause1",38,105,900],randomEvent:["Item1",22,100]};
             eventAudioAt=now;
             try{if(sounds[event.kind])playCompletionChime(...sounds[event.kind]);}catch(error){state.completionAlertError=String(error.message||error);releaseCompletionChime();}
         }
@@ -578,7 +644,7 @@
     Scene_Base.prototype.update=function(){
         if(!managerDialog&&!this._shopTabs?.contains(document.activeElement)&&!this._questFilters?.contains(document.activeElement)&&!this._campNav?.contains(document.activeElement)&&!(this._campNav&&Input.isTriggered("pagedown")))updateSceneBase.call(this);
         syncMissionClock();
-        if(this._campStatus){const state=managerState(),key=`${state.gold}:${state.arcana}:${state.completionAlerts}`;if(this._campStatusKey!==key){this._campStatusKey=key;this._campStatus.querySelector('[data-resource="gold"]').textContent=`◉ ${state.gold} Gold`;this._campStatus.querySelector('[data-resource="arcana"]').textContent=`◇ ${state.arcana||0} Arcana`;this._campStatus.querySelector('button').textContent=`Alerts ${state.completionAlerts!==false?"ON":"OFF"}`;}}
+        if(this._campStatus){const state=managerState(),key=`${state.gold}:${state.arcana}`;if(this._campStatusKey!==key){this._campStatusKey=key;this._campStatus.querySelector('[data-resource="gold"]').textContent=`◉ ${state.gold} Gold`;this._campStatus.querySelector('[data-resource="arcana"]').textContent=`◇ ${state.arcana||0} Arcana`;}}
         if(this._savePager&&!this._campNav?.contains(document.activeElement)&&(Input.isTriggered("pageup")||Input.isTriggered("pagedown"))){this._savePager.querySelectorAll("button")[Input.isTriggered("pagedown")?1:0]?.click();Input.clear();}
         updateFormController(this._shopTabs?.contains(document.activeElement)?this._shopTabs:this._nameForm||(this._questFilters?.contains(document.activeElement)?this._questFilters:null));
         if(this._campNav?.contains(document.activeElement)&&(Input.isTriggered("left")||Input.isTriggered("right")||Input.isTriggered("up")||Input.isTriggered("down"))){const buttons=[...this._campNav.querySelectorAll("button")].filter(b=>!b.disabled),index=buttons.indexOf(document.activeElement),step=Input.isTriggered("left")?-1:Input.isTriggered("up")?-4:Input.isTriggered("down")?4:1;buttons[(index+step+buttons.length)%buttons.length]?.focus();Input.clear();}
@@ -605,6 +671,7 @@
 
     class Window_RPGPanel extends Window_Base {
         initialize(rect) { super.initialize(rect); this.opacity = 255; this.backOpacity = 245; }
+        createContents(){super.createContents();if(this.contentsBack)CozyUI.ledgerSurface(this.contentsBack,managerSceneAccent());}
         lineHeight() { return 30; }
 
         resetFontSettings() {
@@ -657,6 +724,8 @@
         setStartRegions(regions) { this._startRegions = regions; }
         update() {
             super.update();
+            const scene=SceneManager._scene,resources=`${managerState().gold}:${managerState().arcana||0}:${managerState().magicalArtifacts||0}`;
+            if(scene instanceof Scene_RPGHome&&resources!==scene._headerResourceKey)scene.refreshGuildHeader();
             if(this._results){
                 // Finish is an explicit centered DOM button; unrelated OK input must not dismiss results.
                 if(TouchInput.wheelY>=20){this._resultPage=(this._resultPage+1)%this._resultPages;this.drawResults(this._results);}
@@ -687,41 +756,16 @@
             this._results=result;
             const b=this.contents,w=this.innerWidth,h=this.innerHeight;
             b.clear();
+            if(rewardEmblemArt.isReady()&&result.endKind!=="early"){b.paintOpacity=58;b.blt(rewardEmblemArt,0,0,rewardEmblemArt.width,rewardEmblemArt.height,Math.max(0,w-92),2,82,82);b.paintOpacity=255;}
             const text=(value,x,y,width,size=18,color="#f4e8cf",height=22)=>CozyUI.text(this,String(value),x,y,width,size,color,"left",height);
-            // Details are paged by input, never by a timer. All finds and scars remain readable.
-            const detailLines=[];
-            const add=value=>{b.fontSize=18;let line="";for(const word of String(value).split(/\s+/)){if(line&&this.textWidth(line+" "+word)>w-24){detailLines.push(line);line="";}line+=(line?" ":"")+word;}if(line)detailLines.push(line);};
-            add(result.plannedDurationMs?`${result.plannedDurationMs/60000}-minute session / ${progression.dangerLabel(result)}`:"Previous expedition / duration not recorded");
-            if(result.plannedDurationMs)add(`${focusDisplay.formatTime(result.sessionElapsedMs||0)} elapsed of ${focusDisplay.formatTime(result.plannedDurationMs)} planned.`);
-            add(result.endKind==="early"?"Ended early. Previous finds kept; no completion rewards or XP.":result.autoRetreat?"Automatic return. Previous consequences and finds kept.":result.objectiveState||"Expedition journal complete.");
-            if(result.retreatReason)add(result.retreatReason);
-            if(result.armorRestored)add("Returning companions: Armor fully restored; wards replenished.");
-            add(`${result.battleCount||0} battles, including ${result.skirmishCount||0} trail skirmishes.`);
-            add("Items obtained");
-            if(!result.items?.length)add("No items obtained.");
-            for(const item of result.items||[]){add(`${item.name} x${item.quantity}`);if(item.itemId)add(progression.itemSummary(item.itemId));}
-            add(`XP per companion: ${result.xpPerMember||0}`);
-            for(const note of result.fieldNotes||[])add(note);
-            add("Level-ups");
-            const levelled=(result.members||[]).filter(n=>n.levelledUp);
-            if(!levelled.length)add("No level-ups this session.");
-            for(const member of levelled)add(`${member.name}: Level ${member.level}`);
-            add(`Enemy XP pool: ${result.enemyXpEarned||0} (shared by participants)`);add("Broken equipment");for(const loss of result.gearLosses||[])add(loss.text||progression.SHOP[loss.itemId]?.name||loss.itemId);if(!result.gearLosses?.length)add("None.");add("Persistent consequences");
-            for(const member of result.members||[]){
-                add(`${member.name}: HP ${member.health}/${member.maxHealth}, Armor ${member.armor}, Ward ${member.ward}. ${member.condition}.`);
-                add(member.permanentWounds?.length?member.permanentWounds.join(", "):"No permanent injuries.");
-            }
-            const perPage=Math.max(1,Math.floor((h-169)/24));
-            this._resultPages=1+Math.ceil(detailLines.length/perPage);
-            this._resultPage=Math.min(this._resultPage||0,this._resultPages-1);
+            // The return screen is intentionally a concise recap. Detailed expedition
+            // logs remain internal history and no longer compete with the Finish action.
+            this._resultPages=1;this._resultPage=0;
             this._displayRemainingMs=0;this._displayCountdown="00:00";this._displaySessionState=result.endKind==="early"?"Ended":result.autoRetreat?"Returned":"Complete";
-            text(result.questName,8,6,w-16,w<400?20:26,"#ffe3a4",34);text(result.endKind==="early"?"Session ended":`${this._displaySessionState} / ${result.outcome||"Returned"}`,8,45,w-16,18,"#b8d59c",26);
-            CozyUI.round(b,6,85,w-120,27,"#e9d9b4","#b39b6c",4);
-            text(result.endKind==="early"?"Session ended":result.autoRetreat?"Automatic return":"Expedition journal",13,86,w-132,17,"#423e30",26);
-            this._resultPageRegion=new Rectangle(w-106,86,98,24);
-            CozyUI.round(b,w-106,86,98,24,"#354c80","#a6c797",4);
-            text(`${this._resultPage?"Page":"Details"} ${this._resultPage+1}/${this._resultPages} >`,w-100,89,86,11);
-            if(!this._resultPage){
+            text("Expedition complete",8,6,w-16,w<400?20:26,"#ffe3a4",34);text(result.endKind==="early"?"Session ended":`${this._displaySessionState} / ${result.outcome||"Returned"}`,8,45,w-16,18,"#b8d59c",26);
+            CozyUI.round(b,6,85,w-12,27,"#e9d9b4","#b39b6c",4);
+            text(result.endKind==="early"?"Session ended — previous finds kept":result.autoRetreat?"Automatic return — consequences preserved":"Quest complete — rewards and growth applied",13,86,w-26,16,"#423e30",26);
+            this._resultPageRegion=null;
                 // Legacy larger parties finish safely; their additional members have full Details rows.
                 const members=(result.members||[]).slice(0,3),cardHeight=Math.min(60,(h-238)/3);
                 let y=116;
@@ -733,15 +777,10 @@
                     if(cardHeight>=55)text(`${member.condition}${member.permanentWounds?.length?` / ${member.permanentWounds.length} permanent injuries`:""}${member.levelledUp?` / LEVEL UP ${member.oldLevel} → ${member.level}!`:""}`,48,y+38,w-60,14,member.condition==="Healthy"?"#b8cea5":"#e9afa1",18);
                     y+=cardHeight;
                 }
-                text(`Earned: +${result.rewardGold} Gold / +${result.rewardArcana} Arcana`,8,y+2,w-16,16,"#e8c583",18);
+                text(`Earned: +${result.rewardGold} Gold / +${result.rewardArcana} Arcana / +${result.rewardMagicalArtifacts||0} Artifacts`,8,y+2,w-16,16,"#e8c583",18);
                 text(`${result.enemiesDefeated||0} enemies defeated / ${(result.members||[]).filter(n=>n.condition==="Dead").length} deaths / ${(result.members||[]).filter(n=>n.condition==="Wounded").length} wounded`,8,y+23,w-16,15,"#c6b99d",18);
 
-                text(`${result.xpPerMember||0} completion + ${result.enemyXpEarned||0} enemy XP / Broken: ${(result.gearLosses||[]).map(n=>progression.SHOP[n.itemId]?.name||n.itemId).join(", ")||"None"}`,8,y+44,w-16,14,"#c6b99d",18);
-            }else detailLines.slice((this._resultPage-1)*perPage,this._resultPage*perPage).forEach((line,i)=>{
-                const id=Object.keys(progression.SHOP).find(id=>line.startsWith(progression.SHOP[id].name));
-                if(id)CozyUI.itemIcon(this,id,12,116+i*24,16);
-                text(line,id?34:12,116+i*24,w-(id?46:24),18,"#e4dbc2",16);
-            });
+                text(`${result.xpPerMember||0} completion + ${result.enemyXpEarned||0} enemy XP / Upgrades expired: ${(result.upgradeIds||[]).length}`,8,y+44,w-16,14,"#c6b99d",18);
             this.setRecallRegion(null);
         }
         ensureTravelStage(){
@@ -933,7 +972,9 @@
             c.job=progression.campJobFor(this._state,c.npc.id)||"idle";
             const points=this.jobPoints(c.job);
             c.seed = (Math.imul(c.seed, 1664525) + 1013904223) >>> 0;
-            const point = points[c.seed % points.length]; c.tx = Math.max(24,Math.min(this.innerWidth-75,point[0])); c.ty = Math.max(60,Math.min(this.innerHeight-108,point[1]));
+            const coworkers=[...this._campers.values()].filter(other=>(progression.campJobFor(this._state,other.npc.id)||"idle")===c.job).sort((a,b)=>String(a.npc.id).localeCompare(String(b.npc.id)));
+            const workerIndex=Math.max(0,coworkers.indexOf(c));
+            const point = points[(c.seed+workerIndex)%points.length]; c.tx = Math.max(24,Math.min(this.innerWidth-75,point[0])); c.ty = Math.max(60,Math.min(this.innerHeight-108,point[1]));
             c.direction = Math.abs(c.tx-c.x) > Math.abs(c.ty-c.y) ? (c.tx<c.x?4:6) : (c.ty<c.y?8:2);
         }
         updateCampers() {
@@ -947,6 +988,12 @@
                 if(distance<1.5){c.x=c.tx;c.y=c.ty;c.seed=(c.seed+97)>>>0;c.pause=c.job==="idle"?35+(c.seed%100):Infinity;c.direction=2;continue;}
                 const speed=.32;c.x+=dx/distance*speed;c.y+=dy/distance*speed;
             }
+            const campers=[...this._campers.values()];
+            for(let i=0;i<campers.length;i++)for(let j=i+1;j<campers.length;j++){
+                const a=campers[i],b=campers[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),minimum=54;
+                if(d>0&&d<minimum){const push=(minimum-d)/2,nx=dx/d,ny=dy/d;a.x-=nx*push;a.y-=ny*push;b.x+=nx*push;b.y+=ny*push;}
+            }
+            for(const c of campers){c.x=Math.max(22,Math.min(this.innerWidth-78,c.x));c.y=Math.max(58,Math.min(this.innerHeight-108,c.y));}
         }
         ensureCampLayers(){
             if(this._campLayer)return;
@@ -995,8 +1042,8 @@
                 const npc=c.npc,moving=c.pause===0&&Math.hypot(c.tx-c.x,c.ty-c.y)>1.5,motion=window.RPGManagerBattleStage.pieceMotion(c.pieceTime||0,66,{moving,direction:c.direction===4?-1:1});
                 v.root.x=c.x;v.root.y=c.y;const figure=this.campFigure(npc,c.direction);if(v.figure.bitmap!==figure)v.figure.bitmap=figure;v.figure.visible=!!figure;
                 v.figure.x=22+motion.x;v.figure.y=66+motion.y;v.figure.rotation=motion.angle;
-                const job=progression.campJobFor(this._state,npc.id)||"idle",labelKey=`${npc.name}:${job}`;
-                if(v.labelKey!==labelKey){v.labelKey=labelKey;const b=v.labelBitmap;b.clear();b.fontFace=this.contents.fontFace;CozyUI.round(b,0,0,80,25,"#202d50eb",null,4);b.textColor="#fff0d0";b.fontSize=11;b.drawText(npc.name.split(" ")[0],3,0,74,13,"center");b.textColor="#d9c58e";b.fontSize=9;b.drawText(job==="work"?"WORKSHOP":job.toUpperCase(),3,13,74,12,"center");}
+                const job=progression.campJobFor(this._state,npc.id)||"idle",hovered=this._hoverCamperId===npc.id,labelKey=hovered?`${npc.name}:${job}:hover`:`${npc.name}:${job}`;
+                if(v.labelKey!==labelKey){v.labelKey=labelKey;const b=v.labelBitmap;b.clear();b.fontFace=this.contents.fontFace;CozyUI.round(b,0,0,80,25,hovered?"#4d6598":"#202d50eb",hovered?"#ffe3a4":null,4);b.textColor="#fff0d0";b.fontSize=11;b.drawText(npc.name.split(" ")[0],3,0,74,13,"center");b.textColor=hovered?"#fff0c7":"#d9c58e";b.fontSize=9;b.drawText(job==="work"?"WORKSHOP":job.toUpperCase(),3,13,74,12,"center");}
                 v.label.x=Math.max(2,Math.min(this.innerWidth-82,c.x-23))-c.x;
                 const animatedCue=job!=="idle"||npc.health<npc.maxHealth||npc.injury,cueKey=`${job}:${npc.health<npc.maxHealth}:${!!npc.injury}:${animatedCue?Math.floor(Graphics.frameCount/4):0}`;
                 if(v.cueKey!==cueKey){v.cueKey=cueKey;const b=v.cueBitmap;b.clear();CozyUI.jobCue(b,job,0,28,Graphics.frameCount);b.fontSize=20;b.textColor="#91edac";if(npc.health<npc.maxHealth)b.drawText("+",8,6,24,26,"center");if(npc.injury){b.fontSize=9;b.textColor="#ffb0b0";b.drawText("+",5,23,14,14,"center");}}
@@ -1009,11 +1056,11 @@
             for(const v of this._campVisuals.values()){v.shadowBitmap.destroy();v.labelBitmap.destroy();v.cueBitmap.destroy();}
             for(const bitmap of this._figureFrames.values())bitmap.destroy();if(this._fireBitmap)this._fireBitmap.destroy();super.destroy(options);
         }
-        update() { super.update(); if (!this._state||!this.visible) return;this.updateCampers();if(this._campSceneryKey!==`${this.innerWidth}:${this.innerHeight}:${cozyCampArt.isReady()}`)this.refresh();else this.updateCampVisuals();if(this._selectHandler&&TouchInput.isTriggered()){const p=this.worldTransform.applyInverse(new Point(TouchInput.x,TouchInput.y)),hit=this._hitRegions.find(entry=>entry.rect.contains(p.x-this.padding,p.y-this.padding));if(hit){SoundManager.playOk();this._selectHandler(hit.id);}} }
+        update() { super.update(); if (!this._state||!this.visible) return;this.updateCampers();if(this._campSceneryKey!==`${this.innerWidth}:${this.innerHeight}:${cozyCampArt.isReady()}`)this.refresh();else this.updateCampVisuals();if(typeof Point!=="undefined"){const p=this.worldTransform.applyInverse(new Point(TouchInput.x,TouchInput.y)),hit=this._hitRegions.find(entry=>entry.rect.contains(p.x-this.padding,p.y-this.padding));const hoverId=hit?.id||null;if(hoverId!==this._hoverCamperId){this._hoverCamperId=hoverId;this.updateCampVisuals();}if(this._selectHandler&&TouchInput.isTriggered()&&hit){SoundManager.playOk();this._selectHandler(hit.id);}} }
     }
 
     class Window_RPGCampRoster extends Window_RPGPanel {
-        contentsHeight(){return Math.max(this.innerHeight,36+78*progression.MAX_ROSTER_SIZE+70);}
+        contentsHeight(){return this.innerHeight;}
         setSelectHandler(handler){this._selectHandler=handler;}
         setState(state){this._state=state;this.refresh();}
         syncRosterScroll(){
@@ -1034,10 +1081,11 @@
         refresh(){
             if(!this._state)return;const s=this._state,w=this.innerWidth;this.contents.clear();this._hitRegions=[];
             CozyUI.text(this,`YOUR COMPANIONS / ${progression.activeRoster(s).length} OF 5`,8,4,w-16,15,"#e8c583","left",24);
-            const slots=progression.activeSlotIds(s),row=78;
+            const slots=progression.activeSlotIds(s),row=Math.floor((this.innerHeight-38)/progression.MAX_ROSTER_SIZE);
             slots.forEach((id,i)=>{
                 const npc=s.roster.find(n=>n.id===id),y=36+i*row;
-                CozyUI.round(this.contents,6,y,w-12,row-5,this._focusIndex===i?"#46547b":"#2b375a",this._focusIndex===i?"#ffe3a4":npc?.injury?"#e9afa1":"#c6ae65",5);
+                const focused=this._focusIndex===i,edge=focused?"#ffe3a4":npc?.injury?"#e9afa1":"#8da2c7";
+                this.contents.gradientFillRect(9,y+3,w-18,row-11,focused?"#5875aa":"#3b5385",focused?"#293f72":"#223561",true);CozyUI.round(this.contents,6,y,w-12,row-5,null,edge,6);this.contents.fillRect(13,y+5,w-26,1,focused?"#fff3bd99":"#ffffff30");
                 if(npc){
                     const condition=progression.conditionOf(npc),away=progression.isUnavailable(s,id);
                     CozyUI.portraitFrame(this,npc,13,y+10,32);
@@ -1048,20 +1096,16 @@
                 }else{
                     CozyUI.icon(this.contents,"recruit",14,y+12,26);
                     CozyUI.text(this,`Slot ${i+1}: EMPTY`,50,y+8,w-62,14,"#e8c583","left",20);
-                    CozyUI.text(this,"Tavern: free replacement",50,y+31,w-62,12,"#c6b99d","left",18);
+                    CozyUI.text(this,"Click to recruit for free",50,y+31,w-62,12,"#c6b99d","left",18);
+                    this._hitRegions.push({menu:"recruit",rect:new Rectangle(6,y,w-12,row-5)});
                 }
             });
-            const y=36+row*progression.MAX_ROSTER_SIZE;
-            const fallen=progression.graveyard(s);
-            CozyUI.text(this,fallen.length?`Graveyard: ${fallen.length} DEAD / archived`:"No fallen companions",8,y+3,w-16,12,fallen.length?"#ffc8ae":"#c6b99d","left",18);
-            const candidates=progression.replacementCandidates(s);
-            CozyUI.text(this,`Tavern: ${candidates.length} available candidates`,8,y+24,w-16,12,"#e8c583","left",18);
-            this._hitRegions.push({menu:"recruit",rect:new Rectangle(6,y+22,w-12,20)});
             this.syncRosterScroll();
         }
         update(){super.update();if(this._state&&Graphics.frameCount%30===0)this.refresh();
             if(this._rosterScrollElement)this._rosterScrollElement.hidden=!this.visible||!this.isOpen()||this.contents.height<=this.innerHeight||!!managerDialog;
             if(this.visible&&this._state){const p=this.worldTransform.applyInverse(new Point(TouchInput.x,TouchInput.y));if(this.innerRect.contains(p.x,p.y)&&Math.abs(TouchInput.wheelY)>=20){this._rosterScroll=Math.max(0,Math.min((this._rosterScroll||0)+Math.sign(TouchInput.wheelY)*78,this.contents.height-this.innerHeight));this.syncRosterScroll();}}
+            if(this.visible&&this._state&&(this._managerHoverX!==TouchInput.x||this._managerHoverY!==TouchInput.y)){this._managerHoverX=TouchInput.x;this._managerHoverY=TouchInput.y;const p=this.worldTransform.applyInverse(new Point(TouchInput.x,TouchInput.y)),hit=this.innerRect.contains(p.x,p.y)&&this._hitRegions?.find(r=>r.id&&r.rect.contains(p.x-this.padding,p.y-this.padding+this.origin.y)),index=hit?progression.activeSlotIds(this._state).indexOf(hit.id):-1;if(index>=0&&index!==this._focusIndex){this._focusIndex=index;this.refresh();}}
             if(this.visible&&this._selectHandler&&TouchInput.isTriggered()){
                 const p=this.worldTransform.applyInverse(new Point(TouchInput.x,TouchInput.y));const hit=this.innerRect.contains(p.x,p.y)&&this._hitRegions?.find(r=>r.rect.contains(p.x-this.padding,p.y-this.padding+this.origin.y));if(hit){if(hit.menu)this._menuHandler?.(hit.menu);else this._selectHandler(hit.id);}
             }
@@ -1176,7 +1220,7 @@
             CozyUI.text(this,`Signature: ${progression.moveFor(npc)?.name||npc.signatureAttack} / ${npc.passiveTrait.name}`,8,116,w-16,14,"#c5ade4");
             CozyUI.text(this,`HP ${npc.health}/${npc.maxHealth} / Class Armor ${npc.classArmor}/${npc.classArmorMax} / Ward ${npc.innateWardMax}`,8,142,w-16,16,"#c6d5bc");
             CozyUI.text(this,`Crit ${Math.round(npc.critChance*100)}% (double damage) / Dodge ${baseDodge}%`,8,167,w-16,16,"#e8c583");
-            CozyUI.text(this,`Gear: ${progression.EQUIPMENT_SLOTS.map(slot=>progression.SHOP[npc.equipmentSlots?.[slot]]?.name||"Empty").join(" / ")}`,8,232,w-16,12,"#d8ccb2");
+            CozyUI.text(this,"Defense: class growth, rituals, and expedition preparation",8,232,w-16,12,"#d8ccb2");
             CozyUI.text(this,`${career.questsCompleted} adventures / ${career.victories} victories / ${career.bossVictories} bosses`,8,285,w-16,14,"#e8c583");
             CozyUI.text(this,`${career.kills} kills / ${career.damageDealt} damage / ${career.signatureUses} signatures / ${career.injuriesSuffered} injuries`,8,310,w-16,12,"#c6b99d");
             const earned=(npc.earnedTraits||[]).map(id=>progression.EARNED_TRAITS.find(t=>t.id===id)?.name||id),wounds=(npc.permanentWounds||[]).map(id=>progression.WOUND_DEFINITIONS.find(t=>t.id===id)?.name||id);
@@ -1197,8 +1241,6 @@
                 const questAvailable = !managerState().questResults && !progression.teamError(managerState());
                 this.addCommand(`${place.name}\n${place.caption}`, place.symbol, place.symbol !== "battle" || questAvailable, place);
             }
-            this.addCommand("Camp Jobs", "campJobs", true, {icon:82,name:"Camp Jobs"});
-            
             // DEVELOPMENT CONTRACT: keep DEBUG available throughout development; release builds may disable developerMode.
             if ($dataRPGManagerUI?.developerMode) this.addCommand("DEBUG", "debug");
             this.addCommand("Save", "save");
@@ -1287,14 +1329,52 @@
     function managerModal(title,lines,actions,cancel){
         if(managerDialog)return managerDialog;
         const el=document.createElement("section");el.id="manager-confirmation";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",title);
-        el.style.cssText="position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);width:min(660px,86vw);max-height:calc(100vh - 24px);overflow:hidden;box-sizing:border-box;background:#f3e5c7;color:#2b2647;padding:16px;border:4px solid #bd9655;border-radius:16px;box-shadow:0 0 0 100vmax #130c26b8;font:16px Trebuchet MS,sans-serif";
-        const heading=document.createElement("h2");heading.textContent=title;heading.style.marginTop="0";el.appendChild(heading);
+        el.style.cssText="position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);width:min(660px,86vw);max-height:calc(100vh - 24px);overflow:hidden;box-sizing:border-box;background:linear-gradient(145deg,#fff0ce,#dfc694);color:#2b2647;padding:18px;border:4px solid #bd9655;border-radius:16px;box-shadow:inset 0 0 0 2px #fff6d6,inset 0 -12px 30px #8a5f2630,0 12px 35px #090d1fbb,0 0 0 100vmax #130c26b8;font:16px Trebuchet MS,sans-serif";
+        const heading=document.createElement("h2");heading.textContent=title;heading.style.cssText="margin:0 0 12px;padding:0 40px 9px;text-align:center;font:700 25px Georgia;color:#3b3150;border-bottom:1px solid #a88043;text-shadow:0 1px #fff7df";el.appendChild(heading);
         for(const line of lines){const p=document.createElement("p");p.textContent=line;p.style.margin="8px 0";el.appendChild(p);}
         const error=document.createElement("p");error.setAttribute("role","alert");error.style.color="#9b2637";el.appendChild(error);
-        const buttons=actions.map(action=>{const b=document.createElement("button");b.textContent=action.name;b.style.cssText="font:inherit;font-weight:bold;padding:12px;margin:5px;border:2px solid #8b7047;border-radius:6px;background:#263b67;color:#fff0cb;cursor:pointer";b.onclick=action.run;el.appendChild(b);return b;});
+        const buttons=actions.map(action=>{const b=document.createElement("button");b.textContent=action.name;b.style.cssText="font:inherit;font-weight:bold;padding:12px 16px;margin:5px;border:1px solid #9eb2dd;border-bottom:4px solid #14264d;border-radius:8px;background:linear-gradient(#5575b0,#294174 60%,#20345f);color:#fff0cb;box-shadow:inset 0 2px #ffffff42,0 3px 6px #22172b55;cursor:pointer;transition:transform .08s ease";b.onpointerdown=()=>b.style.transform="translateY(3px)";b.onpointerup=b.onpointerleave=()=>b.style.transform="translateY(0)";b.onclick=action.run;el.appendChild(b);return b;});
         for(const name of ["mousedown","mouseup","touchstart","touchend","wheel","keydown","keyup"])el.addEventListener(name,e=>e.stopPropagation());
         el.addEventListener("keydown",e=>{if(e.key==="Tab"){e.preventDefault();const enabled=buttons.filter(b=>!b.disabled),index=enabled.indexOf(document.activeElement);enabled[(index+(e.shiftKey?enabled.length-1:1))%enabled.length]?.focus();}if(e.key==="Escape"){e.preventDefault();if(!exitSaving)cancel();}if(["ArrowLeft","ArrowRight"].includes(e.key)){e.preventDefault();const index=buttons.indexOf(document.activeElement);buttons[(index+(e.key==="ArrowRight"?1:buttons.length-1))%buttons.length].focus();}});
         document.body.appendChild(el);managerDialog={element:el,error,buttons,cancel};buttons[buttons.length-1].focus();Input.clear();TouchInput.clear();return managerDialog;
+    }
+    let manualOverlay=null,manualLastTopic="getting-started";
+    function closeManual(enlargedOnly=false){
+        if(!manualOverlay)return;
+        const zoom=manualOverlay.querySelector(".manual-zoom");if(enlargedOnly&&zoom){zoom.remove();return;}
+        const opener=manualOverlay._opener;manualOverlay.remove();manualOverlay=null;Input.clear();TouchInput.clear();opener?.focus();
+    }
+    function showManual(opener){
+        if(manualOverlay){manualOverlay.querySelector(".manual-close")?.focus();return;}
+        const topics=$dataRPGManagerManual?.topics||[],images=new Map(($dataRPGManagerManualImages?.images||[]).map(row=>[row.id,row]));
+        const root=document.createElement("section");manualOverlay=root;root._opener=opener;root.id="rpg-how-to-play";root.setAttribute("role","dialog");root.setAttribute("aria-modal","true");root.setAttribute("aria-labelledby","manual-title");
+        root.innerHTML='<div class="manual-shell"><header><h2 id="manual-title">How to Play</h2><button class="manual-close" type="button" aria-label="Close How to Play">×</button></header><nav class="manual-tabs" aria-label="Manual topics"></nav><main class="manual-content" tabindex="0"></main></div>';
+        const style=document.createElement("style");style.textContent='#rpg-how-to-play{position:fixed;z-index:120;inset:0;background:#100b22d9;display:grid;place-items:center;font:16px Trebuchet MS;color:#2e2845}#rpg-how-to-play .manual-shell{width:min(94vw,900px);height:min(92vh,680px);box-sizing:border-box;display:grid;grid-template-rows:auto auto 1fr;background:linear-gradient(145deg,#fff2d3,#d8bb82);border:4px solid #c69c4d;border-radius:18px;box-shadow:inset 0 0 0 2px #fff8dc,0 18px 55px #000c;overflow:hidden}#rpg-how-to-play header{display:flex;align-items:center;padding:9px 14px;border-bottom:1px solid #a57b3d}#rpg-how-to-play h2{font:700 27px Georgia;margin:0;flex:1;text-align:center}#rpg-how-to-play button{font:700 15px Trebuchet MS;cursor:pointer}#rpg-how-to-play button:focus-visible{outline:3px solid #4f78bf;outline-offset:2px}.manual-close{width:44px;height:44px;border-radius:50%;border:2px solid #8a5d2e;background:#3c315a;color:#fff3cc;font-size:28px!important}.manual-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:7px 10px;background:#3b3057}.manual-tabs button{min-height:44px;border:1px solid #aebde0;border-bottom:4px solid #15264c;border-radius:8px;background:#365487;color:#fff1ce}.manual-tabs button[aria-selected=true]{background:#e8c583;color:#302248;border-color:#fff0b9}.manual-content{overflow-y:auto;padding:14px 18px;outline:none}.manual-page{display:grid;grid-template-columns:minmax(270px,46%) 1fr;gap:18px;align-items:start}.manual-visual{margin:0;background:#25375f;border:3px solid #8b6b39;border-radius:10px;padding:6px;color:#fff1ce}.manual-visual img{display:block;width:100%;max-height:330px;object-fit:contain;image-rendering:auto;cursor:zoom-in}.manual-visual figcaption{font-size:13px;padding:6px 3px 1px}.manual-copy h3{font:700 24px Georgia;margin:0 0 8px}.manual-copy p,.manual-copy li{line-height:1.38;margin:0 0 8px}.manual-copy ul{padding-left:20px}.manual-zoom{position:fixed;z-index:2;inset:0;background:#0b081ceF;display:grid;place-items:center;padding:4vw}.manual-zoom img{max-width:90vw;max-height:82vh}.manual-zoom button{position:absolute;right:3vw;top:3vh;width:48px;height:48px;border-radius:50%;font-size:26px;background:#fff0ce}.manual-fallback{min-height:220px;display:grid;place-items:center;text-align:center;padding:20px}@media(max-width:700px){.manual-tabs{grid-template-columns:1fr}.manual-tabs button{min-height:36px}.manual-page{grid-template-columns:1fr}.manual-visual img{max-height:210px}}';root.appendChild(style);
+        const tabs=root.querySelector(".manual-tabs"),content=root.querySelector(".manual-content");
+        const render=id=>{
+            const topic=topics.find(row=>row.id===id)||topics[0];if(!topic)return;
+            manualLastTopic=topic.id;
+            for(const b of tabs.children)b.setAttribute("aria-selected",String(b.dataset.id===topic.id));
+            const image=images.get(topic.imageIds?.[0]);
+            // RPG Maker MZ's bundled NW.js predates the newer child-replacement API.
+            // Clear explicitly so the first topic renders instead of raising a fatal error.
+            while(content.firstChild)content.removeChild(content.firstChild);
+            const page=document.createElement("article");page.className="manual-page";
+            const figure=document.createElement("figure");figure.className="manual-visual";
+            const img=document.createElement("img");img.src=image?.path||"";img.alt=image?.alt||topic.title;img.loading="lazy";
+            const fallback=document.createElement("div");fallback.className="manual-fallback";fallback.textContent=`Visual unavailable. ${image?.caption||"Use the live labels and instructions beside it."}`;fallback.hidden=true;
+            img.onerror=()=>{img.hidden=true;fallback.hidden=false;};
+            img.onclick=()=>{const zoom=document.createElement("div");zoom.className="manual-zoom";zoom.innerHTML=`<button type="button" aria-label="Close enlarged image">×</button><img alt="${img.alt.replace(/"/g,"&quot;")}">`;zoom.querySelector("img").src=img.src;zoom.querySelector("button").onclick=()=>zoom.remove();root.appendChild(zoom);zoom.querySelector("button").focus();};
+            const caption=document.createElement("figcaption");caption.textContent=image?.caption||"";
+            figure.appendChild(img);figure.appendChild(fallback);figure.appendChild(caption);
+            const copy=document.createElement("div");copy.className="manual-copy";const heading=document.createElement("h3");heading.textContent=topic.title;copy.appendChild(heading);
+            for(const block of topic.blocks||[]){const el=document.createElement(block.type==="list"?"ul":"p");if(block.type==="list")for(const item of block.items||[]){const li=document.createElement("li");li.textContent=item;el.appendChild(li);}else el.textContent=block.text;copy.appendChild(el);}
+            page.appendChild(figure);page.appendChild(copy);content.appendChild(page);content.scrollTop=0;
+        };
+        for(const topic of topics){const b=document.createElement("button");b.type="button";b.dataset.id=topic.id;b.textContent=topic.tab;b.setAttribute("role","tab");b.onclick=()=>render(topic.id);tabs.appendChild(b);}root.querySelector(".manual-close").onclick=()=>closeManual();root.addEventListener("pointerdown",e=>e.stopPropagation(),true);root.addEventListener("pointerup",e=>e.stopPropagation(),true);root.addEventListener("wheel",e=>e.stopPropagation(),true);root.addEventListener("keydown",e=>{e.stopPropagation();if(e.key==="Escape"){e.preventDefault();closeManual(true);}if(e.key==="Tab"){const focusable=[...root.querySelectorAll("button,[tabindex='0']")].filter(n=>n.offsetParent!==null),i=focusable.indexOf(document.activeElement);if((e.shiftKey&&i===0)||(!e.shiftKey&&i===focusable.length-1)){e.preventDefault();focusable[e.shiftKey?focusable.length-1:0].focus();}}},true);document.body.appendChild(root);render(manualLastTopic);root.querySelector(".manual-close").focus();Input.clear();TouchInput.clear();
+    }
+    function mountManualButton(scene){
+        document.getElementById("how-to-play-button")?.remove();const rect=Graphics._canvas.getBoundingClientRect(),scale=rect.width/Graphics.width,b=document.createElement("button");b.id="how-to-play-button";b.type="button";b.textContent="?";b.title="How to Play";b.setAttribute("aria-label","How to Play");b.style.cssText=`position:fixed;z-index:35;left:${rect.right-68*scale}px;top:${rect.top+18*scale}px;width:${44*scale}px;height:${44*scale}px;border:${2*scale}px solid #fff0b9;border-bottom-width:${5*scale}px;border-radius:50%;background:radial-gradient(circle at 40% 30%,#fff0a8,#bd812d);color:#302248;box-shadow:0 ${4*scale}px ${10*scale}px #0008;font:bold ${27*scale}px Georgia;cursor:pointer`;b.onclick=()=>showManual(b);for(const e of ["mousedown","mouseup","pointerdown","pointerup","keydown","keyup"])b.addEventListener(e,event=>event.stopPropagation());document.body.appendChild(b);scene._manualButton=b;
     }
     function showCampTimerDialog(){
         if(managerDialog||managerState().trips?.A)return;
@@ -1307,8 +1387,8 @@
     }
     function showQuestPartySelection(scene,quest){
         const state=managerState(),members=progression.activeRoster(state),selected=new Set((state.teamIds||[]).filter(id=>members.some(n=>n.id===id)).slice(0,3));
-        const cancel=()=>{closeManagerDialog();scene._choices.activate();};
-        const modal=managerModal("Choose one to three companions",[],[{name:"Review quest",run:()=>{
+        const cancel=()=>{closeManagerDialog();scene._choices?.activate?.();};
+        const modal=managerModal("Choose one to three companions",[],[{name:"Review Party",run:()=>{
             const ids=members.filter(n=>selected.has(n.id)).map(n=>n.id),error=progression.teamError(state,ids);
             if(error){modal.error.textContent=error;return;}
             closeManagerDialog();showQuestConfirmation(scene,quest,ids);
@@ -1318,14 +1398,14 @@
         modal.element.insertBefore(content,modal.error);content.append(count,grid);
         grid.style.cssText="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px";
         const cards=[];
-        const refresh=()=>{const average=selected.size?(members.filter(n=>selected.has(n.id)).reduce((sum,n)=>sum+n.level,0)/selected.size).toFixed(1):"–";count.textContent=`${selected.size} / 3 selected · Average level ${average} · Quest estimate ${progression.dangerRating(quest)}`;modal.buttons[0].disabled=selected.size<1||selected.size>3;modal.buttons[0].style.opacity=selected.size>=1&&selected.size<=3?"1":".5";for(const {card,id} of cards){const chosen=selected.has(id);card.setAttribute("aria-pressed",String(chosen));card.style.borderColor=chosen?"#b58225":"#aa9772";card.style.background=chosen?"#e8c583":"#e3d1ab";}};
+        const refresh=()=>{const average=selected.size?(members.filter(n=>selected.has(n.id)).reduce((sum,n)=>sum+n.level,0)/selected.size).toFixed(1):"–";count.textContent=`${selected.size} / 3 selected · Average level ${average}`;modal.buttons[0].disabled=selected.size<1||selected.size>3;modal.buttons[0].style.opacity=selected.size>=1&&selected.size<=3?"1":".5";for(const {card,id} of cards){const chosen=selected.has(id);card.setAttribute("aria-pressed",String(chosen));card.style.borderColor=chosen?"#b58225":"#aa9772";card.style.background=chosen?"#e8c583":"#e3d1ab";}};
         for(let i=0;i<5;i++){
             const n=members[i],card=document.createElement("button");card.type="button";
             card.style.cssText=`grid-column:${i<2?2+i*2:1+(i-2)*2}/span 2;grid-row:${i<2?1:2};padding:8px 4px;border:3px solid #aa9772;border-radius:8px;color:#302248;font:14px Trebuchet MS;cursor:pointer;min-width:0`;
             if(n){
                 card.dataset.memberId=n.id;card.setAttribute("aria-label",`Select ${n.name}`);
                 const face=n.portrait,cols=face.columns||4,rows=face.rows||2,portrait=document.createElement("div");
-                portrait.style.cssText=`width:48px;height:48px;margin:0 auto 4px;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*48}px ${rows*48}px;background-position:-${face.index%cols*48}px -${Math.floor(face.index/cols)*48}px;border-radius:5px`;card.appendChild(portrait);
+                portrait.style.cssText=`width:48px;height:48px;margin:0 auto 4px;image-rendering:pixelated;background-repeat:no-repeat;background-image:url('img/faces/${managerImageFile(face.sheet)}');background-size:${cols*48}px ${rows*48}px;background-position:-${face.index%cols*48}px -${Math.floor(face.index/cols)*48}px;border-radius:5px`;card.appendChild(portrait);
                 for(const text of [n.name,`${progression.classLabel(n)} · Level ${n.level}`,`HP ${n.health}/${n.maxHealth}`,`Armor ${n.classArmor+progression.equipmentArmor(n)}`,`Ward ${(n.innateWard||0)+(n.temporaryWard||0)}`]){const label=document.createElement("div");label.textContent=text;label.style.cssText="line-height:19px;overflow-wrap:anywhere";card.appendChild(label);}
                 card.onclick=()=>{if(selected.has(n.id))selected.delete(n.id);else if(selected.size<3)selected.add(n.id);else{modal.error.textContent="Deselect a companion before choosing another.";return;}modal.error.textContent="";refresh();};
                 cards.push({card,id:n.id});
@@ -1338,16 +1418,20 @@
     }
     function showQuestConfirmation(scene,quest,partyIds=managerState().teamIds.slice()){
         if(managerState().trips.A)return;
-        const cancel=()=>{closeManagerDialog();scene._choices.activate();};
-        const modal=managerModal("Confirm expedition",[],[{name:"Embark",run:()=>{try{const state=managerState();if(state.trips.A)throw Error("An expedition is already active.");state.selectedQuestId=quest.id;progression.dispatchQuest(state,"A",quest,$dataRPGManagerQuests.xp,Date.now(),null,"standard",null,null,partyIds);closeManagerDialog();SceneManager.goto(Scene_RPGHome);}catch(error){managerDialog.error.textContent=error.message;}}},{name:"Cancel",run:cancel}],cancel),content=document.createElement("div");content.id="embark-summary";modal.element.insertBefore(content,modal.error);modal.element.querySelector("h2").style.cssText="font-size:23px;margin:0 0 10px";modal.error.style.margin="6px 0";
+        const selectedUpgrades=new Set((managerState().preparation?.upgradeIds||[]).filter(id=>progression.EXPEDITION_UPGRADES[id]).slice(0,3));
+        const cancel=()=>{closeManagerDialog();scene._choices?.activate?.();};
+        const modal=managerModal("Confirm expedition",[],[{name:"Start",run:()=>{try{const state=managerState();if(state.trips.A)throw Error("An expedition is already active.");state.selectedQuestId=quest.id;progression.dispatchQuest(state,"A",quest,$dataRPGManagerQuests.xp,Date.now(),null,"standard",null,null,partyIds,[...selectedUpgrades]);closeManagerDialog();SceneManager.goto(Scene_RPGHome);}catch(error){managerDialog.error.textContent=error.message;}}},{name:"Cancel",run:cancel}],cancel),content=document.createElement("div");content.id="embark-summary";modal.element.insertBefore(content,modal.error);modal.element.querySelector("h2").style.cssText="font-size:23px;margin:0 0 10px";modal.error.style.margin="6px 0";
         const line=(text,bold=false)=>{const p=document.createElement(bold?"strong":"p");p.textContent=text;p.style.cssText="display:block;margin:8px 0;line-height:1.35";content.appendChild(p);};
         const risk=progression.questDangerEstimate(managerState(),quest,$dataRPGManagerQuests,window.RPGManagerBattle.Battle,partyIds);
-        if(risk.dangerous){line(risk.allSamplesWiped?"DANGEROUS EXPEDITION: This party appears severely outmatched. Consider better equipment, recovery or an easier contract. Proceed only if you accept the danger.":"DANGEROUS EXPEDITION: This quest may be too difficult for your current party. Check their level, health and equipment before proceeding.",true);content.firstChild.style.color="#9b2637";modal.buttons[0].textContent="Accept danger and start quest";}
+        if(risk.dangerous){line(risk.allSamplesWiped?"DANGEROUS EXPEDITION: This party appears severely outmatched. Consider recovery, temporary upgrades, or an easier tier.":"DANGEROUS EXPEDITION: This fixed tier may be too difficult for the selected party. Check levels, health, injuries, and party size.",true);content.firstChild.style.color="#9b2637";modal.buttons[0].textContent="Accept danger and start";}
         if(risk.samples)line("Risk preview samples one enemy group; repeated encounters can be harder. Level is a recommendation, not an entry gate.");
-        line(quest.name,true);line(`${quest.durationMinutes} minutes · ${progression.dangerLabel(quest)} · Estimated party level ${progression.dangerRating(quest)}`);
-        const primary=progression.primaryReward(quest);line(`Primary: ${primary.value} ${primary.label} · ${quest.rewardGold.victory} Gold / ${quest.rewardArcana?.victory||0} Arcana / ${quest.xpPool??quest.xpReward*3} shared completion XP + enemy XP`,true);
-        line(quest.riskExplanation||quest.danger);const grid=document.createElement("div");grid.style.cssText="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0";content.appendChild(grid);
-        for(const n of partyIds.map(findNpc)){const card=document.createElement("div"),face=n.portrait,cols=face.columns||4,rows=face.rows||2;card.style.cssText="background:#e3d1ab;border:1px solid #b99c64;border-radius:7px;padding:8px;text-align:center";const portrait=document.createElement("div");portrait.style.cssText=`width:54px;height:54px;margin:0 auto;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*54}px ${rows*54}px;background-position:-${face.index%cols*54}px -${Math.floor(face.index/cols)*54}px;border-radius:5px`;card.appendChild(portrait);for(const text of [n.name,`${n.role} · L${n.level}`,`HP ${n.health}/${n.maxHealth}`,`Armor ${n.classArmor+progression.equipmentArmor(n)} · Ward ${n.innateWard+n.temporaryWard}`,n.injury||"Healthy"]){const label=document.createElement("div");label.textContent=text;label.title=text;label.style.cssText="font-size:14px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap";card.appendChild(label);}grid.appendChild(card);}
+        line(`${quest.durationMinutes} minutes · Difficulty ${quest.skulls || 1} / 5`,true);
+        line("The party will receive a random destination, encounters, and objective matching these settings when they depart.");
+        const upgrades=document.createElement("fieldset");upgrades.style.cssText="border:1px solid #b99c64;margin:10px 0;padding:8px";const legend=document.createElement("legend");legend.textContent="Optional expedition upgrades (maximum 3)";upgrades.appendChild(legend);content.appendChild(upgrades);const costLabel=document.createElement("div");
+        const refreshUpgrades=()=>{const cost=[...selectedUpgrades].reduce((sum,id)=>sum+progression.EXPEDITION_UPGRADES[id].cost,0);costLabel.textContent=`Selected: ${selectedUpgrades.size}/3 · Cost ${cost} Gold · Treasury ${managerState().gold}`;modal.buttons[0].disabled=!!progression.upgradeSelectionError(managerState(),[...selectedUpgrades]);};
+        for(const [id,u] of Object.entries(progression.EXPEDITION_UPGRADES)){const label=document.createElement("label"),box=document.createElement("input");box.type="checkbox";box.checked=selectedUpgrades.has(id);box.onchange=()=>{if(box.checked&&selectedUpgrades.size>=3){box.checked=false;modal.error.textContent="Three upgrade slots are already filled.";return;}box.checked?selectedUpgrades.add(id):selectedUpgrades.delete(id);modal.error.textContent="";refreshUpgrades();};label.style.cssText="display:block;margin:5px 0";label.append(box,document.createTextNode(` ${u.name} · ${u.cost} Gold · ${u.effect}`));upgrades.appendChild(label);}upgrades.appendChild(costLabel);refreshUpgrades();
+        const grid=document.createElement("div");grid.style.cssText="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0";content.appendChild(grid);
+        for(const n of partyIds.map(findNpc)){const card=document.createElement("div"),face=n.portrait,cols=face.columns||4,rows=face.rows||2;card.style.cssText="background:#e3d1ab;border:1px solid #b99c64;border-radius:7px;padding:8px;text-align:center";const portrait=document.createElement("div");portrait.style.cssText=`width:54px;height:54px;margin:0 auto;image-rendering:pixelated;background-repeat:no-repeat;background-image:url('img/faces/${managerImageFile(face.sheet)}');background-size:${cols*54}px ${rows*54}px;background-position:-${face.index%cols*54}px -${Math.floor(face.index/cols)*54}px;border-radius:5px`;card.appendChild(portrait);for(const text of [n.name,`${n.role} · L${n.level}`,`HP ${n.health}/${n.maxHealth}`,`Armor ${n.classArmor+progression.equipmentArmor(n)} · Ward ${n.innateWard+n.temporaryWard}`,n.injury||"Healthy"]){const label=document.createElement("div");label.textContent=text;label.title=text;label.style.cssText="font-size:14px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap";card.appendChild(label);}grid.appendChild(card);}
         line("XP pools are split across the selected party. Embark starts the timer; Cancel starts nothing.");
     }
     async function saveCampaignForExit(){
@@ -1376,15 +1460,11 @@
         const state=globalThis.$gameSystem?._rpgManager;if(!state||state.startingRosterPending||state.trips.A||!(scene instanceof Scene_RPGBase||scene instanceof Scene_Save) )return;
         document.getElementById("camp-menu-navigation")?.remove();
         const nav=document.createElement("nav"),rect=Graphics._canvas.getBoundingClientRect(),scale=rect.width/Graphics.width;
-        nav.id="camp-menu-navigation";nav.setAttribute("aria-label","Camp menus");nav.style.cssText=`position:fixed;z-index:25;box-sizing:border-box;left:${rect.left+12*scale}px;top:${rect.top+(Graphics.boxHeight-88)*scale}px;width:${(Graphics.boxWidth-24)*scale}px;height:${80*scale}px;padding:6px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:#302248;border:2px solid #c6ae65;border-radius:9px`;
-        const menus=[["Camp",Scene_RPGHome],["Quest Board",Scene_RPGQuestBoard],["Shop",Scene_RPGShop],["Tavern",Scene_RPGTavern],["Altar",Scene_RPGAltar],["Graveyard",Scene_RPGRoster],["Camp Jobs",Scene_RPGCampJobs],["Save",Scene_Save]];
-        for(const [name,type] of menus){const selected=type===Scene_RPGRoster?scene instanceof type&&scene._graveyard:type===Scene_RPGHome?scene instanceof type||scene instanceof Scene_RPGMember||scene instanceof Scene_RPGRoster&&!scene._graveyard:scene instanceof type;const b=document.createElement("button");b.textContent=name;b.style.cssText=`font:${14*scale}px Trebuchet MS;background:${selected?"#ecd79e":"#354c80"};color:${selected?"#302248":"#fff0ce"};border:1px solid #c6ae65;border-radius:5px;cursor:pointer`;if(selected)b.setAttribute("aria-current","page");b.onclick=()=>{if(managerState().trips.A||managerDialog||(type===Scene_RPGQuestBoard&&managerState().questResults))return;closeManagerDialog();document.getElementById("return-vignette")?.remove();document.getElementById("camp-member-sheet")?.remove();SceneManager._stack=[Scene_RPGHome];if(type===Scene_RPGHome)Scene_RPGHome.reopenSheet=false;SceneManager.goto(type);if(type===Scene_RPGRoster)SceneManager.prepareNextScene(false,true);};if(type===Scene_RPGQuestBoard&&state.questResults){b.disabled=true;b.style.opacity=".45";}nav.appendChild(b);}
+        nav.id="camp-menu-navigation";nav.setAttribute("aria-label","Camp menus");nav.style.cssText=`position:fixed;z-index:25;box-sizing:border-box;left:${rect.left+12*scale}px;top:${rect.top+(Graphics.boxHeight-76)*scale}px;width:${(Graphics.boxWidth-24)*scale}px;height:${68*scale}px;padding:${6*scale}px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:${6*scale}px;background:linear-gradient(#3c2c59,#261d43);border:${2*scale}px solid #c6ae65;border-radius:${10*scale}px;box-shadow:inset 0 ${2*scale}px #ffffff1f,0 ${5*scale}px ${12*scale}px #090d1f88`;
+        const icon=(kind,color)=>({camp:`<path d="M4 18h16M7 18V9l5-5 5 5v9M10 18v-5h4v5"/>`,recruit:`<path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM5 21c0-4 3-7 7-7s7 3 7 7M19 7v6M16 10h6"/>`,altar:`<path d="M5 20h14M7 20l1-8h8l1 8M6 9h12M12 3l3 4-3 2-3-2 3-4Z"/>`,grave:`<path d="M7 21h10V8a5 5 0 0 0-10 0v13ZM4 21h16M10 9h4M12 7v7"/>`,save:`<path d="M5 3h12l3 3v15H4V3h1Zm2 0v6h9V3M8 21v-7h8v7"/>`}[kind]||"").replace('<path ',`<path stroke="${color}" `);
+        const menus=[{label:"Camp",kind:"camp",color:"#8fd88b",type:Scene_RPGHome},{label:"Recruit",kind:"recruit",color:"#efb56f",type:Scene_RPGTavern},{label:"Altar",kind:"altar",color:"#c8a4ff",type:Scene_RPGAltar},{label:"Graveyard",kind:"grave",color:"#b9c4d8",type:Scene_RPGRoster},{label:"Save",kind:"save",color:"#70c9ff",type:Scene_Save}];
+        for(const {label,kind,color,type} of menus){const selected=type===Scene_RPGRoster?scene instanceof type&&scene._graveyard:type===Scene_RPGHome?scene instanceof type||scene instanceof Scene_RPGMember||scene instanceof Scene_RPGRoster&&!scene._graveyard:scene instanceof type;const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",label);b.innerHTML=`<svg aria-hidden="true" viewBox="0 0 24 24" style="width:${27*scale}px;height:${27*scale}px;filter:drop-shadow(0 ${2*scale}px ${2*scale}px #0008)" fill="${color}22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icon(kind,color)}</svg><span>${label}</span>`;b.style.cssText=`min-width:0;display:flex;align-items:center;justify-content:center;gap:${7*scale}px;padding:${3*scale}px ${5*scale}px;font:bold ${14*scale}px Georgia;background:${selected?"linear-gradient(#ffeab1,#cfa24b)":"linear-gradient(#5575b0,#2a4074 58%,#20345f)"};color:${selected?"#302248":"#fff0ce"};border:${1*scale}px solid ${selected?"#fff0b9":"#9fb4df"};border-bottom-width:${4*scale}px;border-bottom-color:${selected?"#8d682d":"#14264d"};border-radius:${8*scale}px;box-shadow:inset 0 ${2*scale}px #ffffff42,0 ${3*scale}px ${5*scale}px #10152d99;letter-spacing:${.2*scale}px;cursor:pointer;transform:translateY(0);transition:transform .08s ease,filter .12s ease,box-shadow .08s ease`;b.onpointerdown=()=>{b.style.transform=`translateY(${3*scale}px)`;b.style.borderBottomWidth=`${1*scale}px`;b.style.boxShadow=`inset 0 ${2*scale}px ${4*scale}px #10152d88`;};const release=()=>{b.style.transform="translateY(0)";b.style.borderBottomWidth=`${4*scale}px`;b.style.boxShadow=`inset 0 ${2*scale}px #ffffff42,0 ${3*scale}px ${5*scale}px #10152d99`;};b.onpointerup=release;b.onpointerleave=release;if(selected)b.setAttribute("aria-current","page");b.onclick=()=>{if(managerState().trips.A||managerDialog)return;closeManagerDialog();document.getElementById("return-vignette")?.remove();document.getElementById("camp-member-sheet")?.remove();SceneManager._stack=[Scene_RPGHome];if(type===Scene_RPGHome)Scene_RPGHome.reopenSheet=false;SceneManager.goto(type);if(type===Scene_RPGRoster)SceneManager.prepareNextScene(false,true);};nav.appendChild(b);}
         for(const e of ["mousedown","mouseup","touchstart","touchend","keydown","keyup"])nav.addEventListener(e,event=>event.stopPropagation());document.body.appendChild(nav);scene._campNav=nav;
-        const status=document.createElement("aside");status.id="camp-status-bar";status.setAttribute("aria-label","Camp resources and alerts");status.style.cssText=`position:fixed;z-index:25;left:${rect.left+230*scale}px;top:${rect.top+58*scale}px;width:${300*scale}px;height:${30*scale}px;display:flex;gap:6px;font:${14*scale}px Trebuchet MS;color:#fff0ce`;
-        if(!(scene instanceof Scene_RPGHome))status.style.display="none";
-        for(const kind of ["gold","arcana"]){const value=document.createElement("span");value.dataset.resource=kind;value.style.cssText="flex:1;padding:6px;background:#354c80;border:1px solid #c6ae65;border-radius:5px;white-space:nowrap";status.appendChild(value);}
-        const alerts=document.createElement("button");alerts.style.cssText="font:inherit;background:#354c80;color:#fff0ce;border:1px solid #c6ae65;border-radius:5px";alerts.onclick=()=>{state.completionAlerts=state.completionAlerts===false;if(!state.completionAlerts){eventAudioQueue=[];releaseCompletionChime();}};status.appendChild(alerts);for(const event of ["mousedown","mouseup","keydown","keyup"])status.addEventListener(event,e=>e.stopPropagation());document.body.appendChild(status);scene._campStatus=status;
-
     }
 
     class Scene_RPGBase extends Scene_Base {
@@ -1396,8 +1476,11 @@
             for(let i=0;i<14;i++){CozyUI.ellipse(bitmap,(i*.618%1)*bitmap.width,(i*.371%1)*bitmap.height,80+i*3,25+i,"#76628c15");}
             this._background = new Sprite(bitmap);
             this.addChild(this._background);
+            const sceneArt={Scene_RPGStartingRoster:"TavernInterior.png",Scene_RPGTavern:"TavernInterior.png",Scene_RPGAltar:"EmeraldAltar.png"};
+            const artName=this._graveyard?"MemorialGarden.png":sceneArt[this.constructor.name];
+            if(artName){this._sceneArtBitmap=Bitmap.load(`img/pictures/${artName}`);this._sceneArtBitmap.smooth=false;this._sceneArtSprite=new Sprite(this._sceneArtBitmap);this._sceneArtSprite.opacity=118;this._sceneArtBitmap.addLoadListener(()=>{const scale=Math.max(Graphics.width/this._sceneArtBitmap.width,Graphics.height/this._sceneArtBitmap.height);this._sceneArtSprite.scale.set(scale);this._sceneArtSprite.x=(Graphics.width-this._sceneArtBitmap.width*scale)/2;this._sceneArtSprite.y=(Graphics.height-this._sceneArtBitmap.height*scale)/2;});this.addChild(this._sceneArtSprite);}
             const pictureName = $dataRPGManagerUI?.hamlet?.backgroundPicture;
-            if (pictureName) { this._optionalArt=Bitmap.load(`img/pictures/${encodeURIComponent(pictureName)}.webp`);this._artBackground = new Sprite(this._optionalArt); this._artBackground.opacity = 90; this.addChild(this._artBackground); }
+            if (pictureName&&!artName) { this._optionalArt=Bitmap.load(`img/pictures/${encodeURIComponent(pictureName)}.webp`);this._artBackground = new Sprite(this._optionalArt); this._artBackground.opacity = 90; this.addChild(this._artBackground); }
             this.createWindowLayer();
         }
 
@@ -1408,11 +1491,12 @@
         }
 
         header(title, subtitle) {
-            const panel = this.panel(new Rectangle(12, 8, Graphics.boxWidth - 24, 88));
-            CozyUI.icon(panel.contents,"campaign",8,5,29,"#e8c583");
+            // Persistent timer owns the top-right region on manager scenes.
+            const panel = this.panel(new Rectangle(12, 8, globalThis.$gameSystem?._rpgManager?438:Graphics.boxWidth-24, 88));
+            const accent=managerSceneAccent();CozyUI.round(panel.contents,2,1,panel.innerWidth-4,35,"#18294dcc",accent,8);CozyUI.icon(panel.contents,"campaign",10,5,27,accent);
             panel.contents.fontFace=`Georgia, ${$gameSystem.mainFontFace()}`;CozyUI.text(panel,title,48,0,Math.max(120,panel.innerWidth-370),25,"#f4deb0","left",32);
             panel.contents.fontFace=`Trebuchet MS, ${$gameSystem.mainFontFace()}`;CozyUI.text(panel,subtitle,8,38,Math.max(120,panel.innerWidth-278),15,"#c6b99d");
-            panel.rule(62, "#c6ae65");
+            CozyUI.filigree(panel.contents,12,64,panel.innerWidth-24,accent);
             return panel;
         }
 
@@ -1423,15 +1507,16 @@
         }
 
         terminate() {
-            this._finishButton?.remove();this._returnVignette?.remove();this._campStatus?.remove();this._campNav?.remove();if(managerDialog?.element.dataset.exit!=="true")closeManagerDialog();super.terminate();
+            this._finishButton?.remove();this._returnVignette?.remove();this._campStatus?.remove();this._campNav?.remove();this._manualButton?.remove();if(manualOverlay)closeManual();if(managerDialog?.element.dataset.exit!=="true")closeManagerDialog();super.terminate();
             this._background.bitmap.destroy();
+            if(this._sceneArtBitmap)this._sceneArtBitmap.destroy();
             if(this._optionalArt)this._optionalArt.destroy();
         }
     }
 
     class Window_RPGAlerts extends Window_Command {
-        initialize(rect){super.initialize(rect);this.deactivate();this.deselect();}
-        update(){super.update();if((TouchInput.isTriggered()&&this.isTouchedInsideFrame())||!managerState().questResults&&Input.isTriggered("pageup"))this.callHandler("toggle");}
+        initialize(rect){super.initialize(rect);this.select(0);this.activate();}
+        update(){super.update();if(!managerState().questResults&&Input.isTriggered("pageup"))this.callHandler("toggle");}
         makeCommandList(){this.addCommand(`Alerts: ${managerState().completionAlerts!==false?"ON":"OFF"}`,"toggle");}
         itemHeight(){return 26;} lineHeight(){return 26;} updatePadding(){this.padding=6;}
         drawItem(i){const r=this.itemRect(i);CozyUI.round(this.contents,r.x,r.y,r.width,r.height,"#293b78","#ffdf65",5);CozyUI.text(this,this.commandName(i),r.x+4,r.y,r.width-8,18,"#fff5d9","center",26);}
@@ -1448,8 +1533,10 @@
             const hamlet = $dataRPGManagerUI?.hamlet || {};
             if(managerState().startingRosterPending){SceneManager.goto(Scene_RPGStartingRoster);return;}
             this._hasTrip=!!progression.tripForTeam(managerState(),"A");this._campFirst=true;
-            this._header=this.header(hamlet.title || "THE HAMLET", hamlet.subtitle || "A little haven for great adventures");this.refreshGuildHeader();
-            const campHeight=Graphics.boxHeight-(this._hasTrip?120:208);
+            // End before the 434px timer rail so neither framed surface intrudes
+            // into the other's visual gutter.
+            this._header=this.panel(new Rectangle(12,8,410,58));this.refreshGuildHeader();
+            const campTop=this._hasTrip?108:76,campHeight=(Graphics.boxHeight-96)-campTop-8;
             const commandRect=this._campFirst?new Rectangle(12,Graphics.boxHeight-96,Graphics.boxWidth-24,84):new Rectangle(12,108,382,210);
             this._commandWindow = new Window_RPGHomeCommands(commandRect,this._campFirst);
             this._commandWindow.setHandler("roster", () => this.openRoster(false));
@@ -1458,15 +1545,15 @@
             this._commandWindow.setHandler("recruit",()=>SceneManager.push(Scene_RPGTavern));
             this._commandWindow.setHandler("completionAlert",()=>{const state=managerState();state.completionAlerts=state.completionAlerts===false;if(!state.completionAlerts){eventAudioQueue=[];releaseCompletionChime();}this._commandWindow.refresh();this._footer.setLines([state.completionAlerts?"Quiet cues mark encounters, battles and completion.":"All expedition cues are muted; results appear normally.","This setting is saved with your game."]);this._commandWindow.activate();});
             this._commandWindow.setHandler("altar", () => SceneManager.push(Scene_RPGAltar));
-            this._commandWindow.setHandler("campJobs", () => SceneManager.push(Scene_RPGCampJobs));
             this._commandWindow.setHandler("debug", () => SceneManager.push(Scene_RPGDebugTimers));
             this._commandWindow.setHandler("graveyard", () => this.openRoster(false, true));
             this._commandWindow.setHandler("save", () => { SceneManager.snapForBackground(); SceneManager.push(Scene_Save); });
             
             this.addWindow(this._commandWindow);
             if(!this._hasTrip){
-                const campWidth=Math.floor((Graphics.boxWidth-36)*.54);this._camp=this.panel(new Rectangle(12,108,campWidth,campHeight),Window_RPGCampsite);this._camp.setSelectHandler(id=>this.openMember(id));this._camp.setState(managerState());
-                this._companions=this.panel(new Rectangle(campWidth+24,108,Graphics.boxWidth-campWidth-36,campHeight),Window_RPGCampRoster);this._companions.setSelectHandler(id=>this.openMember(id));this._companions._menuHandler=menu=>{if(menu==="roster")this.openRoster(false);else this._commandWindow.callHandler(menu);};this._companions.setState(managerState());this._jobSummary=this._companions;if(managerState().questResults){this._companions.hide();this._teamPanel=this.panel(new Rectangle(campWidth+24,108,Graphics.boxWidth-campWidth-36,campHeight),Window_RPGExpeditionPanel);this._teamPanel.setRecallHandler(()=>this.finishRecap());}
+                const campWidth=Math.floor((Graphics.boxWidth-36)*.54);this._camp=this.panel(new Rectangle(12,campTop,campWidth,campHeight),Window_RPGCampsite);this._camp.setSelectHandler(id=>this.openMember(id));this._camp.setState(managerState());
+                this.mountCampAssignmentControl(campWidth);
+                const rosterTop=140,rosterHeight=(Graphics.boxHeight-96)-rosterTop-8;this._companions=this.panel(new Rectangle(campWidth+24,rosterTop,Graphics.boxWidth-campWidth-36,rosterHeight),Window_RPGCampRoster);this._companions.setSelectHandler(id=>this.openMember(id));this._companions._menuHandler=menu=>{if(menu==="roster")this.openRoster(false);else this._commandWindow.callHandler(menu);};this._companions.setState(managerState());this._jobSummary=this._companions;if(managerState().questResults){this._companions.hide();this._teamPanel=this.panel(new Rectangle(campWidth+24,rosterTop,Graphics.boxWidth-campWidth-36,rosterHeight),Window_RPGExpeditionPanel);this._teamPanel.setRecallHandler(()=>this.finishRecap());}
             }else{
                 const campWidth=Math.floor((Graphics.boxWidth-36)*.34);this._camp=this.panel(new Rectangle(12,148,campWidth,campHeight-40),Window_RPGCampRoster);this._camp.setSelectHandler(id=>this.openMember(id));this._camp.setState(managerState());
                 const jobs=document.createElement("button"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;jobs.textContent="Camp Jobs";jobs.id="expedition-camp-jobs";jobs.style.cssText=`position:fixed;z-index:23;left:${r.left+12*scale}px;top:${r.top+111*scale}px;width:${campWidth*scale}px;height:${31*scale}px;background:#354c80;color:#fff0ce;border:1px solid #c6ae65;border-radius:6px;font:${16*scale}px Trebuchet MS;cursor:pointer`;
@@ -1475,22 +1562,36 @@
             }
             if(this._teamPanel&&this._hasTrip){
                 this._campOpen=false;
-                this._campToggle=new Window_RPGCampToggle(new Rectangle(20,60,200,42));
+                this._campToggle=new Window_RPGCampToggle(new Rectangle(20,68,200,36));
                 this._campToggle.setHandler("toggle",()=>{this._campOpen=!this._campOpen;this.layoutExpedition();});this.addWindow(this._campToggle);this.layoutExpedition();
             }
-            this._alerts=new Window_RPGAlerts(new Rectangle(360,56,168,42));
-            this._alerts.setHandler("toggle",()=>{const state=managerState();state.completionAlerts=state.completionAlerts===false;if(!state.completionAlerts){eventAudioQueue=[];releaseCompletionChime();}this._alerts.refresh();this._commandWindow.activate();});this.addWindow(this._alerts);this._alerts.visible=this._hasTrip;
             this.refreshTeamPanel();
             this._footer = this._hasTrip?this.panel(new Rectangle(12,Graphics.boxHeight-50,Graphics.boxWidth-24,42),Window_RPGSessionHint):this.footer(this.homeHints());if(this._hasTrip)this._footer.setLines(this.homeHints());
             this._commandWindow.onBlocked = () => this._footer.setLines(["That option is not available yet.", progression.teamError(managerState())||"Choose one to three roster members for a quest."]);
             this._footer.visible=false;
             this._lastTimerSecond=-1;
+            mountManualButton(this);
+        }
+
+        mountCampAssignmentControl(campWidth){
+            const control=document.createElement("section"),select=document.createElement("select"),apply=document.createElement("button"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;
+            control.id="camp-assignment-control";control.setAttribute("aria-label","Assign camp jobs");control.style.cssText=`position:fixed;z-index:27;left:${r.left+(12+campWidth-208)*scale}px;top:${r.top+85*scale}px;width:${188*scale}px;height:${26*scale}px;display:grid;grid-template-columns:minmax(0,1fr) ${26*scale}px;gap:${5*scale}px;align-items:stretch;box-sizing:border-box`;
+            for(const [value,label] of [["auto","Auto assign"],["gold","Gold"],["arcana","Arcana"],["random","Random"]]){const option=document.createElement("option");option.value=value;option.textContent=label;select.appendChild(option);}
+            select.setAttribute("aria-label","Camp assignment strategy");select.style.cssText=`min-width:0;padding:0 ${8*scale}px;border:2px solid #d8bd75;border-radius:${5*scale}px;background:linear-gradient(#fff1cf,#ddc082);color:#302248;font:bold ${14*scale}px Georgia`;
+            apply.type="button";apply.textContent="\u2713";apply.setAttribute("aria-label","Apply camp assignments");apply.style.cssText=`box-sizing:border-box;width:${26*scale}px;height:${26*scale}px;padding:0;border:${2*scale}px solid #bff1c7;border-radius:50%;background:linear-gradient(#42d568,#148d36);color:white;box-shadow:inset 0 ${2*scale}px #ffffff66,0 ${2*scale}px ${4*scale}px #071b0d88;font:bold ${17*scale}px Georgia;line-height:1;cursor:pointer;transition:transform .08s ease`;apply.onpointerdown=()=>apply.style.transform=`translateY(${2*scale}px)`;apply.onpointerup=apply.onpointerleave=()=>apply.style.transform="translateY(0)";
+            apply.onclick=()=>{const state=managerState(),available=progression.activeRoster(state).filter(n=>progression.living(n)&&!progression.isUnavailable(state,n.id)),mode=select.value;let message="";
+                if(mode==="auto")message=progression.autoAssignCampJobs(state).message;
+                else{const jobs=mode==="gold"?available.map(()=>"work"):mode==="arcana"?available.map(()=>"study"):available.map(()=>Math.random()<.5?"work":"study");available.forEach((npc,index)=>progression.assignCampJob(state,npc.id,jobs[index]));message=`${available.length} companions assigned: ${mode}.`;}
+                SoundManager.playOk();this._camp.setState(state);this._companions?.setState(state);apply.textContent="\u2713";apply.style.filter="brightness(1.35)";setTimeout(()=>{if(apply.isConnected)apply.style.filter="";},500);this._footer?.setLines?.([message,"Camp assignments updated."]);
+            };
+            for(const event of ["mousedown","mouseup","touchstart","touchend","keydown","keyup"])control.addEventListener(event,e=>e.stopPropagation());control.append(select,apply);document.body.appendChild(control);this._campAssignmentControl=control;
         }
 
         showReturnVignette(){
             const id=managerState().questResults?.questId;if(this._vignetteId===id)return;this._vignetteId=id;
             const finish=document.createElement("button"),panel=this._teamPanel,r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;
-            finish.id="finish-recap";finish.textContent="FINISH";finish.setAttribute("aria-label","Finish recap");finish.style.cssText=`position:fixed;z-index:40;left:50%;top:50%;transform:translate(-50%,-50%);width:${320*scale}px;height:${100*scale}px;border:3px solid #fff0c7;border-radius:16px;background:#e8c583;color:#302b22;box-shadow:0 8px 35px #0009;font:bold ${38*scale}px Trebuchet MS;cursor:pointer`;
+            finish.id="finish-recap";finish.innerHTML='<span aria-hidden="true">✦</span> FINISH <span aria-hidden="true">✦</span><small>Return to Camp</small>';finish.setAttribute("aria-label","Finish quest recap and return to camp");finish.style.cssText=`position:fixed;z-index:40;left:50%;top:50%;transform:translate(-50%,-50%);width:${350*scale}px;height:${112*scale}px;border:${4*scale}px solid #fff0c7;border-bottom-width:${9*scale}px;border-radius:${20*scale}px;background:radial-gradient(circle at 50% 15%,#fff1a8,#e8b94f 55%,#a66b25);color:#302248;box-shadow:inset 0 ${3*scale}px #fff8d7,0 ${10*scale}px ${34*scale}px #000b,0 0 ${24*scale}px #ffd96c99;font:bold ${38*scale}px Georgia;cursor:pointer;text-shadow:0 1px #fff3ba;transition:transform .1s,filter .1s`;
+            const small=finish.querySelector("small");small.style.cssText=`display:block;font:${15*scale}px Trebuchet MS;letter-spacing:${2*scale}px;margin-top:${4*scale}px`;finish.onpointerdown=()=>finish.style.transform="translate(-50%,-47%) scale(.98)";finish.onpointerup=finish.onpointerleave=()=>finish.style.transform="translate(-50%,-50%)";finish.onmouseenter=()=>finish.style.filter="brightness(1.12)";finish.onmouseleave=()=>{finish.style.filter="";finish.style.transform="translate(-50%,-50%)";};
             finish.onclick=()=>this.finishRecap();for(const event of ["mousedown","mouseup","keydown","keyup"])finish.addEventListener(event,e=>e.stopPropagation());document.body.appendChild(finish);this._finishButton=finish;finish.focus();Input.clear();TouchInput.clear();
 
             const el=document.createElement("button");el.id="return-vignette";el.textContent="✦  Lanterns gathered. Turning for home…";el.setAttribute("aria-label","Dismiss return vignette");
@@ -1508,17 +1609,14 @@
             if(!this._teamPanel||!this._hasTrip)return;const width=Math.floor((Graphics.boxWidth-36)*.34),x=this._campOpen?width+24:12;
             this._camp.visible=this._campOpen;
             if(this._campJobsShortcut)this._campJobsShortcut.hidden=!this._campOpen;
-            this._renderedResult=null;this._teamPanel.move(x,108,Graphics.boxWidth-x-12,Graphics.boxHeight-120);this._teamPanel.createContents();
+            this._renderedResult=null;this._teamPanel.move(x,68,Graphics.boxWidth-x-12,Graphics.boxHeight-80);this._teamPanel.createContents();
             this._campToggle.visible=false;this._commandWindow.visible=false;this._commandWindow.deactivate();this._campToggle._open=this._campOpen;this._campToggle.refresh();this.refreshTeamPanel();
         }
         refreshGuildHeader(){
             if(!this._header)return;const p=this._header,s=managerState(),trip=progression.tripForTeam(s,"A"),living=roster().filter(isLiving).length;
-            p.contents.clear();CozyUI.icon(p.contents,"campaign",8,7,32,"#e8c583");p.contents.fontFace=`Georgia, ${$gameSystem.mainFontFace()}`;
-            CozyUI.text(p,"Pomodoro Chronicles",50,0,Math.max(280,p.innerWidth-300),23,"#f4deb0","left",34);
-            p.contents.fontFace=`Trebuchet MS, ${$gameSystem.mainFontFace()}`;
-            // The upper timer and roster carry session/party state; keep this control row clear.
-            const pill=(kind,value,x,color)=>{CozyUI.round(p.contents,x,35,128,28,"#2b4480","#8b7955",6);CozyUI.icon(p.contents,kind,x+8,40,18,color);CozyUI.text(p,value,x+32,38,90,15,"#f6e8ce","left",24);};
-            if(this._hasTrip){pill("coin",`${s.gold} Gold`,8,"#e8c583");pill("arcana",`${s.arcana||0} Arcana`,154,"#c5ade4");}
+            p.contents.clear();p.contents.fontFace=`Trebuchet MS, ${$gameSystem.mainFontFace()}`;
+            const pill=(kind,value,x,color)=>{p.contents.gradientFillRect(x+3,5,114,22,"#48679e","#243b70",true);CozyUI.round(p.contents,x,2,120,28,null,color,7);p.contents.fillRect(x+9,5,102,1,"#ffffff55");CozyUI.ellipse(p.contents,x+18,16,13,13,"#172a50");CozyUI.icon(p.contents,kind,x+10,8,16,color);CozyUI.text(p,value,x+31,5,84,15,"#f6e8ce","center",19);};
+            pill("coin",`${s.gold} Gold`,4,"#e8c583");pill("arcana",`${s.arcana||0} Arcana`,130,"#c5ade4");pill("altar",`${s.magicalArtifacts||0} Artifacts`,256,"#78d5ba");this._headerResourceKey=`${s.gold}:${s.arcana||0}:${s.magicalArtifacts||0}`;
         }
 
         refreshTeamPanel(refreshCamp=true) {
@@ -1542,14 +1640,14 @@
                 if (trip) {
                     if(trip.realtime){
                         const remaining=Math.max(0,trip.remainingMs||0),progress=1-remaining/Math.max(1,trip.totalDurationMs||1);
-                        panel.contents.clear();CozyUI.text(panel,trip.questName,8,2,panel.innerWidth-16,22,"#ffe3a4","center",28);
+                        panel.contents.clear();
                         panel.drawBattle(trip);
                         panel.setRecallRegion(null);continue;
                     }
                     const urgent = ["ready", "battle", "halted", "choice"].includes(trip.phase);
                     const stage = progression.currentStage(trip);
                     const label = trip.phase === "ready" ? "! ENCOUNTER READY - START NOW !" : trip.phase === "halted" ? "! INTERRUPTION - ATTENTION REQUIRED !" : trip.phase === "choice" ? "! CONTINUE OR RETURN - DECIDE NOW !" : trip.phase === "battle" ? "! ENCOUNTER IN PROGRESS !" : `${(stage?.label || trip.phase).toUpperCase()}  ${formatTime(trip.deadlineMs - now)} remaining`;
-                    panel.changeTextColor("#ffffff"); panel.contents.fontSize = 13; panel.drawText(trip.questName, 8, y + 45, 180);
+                    panel.changeTextColor("#ffffff"); panel.contents.fontSize = 13; panel.drawText("Expedition in progress", 8, y + 45, 180);
                     panel.changeTextColor(urgent ? ColorManager.crisisColor() : ColorManager.powerUpColor()); panel.contents.fontSize = 11; panel.drawText(label, 8, y + 65, 180);
                     const progress = progression.expeditionProgress(trip, now);
                     panel.contents.fillRect(8, y + 88, 176, 12, "#252a31");
@@ -1572,7 +1670,7 @@
 
         update() {
             super.update();
-            if(this._returnVignette&&performance.now()-this._vignetteStarted>=800)this._returnVignette.textContent="?  Heading home. The camp is ready.";
+            if(this._returnVignette&&performance.now()-this._vignetteStarted>=800)this._returnVignette.textContent="Heading home. The camp is ready.";
             if(this._returnVignette&&performance.now()>=this._vignetteUntil){this._returnVignette.remove();this._returnVignette=null;}
             if (!this.isActive() || SceneManager.isSceneChanging()) return;
             if(!this._hasTrip&&!managerState().questResults&&!managerDialog){
@@ -1580,7 +1678,7 @@
                 if(sheet)updateFormController(sheet);
                 else if(!this._campNav?.contains(document.activeElement)){
                     if(Input.isTriggered("down")||Input.isTriggered("up")){
-                        this._campFocusIndex=((this._campFocusIndex??0)+(Input.isTriggered("down")?1:2))%3;
+                        const count=Math.max(1,progression.activeSlotIds(managerState()).length);this._campFocusIndex=((this._campFocusIndex??0)+(Input.isTriggered("down")?1:count-1))%count;
                         this._companions._focusIndex=this._campFocusIndex;this._companions.refresh();Input.clear();
                     }else if(Input.isTriggered("ok")){
                         const id=progression.activeSlotIds(managerState())[this._campFocusIndex??0];
@@ -1637,13 +1735,13 @@
             const line=(text,tag="p",parent=pane)=>{const el=document.createElement(tag);el.textContent=text;el.style.margin="8px 0";parent.appendChild(el);return el;};
             const button=(text,run,parent=pane)=>{const b=document.createElement("button");b.type="button";b.textContent=text;b.style.cssText="background:#354c80;color:#fff0ce;border:1px solid #c6ae65;border-radius:5px;padding:7px;margin:3px;font:inherit;cursor:pointer";b.onclick=run;parent.appendChild(b);return b;};
             const back=button("Back to camp",()=>{pane.remove();this._sheetId=null;this._commandWindow.deactivate();Input.clear();});back.dataset.action="back";line(`${npc.name} · Level ${npc.level}`,"h3");
-            const tabs=document.createElement("div");tabs.style.cssText="display:flex;gap:5px;margin:8px 0";pane.appendChild(tabs);for(const tab of ["Overview","Gear","Care","Powers"]){const b=button(tab,()=>{this._sheetTab=tab;this.drawCampSheet();},tabs);b.setAttribute("aria-pressed",String((this._sheetTab||"Overview")===tab));if((this._sheetTab||"Overview")===tab)b.style.background="#6a6046";}
+            const tabs=document.createElement("div");tabs.style.cssText="display:flex;gap:5px;margin:8px 0";pane.appendChild(tabs);if(this._sheetTab==="Gear")this._sheetTab="Overview";for(const tab of ["Overview","Care","Powers"]){const b=button(tab,()=>{this._sheetTab=tab;this.drawCampSheet();},tabs);b.setAttribute("aria-pressed",String((this._sheetTab||"Overview")===tab));if((this._sheetTab||"Overview")===tab)b.style.background="#6a6046";}
             if(this._sheetTab==="Powers"){
                 pane.style.overflowY="auto";
                 const page=this._powerPage||0,track=P.powerTrack(npc),pages=Math.max(1,Math.ceil(track.length/3));
                 for(const text of track.slice(page*3,page*3+3))line(text);
                 if(pages>1)button(`Powers ${page+1}/${pages} — next`,()=>{this._powerPage=(page+1)%pages;this.drawCampSheet();});
-                line(`XP ${npc.xp}/${P.xpRequired(npc)||"CAP"}; level cap 8. L3+: one special per battle; Quickening has a 25% chance to allow two.`);
+                line(`XP ${npc.xp}/${P.xpRequired(npc)||"CAP"}; level cap 5. L3+: one special per battle; Quickening has a 25% chance to allow two.`);
             }else if(this._sheetTab==="Gear"){
                 pane.style.overflowY="auto";
                 line(`HP ${npc.health}/${npc.maxHealth} / Armor ${npc.classArmor+P.equipmentArmor(npc)}/${npc.classArmorMax+P.equipmentArmorMax(npc)} / Ward ${npc.innateWard+npc.temporaryWard}/${npc.innateWardMax+npc.temporaryWard}`);
@@ -1668,7 +1766,7 @@
                 info(`Signature: ${P.moveFor(npc)?.name||npc.signatureAttack||"Unlearned"} · ${npc.passiveTrait?.name||"No passive"}`);
                 info("Special: L3+; one use per battle. Quickening: 25% chance of two.");
                 info(`Critical ${Math.round(npc.critChance*100)}% · Dodge ${Math.round(npc.dodgeChance*100)}% / Speed ${Math.round(npc.speed)}`);
-                info(`Gear: ${P.EQUIPMENT_SLOTS.map(slot=>P.SHOP[npc.equipmentSlots?.[slot]]?.name||"Empty").join(" / ")}`);
+                info("Defense comes from class growth, rituals, and expedition-only preparation.");
                 info(`${career.questsCompleted} adventures · ${career.victories} victories · ${career.bossVictories} bosses`);
                 info(`${career.kills} kills · ${career.damageDealt} damage · ${career.healingDone} healing · ${career.signatureUses} signatures · ${career.injuriesSuffered} injuries`);
                 info(`Recent: ${career.lastQuest?`${career.lastQuest.questName} / ${career.lastQuest.result}`:"No recorded adventure"}`);
@@ -1678,7 +1776,7 @@
             pane.addEventListener("keydown",e=>{if(e.key==="Escape"){e.preventDefault();back.click();}else if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.key)&&e.target.tagName==="BUTTON"){e.preventDefault();focusWizardDirection(pane,e.key.slice(5).toLowerCase());}});
             line(message||(this._sheetTab==="Overview"?"Scroll Overview for stats, wounds and career history.":"One companion, one job. Camp duties resume on return."));document.body.appendChild(pane);back.focus();
         }
-        terminate(){this._campJobsShortcut?.remove();document.getElementById("return-vignette")?.remove();document.getElementById("camp-member-sheet")?.remove();super.terminate();}
+        terminate(){this._campJobsShortcut?.remove();this._campAssignmentControl?.remove();document.getElementById("return-vignette")?.remove();document.getElementById("camp-member-sheet")?.remove();super.terminate();}
 
         startBattle() {
             SceneManager.push(Scene_RPGQuestBoard);
@@ -1697,7 +1795,7 @@
             this._decision = window.RPGManagerBattle.resolveLeaderDecision(trip.preparedTeam, trip.leaderId, this._event.interactionId, seed);
             const outcomeKey = this._decision.resolved ? this._decision.actionId : "ineligible";
             this._outcome = this._event.outcomes?.[outcomeKey] || this._event.outcomes?.default || {};
-            this.header(`${trip.questName} - ${this._event.name}`, `Party Leader: ${this._decision.leaderName || "Unavailable"}`);
+            this.header(`Expedition event - ${this._event.name}`, `Party Leader: ${this._decision.leaderName || "Unavailable"}`);
             this._portrait = this.panel(new Rectangle(12, 108, 190, 220), Window_RPGLargePortrait);
             this._dialogue = this.panel(new Rectangle(214, 108, Graphics.boxWidth - 226, 220), Window_RPGDialogue);
             this._facts = this.panel(new Rectangle(12, 340, Graphics.boxWidth - 24, Graphics.boxHeight - 428));
@@ -1752,10 +1850,10 @@
 
     class Scene_RPGRecall extends Scene_RPGBase {
         prepare(id){this._expectedTripId=id;}
-        create(){super.create();const trip=progression.tripForTeam(managerState(),"A");if(!trip?.realtime){SceneManager.goto(Scene_RPGHome);return;}this._expectedTripId||=trip.id;this.header("Recall expedition",trip.questName);
+        create(){super.create();const trip=progression.tripForTeam(managerState(),"A");if(!trip?.realtime){SceneManager.goto(Scene_RPGHome);return;}this._expectedTripId||=trip.id;this.header("Recall expedition","Choose whether the party should turn for home.");
             const panel=this.panel(new Rectangle(50,130,Graphics.boxWidth-100,230));panel.setLines(["Head back to camp? Recall again to arrive immediately.","Future encounters stop immediately.","Normal completion Gold, Arcana and XP are forfeited.","Previous finds, wounds, deaths and Armor loss remain.","The countdown continues while the party walks left toward camp."]);
-            this._choices=new Window_RPGDecisionChoices(new Rectangle(80,380,Graphics.boxWidth-160,130),()=>[{name:"KEEP SESSION RUNNING",symbol:"keep"},{name:"CONFIRM RECALL",symbol:"recall"}]);
-            this._choices.setHandler("keep",()=>this.popScene());this._choices.setHandler("recall",()=>{syncMissionClock();const result=progression.requestRecall(managerState());SceneManager.goto(Scene_RPGHome);managerState().recoveryNotice=result.message;});this._choices.setHandler("cancel",()=>this.popScene());this.addWindow(this._choices);this._choices.selectSymbol("keep");this.footer(["Keeping the session running is selected by default.","The timer continues normally while you consider this choice."]);}
+            this.footer(["Keep Session Running is selected by default.","The timer continues normally while you consider this choice."]);const cancel=()=>{closeManagerDialog();this.popScene();};
+            const modal=managerModal("Recall this quest?",["Future encounters stop. Completion rewards and XP are forfeited.","Previous finds and consequences remain; the countdown continues on the road home."],[{name:"Keep Session Running",run:cancel},{name:"Confirm Recall",run:()=>{syncMissionClock();const result=progression.requestRecall(managerState());closeManagerDialog();SceneManager.goto(Scene_RPGHome);managerState().recoveryNotice=result.message;}}],cancel);modal.element.classList.add("recall-confirmation");modal.buttons[0].focus();}
     }
 
     class Scene_RPGExpeditionChoice extends Scene_RPGBase {
@@ -1763,7 +1861,7 @@
         create() {
             super.create(); const trip = progression.tripForTeam(managerState(), this._teamKey);
             if (!trip || trip.phase !== "choice") { SceneManager.goto(Scene_RPGHome); return; }
-            this.header(`${trip.questName} - Press On?`, `Team ${this._teamKey} awaits a guild decision`);
+            this.header("Press On?", `Team ${this._teamKey} awaits a guild decision`);
             const panel = this.panel(new Rectangle(12, 108, Graphics.boxWidth - 24, 250));
             panel.line("CONTINUE QUEST OR RETURN TO HAMLET", 0, ColorManager.crisisColor(), 25);
             panel.wrapped(trip.choiceReason || "Further danger lies ahead.", 42);
@@ -1782,63 +1880,36 @@
 
     class Scene_RPGQuestBoard extends Scene_RPGBase {
         create(){
-            super.create();this._minutes=Number(selectedQuest().durationMinutes);this._difficulty=progression.dangerRating(selectedQuest());
-            this.header("Quest Board","Skulls estimate party level (1-8). Gear and party size matter.");
-            const left=Math.floor(Graphics.boxWidth*.46);
-            this._info=this.panel(new Rectangle(left+12,108,Graphics.boxWidth-left-24,Graphics.boxHeight-204));
-            this._choices=new Window_RPGChoices(new Rectangle(12,218,left-12,Graphics.boxHeight-368),()=>[
-                ...quests().filter(q=>Number(q.durationMinutes)===this._minutes&&progression.dangerRating(q)===this._difficulty).map(q=>({name:`${q.durationMinutes}m  ${q.name}`,symbol:"quest",ext:q.id,enabled:!this.lockReason(q)})),
-
-            ],"quests");
-            this._choices.setHandler("quest",()=>{this.refreshInfo();this._choices.activate();});this._choices.setHandler("filters",()=>{this._choices.deactivate();this._questFilters.querySelector("select").focus();});
-            this._choices.setHandler("back",()=>this.popScene());this._choices.setHandler("cancel",()=>this.popScene());this._choices.onSelectionChange=()=>this.refreshInfo();this.addWindow(this._choices);
-            this._footer=this.footer(["Select a contract to review. Only Embark starts the timer.","Cancel or Escape starts nothing."]);this.mountFilters();this._choices.select(0);this.refreshInfo();
+            super.create();const prep=managerState().preparation||{};this._minutes=progression.EXPEDITION_DURATIONS.includes(Number(prep.durationMinutes))?Number(prep.durationMinutes):25;this._difficulty=this._minutes===1?1:Math.max(1,Math.min(5,Number(prep.difficulty)||1));const random=new Uint32Array(2);crypto.getRandomValues(random);this._questSeed=`quest-${managerState().nextTripId||1}-${random[0].toString(36)}${random[1].toString(36)}`;this.regenerate();
+            this.header("Start Quest","Set the focus session. Your party will choose a fitting quest when they depart.");
+            this._info=this.panel(new Rectangle(102,108,Graphics.boxWidth-204,184));
+            this._info.contents.clear();CozyUI.icon(this._info.contents,"quest",this._info.innerWidth/2-20,12,40,"#d6ba73");
+            CozyUI.text(this._info,"FOCUS EXPEDITION",0,58,this._info.innerWidth,20,"#f1d897","center",30);
+            CozyUI.wrap(this._info,"Choose the time and challenge. The destination and objective stay unknown until departure.",42,96,this._info.innerWidth-84,17,"#e9dfc8",2,23);
+            this._footer=this.footer(["The game selects a random fitting quest at departure.","Escape returns to camp without starting anything."]);this.mountFilters();
             const start=document.createElement("button"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;
-            start.id="start-quest";start.textContent="Start Quest";start.style.cssText=`position:fixed;z-index:23;left:${r.left+12*scale}px;top:${r.top+(Graphics.boxHeight-144)*scale}px;width:${(left-12)*scale}px;height:${48*scale}px;background:#e8c583;color:#302248;border:2px solid #fff0c7;border-radius:8px;font:bold ${23*scale}px Trebuchet MS;cursor:pointer`;
+            start.id="start-quest";start.textContent="START QUEST";start.setAttribute("aria-label","Start quest");start.style.cssText=`position:fixed;z-index:23;left:${r.left+202*scale}px;top:${r.top+397*scale}px;width:${412*scale}px;height:${66*scale}px;background:linear-gradient(#ffe5a2,#d7a44a);color:#261a39;border:2px solid #fff1bd;border-bottom-color:#8e6629;border-radius:12px;box-shadow:0 ${5*scale}px 0 #7b5724,0 ${10*scale}px ${22*scale}px #090d1f99;font:bold ${27*scale}px Trebuchet MS;letter-spacing:${1.2*scale}px;cursor:pointer;text-shadow:0 1px #fff9`;
             start.onclick=()=>this.chooseQuest();for(const e of ["mousedown","mouseup","keydown","keyup"])start.addEventListener(e,e=>e.stopPropagation());document.body.appendChild(start);this._startQuestButton=start;
         }
+        regenerate(){const state=managerState();this._journey=progression.generateJourney($dataRPGManagerStage3,{durationMinutes:this._minutes,difficulty:this._difficulty,seed:this._questSeed,ritualsUnlocked:state.ritualsUnlocked});window.RPGManager.generatedJourney=this._journey;const index=$dataRPGManagerStage3.quests.findIndex(q=>q.id===this._journey.id);if(index>=0)$dataRPGManagerStage3.quests[index]=this._journey;else $dataRPGManagerStage3.quests.push(this._journey);state.selectedQuestId=this._journey.id;}
         mountFilters(){
             const el=document.createElement("section"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;
-            el.id="quest-filters";el.style.cssText=`position:fixed;z-index:20;left:${r.left+18*scale}px;top:${r.top+113*scale}px;width:${(Math.floor(Graphics.boxWidth*.46)-40)*scale}px;background:#302248;color:#fff0ce;padding:8px;box-sizing:border-box;border:1px solid #c6ae65;border-radius:6px;font:${16*scale}px Trebuchet MS`;
-            el.style.padding="8px";el.style.display="grid";el.style.gridTemplateColumns="1fr 1fr";el.style.gap="10px";
-            const add=(label,values,current,change)=>{const l=document.createElement("label");l.textContent=label;const select=document.createElement("select");select.setAttribute("aria-label",label);select.style.cssText="display:block;margin:4px 0;width:100%;padding:5px;font:inherit;background:#f3e5c7;color:#302248";for(const v of values){const o=document.createElement("option");o.value=v;o.textContent=label==="Minutes"?`${v} minutes`:`☠ ${v}/8 - Lv ${v}`;o.selected=String(v)===String(current);select.appendChild(o);}select.onchange=()=>{change(select.value);this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshInfo();};select.onkeydown=e=>{if(e.key==="Escape"||e.key==="Enter"){e.preventDefault();select.blur();this._choices.activate();}};l.appendChild(select);el.appendChild(l);};
-            add("Minutes",progression.EXPEDITION_DURATIONS,this._minutes,v=>this._minutes=Number(v));add("Danger",[1,2,3,4,5,6,7,8],this._difficulty,v=>this._difficulty=Number(v));
+            el.id="quest-filters";el.style.cssText=`position:fixed;z-index:22;left:${r.left+164*scale}px;top:${r.top+302*scale}px;width:${488*scale}px;height:${72*scale}px;background:#253861;color:#fff0ce;padding:${8*scale}px ${12*scale}px;box-sizing:border-box;border:2px solid #c6ae65;border-radius:${10*scale}px;box-shadow:0 ${6*scale}px ${16*scale}px #0007;font:${16*scale}px Trebuchet MS;display:grid;grid-template-columns:1fr 1fr;gap:${16*scale}px`;
+            const add=(label,values,current,change)=>{const l=document.createElement("label");l.textContent=label==="Minutes"?"⌛  Minutes":"☠  Difficulty";l.style.cssText="font-family:Georgia;color:#f4deb0;text-shadow:0 1px #111";const select=document.createElement("select");select.setAttribute("aria-label",label);select.style.cssText="display:block;margin:4px 0;width:100%;padding:5px;border:1px solid #d4b86e;border-radius:4px;font:inherit;background:linear-gradient(#fff1cf,#e5c98e);color:#302248;box-shadow:inset 0 1px #fff";for(const v of values){const o=document.createElement("option");o.value=v;o.textContent=label==="Minutes"?`${v} minutes`:`${"☠".repeat(v)}  ${v} / 5`;o.selected=String(v)===String(current);select.appendChild(o);}select.onchange=()=>{change(select.value);if(this._minutes===1)this._difficulty=1;this.regenerate();};select.onkeydown=e=>{if(e.key==="Escape"||e.key==="Enter"){e.preventDefault();select.blur();}};l.appendChild(select);el.appendChild(l);};
+            add("Minutes",progression.EXPEDITION_DURATIONS,this._minutes,v=>this._minutes=Number(v));add("Difficulty",[1,2,3,4,5],this._difficulty,v=>this._difficulty=Number(v));
             for(const event of ["keydown","keyup","mousedown","mouseup"])el.addEventListener(event,e=>e.stopPropagation());document.body.appendChild(el);this._questFilters=el;
-            this._filterBlur=e=>{if(!el.contains(e.target)&&el.contains(document.activeElement)){document.activeElement.blur();this._choices.activate();}};document.addEventListener("pointerdown",this._filterBlur);
+            this._filterBlur=e=>{if(!el.contains(e.target)&&el.contains(document.activeElement))document.activeElement.blur();};document.addEventListener("pointerdown",this._filterBlur);
         }
-        update(){super.update();if(!managerDialog&&Input.isTriggered("pageup")){this._choices.deactivate();this._questFilters.querySelector("select").focus();}}
+        update(){super.update();if(!managerDialog&&Input.isTriggered("cancel"))this.popScene();if(!managerDialog&&Input.isTriggered("pageup"))this._questFilters.querySelector("select").focus();}
         terminate(){this._startQuestButton?.remove();this._questEnemyPicture?.remove();document.removeEventListener("pointerdown",this._filterBlur);this._questFilters?.remove();super.terminate();}
         lockReason(quest) { const active=progression.questUnavailableReason(managerState(),quest.id);if(active)return active;const needed=quest.unlock?.questsCompleted||0;return needed>(managerState().campaignStats?.questsCompleted||0)?quest.unlock.label:""; }
-        refreshInfo() {
-            const quest = findQuest(this._choices.currentExt());
-            this._questEnemyPicture?.remove();
-            if (this._choices.currentSymbol() !== "quest") { this._info.contents.outlineWidth=2;this._info.setLines(["Choose a contract",`${this._minutes} minutes / ${progression.dangerLabel({skulls:this._difficulty})}`,"Select a contract to read its story,", "encounters, fixed time, and rewards.","", "No matching contract? Change either filter.","Choose one to three roster members before departure."]); return; }
-            const p=this._info,w=p.innerWidth; p.contents.clear();
-            CozyUI.round(p.contents,0,0,w,p.innerHeight,"#e4d3ae","#c0a677",6);p.contents.outlineWidth=0;
-            const unavailable=this.lockReason(quest),dark="#453e30",muted="#6d6149";
-            CozyUI.icon(p.contents,"quest",12,12,22,"#7e6a44");
-            CozyUI.text(p,unavailable?"LOCKED":"AVAILABLE",w-138,10,124,13,unavailable?"#8b4f43":"#486341","right");
-            p.contents.fontFace=`Georgia, ${$gameSystem.mainFontFace()}`;CozyUI.text(p,quest.name,14,37,w-28,25,dark,"left",34);p.contents.fontFace=`Trebuchet MS, ${$gameSystem.mainFontFace()}`;
-            p.contents.fillRect(14,79,w-28,1,"#b5a078");
-            CozyUI.round(p.contents,14,85,82,25,"#40533f","#98ad88",4);CozyUI.text(p,`${quest.durationMinutes} MIN`,20,87,70,14,"#f5e6c8","center",21);
-            CozyUI.round(p.contents,104,85,w-118,25,"#ddd0ad","#b39b6c",4);CozyUI.text(p,`${progression.dangerLabel(quest)} / ${quest.category}`,112,87,w-134,13,"#544530","left",21);
-            const section=(title,value,y)=>{CozyUI.text(p,title.toUpperCase(),14,y,w-28,11,"#846b43","left",16);CozyUI.wrap(p,Array.isArray(value)?value.join(" / "):value,14,y+17,y===118?w-112:w-28,14,dark,2,18);};
-            section("Risk / field notes",Number(quest.durationMinutes)===1?"Combatless stroll. Low-risk finds; no combat rewards.":quest.riskExplanation||quest.danger,118);section("Estimated party level / encounters",`Level ${progression.dangerRating(quest)} / ${(quest.tags||[]).join(" / ")} / ${quest.encounterType}`,175);const primary=progression.primaryReward(quest);CozyUI.icon(p.contents,primary.label==="Gold"?"coin":primary.label==="Arcana"?"arcana":"quest",16,236,30,"#66552d");CozyUI.text(p,`${primary.value} ${primary.label}`,54,238,w-68,23,dark,"left",30);section("The journey",`${quest.environment} / ${quest.journey}`,281);
-            
-            const arcana=quest.rewardArcana||{victory:0,draw:0};CozyUI.round(p.contents,8,347,w-16,46,"#cbbc93",null,4);
-            CozyUI.text(p,`${quest.rewardGold.victory} Gold / ${arcana.victory} Arcana / ${quest.xpPool??quest.xpReward*3} shared completion XP + enemy XP`,16,350,w-32,14,"#405239");
-            CozyUI.text(p,`Draw: ${quest.rewardGold.draw} Gold + ${arcana.draw||0} Arcana`,16,372,w-32,12,muted,"left",16);
-            const enemy=quest.combatMode==="none"||Number(quest.durationMinutes)===1?null:(quest.enemyIds||[]).map(id=>$dataRPGManagerQuests.enemies.find(e=>e.id===id)).filter(Boolean).sort((a,b)=>(b.boss?100:0)+b.health-((a.boss?100:0)+a.health))[0];
-            if(enemy?.portrait?.sheet){const face=enemy.portrait,cols=face.columns||4,rows=face.rows||2,el=document.createElement("div"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;el.title=enemy.name;el.setAttribute("aria-label",enemy.name);el.style.cssText=`position:fixed;pointer-events:none;z-index:21;left:${r.left+(p.x+p.width-94)*scale}px;top:${r.top+(p.y+124)*scale}px;width:${68*scale}px;height:${68*scale}px;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*68*scale}px ${rows*68*scale}px;background-position:-${face.index%cols*68*scale}px -${Math.floor(face.index/cols)*68*scale}px;border:2px solid #b39b6c;border-radius:8px`;document.body.appendChild(el);this._questEnemyPicture=el;}
-            refreshFocusTimer(true);
-            if(this._footer)this._footer.setLines([unavailable?`Locked: ${unavailable}`:"Select this contract to review and confirm departure.","Authored duration includes travel, encounters, objective, and return."]);
-        }
         chooseQuest() {
-            if(managerDialog||this._choices.currentSymbol()!=="quest")return;
-            const id=this._choices.currentExt(),quest=findQuest(id),state=managerState();
-            const error=this.lockReason(quest)||progression.teamError(state);
-            if(error){SoundManager.playBuzzer();this._footer.setLines([error,"Assign one to three companions before embarking. Recruit for free at Tavern."]);this._choices.activate();return;}
-            this._choices.deactivate();showQuestPartySelection(this,quest);
+            if(managerDialog)return;
+            const quest=this._journey,state=managerState();
+            const eligible=progression.activeRoster(state).filter(n=>!progression.isUnavailable(state,n.id));
+            const error=this.lockReason(quest)||progression.teamError(state,eligible.slice(0,1).map(n=>n.id));
+            if(error){SoundManager.playBuzzer();this._footer.setLines([error,"Assign one to three companions before embarking. Recruit for free at Tavern."]);return;}
+            showQuestPartySelection(this,quest);
 
         }
     }
@@ -1945,11 +2016,11 @@
         showDeparture() {
             this._departure.show(); this._departure.activate();
             const quest = selectedQuest(), validation=validateTeam(teamIds());
-            if(validation){this._header.setLines([quest.name,"Party setup required"]);this._info.setLines(["CANNOT DEPART",validation,"Choose Back to Home, then reopen the Quest Board to form a party."]);this._departure.setCanDepart(false);return;}
+            if(validation){this._header.setLines(["Expedition","Party setup required"]);this._info.setLines(["CANNOT DEPART",validation,"Choose Back to Home, then use Start Quest to form a party."]);this._departure.setCanDepart(false);return;}
             this._departure.setCanDepart(true);
             const xp = quest.xpReward || progression.xpPreview(teamIds().length, $dataRPGManagerQuests.xp).perMember;
             const leader = findNpc(managerState().pendingLeaderId);
-            this._header.setLines([quest.name, `Party Leader: ${leader?.name || "NOT SELECTED"} | ${quest.faction}${quest.boss ? " | BOSS" : ""}`]);
+            this._header.setLines(["Expedition ready", `Party Leader: ${leader?.name || "NOT SELECTED"} | ${quest.faction}${quest.boss ? " | BOSS" : ""}`]);
             const p=this._info,ids=teamIds(),cardW=(p.innerWidth-16)/5;p.contents.clear();
             CozyUI.text(p,`YOUR TRAVELING COMPANY / ${ids.length} of 3 places`,8,0,p.innerWidth-16,19,"#e8c583");
             CozyUI.text(p,`Leader: ${leader?.name||"None"} / Fixed expedition time: ${this._durationMinutes} minutes`,8,31,p.innerWidth-16,15,"#c6b99d");
@@ -1984,7 +2055,7 @@
         create() {
             super.create();
             const active = managerState().activeQuest, quest = findQuest(active?.questId);
-            this.header(`Travelling: ${active?.questName || quest.name}`, "Eventless outbound travel. Battle presentation begins on arrival.");
+            this.header("Travelling", "Eventless outbound travel. Battle presentation begins on arrival.");
             this._arrival = performance.now() + quest.travelSeconds * 1000;
             this._timer = this.panel(new Rectangle(12, 180, Graphics.boxWidth - 24, 120));
             const speaker = findNpc(teamIds()[0]);
@@ -2669,7 +2740,7 @@
             this._header.contents.clear();
             const trip = this._teamKey ? progression.tripForTeam(managerState(), this._teamKey) : null;
             const quest = trip ? findQuest(trip.questId) : null;
-            this._header.line(`${trip?.questName || managerState().activeQuest?.questName || `Quest ${this._questId}`} / ${title}`, 0, quest ? factionColor(quest) : ColorManager.systemColor(), 26);
+            this._header.line(`EXPEDITION / ${title}`, 0, quest ? factionColor(quest) : ColorManager.systemColor(), 26);
             this._header.line(`Round ${state.round} / Both sides spread their attacks`, 32, ColorManager.normalColor(), 18);
             if (quest) this._header.badge(quest.boss ? "BOSS" : quest.faction.toUpperCase(), this._header.innerWidth - 150, 0, 140, factionColor(quest));
         }
@@ -2873,6 +2944,19 @@
                 CozyUI.text(this,entry.name,r.x+9,r.y+3,r.width-18,this._visualKind==="quests"?15:17,enabled?"#f4e8cf":"#aaa68e","left",this.lineHeight()-6);
             }this.changePaintOpacity(true);
         }
+        processTouch(){
+            if(this.isOpenAndActive()){
+                const hit=this.hitIndex();
+                // DOM controls around the canvas can interrupt MZ's release-based
+                // click flag. Resolve the real row and dispatch on pointer press so
+                // every manager choice—including Altar rituals—remains mouse-safe.
+                if(hit>=0&&(TouchInput.isHovered()||TouchInput.isTriggered()||TouchInput.isPressed())){
+                    if(hit!==this.index())this.select(hit);
+                    if(TouchInput.isTriggered()){this.processOk();return;}
+                }
+            }
+            super.processTouch();
+        }
         select(index) { super.select(index); if (this.onSelectionChange) this.onSelectionChange(); }
     }
 
@@ -2897,7 +2981,7 @@
         }
         canHire(){return !managerState().trips.A&&!managerState().activeQuest&&progression.vacantSlots(managerState()).length>0;}
         usedPortraits(){return new Set([...progression.activeRoster(managerState()).filter(n=>n.id!==this._replaceId),...this._drafts.filter((n,i)=>i!==this._creationIndex)].filter(Boolean).map(n=>n.portraitKey));}
-        faceElement(n,size=84){const face=n.portrait||progression.portraitOptions(n.classId,n.sex).find(p=>p.key===n.portraitKey)||progression.portraitOptions(n.classId,n.sex)[0],el=document.createElement('div'),cols=face.columns||4,rows=face.rows||2;el.style.cssText=`width:${size}px;height:${size}px;margin:0 auto;image-rendering:pixelated;background-image:url('img/faces/${face.sheet}.webp');background-size:${cols*size}px ${rows*size}px;background-position:-${face.index%cols*size}px -${Math.floor(face.index/cols)*size}px;border-radius:6px`;return el;}
+        faceElement(n,size=84){const face=n.portrait||progression.portraitOptions(n.classId,n.sex).find(p=>p.key===n.portraitKey)||progression.portraitOptions(n.classId,n.sex)[0],el=document.createElement('div'),cols=face.columns||4,rows=face.rows||2,file=managerImageFile(face.sheet);el.style.cssText=`width:${size}px;height:${size}px;margin:0 auto;image-rendering:pixelated;background-repeat:no-repeat;background-image:url('img/faces/${file}');background-size:${cols*size}px ${rows*size}px;background-position:-${face.index%cols*size}px -${Math.floor(face.index/cols)*size}px;border-radius:6px`;return el;}
         showCreator(){
             this._nameForm?.remove();const r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width,form=document.createElement('form');form.id='character-creation';form.setAttribute('aria-label',this._tavern?'Create tavern recruit':'Create party');form.dataset.step=this._step;
             form.style.cssText=`position:fixed;left:${r.left+18*scale}px;top:${r.top+112*scale}px;width:${(Graphics.boxWidth-36)*scale}px;height:${(Graphics.boxHeight-212)*scale}px;z-index:30;box-sizing:border-box;padding:${14*scale}px;background:#302248;color:#fff0ce;border:2px solid #c6ae65;border-radius:12px;font:${16*scale}px Trebuchet MS;display:flex;flex-direction:column;gap:10px;overflow:hidden`;
@@ -2908,9 +2992,9 @@
             const button=(text,run,parent=body)=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.style.cssText='padding:10px;border:1px solid #b99c64;border-radius:7px;background:#354c80;color:#fff0ce;font:inherit;cursor:pointer';b.onclick=run;parent.appendChild(b);return b;};
             const back=button(this._step==='full'?'Back to camp':'Back',()=>this.creatorBack(),footer);back.dataset.action='back';
             if(this._step==='class'){
-                const grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1';body.appendChild(grid);
-                const symbols={barbarian:'⚒',knight:'♜',ranger:'➶',rogue:'◆',mage:'✦',cleric:'☀'};
-                for(const id of progression.ALL_CLASSES){const c=progression.classFor({classId:id}),stats=progression.classStats({classId:id,level:1}),b=button(`${symbols[id]} ${c.name}`,()=>{if(this._draft.classId!==id)this._draft={classId:id};this._step='type';this.showCreator();},grid);b.setAttribute('aria-label',c.name);b.style.fontSize='22px';const info=document.createElement('small');info.textContent=`HP ${stats.hp} · Armor ${stats.armor} · Ward ${stats.ward} · Speed ${stats.speed}`;info.style.cssText='display:block;font-size:14px;margin-top:9px';b.appendChild(info);const role=document.createElement('small');role.textContent=c.purpose;role.style.cssText='display:block;font-size:12px;margin-top:5px;line-height:1.25';b.appendChild(role);}
+                const grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;flex:1;min-height:0';body.appendChild(grid);
+                const symbols={barbarian:'⚒',knight:'♜',ranger:'➶',rogue:'◆',mage:'✦',cleric:'☀',bard:'♫',druid:'❧'};
+                for(const id of progression.ALL_CLASSES){const c=progression.classFor({classId:id}),stats=progression.classStats({classId:id,level:1}),b=button(`${symbols[id]} ${c.name}`,()=>{if(this._draft.classId!==id)this._draft={classId:id};this._step='type';this.showCreator();},grid);b.setAttribute('aria-label',c.name);b.style.cssText+=';font-size:19px;padding:8px;min-width:0;overflow:hidden';const info=document.createElement('small');info.textContent=`HP ${stats.hp} · Armor ${stats.armor} · Ward ${stats.ward} · Speed ${stats.speed}`;info.style.cssText='display:block;font-size:12px;margin-top:7px;line-height:1.2';b.appendChild(info);const role=document.createElement('small');role.textContent=c.purpose;role.style.cssText='display:block;font-size:11px;margin-top:4px;line-height:1.2';b.appendChild(role);}
             }else if(this._step==='type'){
                 const info=document.createElement('p');info.textContent=`${progression.classFor(this._draft).name} — choose an appearance type. Stats are identical.`;info.style.margin='4px 0';body.appendChild(info);
                 const grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1';body.appendChild(grid);
@@ -2978,9 +3062,9 @@
     class Window_RPGEquipmentProfile extends Window_RPGPanel {
         setContext(state,npc,slot=null,candidateId=undefined){this._state=state;this._npc=npc;this._slot=slot;this._candidateId=candidateId;this.refresh();}
         slotLabel(slot){return{head:"♜ HEAD",body:"▣ BODY",offHand:"⛨ OFF-HAND",accessory:"✦ ACCESSORY"}[slot]||slot.toUpperCase();}
-        update(){super.update();if(this.visible&&TouchInput.isTriggered()&&this._slotHandler){const p=this.worldTransform.applyInverse(new Point(TouchInput.x,TouchInput.y)),x=p.x-this.padding,y=p.y-this.padding,cx=this.innerWidth/2;for(const [slot,sx,sy] of [["head",cx-73,94],["body",8,168],["offHand",this.innerWidth-154,168],["accessory",cx-73,238]])if(x>=sx&&x<sx+146&&y>=sy&&y<sy+54){this._slotHandler(slot);break;}}}
+        update(){super.update();if(!this.visible)return;const p=this.worldTransform.applyInverse(new Point(TouchInput.x,TouchInput.y)),x=p.x-this.padding,y=p.y-this.padding,cx=this.innerWidth/2,hit=[["head",cx-73,94],["body",8,168],["offHand",this.innerWidth-154,168],["accessory",cx-73,238]].find(([,sx,sy])=>x>=sx&&x<sx+146&&y>=sy&&y<sy+54),hover=hit?.[0]||null;if(hover!==this._hoverSlot){this._hoverSlot=hover;this.refresh();}if(TouchInput.isTriggered()&&this._slotHandler&&hit)this._slotHandler(hit[0]);}
         drawSlot(slot,x,y,w=146){
-            const npc=this._npc,id=npc.equipmentSlots?.[slot],item=progression.SHOP[id],selected=this._slot===slot;
+            const npc=this._npc,id=npc.equipmentSlots?.[slot],item=progression.SHOP[id],selected=this._slot===slot||this._hoverSlot===slot;
             CozyUI.round(this.contents,x,y,w,54,selected?"#3e5485":"#283454",selected?"#e8c583":"#827554",5);
             CozyUI.text(this,this.slotLabel(slot),x+7,y+3,w-14,11,selected?"#f4d592":"#bfb28e","left",15);
             CozyUI.text(this,item?.name||"Empty slot",x+7,y+19,w-14,13,"#f4e8cf","left",17);
@@ -3039,7 +3123,7 @@
             const state = managerState(), npc = findNpc(this._npcId);
             let entries;
             if (this._mode === "main") entries = [
-                { name: "Equipment", ext: "slots" }, { name: "Use supplies", ext: "supplies" }, {name:"Acquired powers",ext:"powers"}, {name:"Wounds and effects",ext:"wounds"}, { name: "Rename", ext: "rename" }, {name:"Dismiss",ext:"dismiss",enabled:!progression.dismissalError(state,npc.id)}
+                {name:"Acquired powers",ext:"powers"}, {name:"Wounds and effects",ext:"wounds"}, { name: "Rename", ext: "rename" }, {name:"Dismiss",ext:"dismiss",enabled:!progression.dismissalError(state,npc.id)}
             ];
             else if (["powers","wounds"].includes(this._mode)) entries=(this._mode==="powers"?progression.powerTrack(npc):progression.woundLines(npc)).map(text=>({name:text.split(":")[0].split(" — ")[0],ext:text}));
             else if (this._mode === "confirmDismiss") entries = [
@@ -3102,7 +3186,7 @@
             const trip = progression.tripForTeam(state, team), ids = state.teams[team];
             this._info.contents.clear(); this._info.line(`TEAM ${team}`, 0, ColorManager.systemColor(), 26); this._info.rule(34);
             ids.forEach((id, index) => this._info.line(`${index + 1}. ${findNpc(id)?.name || id}`, 48 + index * 30, ColorManager.normalColor(), 18));
-            this._info.line(trip ? `Locked: ${trip.questName} / ${trip.phase}` : progression.teamError(state, ids, team) || "Ready for dispatch.", 220, trip ? ColorManager.crisisColor() : ColorManager.powerUpColor(), 17);
+            this._info.line(trip ? `Locked: expedition / ${trip.phase}` : progression.teamError(state, ids, team) || "Ready for dispatch.", 220, trip ? ColorManager.crisisColor() : ColorManager.powerUpColor(), 17);
         }
         editTeam() {
             const team = this._choices.currentExt();
@@ -3128,7 +3212,7 @@
             if (!trip) { this._info.setLines(["No other arrived quest is waiting."]); return; }
             const quest = findQuest(trip.questId);
             this._info.contents.clear(); this._info.badge(quest.boss ? "BOSS" : quest.faction.toUpperCase(), 8, 0, 130, factionColor(quest));
-            this._info.line(trip.questName, 42, factionColor(quest), 24);
+            this._info.line("Expedition ready", 42, factionColor(quest), 24);
             this._info.line(`Team ${team}: ${trip.team.map(member => findNpc(member.id)?.name || member.id).join(", ")}`, 82, ColorManager.normalColor(), 17);
             this._info.wrapped(`Danger: ${quest.danger}`, 122);
         }
@@ -3170,7 +3254,7 @@
             this._choices.setHandler("back", this.popScene.bind(this)); this._choices.setHandler("cancel", this.popScene.bind(this));
             this._choices.onSelectionChange = () => {
                 const t = this._choices.currentExt(), trip = progression.tripForTeam(managerState(), t);
-                this._info.setLines(t ? [trip ? `Expedition ${t} is already active.` : `Expedition ${t} is open.`, trip?.questName || "Select this slot to form a party from the available roster.", trip ? "Its adventurers are unavailable to the other expedition until they return." : "Adventurers currently away will be shown but cannot be selected."] : ["Return to the Quest Board."]);
+                this._info.setLines(t ? [trip ? `Expedition ${t} is already active.` : `Expedition ${t} is open.`, trip ? "This party is currently away." : "Select this slot to form a party from the available roster.", trip ? "Its adventurers are unavailable to the other expedition until they return." : "Adventurers currently away will be shown but cannot be selected."] : ["Return to camp."]);
             };
             this.addWindow(this._choices); this._choices.onSelectionChange();
             this.footer(["Each expedition may contain any 1-5 available adventurers.", "The same adventurer can never join both active expeditions."]);
@@ -3236,8 +3320,8 @@
         }
         mountSlotButtons(){
             const bar=document.createElement("section"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;bar.id="shop-slot-tabs";bar.dataset.step="shop";bar.setAttribute("aria-label","Equipment categories");bar.style.cssText=`position:fixed;z-index:20;left:${r.left+12*scale}px;top:${r.top+108*scale}px;width:${308*scale}px;height:${84*scale}px;display:grid;grid-template-columns:1fr 1fr;gap:4px`;
-            for(const [slot,label] of [["head","♜ Head"],["body","▣ Body"],["offHand","⛨ Off-hand"],["accessory","✦ Accessory"],["supplies","Supplies"]]){
-                const b=document.createElement("button");b.textContent=label;b.dataset.slot=slot;b.setAttribute("aria-pressed",String(slot===this._shopSlot));b.style.cssText=`font:bold ${14*scale}px Trebuchet MS;background:#354c80;color:#fff0ce;border:1px solid #c6ae65;border-radius:5px;cursor:pointer`;
+            for(const [slot,label] of [["head","♜  Head"],["body","▣  Body"],["offHand","◈  Off-hand"],["accessory","✦  Accessory"],["supplies","⚗  Supplies"]]){
+                const b=document.createElement("button");b.textContent=label;b.dataset.slot=slot;b.setAttribute("aria-pressed",String(slot===this._shopSlot));b.style.cssText=`font:bold ${14*scale}px Georgia;background:linear-gradient(#405b91,#2b3f72);color:#fff0ce;border:1px solid #c6ae65;border-radius:6px;box-shadow:inset 0 1px #ffffff33;cursor:pointer`;
                 b.onclick=()=>{this._shopSlot=slot;for(const button of bar.querySelectorAll("button"))button.setAttribute("aria-pressed",String(button===b));this._commandWindow._commandPage=0;this._commandWindow.refresh();this._commandWindow.select(0);this._commandWindow.activate();this.refreshDetails();};bar.appendChild(b);
             }
             for(const event of ["keydown","keyup","mousedown","mouseup"])bar.addEventListener(event,e=>e.stopPropagation());
@@ -3253,8 +3337,8 @@
             const id = this._commandWindow.currentExt(), item = progression.SHOP[id];
             this._details.contents.clear();
             if (!item) { this._details.setLines([`Shop / ${this._shopSlot}`,"Choose an equipment category button.","Head / Body / Off-hand / Accessory", "Supplies", "Gear is destroyed when its hit durability runs out. Buy a replacement and equip it from the character sheet."]); return; }
-            if(item)CozyUI.itemIcon(this._details,id,8,3,26);
-            CozyUI.text(this._details,item.name,44,0,this._details.innerWidth-52,24,ColorManager.systemColor(),"left",32);
+            if(item){CozyUI.round(this._details.contents,5,0,40,40,"#1f2d52","#d4b86e",7);CozyUI.itemIcon(this._details,id,12,7,26);}
+            CozyUI.text(this._details,item.name,54,0,this._details.innerWidth-62,24,ColorManager.systemColor(),"left",32);
             CozyUI.wrap(this._details,item.description,8,42,this._details.innerWidth-16,18,"#fff1d4",2,24);
             CozyUI.wrap(this._details,`Classes: ${item.classes.map(id=>id[0].toUpperCase()+id.slice(1)).join(", ")}`,8,92,this._details.innerWidth-16,16,"#badbff",2,20);
             this._details.line(`Buy: ${item.price} Gold / Sell: ${item.sellValue} Gold`, 138);
@@ -3276,35 +3360,54 @@
     class Scene_RPGAltar extends Scene_RPGBase {
         create() {
             super.create(); this._mode="ritual"; this._ritual=null;
-            this._header=this.header("ALTAR",`Arcana: ${managerState().arcana||0}`);
+            this._header=this.header("ALTAR",`Artifacts: ${managerState().magicalArtifacts||0} / Arcana: ${managerState().arcana||0}`);
             this._details=this.panel(new Rectangle(332,108,Graphics.boxWidth-344,360));
             this._choices=new Window_RPGChoices(new Rectangle(12,108,308,416),()=>this.entries());
             this._choices.setHandler("ritual",this.choose.bind(this)); this._choices.setHandler("target",this.cast.bind(this));this._choices.setHandler("replace",this.chooseReplacement.bind(this));
             this._choices.setHandler("back",()=>this._mode==="ritual"?this.popScene():this.back()); this._choices.setHandler("cancel",()=>this._mode==="ritual"?this.popScene():this.back());
             this._choices.onSelectionChange=this.refreshDetails.bind(this);this.addWindow(this._choices);
-            this._footer=this.footer(["Beat each ritual's own quest to unlock it. Arcana pays only for activation.","Pending effects cannot be stacked. Quest timers remain unchanged."]);this.refreshDetails();
+            this._footer=this.footer(["Magical Artifacts permanently unlock rituals. Arcana pays for each activation.","Artifacts drop only from successful quests; longer and harder quests improve the odds."]);this.refreshDetails();
+        }
+        start(){super.start();this.mountAltarPointerBridge();}
+        mountAltarPointerBridge(){
+            const resolve=event=>{
+                if(SceneManager._scene!==this||managerDialog||!this._choices?.visible||!this._choices.active)return -1;
+                const canvas=Graphics._canvas,rect=canvas?.getBoundingClientRect();if(!rect?.width||!rect.height)return -1;
+                const gamePoint=new Point((event.clientX-rect.left)*Graphics.width/rect.width,(event.clientY-rect.top)*Graphics.height/rect.height);
+                const local=this._choices.worldTransform.applyInverse(gamePoint);return this._choices.hitTest(local.x,local.y);
+            };
+            this._altarPointerMove=event=>{const index=resolve(event);if(index>=0&&index<this._choices.maxItems()&&index!==this._choices.index())this._choices.select(index);};
+            this._altarPointerDown=event=>{if(event.button!==0)return;const index=resolve(event);if(index<0||index>=this._choices.maxItems())return;event.preventDefault();event.stopImmediatePropagation();this._choices.select(index);this._choices.processOk();};
+            // Capture at document level so focused HTML navigation/timer controls
+            // cannot starve the canvas list of its mouse input.
+            document.addEventListener("pointermove",this._altarPointerMove,true);document.addEventListener("pointerdown",this._altarPointerDown,true);
+            this._altarWheel=event=>{if(SceneManager._scene!==this||managerDialog||!this._choices?.active)return;const index=resolve(event);if(index<0)return;event.preventDefault();event.stopImmediatePropagation();const step=event.deltaY>0?1:-1,next=Math.max(0,Math.min(this._choices.maxItems()-1,this._choices.index()+step));this._choices.select(next);};document.addEventListener("wheel",this._altarWheel,{capture:true,passive:false});
         }
         entries(){
             const s=managerState();
-            if(this._mode==="ritual")return [...progression.ritualEntries().map(([id,r])=>({name:`${r.name} / ${r.castCost} Arcana${s.ritualsUnlocked[id]?"":" / Locked"}`,symbol:"ritual",ext:id})),{name:"Back to Home",symbol:"back"}];
+            if(this._mode==="ritual")return [...progression.ritualEntries().map(([id,r])=>({name:s.ritualsUnlocked[id]?`${r.name} / Activate ${r.castCost} Arcana`:`${r.name} / Unlock ${r.unlockCost} Artifact${r.unlockCost===1?"":"s"}`,symbol:"ritual",ext:id})),{name:"Back to Home",symbol:"back"}];
             if(this._mode==="replace")return [{name:"Cancel replacement",symbol:"back"},...progression.activeRoster(s).map(n=>({name:`Replace ${n.name}`,symbol:"replace",ext:n.id,enabled:!progression.isUnavailable(s,n.id)}))];
             const list=progression.RITUALS[this._ritual]?.target==="fallen"?progression.graveyard(s):progression.activeRoster(s);
             return [{name:"< Back to Altar",symbol:"back"},...list.map(n=>({name:`${n.name}${this._ritual==="healing_ritual"?` / ${n.permanentWounds.length} wounds`:this._ritual==="reanimate"&&(n.reanimated||n.reanimationExhausted)?" / Ineligible":""}`,symbol:"target",ext:n.id,enabled:(this._ritual!=="healing_ritual"||n.permanentWounds.length>0)&&(this._ritual!=="reanimate"||!n.reanimated&&!n.reanimationExhausted)}))];
         }
-        choose(){const id=this._choices.currentExt(),s=managerState(),r=progression.RITUALS[id];if(!s.ritualsUnlocked[id]){this.showResult(progression.ritualUnlock(s,id));return;}if(!r.target){this.showResult(progression.ritualCast(s,id,null));return;}this._ritual=id;this._replaceId=null;this._mode=r.target==="fallen"&&!progression.vacantSlots(s).length?"replace":"target";this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshDetails();}
+        choose(confirmed=false){const id=this._choices.currentExt(),s=managerState(),r=progression.RITUALS[id];if(!s.ritualsUnlocked[id]){if(!confirmed){const cancel=()=>{closeManagerDialog();this._choices.activate();};this._choices.deactivate();managerModal(`Unlock ${r.name}?`,[`Permanent unlock: ${r.unlockCost} Magical Artifact${r.unlockCost===1?"":"s"}.`,`Future activations cost ${r.castCost} Arcana each.`],[{name:`Unlock for ${r.unlockCost} Artifact${r.unlockCost===1?"":"s"}`,run:()=>{closeManagerDialog();this.choose(true);}},{name:"Cancel",run:cancel}],cancel);return;}this.showResult(progression.ritualUnlock(s,id));return;}if(!r.target){this.showResult(progression.ritualCast(s,id,null));return;}this._ritual=id;this._replaceId=null;this._mode=r.target==="fallen"&&!progression.vacantSlots(s).length?"replace":"target";this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshDetails();}
         chooseReplacement(){const id=this._choices.currentExt(),npc=findNpc(id),cancel=()=>{closeManagerDialog();this._choices.activate();};managerModal(`Replace ${npc.name}?`,[`${progression.classLabel(npc)} / Level ${npc.level}`,"All gear returns to inventory. The companion is removed only after the final resurrection confirmation."],[{name:"Choose fallen companion",run:()=>{closeManagerDialog();this._replaceId=id;this._mode="target";this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshDetails();}},{name:"Cancel",run:cancel}],cancel);}
         cast(){const s=managerState(),id=this._choices.currentExt(),ritual=this._ritual,r=progression.RITUALS[ritual];if(r.target!=="fallen"){this.showResult(progression.ritualCast(s,ritual,id));return;}const npc=findNpc(id),old=this._replaceId?findNpc(this._replaceId):null,cancel=()=>{closeManagerDialog();this._choices.activate();};managerModal("Confirm resurrection",[old?`Remove ${old.name} (${progression.classLabel(old)}, L${old.level}) and return all their gear.`:"Use the empty party slot.",ritual==="reanimate"?`Return ${npc.name} as a Skeleton ${progression.classFor(npc).name}, L${npc.level}; cannot level up.`:`Return ${npc.name} at 1 HP with an injury.`,`${npc.permanentWounds.length} wounds and acquired powers are preserved. Cost: ${r.castCost} Arcana.`],[{name:"Confirm resurrection",run:()=>{const result=progression.ritualCast(s,ritual,id,{replaceId:this._replaceId,confirmed:true});closeManagerDialog();this._mode="ritual";this.showResult(result);}},{name:"Cancel",run:cancel}],cancel);}
         back(){this._mode="ritual";this._ritual=null;this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshDetails();}
-        showResult(result){result.ok?SoundManager.playOk():SoundManager.playBuzzer();this._header.setLines(["ALTAR",`Arcana: ${managerState().arcana||0}`]);this._choices.refresh();this._choices.activate();this._footer.setLines([result.message,"Every successful cast charges its per-use cost exactly once."]);this.refreshDetails();}
+        showResult(result){result.ok?SoundManager.playOk():SoundManager.playBuzzer();this._header.setLines(["ALTAR",`Artifacts: ${managerState().magicalArtifacts||0} / Arcana: ${managerState().arcana||0}`]);this._choices.refresh();this._choices.activate();this._footer.setLines([result.message,"Unlock prices are paid once; activation costs are charged per successful use."]);this.refreshDetails();}
         refreshDetails(){
             this._details.contents.clear();const id=this._mode==="ritual"?this._choices.currentExt():this._ritual,r=progression.RITUALS[id];if(!r)return;
             const p=this._details,w=p.innerWidth,unlocked=managerState().ritualsUnlocked[id];p.line(r.name,0,CozyUI.colors.honey,24);
-            CozyUI.text(p,`Activation: ${r.castCost} Arcana`,8,40,w-16,16,"#d6c6a6");
-            p.badge(unlocked?"UNLOCKED":"LOCKED",8,78,124,unlocked?"#a6c797":"#c6b99d");
-            CozyUI.wrap(p,`Unlock quest: ${r.questName} (Level ${r.level}). Win this quest; no unlock payment.`,16,112,w-32,16,"#e6d7b5",3,22);
-            CozyUI.wrap(p,r.description,16,186,w-32,16,"#d7ccb2",5,22);
+            const sigilKind={protection_ward:"ward",healing_ritual:"hp",greed_prayer:"coin",reanimate:"graveyard",battle_hymn:"battle",first_strike:"difficulty",familiars_vigil:"roster",arcane_rebate:"arcana",veil_of_mercy:"wound"}[id]||"altar";
+            CozyUI.ellipse(p.contents,w-50,56,38,38,unlocked?"#184f46aa":"#242d4dcc");CozyUI.icon(p.contents,sigilKind,w-68,38,36,unlocked?"#8ff0bf":"#8f91a0");
+            CozyUI.text(p,`Unlock: ${r.unlockCost} Magical Artifact${r.unlockCost===1?"":"s"}`,8,40,w-16,16,"#d6c6a6");
+            CozyUI.text(p,`Activation: ${r.castCost} Arcana`,8,62,w-16,16,"#c5ade4");
+            p.badge(unlocked?"UNLOCKED":"LOCKED",8,94,124,unlocked?"#a6c797":"#c6b99d");
+            CozyUI.wrap(p,unlocked?"This ritual is permanently available. Arcana is charged only when an activation succeeds.":"Spend Magical Artifacts to unlock permanently. Find them randomly after successful quests.",16,128,w-32,16,"#e6d7b5",3,22);
+            CozyUI.wrap(p,r.description,16,208,w-32,16,"#d7ccb2",4,22);
             if(managerState().ritualEffects?.[id])CozyUI.text(p,"PENDING / already activated",16,300,w-32,15,"#a6c797","left",22);
         }
+        terminate(){document.removeEventListener("pointermove",this._altarPointerMove,true);document.removeEventListener("pointerdown",this._altarPointerDown,true);document.removeEventListener("wheel",this._altarWheel,true);super.terminate();}
     }
 
     class Scene_RPGDebugTimers extends Scene_RPGBase {
@@ -3405,11 +3508,24 @@
         this._loadSuccess = true;
     };
 
+    const MANAGER_SAVE_ID=1,MANAGER_AUTOSAVE_INTERVAL=5*60*1000;
+    let managerNextAutosaveAt=Date.now()+MANAGER_AUTOSAVE_INTERVAL;
+    DataManager.maxSavefiles=function(){return 2;};
+    DataManager.latestSavefileId=function(){return DataManager.savefileInfo(MANAGER_SAVE_ID)?MANAGER_SAVE_ID:0;};
+    Window_TitleCommand.prototype.isContinueEnabled=function(){return !!DataManager.savefileInfo(MANAGER_SAVE_ID)&&DataManager.savefileExists(MANAGER_SAVE_ID);};
+    async function saveManagerCampaign(){
+        if(!globalThis.$gameSystem?._rpgManager)return false;
+        $gameSystem.setSavefileId(MANAGER_SAVE_ID);$gameSystem.onBeforeSave();await DataManager.saveGame(MANAGER_SAVE_ID);return true;
+    }
+    const managerBaseUpdate=Scene_RPGBase.prototype.update;
+    Scene_RPGBase.prototype.update=function(){
+        managerBaseUpdate.call(this);if(!globalThis.$gameSystem?._rpgManager||managerState().startingRosterPending)return;
+        if(Date.now()>=managerNextAutosaveAt&&!this._managerAutosaveBusy){this._managerAutosaveBusy=true;managerNextAutosaveAt=Date.now()+MANAGER_AUTOSAVE_INTERVAL;saveManagerCampaign().catch(console.error).finally(()=>this._managerAutosaveBusy=false);}
+    };
     Window_TitleCommand.prototype.makeCommandList = function() {
         const hasSave = this.isContinueEnabled();
         this.addCommand("Continue", "continue", hasSave);
         this.addCommand("New Game", "newGame");
-        this.addCommand("Load", "load", hasSave);
     };
     Window_TitleCommand.prototype.selectLast = function() {
         this.selectSymbol(this.isContinueEnabled() ? "continue" : "newGame");
@@ -3417,13 +3533,17 @@
     const createTitleCommands = Scene_Title.prototype.createCommandWindow;
     Scene_Title.prototype.createCommandWindow = function() {
         createTitleCommands.call(this);
-        this._commandWindow.setHandler("load", () => {
-            this._commandWindow.close();
-            SceneManager.push(Scene_Load);
-        });
+        this.mountMouseTitleMenu();
     };
+    Scene_Title.prototype.mountMouseTitleMenu=function(){
+        this._titleMouseMenu?.remove();const menu=document.createElement("div"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;menu.id="title-mouse-menu";menu.style.cssText=`position:fixed;z-index:30;left:${r.left+(Graphics.width/2-150)*scale}px;top:${r.top+375*scale}px;width:${300*scale}px;display:grid;gap:${10*scale}px`;
+        const add=(label,symbol,enabled=true)=>{const b=document.createElement("button");b.textContent=label;b.disabled=!enabled;b.style.cssText=`height:${52*scale}px;border:2px solid #d6ba73;border-radius:${9*scale}px;background:linear-gradient(#405b91,#263b6b);color:#fff0ce;box-shadow:0 ${4*scale}px ${10*scale}px #0008;font:bold ${22*scale}px Georgia;cursor:${enabled?"pointer":"default"};opacity:${enabled?1:.5}`;b.onclick=()=>{this._commandWindow.selectSymbol(symbol);this._commandWindow.processOk();};menu.appendChild(b);};
+        add("Continue","continue",this._commandWindow.isContinueEnabled());add("New Game","newGame");for(const e of ["mousedown","mouseup","touchstart","touchend","keydown","keyup"])menu.addEventListener(e,event=>event.stopPropagation());document.body.appendChild(menu);this._titleMouseMenu=menu;this._commandWindow.visible=false;
+    };
+    const titleTerminateMouseMenu=Scene_Title.prototype.terminate;
+    Scene_Title.prototype.terminate=function(){this._titleMouseMenu?.remove();titleTerminateMouseMenu.call(this);};
     Scene_Title.prototype.commandContinue = async function() {
-        const id = DataManager.latestSavefileId();
+        const id = MANAGER_SAVE_ID;
         try {
             await DataManager.loadGame(id);
             const managerSave = restoreManagerSave();
@@ -3439,7 +3559,7 @@
                 this._loadError = new Window_Help(new Rectangle(12, 12, Graphics.boxWidth - 24, 100));
                 this.addWindow(this._loadError);
             }
-            this._loadError.setText("Could not continue the latest save.\nUse Load to choose another file.");
+            this._loadError.setText("Could not continue the campaign save.\nStart a New Game to create a replacement.");
         }
     };
 

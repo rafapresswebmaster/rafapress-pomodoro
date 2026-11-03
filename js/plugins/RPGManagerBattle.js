@@ -84,7 +84,7 @@
         mage: ["arcane"], mystic: ["arcane", "ritual"],
         duelist: ["locks", "stealth"], skirmisher: ["traps", "stealth"], ranger: ["traps", "wilderness"],
         vanguard: ["force", "intimidation"], bruiser: ["force", "intimidation"], guardian: ["force", "protection"], brawler: ["force", "intimidation"],
-        cleric: ["ritual", "care"], support: ["care"], bard: ["influence", "lore"],
+        cleric: ["ritual", "care"], support: ["care"], bard: ["influence", "lore"], druid:["wilderness","care","ritual"],
         worker: ["labor", "repair", "carrying", "gathering"]
     });
     const INTERACTION_DEFINITIONS = Object.freeze({
@@ -545,7 +545,12 @@
             const events = [];
             this._queue = this._queue.filter(npc => npc.alive && npc.health > 0);
             if (this._queue.length === 0) this._startRound(events);
-            const actor = this._queue.shift();
+            let actor = this._queue.shift();
+            // Entangling Bloom delays initiative without consuming a turn. A rooted
+            // fighter moves behind the remaining queue once, then must act before
+            // another Bloom can delay it.
+            if(actor.rootDelay>0&&this._queue.length){actor.rootDelay--;this._queue.push(actor);actor=this._queue.shift();}
+            if(actor.rootLocked&&!actor.rootDelay)actor.rootLocked=false;
             if (actor.skipTurns > 0) { actor.skipTurns--; this._actions++; events.push({type:"skip",round:this._round,key:actor.key,name:actor.name,reason:"neutralized"}); if(this._actions>=this._maxActions)this._finish("draw","action-limit",events);this._events.push(...events); return copy(events); }
             if(this._refinementAction(actor,events)){
                 this._actions++;
@@ -559,8 +564,17 @@
             const signature = (signatureChoice.use||actor.side==="player"&&actor.personalTurns>=3) && (actor.side!=="player" || actor.signatureUnlocks>0&&!actor.signatureSpent);
             const multiplier = signature ? (actor.signatureDamage || actor.damage || Math.max(1,Math.round(actor.signatureMove?.multiplier||1))) : (actor.damage || 1);
             const special=signature&&actor.side==="player"?actor.classId:null;
-            const specialNames={barbarian:"Cleave",knight:"Shield Bash",ranger:"Pinning Shot",rogue:"Feint",mage:"Fireburst",cleric:"Mending Light"};
+            const specialNames={barbarian:"Cleave",knight:"Shield Bash",ranger:"Pinning Shot",rogue:"Feint",mage:"Fireburst",cleric:"Mending Light",bard:"Encore",druid:"Entangling Bloom"};
             if(special)actor.signatureAttack=specialNames[special]||actor.signatureAttack;
+            if(special==="bard"){
+                const recipient=this._living("player").filter(n=>n.key!==actor.key&&n.classId!=="bard"&&!n.encoreReceived&&(this._signatureUses[n.id]||0)>=1&&(this._signatureUses[n.id]||0)<2&&n.signatureSpent).sort((a,b)=>(this._signatureUses[a.id]||0)-(this._signatureUses[b.id]||0)||this._queue.indexOf(a)-this._queue.indexOf(b)||a.id.localeCompare(b.id))[0];
+                if(recipient){recipient.signatureSpent=false;recipient.encoreReceived=true;recipient.ritualSignatureLimit=Math.max(recipient.ritualSignatureLimit||1,2);const ward=(actor.level||1)>=5?2:(actor.level||1)>=3?1:0;if(ward)recipient.temporaryWard=Math.max(recipient.temporaryWard||0,ward);this._spendSignature(actor);this._actions++;events.push({type:"support",kind:"signature",attackName:"Encore",actorKey:actor.key,actorName:actor.name,targetKey:recipient.key,targetName:recipient.name,targetHealth:recipient.health,targetWard:recipient.temporaryWard+recipient.innateWard,effectText:`Restores one special use${ward?` and grants at least ${ward} temporary Ward`:""}.`});this._events.push(...events);return copy(events);}
+            }
+            if(special==="druid"){
+                const allies=this._living("player"),injured=allies.filter(n=>n.health<n.maxHealth).sort((a,b)=>a.health/a.maxHealth-b.health/b.maxHealth||a.health-b.health||a.id.localeCompare(b.id))[0];
+                const rooted=this._living("enemy").filter(n=>!n.rootLocked).sort((a,b)=>Number(!!b.pendingSpecial)-Number(!!a.pendingSpecial)||this._queue.indexOf(a)-this._queue.indexOf(b)||a.id.localeCompare(b.id))[0];
+                if(injured||rooted){if(rooted){rooted.rootDelay=1;rooted.rootLocked=true;}let healing=0,ward=0;if(injured){healing=Math.min(1,injured.maxHealth-injured.health);injured.health+=healing;ward=(actor.level||1)>=5?2:(actor.level||1)>=3?1:0;if(healing&&ward)injured.temporaryWard=Math.max(injured.temporaryWard||0,ward);}this._spendSignature(actor);this._actions++;events.push({type:healing?"heal":"support",kind:"signature",attackName:"Entangling Bloom",actorKey:actor.key,actorName:actor.name,targetKey:(injured||rooted).key,targetName:(injured||rooted).name,healing,targetHealth:injured?.health,targetWard:injured?(injured.temporaryWard+injured.innateWard):undefined,effectText:`${rooted?`${rooted.name}'s next action is delayed. `:""}${healing?`${injured.name} recovers 1 HP${ward?` and gains at least ${ward} temporary Ward`:""}.`:""}`});this._events.push(...events);return copy(events);}
+            }
             if(special==="cleric"){
                 const ally=this._living("player").filter(n=>n.health<n.maxHealth).sort((a,b)=>a.health/a.maxHealth-b.health/b.maxHealth||a.key.localeCompare(b.key))[0];
                 if(ally){ally.health=Math.min(ally.maxHealth,ally.health+1);this._spendSignature(actor);this._actions++;
