@@ -21,27 +21,51 @@
     const mobilePortraitAtBoot = globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px) and (orientation: portrait)")?.matches===true;
     function enableMobileTapSafety(root){if(root)root._mobileTapSafety=true;}
     const mobileScreenWakeLock=(()=>{
-        const enabled=globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px), (pointer: coarse) and (max-height: 520px)")?.matches===true;
-        let sentinel=null,pending=null;
+        // Some mobile browsers report a fine/absent primary pointer when an
+        // external mouse is paired. Touch capability keeps phones/tablets in
+        // scope even in that state; desktop-only devices remain unaffected.
+        const enabled=(Number(navigator.maxTouchPoints)||0)>0||globalThis.matchMedia?.("(pointer: coarse)")?.matches===true;
+        let sentinel=null,pending=null,retryTimer=0,suspended=document.visibilityState!=="visible";
         const status=value=>document.documentElement.dataset.screenWakeLock=value;
+        const clearRetry=()=>{if(retryTimer){clearTimeout(retryTimer);retryTimer=0;}};
+        const retry=(delay=1000)=>{
+            if(!enabled||suspended||document.visibilityState!=="visible"||retryTimer)return;
+            retryTimer=setTimeout(()=>{retryTimer=0;request();},delay);
+        };
         const request=async()=>{
             if(!enabled||!("wakeLock" in navigator)){status(enabled?"unsupported":"desktop");return null;}
-            if(document.visibilityState!=="visible"){status("hidden");return null;}
+            if(suspended||document.visibilityState!=="visible"){status("hidden");return null;}
             if(sentinel&&!sentinel.released)return sentinel;
             if(pending)return pending;
             status("requesting");
-            pending=navigator.wakeLock.request("screen").then(lock=>{sentinel=lock;status("active");lock.addEventListener("release",()=>{if(sentinel===lock)sentinel=null;status(document.visibilityState==="visible"?"released":"hidden");},{once:true});return lock;}).catch(()=>{status("unavailable");return null;}).finally(()=>{pending=null;});
+            pending=navigator.wakeLock.request("screen").then(lock=>{
+                sentinel=lock;clearRetry();status("active");
+                lock.addEventListener("release",()=>{
+                    if(sentinel===lock)sentinel=null;
+                    status(!suspended&&document.visibilityState==="visible"?"released":"hidden");
+                    // The OS may revoke a lock without hiding the page (power
+                    // policy, transient browser state, etc.). A quest can be
+                    // hands-off for many minutes, so do not rely on another tap.
+                    retry();
+                },{once:true});
+                return lock;
+            }).catch(()=>{status("unavailable");return null;}).finally(()=>{pending=null;});
             return pending;
         };
-        const release=async()=>{const lock=sentinel;sentinel=null;if(lock&&!lock.released)try{await lock.release();}catch(_error){/* The browser may already have released it. */}status(document.visibilityState==="visible"?"released":"hidden");};
+        const resume=()=>{suspended=false;clearRetry();return request();};
+        const release=async()=>{suspended=true;clearRetry();const lock=sentinel;sentinel=null;if(lock&&!lock.released)try{await lock.release();}catch(_error){/* The browser may already have released it. */}status("hidden");};
         if(enabled){
-            document.addEventListener("visibilitychange",()=>document.visibilityState==="visible"?request():release());
-            window.addEventListener("pageshow",request);
+            document.addEventListener("visibilitychange",()=>document.visibilityState==="visible"?resume():release());
+            window.addEventListener("pageshow",resume);
             window.addEventListener("pagehide",release);
-            document.addEventListener("pointerdown",request,{capture:true,passive:true});
-            queueMicrotask(request);
+            window.addEventListener("focus",resume);
+            document.addEventListener("pointerdown",resume,{capture:true,passive:true});
+            // A periodic guard is essential during autonomous quests: there
+            // may be no user interaction to recover a browser-revoked lock.
+            setInterval(()=>{if(!suspended&&document.visibilityState==="visible"&&(!sentinel||sentinel.released))request();},15000);
+            queueMicrotask(resume);
         }else status("desktop");
-        return{request,release,supported:enabled&&"wakeLock" in navigator,active:()=>!!sentinel&&!sentinel.released};
+        return{request:resume,release,supported:enabled&&"wakeLock" in navigator,active:()=>!!sentinel&&!sentinel.released};
     })();
     if(mobilePortraitAtBoot){
         document.documentElement.dataset.rpgMobileLayout="portrait";
@@ -1466,7 +1490,7 @@
         if(managerState().trips.A)return;
         const selectedUpgrades=new Set((managerState().preparation?.upgradeIds||[]).filter(id=>progression.EXPEDITION_UPGRADES[id]).slice(0,3));
         const cancel=()=>{closeManagerDialog();scene._choices?.activate?.();};
-        const modal=managerModal("Confirm expedition",[],[{name:"Start",run:()=>{try{const state=managerState();if(state.trips.A)throw Error("An expedition is already active.");state.selectedQuestId=quest.id;progression.dispatchQuest(state,"A",quest,$dataRPGManagerQuests.xp,Date.now(),null,"standard",null,null,partyIds,[...selectedUpgrades]);closeManagerDialog();SceneManager.goto(Scene_RPGHome);}catch(error){managerDialog.error.textContent=error.message;}}},{name:"Cancel",run:cancel}],cancel),content=document.createElement("div");content.id="embark-summary";modal.element.insertBefore(content,modal.error);modal.element.querySelector("h2").style.cssText="font-size:23px;margin:0 0 10px";modal.error.style.margin="6px 0";
+        const modal=managerModal("Confirm expedition",[],[{name:"Start",run:()=>{try{const state=managerState();if(state.trips.A)throw Error("An expedition is already active.");state.selectedQuestId=quest.id;progression.dispatchQuest(state,"A",quest,$dataRPGManagerQuests.xp,Date.now(),null,"standard",null,null,partyIds,[...selectedUpgrades]);mobileScreenWakeLock.request();closeManagerDialog();SceneManager.goto(Scene_RPGHome);}catch(error){managerDialog.error.textContent=error.message;}}},{name:"Cancel",run:cancel}],cancel),content=document.createElement("div");content.id="embark-summary";modal.element.insertBefore(content,modal.error);modal.element.querySelector("h2").style.cssText="font-size:23px;margin:0 0 10px";modal.error.style.margin="6px 0";
         const line=(text,bold=false)=>{const p=document.createElement(bold?"strong":"p");p.textContent=text;p.style.cssText="display:block;margin:8px 0;line-height:1.35";content.appendChild(p);};
         const risk=progression.questDangerEstimate(managerState(),quest,$dataRPGManagerQuests,window.RPGManagerBattle.Battle,partyIds);
         if(risk.dangerous){line(risk.allSamplesWiped?"DANGEROUS EXPEDITION: This party appears severely outmatched. Consider recovery, temporary upgrades, or an easier tier.":"DANGEROUS EXPEDITION: This fixed tier may be too difficult for the selected party. Check levels, health, injuries, and party size.",true);content.firstChild.style.color="#9b2637";modal.buttons[0].textContent="Accept danger and start";}
