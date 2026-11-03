@@ -609,7 +609,14 @@
         }
         focusHud.style.display=visible?'flex':'none';if(!visible){focusHud.querySelector('.focus-menu').hidden=true;return;}
         const canvas=Graphics._canvas||Graphics.app?.view,rect=canvas?.getBoundingClientRect(),scale=rect?rect.width/Graphics.width:1;
-        focusHud.style.left=((rect?.left||0)+(Graphics.boxWidth-376)*scale)+'px';focusHud.style.top=((rect?.top||0)+10*scale)+'px';focusHud.style.transform=`scale(${scale})`;
+        // On the idle Home screen, share the companion panel's calculated
+        // column bounds. Elsewhere, preserve the compact rail but keep its
+        // right edge on the same 12 px content gutter.
+        const idleHome=scene instanceof Scene_RPGHome&&!state?.trips?.A;
+        const campWidth=idleHome?Math.floor((Graphics.boxWidth-36)*.54):0;
+        const hudX=idleHome?campWidth+24:Graphics.boxWidth-370;
+        const hudWidth=idleHome?Graphics.boxWidth-campWidth-36:358;
+        focusHud.style.width=hudWidth+'px';focusHud.style.left=((rect?.left||0)+hudX*scale)+'px';focusHud.style.top=((rect?.top||0)+10*scale)+'px';focusHud.style.transform=`scale(${scale})`;
         const dial=focusHud.querySelector("svg");dial.setAttribute("aria-hidden","false");dial.style.cursor="pointer";dial.setAttribute("role","button");dial.setAttribute("aria-label",state?.trips?.A?"Active expedition information":"Start Quest");dial.setAttribute("tabindex","0");dial.onclick=()=>{if(managerState().trips?.A){SceneManager.goto(Scene_RPGHome);return;}if(!SceneManager.isSceneChanging())SceneManager.push(Scene_RPGQuestBoard);};dial.onkeydown=e=>{if(["Enter"," "].includes(e.key)){e.preventDefault();dial.click();}};
         focusHud.querySelector(".focus-time").onclick=()=>dial.click();
         focusHud.querySelector(".focus-recall").textContent=state?.trips?.A?(state.trips.A.recalled?"Arrive Now":"Recall Quest"):"Start Quest";
