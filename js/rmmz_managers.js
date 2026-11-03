@@ -3127,13 +3127,14 @@ PluginManager.setParameters = function(name, parameters) {
 
 PluginManager.loadScript = function(filename) {
     const url = this.makeUrl(filename);
+    const versionedUrl = typeof assetVersion !== "undefined" ? `${url}?v=${encodeURIComponent(assetVersion)}` : url;
     const script = document.createElement("script");
     script.type = "text/javascript";
-    script.src = url;
+    script.src = versionedUrl;
     script.async = false;
     script.defer = true;
     script.onerror = this.onError.bind(this);
-    script._url = url;
+    script._url = versionedUrl;
     document.body.appendChild(script);
 };
 
