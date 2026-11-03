@@ -95,6 +95,8 @@ button:not(:disabled):focus-visible, select:not(:disabled):focus-visible, input:
     #character-creation[data-step="appearance"] > div:nth-of-type(1) > div:first-child { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
     #character-creation input { min-height: 48px; font-size: 16px !important; }
     #character-creation button { min-height: 48px; }
+    #character-creation > div:last-child { position: sticky; bottom: 0; z-index: 2; flex-wrap: wrap; padding-top: 6px; background: #302248; }
+    #character-creation > div:last-child button { flex: 1 1 140px; }
     #manager-confirmation {
         box-sizing: border-box;
         touch-action: pan-y; -webkit-overflow-scrolling: touch;

@@ -14,6 +14,8 @@ Implemented 2026-11-03 for the online browser build. The adaptation is enabled o
 
 Canvas lists continue to use RPG Maker MZ's shared `Window_Scrollable` drag implementation. On coarse pointers, selection and activation use MZ's release-based click path, which invalidates a click after movement. The desktop pointer-down compatibility bridge is retained only for fine pointers. The Altar's independent bridge uses a 10 CSS-pixel drag threshold, requires release over the original row, handles pointer cancellation and removes all listeners on scene disposal.
 
+DOM overlays use the same deliberate-release contract on coarse pointers. Creation/review, confirmations, manual tabs, quest launch, timer and camp navigation activate once on release over the original control. Movement beyond 10 CSS pixels or `pointercancel` clears the candidate, so swiping a long overlay never invokes the row where the gesture began. The creation footer is sticky inside the form, keeping Back and Review/Confirm reachable above long portrait lists and phone keyboard resizing.
+
 ## Supported use
 
 The supported target is a foreground mobile browser session: create or recruit a companion, configure and dispatch a quest, leave the journey visible, Recall if desired, review results and use camp screens. Existing elapsed-time, catch-up, save and once-only settlement rules are unchanged. This work does not promise locked-screen timers, offline play, background alarms, wake locks or push notifications.
