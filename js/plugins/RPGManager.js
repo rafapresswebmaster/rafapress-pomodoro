@@ -21,13 +21,13 @@
     const mobilePortraitAtBoot = globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px) and (orientation: portrait)")?.matches===true;
     function enableMobileTapSafety(root){
         if(!root||!globalThis.matchMedia?.("(pointer: coarse)")?.matches||root._mobileTapSafety)return;
-        root._mobileTapSafety=true;let gesture=null,suppressClick=null;
+        root._mobileTapSafety=true;let gesture=null,cancelClick=null;
         const buttonFor=target=>target?.closest?.("button,[role='button']");
         root.addEventListener("pointerdown",event=>{const button=buttonFor(event.target);if(event.pointerType==="mouse"||event.button!==0||!button||button.disabled||!root.contains(button))return;gesture={id:event.pointerId,x:event.clientX,y:event.clientY,button,moved:false};},true);
         root.addEventListener("pointermove",event=>{if(gesture?.id===event.pointerId&&Math.hypot(event.clientX-gesture.x,event.clientY-gesture.y)>10)gesture.moved=true;},true);
-        root.addEventListener("pointerup",event=>{const tap=gesture;if(!tap||tap.id!==event.pointerId)return;gesture=null;const released=buttonFor(document.elementFromPoint(event.clientX,event.clientY));if(tap.moved||released!==tap.button)return;event.preventDefault();event.stopImmediatePropagation();suppressClick=tap.button;tap.button.click();setTimeout(()=>{if(suppressClick===tap.button)suppressClick=null;},750);},true);
+        root.addEventListener("pointerup",event=>{const tap=gesture;if(!tap||tap.id!==event.pointerId)return;gesture=null;const released=buttonFor(document.elementFromPoint(event.clientX,event.clientY));if(!tap.moved&&released===tap.button)return;cancelClick=tap.button;setTimeout(()=>{if(cancelClick===tap.button)cancelClick=null;},750);},true);
         root.addEventListener("pointercancel",()=>{gesture=null;},true);
-        root.addEventListener("click",event=>{if(event.isTrusted&&suppressClick&&buttonFor(event.target)===suppressClick){event.preventDefault();event.stopImmediatePropagation();}},true);
+        root.addEventListener("click",event=>{if(cancelClick&&buttonFor(event.target)===cancelClick){event.preventDefault();event.stopImmediatePropagation();cancelClick=null;}},true);
     }
     if(mobilePortraitAtBoot){
         document.documentElement.dataset.rpgMobileLayout="portrait";
@@ -3419,9 +3419,9 @@
                 const local=this._choices.worldTransform.applyInverse(gamePoint);return this._choices.hitTest(local.x,local.y);
             };
             this._altarPointerMove=event=>{const index=resolve(event);if(index>=0&&index<this._choices.maxItems()&&index!==this._choices.index()&&!mobilePointerLayout())this._choices.select(index);};
-            this._altarPointerDown=event=>{if(event.button!==0)return;const index=resolve(event);if(index<0||index>=this._choices.maxItems())return;if(mobilePointerLayout()){this._altarTouch={id:event.pointerId,x:event.clientX,y:event.clientY,index};return;}event.preventDefault();event.stopImmediatePropagation();this._choices.select(index);this._choices.processOk();};
-            this._altarPointerUp=event=>{const touch=this._altarTouch;if(!touch||touch.id!==event.pointerId)return;this._altarTouch=null;const moved=Math.hypot(event.clientX-touch.x,event.clientY-touch.y)>10,index=resolve(event);if(moved||index!==touch.index)return;event.preventDefault();event.stopImmediatePropagation();this._choices.select(index);this._choices.processOk();};
-            this._altarPointerCancel=()=>{this._altarTouch=null;};
+            this._altarPointerDown=event=>{if(event.button!==0||mobilePointerLayout())return;const index=resolve(event);if(index<0||index>=this._choices.maxItems())return;event.preventDefault();event.stopImmediatePropagation();this._choices.select(index);this._choices.processOk();};
+            this._altarPointerUp=()=>{};
+            this._altarPointerCancel=()=>{};
             // Capture at document level so focused HTML navigation/timer controls
             // cannot starve the canvas list of its mouse input.
             document.addEventListener("pointermove",this._altarPointerMove,true);document.addEventListener("pointerdown",this._altarPointerDown,true);document.addEventListener("pointerup",this._altarPointerUp,true);document.addEventListener("pointercancel",this._altarPointerCancel,true);
