@@ -34,13 +34,11 @@
     }
     function enableMobileTapSafety(root){
         if(!root||!globalThis.matchMedia?.("(pointer: coarse)")?.matches||root._mobileTapSafety)return;
-        root._mobileTapSafety=true;let gesture=null,cancelClick=null;
-        const buttonFor=target=>target?.closest?.("button,[role='button']");
-        root.addEventListener("pointerdown",event=>{const button=buttonFor(event.target);if(event.pointerType==="mouse"||event.button!==0||!button||button.disabled||!root.contains(button))return;gesture={id:event.pointerId,x:event.clientX,y:event.clientY,button,moved:false};},true);
-        root.addEventListener("pointermove",event=>{if(gesture?.id===event.pointerId&&Math.hypot(event.clientX-gesture.x,event.clientY-gesture.y)>10)gesture.moved=true;},true);
-        root.addEventListener("pointerup",event=>{const tap=gesture;if(!tap||tap.id!==event.pointerId)return;gesture=null;const released=buttonFor(document.elementFromPoint(event.clientX,event.clientY));if(!tap.moved&&released===tap.button)return;cancelClick=tap.button;setTimeout(()=>{if(cancelClick===tap.button)cancelClick=null;},750);},true);
-        root.addEventListener("pointercancel",()=>{gesture=null;},true);
-        root.addEventListener("click",event=>{if(cancelClick&&buttonFor(event.target)===cancelClick){event.preventDefault();event.stopImmediatePropagation();cancelClick=null;}},true);
+        // DOM controls already provide one native click per completed tap and
+        // cancel clicks after scrolling. Do not second-guess release geometry:
+        // Safari can offset elementFromPoint while its visual viewport or sticky
+        // creation footer moves, which made valid lower-form buttons inert.
+        root._mobileTapSafety=true;
     }
     if(mobilePortraitAtBoot){
         document.documentElement.dataset.rpgMobileLayout="portrait";
