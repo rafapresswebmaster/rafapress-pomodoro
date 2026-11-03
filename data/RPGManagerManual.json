@@ -5,7 +5,7 @@
       "id": "getting-started",
       "tab": "Getting Started",
       "title": "Getting Started",
-      "imageIds": ["MAN-01", "MAN-02"],
+      "imageIds": ["MAN-02"],
       "blocks": [
         {"type": "text", "text": "Turn your focus time into an adventure. Create your first companion, recruit more for free, then choose who will travel."},
         {"type": "list", "items": ["Choose Start Quest, a duration and difficulty.", "Select one to three companions and up to three optional upgrades.", "Depart, focus, and let the party travel and fight automatically.", "When time is up, review the concise recap and choose Finish."]},
@@ -16,7 +16,7 @@
       "id": "around-camp",
       "tab": "Around Camp",
       "title": "Around Camp",
-      "imageIds": ["MAN-01", "MAN-07", "MAN-10"],
+      "imageIds": ["MAN-01"],
       "blocks": [
         {"type": "list", "items": ["Start Quest sets a focus session and prepares an expedition.", "Camp portraits open companion details; Camp Jobs assign Gold work, Arcana study, or rest.", "Recruit adds a free companion while a roster slot is open.", "Altar unlocks rituals with Artifacts and activates them with Arcana.", "Graveyard shows fallen companions and available return-to-life options.", "Save opens save files. The timer controls include alerts, Recall, options, and the floating clock.", "The ? button reopens this guide. Dismissing a companion removes them from the active living roster."]}
       ]
@@ -25,7 +25,7 @@
       "id": "quests-focus",
       "tab": "Quests & Focus",
       "title": "Quests & Focus",
-      "imageIds": ["MAN-03", "MAN-04"],
+      "imageIds": ["MAN-03"],
       "blocks": [
         {"type": "list", "items": ["Choose 1, 3, 5, 10, 15, 20, 25, or 30 minutes and difficulty one to five.", "One-minute sessions are peaceful and fixed at one skull.", "The destination and opposition are generated and revealed only after departure; enemies do not scale to your party or upgrades.", "Up to three different temporary upgrades affect the whole party, are paid for at departure, and expire on return or Recall. There is no quest entry fee.", "The clock keeps running through combat and while the open game is in the background. Closing the process does not advance time.", "Recall stops future encounters and forfeits completion rewards and XP, while previous finds and consequences remain. The remaining countdown continues on the road home; Recall again to arrive immediately."]}
       ]
@@ -34,7 +34,7 @@
       "id": "companions-combat",
       "tab": "Companions & Combat",
       "title": "Companions & Combat",
-      "imageIds": ["MAN-05", "MAN-06"],
+      "imageIds": ["MAN-05"],
       "blocks": [
         {"type": "text", "text": "Combat is automatic. HP keeps companions alive; Armor and Ward absorb most incoming damage first."},
         {"type": "list", "items": ["Barbarian — heavy melee", "Knight — protection", "Ranger — ranged damage and control", "Rogue — speed and debuffs", "Mage — magic and Ward", "Cleric — healing and support", "Bard — inspiration; Encore renews one ally special", "Druid — healing and control; Entangling Bloom delays and heals"]},
@@ -45,7 +45,7 @@
       "id": "rewards-rituals-return",
       "tab": "Rewards & Return",
       "title": "Rewards, Rituals & Return",
-      "imageIds": ["MAN-08", "MAN-09"],
+      "imageIds": ["MAN-08"],
       "blocks": [
         {"type": "text", "text": "Gold buys expedition upgrades. Arcana activates unlocked rituals. Companions at camp can work for Gold or study for Arcana."},
         {"type": "list", "items": ["Successful quests longer than one minute can find Magical Artifacts. Spend them at the Altar to unlock rituals permanently, then pay Arcana when activating one.", "Rituals can protect a party, remove an injury, or return a fallen companion. Reanimated skeletons cannot level and cannot be reanimated after dying again.", "The return recap shows rewards, XP, injuries, deaths, and level-ups. Choose Finish to continue at camp.", "Use Save before leaving the game when you want to keep your latest progress."]}
