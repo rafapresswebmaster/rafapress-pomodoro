@@ -1482,11 +1482,7 @@
     }
     async function saveCampaignForExit(){
         if(!globalThis.$gameSystem?._rpgManager)throw Error("Start or load a campaign before saving.");
-        const slot=Math.max(1,$gameSystem.savefileId()||DataManager.latestSavefileId()||1),normalIndex=DataManager.saveGlobalInfo;let indexWrite;$gameSystem.setSavefileId(slot);$gameSystem.onBeforeSave();
-        // MZ 1.10 resolves saveGame with 0 and starts its global-index write without awaiting it.
-        DataManager.saveGlobalInfo=function(){return indexWrite=StorageManager.saveObject("global",this._globalInfo);};
-        try{const saved=await DataManager.saveGame(slot);if(saved===false)throw Error("The save could not be written.");if(indexWrite)await indexWrite;}
-        finally{DataManager.saveGlobalInfo=normalIndex;}
+        await saveManagerCampaign();
     }
     window.RPGManager.requestExit=showExitConfirmation;
     function showExitConfirmation(){
@@ -1508,8 +1504,8 @@
         const nav=document.createElement("nav"),rect=Graphics._canvas.getBoundingClientRect(),scale=rect.width/Graphics.width;
         nav.id="camp-menu-navigation";nav.setAttribute("aria-label","Camp menus");nav.style.cssText=`position:fixed;z-index:25;box-sizing:border-box;left:${rect.left+12*scale}px;top:${rect.top+(Graphics.boxHeight-76)*scale}px;width:${(Graphics.boxWidth-24)*scale}px;height:${68*scale}px;padding:${6*scale}px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:${6*scale}px;background:linear-gradient(#3c2c59,#261d43);border:${2*scale}px solid #c6ae65;border-radius:${10*scale}px;box-shadow:inset 0 ${2*scale}px #ffffff1f,0 ${5*scale}px ${12*scale}px #090d1f88`;
         const icon=(kind,color)=>({camp:`<path d="M4 18h16M7 18V9l5-5 5 5v9M10 18v-5h4v5"/>`,recruit:`<path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM5 21c0-4 3-7 7-7s7 3 7 7M19 7v6M16 10h6"/>`,altar:`<path d="M5 20h14M7 20l1-8h8l1 8M6 9h12M12 3l3 4-3 2-3-2 3-4Z"/>`,grave:`<path d="M7 21h10V8a5 5 0 0 0-10 0v13ZM4 21h16M10 9h4M12 7v7"/>`,save:`<path d="M5 3h12l3 3v15H4V3h1Zm2 0v6h9V3M8 21v-7h8v7"/>`}[kind]||"").replace('<path ',`<path stroke="${color}" `);
-        const menus=[{label:"Camp",kind:"camp",color:"#8fd88b",type:Scene_RPGHome},{label:"Recruit",kind:"recruit",color:"#efb56f",type:Scene_RPGTavern},{label:"Altar",kind:"altar",color:"#c8a4ff",type:Scene_RPGAltar},{label:"Graveyard",kind:"grave",color:"#b9c4d8",type:Scene_RPGRoster},{label:"Save",kind:"save",color:"#70c9ff",type:Scene_Save}];
-        for(const {label,kind,color,type} of menus){const selected=type===Scene_RPGRoster?scene instanceof type&&scene._graveyard:type===Scene_RPGHome?scene instanceof type||scene instanceof Scene_RPGMember||scene instanceof Scene_RPGRoster&&!scene._graveyard:scene instanceof type;const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",label);b.innerHTML=`<svg aria-hidden="true" viewBox="0 0 24 24" style="width:${27*scale}px;height:${27*scale}px;filter:drop-shadow(0 ${2*scale}px ${2*scale}px #0008)" fill="${color}22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icon(kind,color)}</svg><span>${label}</span>`;b.style.cssText=`min-width:0;display:flex;align-items:center;justify-content:center;gap:${7*scale}px;padding:${3*scale}px ${5*scale}px;font:bold ${14*scale}px Georgia;background:${selected?"linear-gradient(#ffeab1,#cfa24b)":"linear-gradient(#5575b0,#2a4074 58%,#20345f)"};color:${selected?"#302248":"#fff0ce"};border:${1*scale}px solid ${selected?"#fff0b9":"#9fb4df"};border-bottom-width:${4*scale}px;border-bottom-color:${selected?"#8d682d":"#14264d"};border-radius:${8*scale}px;box-shadow:inset 0 ${2*scale}px #ffffff42,0 ${3*scale}px ${5*scale}px #10152d99;letter-spacing:${.2*scale}px;cursor:pointer;transform:translateY(0);transition:transform .08s ease,filter .12s ease,box-shadow .08s ease`;b.onpointerdown=()=>{b.style.transform=`translateY(${3*scale}px)`;b.style.borderBottomWidth=`${1*scale}px`;b.style.boxShadow=`inset 0 ${2*scale}px ${4*scale}px #10152d88`;};const release=()=>{b.style.transform="translateY(0)";b.style.borderBottomWidth=`${4*scale}px`;b.style.boxShadow=`inset 0 ${2*scale}px #ffffff42,0 ${3*scale}px ${5*scale}px #10152d99`;};b.onpointerup=release;b.onpointerleave=release;if(selected)b.setAttribute("aria-current","page");b.onclick=()=>{if(managerState().trips.A||managerDialog)return;closeManagerDialog();document.getElementById("return-vignette")?.remove();document.getElementById("camp-member-sheet")?.remove();SceneManager._stack=[Scene_RPGHome];if(type===Scene_RPGHome)Scene_RPGHome.reopenSheet=false;SceneManager.goto(type);if(type===Scene_RPGRoster)SceneManager.prepareNextScene(false,true);};nav.appendChild(b);}
+        const menus=[{label:"Camp",kind:"camp",color:"#8fd88b",type:Scene_RPGHome},{label:"Recruit",kind:"recruit",color:"#efb56f",type:Scene_RPGTavern},{label:"Altar",kind:"altar",color:"#c8a4ff",type:Scene_RPGAltar},{label:"Graveyard",kind:"grave",color:"#b9c4d8",type:Scene_RPGRoster},{label:"Save",kind:"save",color:"#70c9ff",action:"save"}];
+        for(const {label,kind,color,type,action} of menus){const selected=type&&(type===Scene_RPGRoster?scene instanceof type&&scene._graveyard:type===Scene_RPGHome?scene instanceof type||scene instanceof Scene_RPGMember||scene instanceof Scene_RPGRoster&&!scene._graveyard:scene instanceof type);const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",label);b.innerHTML=`<svg aria-hidden="true" viewBox="0 0 24 24" style="width:${27*scale}px;height:${27*scale}px;filter:drop-shadow(0 ${2*scale}px ${2*scale}px #0008)" fill="${color}22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icon(kind,color)}</svg><span>${label}</span>`;b.style.cssText=`min-width:0;display:flex;align-items:center;justify-content:center;gap:${7*scale}px;padding:${3*scale}px ${5*scale}px;font:bold ${14*scale}px Georgia;background:${selected?"linear-gradient(#ffeab1,#cfa24b)":"linear-gradient(#5575b0,#2a4074 58%,#20345f)"};color:${selected?"#302248":"#fff0ce"};border:${1*scale}px solid ${selected?"#fff0b9":"#9fb4df"};border-bottom-width:${4*scale}px;border-bottom-color:${selected?"#8d682d":"#14264d"};border-radius:${8*scale}px;box-shadow:inset 0 ${2*scale}px #ffffff42,0 ${3*scale}px ${5*scale}px #10152d99;letter-spacing:${.2*scale}px;cursor:pointer;transform:translateY(0);transition:transform .08s ease,filter .12s ease,box-shadow .08s ease`;b.onpointerdown=()=>{b.style.transform=`translateY(${3*scale}px)`;b.style.borderBottomWidth=`${1*scale}px`;b.style.boxShadow=`inset 0 ${2*scale}px ${4*scale}px #10152d88`;};const release=()=>{b.style.transform="translateY(0)";b.style.borderBottomWidth=`${4*scale}px`;b.style.boxShadow=`inset 0 ${2*scale}px #ffffff42,0 ${3*scale}px ${5*scale}px #10152d99`;};b.onpointerup=release;b.onpointerleave=release;if(selected)b.setAttribute("aria-current","page");b.onclick=()=>{if(managerState().trips.A||managerDialog)return;if(action==="save"){requestManagerSave(scene);return;}closeManagerDialog();document.getElementById("return-vignette")?.remove();document.getElementById("camp-member-sheet")?.remove();SceneManager._stack=[Scene_RPGHome];if(type===Scene_RPGHome)Scene_RPGHome.reopenSheet=false;SceneManager.goto(type);if(type===Scene_RPGRoster)SceneManager.prepareNextScene(false,true);};nav.appendChild(b);}
         for(const e of ["mousedown","mouseup","touchstart","touchend","keydown","keyup"])nav.addEventListener(e,event=>event.stopPropagation());document.body.appendChild(nav);enableMobileTapSafety(nav);scene._campNav=nav;
     }
 
@@ -1593,7 +1589,7 @@
             this._commandWindow.setHandler("altar", () => SceneManager.push(Scene_RPGAltar));
             this._commandWindow.setHandler("debug", () => SceneManager.push(Scene_RPGDebugTimers));
             this._commandWindow.setHandler("graveyard", () => this.openRoster(false, true));
-            this._commandWindow.setHandler("save", () => { SceneManager.snapForBackground(); SceneManager.push(Scene_Save); });
+            this._commandWindow.setHandler("save", () => requestManagerSave(this));
             
             this.addWindow(this._commandWindow);
             if(!this._hasTrip){
@@ -3566,14 +3562,22 @@
         this._loadSuccess = true;
     };
 
-    const MANAGER_SAVE_ID=1,MANAGER_AUTOSAVE_INTERVAL=5*60*1000;
+    const MANAGER_SAVE_ID=1,MANAGER_AUTOSAVE_INTERVAL=3*60*1000;
     let managerNextAutosaveAt=Date.now()+MANAGER_AUTOSAVE_INTERVAL;
     DataManager.maxSavefiles=function(){return 2;};
     DataManager.latestSavefileId=function(){return DataManager.savefileInfo(MANAGER_SAVE_ID)?MANAGER_SAVE_ID:0;};
     Window_TitleCommand.prototype.isContinueEnabled=function(){return !!DataManager.savefileInfo(MANAGER_SAVE_ID)&&DataManager.savefileExists(MANAGER_SAVE_ID);};
-    async function saveManagerCampaign(){
-        if(!globalThis.$gameSystem?._rpgManager)return false;
-        $gameSystem.setSavefileId(MANAGER_SAVE_ID);$gameSystem.onBeforeSave();await DataManager.saveGame(MANAGER_SAVE_ID);return true;
+    let managerSavePromise=null;
+    function saveManagerCampaign(){
+        if(managerSavePromise)return managerSavePromise;
+        if(!globalThis.$gameSystem?._rpgManager)return Promise.resolve(false);
+        managerSavePromise=(async()=>{const normalIndex=DataManager.saveGlobalInfo;let indexWrite;$gameSystem.setSavefileId(MANAGER_SAVE_ID);$gameSystem.onBeforeSave();DataManager.saveGlobalInfo=function(){return indexWrite=StorageManager.saveObject("global",this._globalInfo);};try{const saved=await DataManager.saveGame(MANAGER_SAVE_ID);if(saved===false)throw Error("The save could not be written.");if(indexWrite)await indexWrite;return true;}finally{DataManager.saveGlobalInfo=normalIndex;}})().finally(()=>managerSavePromise=null);
+        return managerSavePromise;
+    }
+    async function requestManagerSave(scene=SceneManager._scene){
+        scene?._footer?.setLines?.(["Saving campaign…","Manual and automatic saves share the single campaign slot."]);
+        try{const saved=await saveManagerCampaign();if(!saved)throw Error("No active campaign.");managerNextAutosaveAt=Date.now()+MANAGER_AUTOSAVE_INTERVAL;SoundManager.playSave();scene?._footer?.setLines?.(["Campaign saved.","Automatic save runs every 3 minutes while the game is active."]);return true;}
+        catch(error){console.error(error);SoundManager.playBuzzer();scene?._footer?.setLines?.([`Save failed: ${error.message||error}`,"Your game remains open; try Save again."]);return false;}
     }
     const managerBaseUpdate=Scene_RPGBase.prototype.update;
     Scene_RPGBase.prototype.update=function(){
