@@ -25,7 +25,7 @@
         const buttonFor=target=>target?.closest?.("button,[role='button']");
         root.addEventListener("pointerdown",event=>{const button=buttonFor(event.target);if(event.pointerType==="mouse"||event.button!==0||!button||button.disabled||!root.contains(button))return;gesture={id:event.pointerId,x:event.clientX,y:event.clientY,button,moved:false};},true);
         root.addEventListener("pointermove",event=>{if(gesture?.id===event.pointerId&&Math.hypot(event.clientX-gesture.x,event.clientY-gesture.y)>10)gesture.moved=true;},true);
-        root.addEventListener("pointerup",event=>{const tap=gesture;if(!tap||tap.id!==event.pointerId)return;gesture=null;const released=buttonFor(document.elementFromPoint(event.clientX,event.clientY));if(tap.moved||released!==tap.button)return;event.preventDefault();event.stopImmediatePropagation();suppressClick=tap.button;tap.button.click();setTimeout(()=>{suppressClick=null;},0);},true);
+        root.addEventListener("pointerup",event=>{const tap=gesture;if(!tap||tap.id!==event.pointerId)return;gesture=null;const released=buttonFor(document.elementFromPoint(event.clientX,event.clientY));if(tap.moved||released!==tap.button)return;event.preventDefault();event.stopImmediatePropagation();suppressClick=tap.button;tap.button.click();setTimeout(()=>{if(suppressClick===tap.button)suppressClick=null;},750);},true);
         root.addEventListener("pointercancel",()=>{gesture=null;},true);
         root.addEventListener("click",event=>{if(event.isTrusted&&suppressClick&&buttonFor(event.target)===suppressClick){event.preventDefault();event.stopImmediatePropagation();}},true);
     }
