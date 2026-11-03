@@ -18,6 +18,8 @@ DOM overlays use the browser's single native click path on coarse pointers; no s
 
 Canvas controls use RPG Maker's native touch state without plugin-level trigger, release, repeat or long-press overrides. The engine records real touch activity and ignores only compatibility mouse down/up events arriving during the following second, preventing one touch from being interpreted again as a mouse click. The canvas declares `touch-action: pinch-zoom`, and browser touchstart is no longer cancelled outside Cordova, making two-finger page zoom consistent while preserving single-touch game input.
 
+While a mobile/coarse-pointer game page is visible, it requests the standard Screen Wake Lock so the device does not dim or enter automatic sleep. The lock is released when the page is hidden or unloaded and requested again on visibility return, page restore or the next pointer interaction. Unsupported browsers, low-power rejection and browser-initiated release remain non-fatal; the game continues normally and exposes its current state through `data-screen-wake-lock` for diagnostics.
+
 ## Supported use
 
 The supported target is a foreground mobile browser session: create or recruit a companion, configure and dispatch a quest, leave the journey visible, Recall if desired, review results and use camp screens. Existing elapsed-time, catch-up, save and once-only settlement rules are unchanged. This work does not promise locked-screen timers, offline play, background alarms, wake locks or push notifications.

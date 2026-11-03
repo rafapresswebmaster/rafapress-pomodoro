@@ -20,6 +20,29 @@
     // dimensions are selected before the first scene and never enter saves.
     const mobilePortraitAtBoot = globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px) and (orientation: portrait)")?.matches===true;
     function enableMobileTapSafety(root){if(root)root._mobileTapSafety=true;}
+    const mobileScreenWakeLock=(()=>{
+        const enabled=globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px), (pointer: coarse) and (max-height: 520px)")?.matches===true;
+        let sentinel=null,pending=null;
+        const status=value=>document.documentElement.dataset.screenWakeLock=value;
+        const request=async()=>{
+            if(!enabled||!("wakeLock" in navigator)){status(enabled?"unsupported":"desktop");return null;}
+            if(document.visibilityState!=="visible"){status("hidden");return null;}
+            if(sentinel&&!sentinel.released)return sentinel;
+            if(pending)return pending;
+            status("requesting");
+            pending=navigator.wakeLock.request("screen").then(lock=>{sentinel=lock;status("active");lock.addEventListener("release",()=>{if(sentinel===lock)sentinel=null;status(document.visibilityState==="visible"?"released":"hidden");},{once:true});return lock;}).catch(()=>{status("unavailable");return null;}).finally(()=>{pending=null;});
+            return pending;
+        };
+        const release=async()=>{const lock=sentinel;sentinel=null;if(lock&&!lock.released)try{await lock.release();}catch(_error){/* The browser may already have released it. */}status(document.visibilityState==="visible"?"released":"hidden");};
+        if(enabled){
+            document.addEventListener("visibilitychange",()=>document.visibilityState==="visible"?request():release());
+            window.addEventListener("pageshow",request);
+            window.addEventListener("pagehide",release);
+            document.addEventListener("pointerdown",request,{capture:true,passive:true});
+            queueMicrotask(request);
+        }else status("desktop");
+        return{request,release,supported:enabled&&"wakeLock" in navigator,active:()=>!!sentinel&&!sentinel.released};
+    })();
     if(mobilePortraitAtBoot){
         document.documentElement.dataset.rpgMobileLayout="portrait";
         const mobileScreenWidth=624,mobileScreenHeight=Math.max(816,Math.min(1400,Math.round(mobileScreenWidth*innerHeight/Math.max(1,innerWidth))));
@@ -494,7 +517,7 @@
     }
 
     // Small data API for later approved days and console inspection.
-    window.RPGManager = { roster, teamIds, quests, selectedQuest, questEnemies, validateQuestData, isLiving, validateTeam, toggleTeamMember, confirmTeam, createBattle, createTripBattle, restoreSave: restoreManagerSave, lastBattle: null,
+    window.RPGManager = { roster, teamIds, quests, selectedQuest, questEnemies, validateQuestData, isLiving, validateTeam, toggleTeamMember, confirmTeam, createBattle, createTripBattle, restoreSave: restoreManagerSave, lastBattle: null, screenWakeLock: mobileScreenWakeLock,
         battlePresentation: Object.freeze({ speed: BATTLE_PRESENTATION_SPEED, timing: BATTLE_TIMING, actionMode: battleActionMode, formationPosition: battleFormationPosition }),
         setBattleAiDebug: enabled => (battleAiDebug = !!enabled && !!$dataRPGManagerUI?.developerMode), battleAiDebug: () => battleAiDebug,
         state: managerState,
