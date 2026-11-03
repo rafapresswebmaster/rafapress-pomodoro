@@ -12,7 +12,7 @@ body {
     user-select: none;
     cursor: default;
 }
-#gameCanvas { touch-action: none; }
+#gameCanvas { touch-action: pinch-zoom !important; }
 button, select, input, [role="button"] { pointer-events: auto; }
 button, [role="button"] { transition: transform .09s ease, filter .13s ease, box-shadow .13s ease; }
 button:not(:disabled), select:not(:disabled), [role="button"] { cursor: pointer; }

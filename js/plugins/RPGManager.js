@@ -19,27 +19,7 @@
     // 816x624 desktop canvas into a narrow strip. This is presentation-only:
     // dimensions are selected before the first scene and never enter saves.
     const mobilePortraitAtBoot = globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px) and (orientation: portrait)")?.matches===true;
-    const coarsePointerInput=globalThis.matchMedia?.("(pointer: coarse)")?.matches===true;
-    const mobileContact={pointerId:null,touchLike:false,active:false,blocked:false,clickUsed:false,triggerUsed:false,releaseUsed:false,compatUntil:0,lastClickAt:-Infinity,lastClickX:0,lastClickY:0,lastEngineAt:-Infinity,lastEngineX:0,lastEngineY:0};
-    if(coarsePointerInput){
-        const beginContact=event=>{if(event.pointerType!=="touch"&&event.pointerType!=="pen"||mobileContact.active&&event.pointerId===mobileContact.pointerId)return;Object.assign(mobileContact,{pointerId:event.pointerId,touchLike:true,active:true,blocked:false,clickUsed:false,triggerUsed:false,releaseUsed:false,compatUntil:performance.now()+1500});};
-        document.addEventListener("pointerdown",beginContact,true);
-        document.addEventListener("pointerup",event=>{if(mobileContact.touchLike&&event.pointerId===mobileContact.pointerId){mobileContact.active=false;mobileContact.compatUntil=performance.now()+1500;}},true);
-        document.addEventListener("pointercancel",event=>{if(event.pointerId===mobileContact.pointerId)Object.assign(mobileContact,{active:false,clickUsed:true,triggerUsed:true,releaseUsed:true,compatUntil:performance.now()+1500});},true);
-        document.addEventListener("click",event=>{if(!event.isTrusted||event.detail===0)return;const now=performance.now(),touchClick=event.sourceCapabilities?.firesTouchEvents===true||mobileContact.touchLike&&now<=mobileContact.compatUntil;if(!touchClick)return;const repeated=now-mobileContact.lastClickAt<600&&Math.hypot(event.clientX-mobileContact.lastClickX,event.clientY-mobileContact.lastClickY)<48;if(repeated){event.preventDefault();event.stopImmediatePropagation();return;}mobileContact.lastClickAt=now;mobileContact.lastClickX=event.clientX;mobileContact.lastClickY=event.clientY;},true);
-        const touchTrigger=TouchInput._onTrigger;TouchInput._onTrigger=function(x,y){if(mobileContact.touchLike&&(mobileContact.active||performance.now()<=mobileContact.compatUntil)){if(mobileContact.triggerUsed)return;mobileContact.triggerUsed=true;const now=performance.now();if(now-mobileContact.lastEngineAt<600&&Math.hypot(x-mobileContact.lastEngineX,y-mobileContact.lastEngineY)<48){mobileContact.blocked=true;return;}mobileContact.lastEngineAt=now;mobileContact.lastEngineX=x;mobileContact.lastEngineY=y;}touchTrigger.call(this,x,y);};
-        const touchRelease=TouchInput._onRelease;TouchInput._onRelease=function(x,y){if(mobileContact.touchLike&&(mobileContact.active||performance.now()<=mobileContact.compatUntil)){if(mobileContact.blocked||mobileContact.releaseUsed)return;mobileContact.releaseUsed=true;}touchRelease.call(this,x,y);};
-        TouchInput.isRepeated=function(){return this.isPressed()&&this._currentState.triggered;};
-        TouchInput.isLongPressed=function(){return false;};
-    }
-    function enableMobileTapSafety(root){
-        if(!root||!globalThis.matchMedia?.("(pointer: coarse)")?.matches||root._mobileTapSafety)return;
-        // DOM controls already provide one native click per completed tap and
-        // cancel clicks after scrolling. Do not second-guess release geometry:
-        // Safari can offset elementFromPoint while its visual viewport or sticky
-        // creation footer moves, which made valid lower-form buttons inert.
-        root._mobileTapSafety=true;
-    }
+    function enableMobileTapSafety(root){if(root)root._mobileTapSafety=true;}
     if(mobilePortraitAtBoot){
         document.documentElement.dataset.rpgMobileLayout="portrait";
         const mobileScreenWidth=624,mobileScreenHeight=Math.max(816,Math.min(1400,Math.round(mobileScreenWidth*innerHeight/Math.max(1,innerWidth))));
