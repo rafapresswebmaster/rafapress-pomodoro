@@ -15,6 +15,21 @@
 
 (() => {
     "use strict";
+    // Phone portrait gets its own logical viewport instead of shrinking the
+    // 816x624 desktop canvas into a narrow strip. This is presentation-only:
+    // dimensions are selected before the first scene and never enter saves.
+    const mobilePortraitAtBoot = globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px) and (orientation: portrait)")?.matches===true;
+    if(mobilePortraitAtBoot){
+        document.documentElement.dataset.rpgMobileLayout="portrait";
+        const mobileScreenWidth=624,mobileScreenHeight=Math.max(816,Math.min(1400,Math.round(mobileScreenWidth*innerHeight/Math.max(1,innerWidth))));
+        document.documentElement.style.setProperty("--rpg-mobile-aspect",String(mobileScreenWidth/mobileScreenHeight));
+        const resizeMobileScreen=Scene_Boot.prototype.resizeScreen;
+        Scene_Boot.prototype.resizeScreen=function(){
+            const advanced=$dataSystem.advanced,original={screenWidth:advanced.screenWidth,screenHeight:advanced.screenHeight,uiAreaWidth:advanced.uiAreaWidth,uiAreaHeight:advanced.uiAreaHeight};
+            Object.assign(advanced,{screenWidth:mobileScreenWidth,screenHeight:mobileScreenHeight,uiAreaWidth:mobileScreenWidth,uiAreaHeight:mobileScreenHeight});
+            try{resizeMobileScreen.call(this);}finally{Object.assign(advanced,original);}
+        };
+    }
 
     // Global RPG Manager mix: retain the player's SE setting, then attenuate all SFX by 50%.
     const updateSeParameters = AudioManager.updateSeParameters;
@@ -1326,11 +1341,17 @@
     }
 
     let managerDialog=null,exitSaving=false;
+    function fitMobileDialog(el){
+        if(!mobilePortraitAtBoot)return;
+        const view=globalThis.visualViewport||{width:innerWidth,height:innerHeight,offsetLeft:0,offsetTop:0};
+        Object.assign(el.style,{left:`${view.offsetLeft+view.width/2}px`,top:`${view.offsetTop+view.height/2}px`,width:`${Math.max(280,view.width-16)}px`,maxHeight:`${Math.max(240,view.height-16)}px`,overflowY:"auto"});
+    }
     function closeManagerDialog(){if(managerDialog){managerDialog.element.remove();managerDialog=null;Input.clear();TouchInput.clear();}}
     function managerModal(title,lines,actions,cancel){
         if(managerDialog)return managerDialog;
         const el=document.createElement("section");el.id="manager-confirmation";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",title);
         el.style.cssText="position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);width:min(660px,86vw);max-height:calc(100vh - 24px);overflow:hidden;box-sizing:border-box;background:linear-gradient(145deg,#fff0ce,#dfc694);color:#2b2647;padding:18px;border:4px solid #bd9655;border-radius:16px;box-shadow:inset 0 0 0 2px #fff6d6,inset 0 -12px 30px #8a5f2630,0 12px 35px #090d1fbb,0 0 0 100vmax #130c26b8;font:16px Trebuchet MS,sans-serif";
+        fitMobileDialog(el);
         const heading=document.createElement("h2");heading.textContent=title;heading.style.cssText="margin:0 0 12px;padding:0 40px 9px;text-align:center;font:700 25px Georgia;color:#3b3150;border-bottom:1px solid #a88043;text-shadow:0 1px #fff7df";el.appendChild(heading);
         for(const line of lines){const p=document.createElement("p");p.textContent=line;p.style.margin="8px 0";el.appendChild(p);}
         const error=document.createElement("p");error.setAttribute("role","alert");error.style.color="#9b2637";el.appendChild(error);
@@ -1394,7 +1415,7 @@
             if(error){modal.error.textContent=error;return;}
             closeManagerDialog();showQuestConfirmation(scene,quest,ids);
         }},{name:"Cancel",run:cancel}],cancel);
-        modal.element.id="quest-party-selection";modal.element.style.overflowY="auto";
+        modal.element.id="quest-party-selection";modal.element.style.overflowY="auto";fitMobileDialog(modal.element);
         const content=document.createElement("div"),count=document.createElement("p"),grid=document.createElement("div");
         modal.element.insertBefore(content,modal.error);content.append(count,grid);
         grid.style.cssText="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px";
@@ -2905,6 +2926,7 @@
 
     function paginateCommands(win){win._allCommands=win._list;win._commandPages=1;win._fitRowHeight=null;}
     function handleCommandPage(win){return false;}
+    const mobilePointerLayout=()=>globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px), (pointer: coarse) and (max-height: 520px)")?.matches===true;
     function mountListArrows(scene,win){
         const el=document.createElement("div");el.className="manager-scroll-controls";el.style.cssText="position:fixed;inset:0;z-index:22;pointer-events:none";
         const buttons=[-1,1].map(delta=>{const button=document.createElement("button");button.textContent=delta<0?"\u25b2":"\u25bc";button.setAttribute("aria-label",delta<0?"Scroll up":"Scroll down");button.style.cssText="position:fixed;pointer-events:auto;background:#354c80;color:#fff0ce;border:1px solid #c6ae65;border-radius:5px;cursor:pointer;padding:0;line-height:1";button.onclick=()=>{win.smoothScrollBy(0,delta*win.itemHeight());win.activate();};el.appendChild(button);return button;});
@@ -2946,6 +2968,11 @@
             }this.changePaintOpacity(true);
         }
         processTouch(){
+            // MZ's native release-based click detection already cancels a click
+            // after movement and Window_Scrollable pans the list. Do not use the
+            // desktop pointer-down bridge on coarse pointers: a swipe may begin
+            // on any actionable row without buying, casting or dispatching it.
+            if(mobilePointerLayout()){super.processTouch();return;}
             if(this.isOpenAndActive()){
                 const hit=this.hitIndex();
                 // DOM controls around the canvas can interrupt MZ's release-based
@@ -2964,7 +2991,11 @@
     const listSceneUpdate=Scene_Base.prototype.update;
     Scene_Base.prototype.update=function(){listSceneUpdate.call(this);for(const sync of this._listScrollSync||[])sync();};
     const listSceneStart=Scene_RPGBase.prototype.start;
-    Scene_RPGBase.prototype.start=function(){listSceneStart.call(this);for(const win of this._windowLayer.children)if(win instanceof Window_RPGChoices)mountListArrows(this,win);};
+    Scene_RPGBase.prototype.start=function(){
+        listSceneStart.call(this);
+        if(!(this instanceof Scene_RPGHome||this instanceof Scene_RPGStartingRoster||this instanceof Scene_RPGMember||this instanceof Scene_RPGRoster||this instanceof Scene_RPGAltar))document.getElementById("camp-menu-navigation")?.remove();
+        for(const win of this._windowLayer.children)if(win instanceof Window_RPGChoices)mountListArrows(this,win);
+    };
     const listSceneTerminate=Scene_RPGBase.prototype.terminate;
     Scene_RPGBase.prototype.terminate=function(){for(const el of this._listArrows||[])el.remove();listSceneTerminate.call(this);};
     const drawChoiceItem=Window_RPGChoices.prototype.drawItem;
@@ -3377,11 +3408,13 @@
                 const gamePoint=new Point((event.clientX-rect.left)*Graphics.width/rect.width,(event.clientY-rect.top)*Graphics.height/rect.height);
                 const local=this._choices.worldTransform.applyInverse(gamePoint);return this._choices.hitTest(local.x,local.y);
             };
-            this._altarPointerMove=event=>{const index=resolve(event);if(index>=0&&index<this._choices.maxItems()&&index!==this._choices.index())this._choices.select(index);};
-            this._altarPointerDown=event=>{if(event.button!==0)return;const index=resolve(event);if(index<0||index>=this._choices.maxItems())return;event.preventDefault();event.stopImmediatePropagation();this._choices.select(index);this._choices.processOk();};
+            this._altarPointerMove=event=>{const index=resolve(event);if(index>=0&&index<this._choices.maxItems()&&index!==this._choices.index()&&!mobilePointerLayout())this._choices.select(index);};
+            this._altarPointerDown=event=>{if(event.button!==0)return;const index=resolve(event);if(index<0||index>=this._choices.maxItems())return;if(mobilePointerLayout()){this._altarTouch={id:event.pointerId,x:event.clientX,y:event.clientY,index};return;}event.preventDefault();event.stopImmediatePropagation();this._choices.select(index);this._choices.processOk();};
+            this._altarPointerUp=event=>{const touch=this._altarTouch;if(!touch||touch.id!==event.pointerId)return;this._altarTouch=null;const moved=Math.hypot(event.clientX-touch.x,event.clientY-touch.y)>10,index=resolve(event);if(moved||index!==touch.index)return;event.preventDefault();event.stopImmediatePropagation();this._choices.select(index);this._choices.processOk();};
+            this._altarPointerCancel=()=>{this._altarTouch=null;};
             // Capture at document level so focused HTML navigation/timer controls
             // cannot starve the canvas list of its mouse input.
-            document.addEventListener("pointermove",this._altarPointerMove,true);document.addEventListener("pointerdown",this._altarPointerDown,true);
+            document.addEventListener("pointermove",this._altarPointerMove,true);document.addEventListener("pointerdown",this._altarPointerDown,true);document.addEventListener("pointerup",this._altarPointerUp,true);document.addEventListener("pointercancel",this._altarPointerCancel,true);
             this._altarWheel=event=>{if(SceneManager._scene!==this||managerDialog||!this._choices?.active)return;const index=resolve(event);if(index<0)return;event.preventDefault();event.stopImmediatePropagation();const step=event.deltaY>0?1:-1,next=Math.max(0,Math.min(this._choices.maxItems()-1,this._choices.index()+step));this._choices.select(next);};document.addEventListener("wheel",this._altarWheel,{capture:true,passive:false});
         }
         entries(){
@@ -3408,7 +3441,7 @@
             CozyUI.wrap(p,r.description,16,208,w-32,16,"#d7ccb2",4,22);
             if(managerState().ritualEffects?.[id])CozyUI.text(p,"PENDING / already activated",16,300,w-32,15,"#a6c797","left",22);
         }
-        terminate(){document.removeEventListener("pointermove",this._altarPointerMove,true);document.removeEventListener("pointerdown",this._altarPointerDown,true);document.removeEventListener("wheel",this._altarWheel,true);super.terminate();}
+        terminate(){document.removeEventListener("pointermove",this._altarPointerMove,true);document.removeEventListener("pointerdown",this._altarPointerDown,true);document.removeEventListener("pointerup",this._altarPointerUp,true);document.removeEventListener("pointercancel",this._altarPointerCancel,true);document.removeEventListener("wheel",this._altarWheel,true);super.terminate();}
     }
 
     class Scene_RPGDebugTimers extends Scene_RPGBase {

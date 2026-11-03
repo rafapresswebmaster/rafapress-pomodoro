@@ -10,9 +10,9 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    touch-action: none;
     cursor: default;
 }
+#gameCanvas { touch-action: none; }
 button, select, input, [role="button"] { pointer-events: auto; }
 button, [role="button"] { transition: transform .09s ease, filter .13s ease, box-shadow .13s ease; }
 button:not(:disabled), select:not(:disabled), [role="button"] { cursor: pointer; }
@@ -56,6 +56,61 @@ button:not(:disabled):focus-visible, select:not(:disabled):focus-visible, input:
 @media (max-width: 700px), (max-height: 560px) {
     #manager-confirmation { width: calc(100vw - 16px) !important; max-height: calc(100vh - 16px) !important; padding: 10px !important; font-size: 14px !important; }
     #rpg-focus-timer { transform-origin: top right !important; }
+}
+/* Mobile-only usability layer. The game canvas keeps its canonical simulation
+   coordinates; DOM controls use CSS pixels so their targets do not shrink with it. */
+@media (max-width: 900px) and (pointer: coarse), (max-height: 520px) and (pointer: coarse) {
+    :root { --mobile-safe-top: max(8px, env(safe-area-inset-top)); --mobile-safe-right: max(8px, env(safe-area-inset-right)); --mobile-safe-bottom: max(8px, env(safe-area-inset-bottom)); --mobile-safe-left: max(8px, env(safe-area-inset-left)); }
+    html, body { min-height: 100%; min-height: 100dvh; overscroll-behavior: none; }
+    button, select, input, [role="button"] { min-height: 44px; font-size: max(16px, 1em); touch-action: manipulation; }
+    #gameCanvas { width: min(100vw, calc(100dvh * 1.3076923)) !important; height: min(100dvh, calc(100vw / 1.3076923)) !important; }
+    html[data-rpg-mobile-layout="portrait"] #gameCanvas { width: min(100vw, calc(100dvh * var(--rpg-mobile-aspect, .6))) !important; height: min(100dvh, calc(100vw / var(--rpg-mobile-aspect, .6))) !important; }
+    #rpg-focus-timer {
+        min-width: 0 !important; grid-template-columns: 54px minmax(92px, 1fr) 96px !important;
+    }
+    #rpg-focus-timer .focus-recall { width: 88px !important; height: 88px !important; margin-left: 0 !important; padding: 0 8px 2px !important; }
+    #rpg-focus-timer .focus-alerts { width: 44px !important; height: 44px !important; right: 7px !important; bottom: 4px !important; }
+    #rpg-focus-timer .focus-options { width: 44px !important; height: 44px !important; }
+    #rpg-focus-timer .focus-menu { right: 0 !important; top: 100px !important; width: min(280px, calc(100vw - 16px)) !important; max-height: calc(100dvh - 120px); overflow-y: auto; }
+    #camp-menu-navigation {
+        height: 64px !important; padding: 5px !important; gap: 4px !important; transform: none !important;
+    }
+    #camp-menu-navigation button { min-width: 0; min-height: 48px !important; font-size: 12px !important; padding: 3px !important; }
+    #how-to-play-button { left: auto !important; right: var(--mobile-safe-right) !important; top: calc(var(--mobile-safe-top) + 102px) !important; width: 48px !important; height: 48px !important; font-size: 28px !important; border-width: 2px !important; }
+    #quest-filters {
+        height: auto !important; min-height: 118px; padding: 8px !important;
+        grid-template-columns: 1fr 1fr !important; gap: 8px !important; font-size: 16px !important;
+    }
+    #quest-filters select { min-height: 48px; padding: 8px !important; }
+    #start-quest {
+        height: 58px !important; font-size: 22px !important; letter-spacing: .5px !important;
+    }
+    #character-creation {
+        padding: 12px !important; gap: 8px !important;
+        border-radius: 10px !important; font-size: 16px !important;
+    }
+    #character-creation > div:nth-of-type(1) { overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; padding-right: 2px; }
+    #character-creation[data-step="class"] > div:nth-of-type(1) > div { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; grid-template-rows: none !important; overflow-y: auto !important; }
+    #character-creation[data-step="type"] > div:nth-of-type(1) > div { grid-template-columns: 1fr 1fr !important; }
+    #character-creation[data-step="appearance"] > div:nth-of-type(1) > div:first-child { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    #character-creation input { min-height: 48px; font-size: 16px !important; }
+    #character-creation button { min-height: 48px; }
+    #manager-confirmation {
+        box-sizing: border-box;
+        touch-action: pan-y; -webkit-overflow-scrolling: touch;
+    }
+    #manager-confirmation button { min-width: 44px; min-height: 48px; }
+    #rpg-how-to-play { padding: var(--mobile-safe-top) var(--mobile-safe-right) var(--mobile-safe-bottom) var(--mobile-safe-left); box-sizing: border-box; }
+    #rpg-how-to-play .manual-shell { width: 100% !important; height: 100% !important; max-height: none; border-width: 2px; border-radius: 10px; }
+    #rpg-how-to-play .manual-tabs { display: flex !important; overflow-x: auto; overscroll-behavior-x: contain; touch-action: pan-x; padding: 6px !important; }
+    #rpg-how-to-play .manual-tabs button { flex: 0 0 auto; min-width: 132px; min-height: 48px !important; }
+    #rpg-how-to-play .manual-content { padding: 10px !important; touch-action: pan-y; -webkit-overflow-scrolling: touch; }
+    #rpg-how-to-play .manual-page { grid-template-columns: 1fr !important; gap: 10px !important; }
+    #rpg-how-to-play .manual-copy p, #rpg-how-to-play .manual-copy li { font-size: 16px; line-height: 1.45; }
+    .manager-scroll-controls button { min-width: 44px !important; min-height: 44px !important; font-size: 18px !important; }
+}
+@media (max-width: 900px) and (pointer: coarse) and (orientation: portrait) {
+    #quest-filters { left: 12px !important; width: 600px !important; }
 }
 #errorPrinter {
     position: absolute;
