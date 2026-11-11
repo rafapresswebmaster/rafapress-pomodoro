@@ -185,15 +185,19 @@
         }finally{b.outlineWidth=outline;}
     }
     function counters(api,win,values,x,y,width,stacked=false,labels=false){
-        api.round(win.contents,x,y,width,48,"#d9bb72f5","#fff0bd",4);
+        const b=win.contents;
+        api.round(b,x,y,width,48,"#101f46f7","#f1d487",4);
+        api.round(b,x+2,y+2,width-4,44,"#1b376cf2","#7396cc88",3);
+        b.fillRect(x+4,y+3,width-8,1,"#ffffff42");
         const outline=win.contents.outlineWidth;win.contents.outlineWidth=0;
         const fields=[[api.heart,values.health,values.maxHealth,"HP"],[api.shield,values.armor,Math.max(values.armor,values.maxArmor||0),"Armor"],[api.ward,values.ward,Math.max(values.ward,values.maxWard||0),"Ward"]];
         fields.forEach(([icon,current,max,label],i)=>{
             const fy=y+i*16,capacity=Math.max(0,Math.floor(max||0)),start=x+32,available=Math.max(1,width-35-(width>=90?34:0)),twoRows=capacity*7>available,columns=twoRows?Math.ceil(capacity/2):capacity,size=Math.min(twoRows?7:15,available/Math.max(1,columns));
-            api.text(win,label,x+3,fy,28,11,"#302b35","left",16);
-            if(width>=90)api.text(win,`${Math.max(0,Math.floor(current||0))}/${capacity}`,x+width-34,fy,31,11,"#302b35","right",16);
+            if(i)b.fillRect(x+4,fy,width-8,1,"#8eacd333");
+            api.text(win,label,x+4,fy,27,11,i===0?"#ffd49b":i===1?"#bfe1ff":"#dfc2ff","left",16);
+            if(width>=90)api.text(win,`${Math.max(0,Math.floor(current||0))}/${capacity}`,x+width-35,fy,31,11,"#fff1c9","right",16);
             for(let j=0;j<capacity;j++)icon(win.contents,start+(j%Math.max(1,columns))*size,fy+1+Math.floor(j/Math.max(1,columns))*8,Math.max(1,size-1),j<current);
-            if(!capacity)api.text(win,"—",start,fy,available,11,"#514a50","left",16);
+            if(!capacity)api.text(win,"—",start,fy,available,11,"#9caece","left",16);
         });
         win.contents.outlineWidth=outline;
     }
@@ -302,10 +306,16 @@
             }finally{c.restore();}
             members.forEach((npc,i)=>{
                 const x=14+step*i,cardW=step-6;
-                a.round(b,x,hudY,cardW,85,"#243b78f5",npc.dead?TOKENS.danger:npc.wounded?"#d6af85":"#8d9c73",4);
-                const name=`${npc.name} / ${npc.reanimated?"Zombie ":""}${String(npc.classId||npc.role).replace(/^./,c=>c.toUpperCase())} L${npc.level||1}`;
-                pagedText(a,win,name,x+4,hudY+1,cardW-8,17,18,2,progress(trip),npc.dead?TOKENS.danger:TOKENS.parchment);
-                counters(a,win,npc,x+2,hudY+37,cardW-4,true,true);
+                const edge=npc.dead?TOKENS.danger:npc.wounded?"#f0b58c":"#f1d487";
+                a.round(b,x+2,hudY+4,cardW,84,"#090f27aa",null,5);
+                a.round(b,x,hudY,cardW,85,"#142654f7",edge,5);
+                a.round(b,x+2,hudY+2,cardW-4,33,"#294d91f2","#779bd277",4);
+                b.gradientFillRect(x+4,hudY+4,cardW-8,27,"#3d66aa","#203e7a",true);
+                b.fillRect(x+5,hudY+4,cardW-10,1,"#ffffff66");b.fillRect(x+5,hudY+33,cardW-10,2,edge);
+                for(const cx of [x+4,x+cardW-7]){b.fillRect(cx,hudY+4,3,1,"#fff0bd");b.fillRect(cx,hudY+5,1,3,"#fff0bd");}
+                const name=`${npc.name} / ${npc.reanimated?"Zombie ":""}${String(npc.classId||npc.role).replace(/^./,c=>c.toUpperCase())} LVL.${npc.level||1}`;
+                pagedText(a,win,name,x+6,hudY+3,cardW-12,17,18,2,progress(trip),npc.dead?TOKENS.danger:"#fff1cd");
+                counters(a,win,npc,x+3,hudY+37,cardW-6,true,true);
             });
             annotation(a,win,trip,bottom,progress(trip));
         }

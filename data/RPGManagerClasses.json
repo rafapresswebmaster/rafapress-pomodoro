@@ -77,7 +77,9 @@
         "8": {
           "armor": 1,
           "armorRecovery": 1
-        }
+        },
+        "9": { "hp": 1, "crit": 5 },
+        "10": { "damage": 1 }
       }
     },
     {
@@ -158,7 +160,9 @@
         "8": {
           "armor": 1,
           "armorRecovery": 1
-        }
+        },
+        "9": { "hp": 1, "ward": 1 },
+        "10": { "armor": 1, "armorRecovery": 1 }
       }
     },
     {
@@ -236,7 +240,9 @@
         },
         "8": {
           "ward": 1
-        }
+        },
+        "9": { "crit": 4 },
+        "10": { "damage": 1 }
       }
     },
     {
@@ -314,7 +320,9 @@
         },
         "8": {
           "armor": 1
-        }
+        },
+        "9": { "crit": 5 },
+        "10": { "damage": 1 }
       }
     },
     {
@@ -392,7 +400,9 @@
         },
         "8": {
           "crit": 5
-        }
+        },
+        "9": { "ward": 1 },
+        "10": { "damage": 1 }
       }
     },
     {
@@ -471,7 +481,9 @@
         },
         "8": {
           "armor": 1
-        }
+        },
+        "9": { "ward": 1, "armorRecovery": 1 },
+        "10": { "hp": 1, "ward": 1 }
       }
     },
     {
@@ -480,7 +492,7 @@
       "moves":[{"id":"bard_encore","name":"Encore","description":"Restores one eligible non-Bard ally special use, up to twice per battle.","multiplier":1,"cooldown":3},{"id":"bard_shortbow","name":"Shortbow Shot","description":"An ordinary ranged attack when Encore has no valid recipient.","multiplier":1,"cooldown":1}],
       "ranges":{"maxHealth":[3,3],"attack":[9,9],"defense":[1,1],"speed":[9,9]},
       "combat":{"hp":3,"armor":1,"ward":1,"dodge":18,"crit":10,"armorRecovery":0,"damage":1,"speed":9},
-      "growth":{"2":{"ward":1},"3":{"dodge":3},"4":{"ward":1},"5":{"hp":1}}
+      "growth":{"2":{"ward":1},"3":{"dodge":3},"4":{"ward":1},"5":{"hp":1},"6":{"ward":1},"7":{"speed":1},"8":{"ward":1},"9":{"dodge":3},"10":{"hp":1,"ward":1}}
     },
     {
       "id":"druid","name":"Druid","purpose":"Healing / Control — entangles enemies and tends injured companions",
@@ -488,7 +500,7 @@
       "moves":[{"id":"druid_entangling_bloom","name":"Entangling Bloom","description":"Delays one enemy action and heals the most injured ally for 1 HP.","multiplier":1,"cooldown":3},{"id":"druid_thorn_bolt","name":"Thorn Bolt","description":"An ordinary ranged attack when Bloom cannot change the battle.","multiplier":1,"cooldown":1}],
       "ranges":{"maxHealth":[3,3],"attack":[7,7],"defense":[0,0],"speed":[7,7]},
       "combat":{"hp":3,"armor":0,"ward":3,"dodge":12,"crit":8,"armorRecovery":0,"damage":1,"speed":7},
-      "growth":{"2":{"ward":1},"3":{"dodge":3},"4":{"ward":1},"5":{"hp":1}}
+      "growth":{"2":{"ward":1},"3":{"dodge":3},"4":{"ward":1},"5":{"hp":1},"6":{"ward":1},"7":{"armorRecovery":1},"8":{"ward":1},"9":{"speed":1},"10":{"hp":1,"ward":1}}
     }
   ],
   "defaults": {

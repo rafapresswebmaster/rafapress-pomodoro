@@ -2,7 +2,7 @@
 // main.js v1.10.0
 //=============================================================================
 
-const assetVersion = "overhaul62";
+const assetVersion = "overhaul63";
 const scriptUrls = [
     "js/libs/pixi.js",
     "js/libs/pako.min.js",

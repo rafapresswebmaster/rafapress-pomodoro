@@ -27,7 +27,7 @@
       "title": "Quests & Focus",
       "imageIds": ["MAN-03"],
       "blocks": [
-        {"type": "list", "items": ["Choose 1, 3, 5, 10, 15, 20, 25, or 30 minutes and difficulty one to five.", "One-minute sessions are peaceful and fixed at one skull.", "The destination and opposition are generated and revealed only after departure; enemies do not scale to your party or upgrades.", "Up to three different temporary upgrades affect the whole party, are paid for at departure, and expire on return or Recall. There is no quest entry fee.", "The clock keeps running through combat and while the open game is in the background. Closing the process does not advance time.", "Recall stops future encounters and forfeits completion rewards and XP, while previous finds and consequences remain. The remaining countdown continues on the road home; Recall again to arrive immediately."]}
+        {"type": "list", "items": ["Turn the timer and difficulty dials, then choose the glowing Start Quest button.", "Difficulty 1 suits levels 1–2; 2 suits 3–4; 3 suits 5–6; 4 suits 7–8; and 5 suits 9–10.", "One-minute sessions are peaceful and fixed at one skull.", "The destination and opposition are generated and revealed only after departure; enemies do not scale to your party or boons.", "Choose up to two temporary boons. They cost Gold, affect the whole party, and expire on return or Recall.", "The clock keeps running through combat and while the open game is in the background. Closing the process does not advance time.", "Recall stops future encounters and forfeits completion rewards and XP, while previous finds and consequences remain. The remaining countdown continues on the road home; Recall again to arrive immediately."]}
       ]
     },
     {
@@ -38,7 +38,7 @@
       "blocks": [
         {"type": "text", "text": "Combat is automatic. HP keeps companions alive; Armor and Ward absorb most incoming damage first."},
         {"type": "list", "items": ["Barbarian — heavy melee", "Knight — protection", "Ranger — ranged damage and control", "Rogue — speed and debuffs", "Mage — magic and Ward", "Cleric — healing and support", "Bard — inspiration; Encore renews one ally special", "Druid — healing and control; Entangling Bloom delays and heals"]},
-        {"type": "text", "text": "Living participants earn XP from actual quest time, faster on harder quests, up to level five. A knockout can cause lasting injury or death. Survivors remain out for that expedition. HP recovers at camp; Healing removes one injury but does not restore HP."}
+        {"type": "text", "text": "Living participants earn XP from actual quest time, faster on harder quests, up to level ten. A knockout can cause lasting injury or death. Survivors remain out for that expedition. HP recovers at camp; Healing removes one injury but does not restore HP."}
       ]
     },
     {
@@ -48,7 +48,7 @@
       "imageIds": ["MAN-08"],
       "blocks": [
         {"type": "text", "text": "Gold buys expedition upgrades. Arcana activates unlocked rituals. Companions at camp can work for Gold or study for Arcana."},
-        {"type": "list", "items": ["Successful quests longer than one minute can find Magical Artifacts. Spend them at the Altar to unlock rituals permanently, then pay Arcana when activating one.", "Rituals can protect a party, remove an injury, or return a fallen companion. Reanimated skeletons cannot level and cannot be reanimated after dying again.", "The return recap shows rewards, XP, injuries, deaths, and level-ups. Choose Finish to continue at camp.", "Use Save before leaving the game when you want to keep your latest progress."]}
+        {"type": "list", "items": ["Successful quests longer than one minute can find Magical Artifacts. At the Altar, choose Unlock Next Ritual; future rituals stay hidden until their turn.", "Rituals can protect a party, remove an injury, or return a fallen companion. Reanimated skeletons cannot level and cannot be reanimated after dying again.", "Quest settlement is saved to history and the latest report; returning parties go directly to the normal hub.", "Use Save before leaving the game when you want to keep your latest progress."]}
       ]
     }
   ]

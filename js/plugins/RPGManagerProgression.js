@@ -23,17 +23,17 @@
     const conditionOf = npc => !npc || npc.condition === CONDITIONS.DEAD || npc.alive === false ? CONDITIONS.DEAD :
         npc.condition === CONDITIONS.WOUNDED || npc.injury === "Wounded" ? CONDITIONS.WOUNDED : CONDITIONS.HEALTHY;
     const living = npc => !!npc && conditionOf(npc) !== CONDITIONS.DEAD && npc.alive === true && npc.health > 0;
-    const LEVEL_CAP = 5;
+    const LEVEL_CAP = 10;
     const LEGACY_CLASSES = Object.freeze({"vanguard": "knight", "guardian": "knight", "bruiser": "barbarian", "brawler": "barbarian", "duelist": "rogue", "skirmisher": "rogue", "support": "cleric", "mystic": "mage", "worker": "ranger"});
     function classStats(npc) {
         const c=catalogue.classes.find(c=>c.id===(LEGACY_CLASSES[npc.classId]||npc.classId))||catalogue.classes[0];
         const stats={...c.combat,speed:({barbarian:7,knight:5,cleric:6,mage:8,ranger:11,rogue:13,bard:9,druid:7}[c.id]||8)};
-        for(let level=2;level<=Math.min(5,npc.level||1);level++)for(const [key,value] of Object.entries(c.growth[level]||{}))stats[key]=(stats[key]||0)+value;
+        for(let level=2;level<=Math.min(LEVEL_CAP,npc.level||1);level++)for(const [key,value] of Object.entries(c.growth[level]||{}))stats[key]=(stats[key]||0)+value;
         stats.speed+=Math.floor(((npc.level||1)-1)/2);return stats;
     }
-    // At one XP per completed minute, plus a modest completion bonus, this
-    // 245-XP curve reaches level five in about four hours of ordinary play.
-    const XP_THRESHOLDS = Object.freeze({1:20,2:45,3:75,4:105});
+    // At one XP per completed minute, plus difficulty and completion bonuses,
+    // this curve carries preserved and new characters through level ten.
+    const XP_THRESHOLDS = Object.freeze({1:20,2:45,3:75,4:105,5:140,6:180,7:225,8:275,9:330});
     const XP_DIFFICULTY_MULTIPLIERS = Object.freeze({1:1,2:1.1,3:1.2,4:1.35,5:1.5});
     const xpRequired = npc => npc.level >= LEVEL_CAP ? 0 : (XP_THRESHOLDS[npc.level]||0);
     const pairKey = (a, b) => [a, b].sort().join("|");
@@ -170,7 +170,7 @@
         if(!approvedClasses.every(id=>data.classes.some(c=>c.id===id)))fail("Use every approved class ID.");
         for (const c of data.classes) {
             for(const key of ["hp","armor","ward","dodge","crit"]){const value=c.combat?.[key];if(!Number.isInteger(value)||value<0||value>(["dodge","crit"].includes(key)?75:99)||key==="hp"&&value<1)fail(`${c.id}: invalid combat baseline ${key}.`);}
-            for(const [level,gains] of Object.entries(c.growth||{})){if(!["2","3","4","5","6","7","8"].includes(level))fail("Growth levels must be 2-8.");for(const [key,value] of Object.entries(gains))if(!["hp","armor","ward","dodge","crit","armorRecovery","damage","speed"].includes(key)||!Number.isInteger(value)||value<0)fail("Invalid cumulative class gain.");}
+            for(const [level,gains] of Object.entries(c.growth||{})){if(!["2","3","4","5","6","7","8","9","10"].includes(level))fail("Growth levels must be 2-10.");for(const [key,value] of Object.entries(gains))if(!["hp","armor","ward","dodge","crit","armorRecovery","damage","speed"].includes(key)||!Number.isInteger(value)||value<0)fail("Invalid cumulative class gain.");}
             if (!c || typeof c.id !== "string" || !/^[a-z][a-z0-9_]*$/.test(c.id) || ids.has(c.id)) fail(`duplicate/invalid class ID ${c?.id}.`);
             ids.add(c.id); text(c.name, c.id + " name", 24); text(c.purpose, c.id + " purpose");
             for (const k of STATS) if (!Number.isInteger(c.stats?.[k]) || c.stats[k] < (k === "defense" ? 0 : 1) || c.stats[k] > 999) fail(`${c.id}.${k}: invalid stat (maximum 999).`);
@@ -486,7 +486,7 @@
         npc.classArmorMax=stats.armor;
         npc.classArmor=Math.max(0,Math.min(stats.armor,Number.isFinite(npc.classArmor)?Math.floor(npc.classArmor):stats.armor));
         npc.critChance=stats.crit/100; npc.dodgeChance=Math.max(0,stats.dodge/100-(npc.lastingInjuries||0)*.02);
-        npc.signatureUnlocks=["bard","druid"].includes(npc.classId)?1:npc.level>=6?2:npc.level>=3?1:0;
+        npc.signatureUnlocks=npc.level>=7?2:npc.level>=3?1:0;
         npc.preferredPosition=["mage","cleric","ranger","bard","druid"].includes(npc.classId)?"back":"front";
         npc.dodgeTier=["ranger","rogue"].includes(npc.classId)?"high":"low";
         npc.innateWardMax=stats.ward;
@@ -548,7 +548,7 @@
 
         const loadedVersion=Math.max(0,Math.floor(Number(state.version)||0));
         if(loadedVersion&&loadedVersion<32&&!state.overhaulMigrationAcknowledged){
-            state.recoveryNotice="This save predates the five-level procedural expedition overhaul. Equipment was retired; start a fresh campaign for the intended balance.";
+            state.recoveryNotice="Save updated: character names, classes and levels were preserved, and level 1–10 stats were recalculated for the current balance.";
             state.overhaulMigrationAcknowledged=true;
         }
         state.preparation ||= {durationMinutes:25,difficulty:1,partyIds:[],upgradeIds:[],seed:null,themeId:null};
@@ -567,7 +567,8 @@
         state.focusTimer={enabled:state.focusTimer?.enabled===true,position:state.focusTimer?.position&&Number.isFinite(state.focusTimer.position.x)&&Number.isFinite(state.focusTimer.position.y)?{x:Math.round(state.focusTimer.position.x),y:Math.round(state.focusTimer.position.y)}:null};
         for(const trip of Object.values(state.trips||{}).filter(t=>t&&typeof t==="object"&&!Array.isArray(t))){trip.difficulty=authoredDifficulty(trip);trip.lockedPlan||={};trip.lockedPlan.difficulty||=trip.difficulty;}
 
-        state.supplies ||= { potion: 6 }; state.bonds = {}; state.ritualsUnlocked ||= {}; state.campJobElapsed ||= {};
+        state.supplies ||= { potion: 6 }; state.bonds = {}; state.ritualsUnlocked ||= {}; state.ritualEffects ||= {};state.campJobElapsed ||= {};
+        for(const removed of ["arcane_rebate","first_strike"]){delete state.ritualsUnlocked[removed];delete state.ritualEffects[removed];for(const trip of Object.values(state.trips||{}))if(trip?.ritualEffects)delete trip.ritualEffects[removed];}
         state.questCount ??= 0; state.activeQuest ??= null; state.lastReport ??= null;
         state.questHistory = Array.isArray(state.questHistory) ? state.questHistory.slice(-QUEST_HISTORY_LIMIT) : [];
         if(state.ritualUnlockVersion!==2){
@@ -1008,7 +1009,7 @@
         }
         if (stages.length&&!state.trips[teamKey].realtime) enterStage(state.trips[teamKey], 0, now);
         state.gold-=upgradeCost;
-        state.preparation={durationMinutes:questDefinition.durationMinutes,difficulty:dangerRating(questDefinition),partyIds:ids.slice(),upgradeIds:copy(upgradeIds),seed:questDefinition.generatorSeed||null,themeId:questDefinition.sourceIngredients?.theme||null};
+        state.preparation={durationMinutes:questDefinition.durationMinutes,difficulty:dangerRating(questDefinition),partyIds:ids.slice(),upgradeIds:copy(upgradeIds),seed:questDefinition.generatorSeed||null,themeId:questDefinition.sourceIngredients?.theme||null,oppositionId:questDefinition.sourceIngredients?.opposition||null};
         state.lastClockAt = now;
         delete state.recoveryNotice;
         return id;
@@ -1645,6 +1646,13 @@
         awardGear(common,bonus.commonEquipmentChance,"common");awardGear(rare,bonus.rareEquipmentChance,"rare");
     }
     function autoOpportunity(state,trip,content){const stage=(trip.stages||[]).find(s=>s.randomEncounter&&s.type==="event"),event=(content?.events||[]).find(e=>e.id===stage?.eventId);if(!event)return;queueEventCue(state,trip,"randomEvent",`opportunity:${event.id}`);const outcome=Object.values(event.outcomes||{}).find(value=>value&&(value.gold||value.arcana))||event.outcomes?.default||{};trip.pendingRewards.gold+=Math.max(0,Math.floor(Number(outcome.gold)||0));trip.pendingRewards.arcana+=Math.max(0,Math.floor(Number(outcome.arcana)||0));const text=`${event.name}: ${outcome.text||"The opportunity passes."}`;trip.chronicle.push({type:"decision",text,gold:outcome.gold||0,arcana:outcome.arcana||0});addTimeline(trip,text);}
+    function resolveFieldFind(state,trip){
+        if(trip.fieldFindResolved||Number(trip.durationMinutes)<=1)return;trip.fieldFindResolved=true;
+        const base=Math.max(1,Number(trip.generatedPlan?.fieldRewardBase)||Number(trip.rewardGold?.victory)||1),roll=stableUnit(`${trip.generatorSeed||trip.id}:field-find`),gold=Math.max(1,Math.round(base*(.12+roll*.12)));
+        const arcana=Number(trip.durationMinutes)>=10&&stableUnit(`${trip.generatorSeed||trip.id}:field-arcana`)<(.3+Math.max(0,(trip.skulls||1)-2)*.1)?((trip.skulls||1)>=5?2:1):0;
+        trip.pendingRewards.gold+=gold;trip.pendingRewards.arcana+=arcana;const finds=["a forgotten toll cache","a merchant's lost strongbox","an abandoned spell pouch","coins hidden beneath a waystone"],find=finds[seededIndex(trip.generatorSeed||trip.id,"field-find-copy",finds.length)],text=`Field discovery: ${find}. +${gold} Gold${arcana?` and +${arcana} Arcana`:""}. Kept even if recalled later.`;
+        trip.chronicle.push({type:"fieldReward",text,gold,arcana});addTimeline(trip,text);queueEventCue(state,trip,"randomEvent",`field-find:${gold}:${arcana}`);
+    }
     function encounterEnemies(stage,content,trip={}){
         const ids=(stage.enemyIds||[]).slice();if(!(trip.balanceVersion>=31)&&ids.length===1&&encounterTier(trip)>1&&/^(goblin|kobold|ratman)/.test(ids[0]))ids.push(ids[0],ids[0]);
         return ids.map(id=>(content?.enemies||[]).find(e=>e.id===id)).filter(Boolean).map((source,index)=>{
@@ -1736,7 +1744,7 @@
             trip.lastBattleMeasuredMs=presentation.reduce((sum,e)=>sum+presentationDelay(e,"standard",content?.presentation),0);
             trip.maxBattleMeasuredMs=Math.max(trip.maxBattleMeasuredMs||0,trip.lastBattleMeasuredMs);
             trip.playbackScale=Math.min(1,55000/Math.max(1,trip.lastBattleMeasuredMs));
-            trip.battlePresentationDeadlineMs=trip.elapsedMs+SESSION_TIMING.battleMs;
+            trip.fateRevealGraceUsed=false;trip.battlePresentationDeadlineMs=trip.elapsedMs+SESSION_TIMING.battleMs;
             trip.presentationCurrent=null;trip.presentationHoldMs=0;trip.presentationQueue=presentation;
             tickPresentation(trip,0,"standard",content?.presentation);
             if(trip.realtime&&!trip.wiped&&!trip.autoRetreat)trip.phase="travel";
@@ -1774,8 +1782,9 @@
     }
     // Simulation is synchronous. Playback is bounded independently of render rate or window focus.
     const SESSION_TIMING=Object.freeze({battleMs:60000,extractionMs:12000,campfireMs:60000});
-    function dangerRating(q={}){const value=Number(q.skulls??q.intendedLevel??({Easy:1,Normal:4,Hard:8}[authoredDifficulty(q)]));return Math.max(1,Math.min(8,Number.isFinite(value)?Math.floor(value):1));}
-    function dangerLabel(q={}){const n=dangerRating(q);return `${"☠".repeat(n)} ${n}/8`;}
+    function dangerRating(q={}){const value=Number(q.skulls??q.encounterTier??q.intendedLevel??({Easy:1,Normal:3,Hard:5}[authoredDifficulty(q)]));return Math.max(1,Math.min(5,Number.isFinite(value)?Math.floor(value):1));}
+    const DIFFICULTY_NAMES=Object.freeze({1:"Very Easy",2:"Easy",3:"Medium",4:"Hard",5:"Very Hard"});
+    function dangerLabel(q={}){const n=dangerRating(q);return DIFFICULTY_NAMES[n]||DIFFICULTY_NAMES[1];}
     // Encounter pacing is authored independently from the displayed party-level estimate.
     function encounterTier(q={}){return Math.max(1,Math.min(5,Number(q.encounterTier)||Math.ceil((dangerRating(q)+1)/2)));}
     function canStartBattle(trip,leadMs=0){
@@ -1841,6 +1850,16 @@
     function finishBattlePlayback(trip,reason){
         if(!trip)return;
         const pending=[trip.presentationCurrent,...(trip.presentationQueue||[])].filter(Boolean),hadBattle=pending.some(e=>e.kind==="battle");
+        // A party wipe can reach the playback deadline with the final fate coin
+        // still queued. Give that consequence one guaranteed visible reveal.
+        const pendingFates=pending.filter(e=>e.sourceType==="deathSave"),pendingFate=pendingFates[pendingFates.length-1];
+        if(reason&&pendingFate&&!trip.fateRevealGraceUsed){
+            for(const e of pending)if(e!==pendingFate)finishPresentationEvent(trip,e);
+            trip.fateRevealGraceUsed=true;trip.presentationQueue=[];trip.presentationCurrent=pendingFate;
+            trip.presentationDurationMs=Math.max(3500,presentationDelay(pendingFate,"standard"));
+            trip.presentationHoldMs=trip.presentationDurationMs;trip.battlePresentationDeadlineMs=(trip.elapsedMs||0)+trip.presentationDurationMs;
+            addTimeline(trip,pendingFate.text);return;
+        }
         for(const e of pending)finishPresentationEvent(trip,e);
         trip.presentationQueue=[];trip.presentationCurrent=null;trip.presentationHoldMs=0;trip.presentationDurationMs=0;
         trip.battlePresentationDeadlineMs=0;delete trip.travelDisplayTeam;
@@ -1863,7 +1882,7 @@
             const beat=Math.floor((trip.elapsedMs-campStart)/15000);
             if(beat!==trip.campfireBeat){trip.campfireBeat=beat;const member=trip.preparedTeam[beat%trip.preparedTeam.length];trip.presentationCurrent={kind:"travel",sourceType:"campfire",holdMs:15000,text:["The fire crackles softly. Nobody needs to hurry.",`${member.name}: A little warmth makes the road easier.`,"The companions share water and watch the sparks.","One last quiet breath, then back to the trail."][beat]};trip.presentationHoldMs=15000;}
         }else if(trip.phase==="campfire"){trip.phase="travel";trip.campfireCompleted=true;finishBattlePlayback(trip);}
-        if(!trip.approachActive&&!trip.milestones.travelEvent&&trip.elapsedMs>=trip.totalDurationMs*.18&&!campfire&&!trip.wiped){trip.milestones.travelEvent=true;applyAutomaticTravelEvent(state,trip,content);}
+        if(!trip.approachActive&&!trip.milestones.travelEvent&&trip.elapsedMs>=trip.totalDurationMs*.18&&!campfire&&!trip.wiped){trip.milestones.travelEvent=true;applyAutomaticTravelEvent(state,trip,content);resolveFieldFind(state,trip);}
         trip.encounterPlan||=encounterPlan(trip);
         const upcoming=trip.encounterPlan.find(p=>!p.done);
         if(!campfire&&upcoming?.stage.randomEncounter&&!trip.wiped&&!trip.autoRetreat&&!trip.returnNarrated&&trip.elapsedMs>=upcoming.atMs-10000&&canStartBattle(trip,10000)){
@@ -1895,7 +1914,7 @@
         return{ok:true,completed:false,delta,phase:trip.phase,remainingMs:trip.remainingMs};
     }
     const POWER_TRACKS={"barbarian": ["Heavy melee", "Fury: after damage, next hit +1, once/battle", "Cleave: 50% chance of 1 splash damage, once/battle", "Cleave chance 60%", "Bloodied Resolve: first low-HP hit reduced by 1", "Quake: 1 damage to each enemy; 15% stagger, once/battle", "Wounded Resolve: low-HP protection refreshes once", "Relentless: one 1-damage follow-up after a takedown/battle"], "knight": ["Sturdy melee", "Guard: first hit reduced by 1", "Shield Bash: 20% stagger, once/battle", "Guard also protects second hit", "Interpose: 15% chance to protect vulnerable ally", "Rallying Guard: party next hit -1, once/battle", "Interpose chance 20%", "Last Stand: one party protection at under 30% HP/battle"], "cleric": ["Kind Word: heal 1 or ward 1, once/battle", "Kind Word once/battle", "Blessing: ally next hit -1 and Ward 1, once/battle", "Prefer exposed ally when none wounded", "Renewal: heal 1 and ensure 1 Ward", "Sanctuary: party next hit -1 and Ward 1, once/battle", "Blessing grants 2 Ward; Sanctuary once/battle", "Grace: party guard and Ward when ally at 1 HP, once/battle"], "rogue": ["Fast single-target attack", "Quickstep: +3 percentage points Dodge", "Feint: 20% chance to suppress 1 Armor for 2 target turns", "Quickstep +4pp and Feint chance 25%", "Venom Edge: 15% chance of 1 nonlethal damage on next target turn", "Smoke Bomb: 15% chance per enemy to weaken next attack, once/battle", "Feint chance 30%; Venom 20%", "Opportunist: +1 against debuffed target, once/action"], "ranger": ["Ranged attack", "Steady Aim: +2 percentage points crit chance", "Pinning Shot: next enemy attack -1, once/battle", "Pinning Shot: 20% chance to stagger", "Mark Target: 20% chance, next allied hit +1", "Volley: 1 damage per enemy, once/battle", "Mark chance 25%; Volley prefers live enemies", "Hunters Opening: mark transfers once/battle at 50% reliability"], "mage": ["Fragile ranged magic", "Focus: 10% chance to weaken next enemy attack", "Fireburst and Ward Spark: damage enemies or protect an exposed ally", "Focus chance 15%", "Ward Spark: ward 1 on exposed ally, once/battle", "Frost Ring: 1 damage/enemy, 15% weaken next attack, once/battle", "Frost Ring weaken chance 20%", "Arcane Echo: 15% chance of 1 on different enemy; no chains"]};
-    function powerTrack(npc){const labels={hp:"HP",armor:"Armor",ward:"Ward",dodge:"% Dodge",crit:"% Critical",armorRecovery:"Armor restored before battle",damage:"attack damage",speed:"Speed"},extra={bard:["Encore — Renews one non-Bard ally's spent primary special.","Ward growth.","Resonance — Encore ensures 1 temporary Ward.","Ward growth.","Resonance — Encore ensures 2 temporary Ward."],druid:["Entangling Bloom — Delays an enemy and heals the most injured ally for 1 HP.","Ward growth.","Sheltering Leaves — A Bloom heal ensures 1 temporary Ward.","Ward growth.","Sheltering Leaves — A Bloom heal ensures 2 temporary Ward."]},c=classFor(npc);return (extra[npc.classId]||POWER_TRACKS[npc.classId]||[]).slice(0,Math.min(8,npc.level||1)).map((text,i)=>{const gains=i?c.growth?.[i+1]:c.combat;return `L${i+1} ${text} ${Object.entries(gains||{}).map(([k,v])=>`${i?"+":""}${v} ${labels[k]||k}`).join(" / ")}`;});}
+    function powerTrack(npc){const labels={hp:"HP",armor:"Armor",ward:"Ward",dodge:"% Dodge",crit:"% Critical",armorRecovery:"Armor restored before battle",damage:"attack damage",speed:"Speed"},extra={bard:["Inspiring Verse — support an ally.","Protective harmony grows.","Encore — renew an ally's primary special.","Resonance — Encore grants Ward.","Refrain — improved staying power.","Battle Chorus — shelter the party.","Master Encore — second signature use.","Harmonic Guard — stronger protection.","Heroic Rhythm — faster support.","Finale — maximum inspiration."],druid:["Soothing Herbs — restore an ally.","Rooted Ward grows.","Entangling Bloom — delay and heal.","Sheltering Leaves — Bloom grants Ward.","Wild Renewal — improved staying power.","Grove's Embrace — shelter the party.","Twin Bloom — second signature use.","Ancient Bark — stronger protection.","Verdant Pulse — faster support.","Elder Grove — maximum renewal."]},c=classFor(npc);return (extra[npc.classId]||POWER_TRACKS[npc.classId]||[]).slice(0,Math.min(LEVEL_CAP,npc.level||1)).map((text,i)=>{const gains=i?c.growth?.[i+1]:c.combat;return `L${i+1} ${text||"Class mastery."} ${Object.entries(gains||{}).map(([k,v])=>`${i?"+":""}${v} ${labels[k]||k}`).join(" / ")}`;});}
     function repairGear(state,npcId,itemId){
         const npc=state.roster.find(n=>n.id===npcId),item=SHOP[itemId];
         if(!npc||isUnavailable(state,npcId)||!Object.values(npc.equipmentSlots||{}).includes(itemId)||!npc.equipmentCondition[itemId]?.broken)return{ok:false,message:"Choose broken equipped gear on a companion at camp."};
@@ -2066,10 +2085,8 @@
         battle_hymn:{name:"Battle Hymn",unlockCost:2,castCost:60,level:3,description:"Party attacks deal +1 damage throughout the next battle. Remains pending until a battle occurs."},
         veil_of_mercy:{name:"Veil of Mercy",unlockCost:5,castCost:260,level:5,description:"Once next quest, the first adventurer who would die instead survives at 1 HP with a serious permanent wound."},
         last_rites:{name:"Last Rites",unlockCost:8,castCost:650,level:5,target:"fallen",description:"Return one fallen adventurer at 1 HP with an injury. Reanimation exhaustion remains permanent."},
-        arcane_rebate:{name:"Arcane Offering",unlockCost:1,castCost:25,level:2,description:"After the next completed quest, receive 20 bonus Arcana. Gold rewards are unchanged."},
         oath_of_vanguard:{name:"Oath of the Vanguard",unlockCost:2,castCost:60,level:3,target:"living",description:"One chosen adventurer gains +1 Armor for the next quest. No targeting or party-protection effect."},
         familiars_vigil:{name:"Familiar's Vigil",unlockCost:4,castCost:110,level:5,description:"Next quest, a summoned spirit absorbs the first hit aimed at any party member, then disappears."},
-        first_strike:{name:"First Strike",unlockCost:2,castCost:60,level:3,description:"The party's first attack in its next quest deals +2 damage. A missed attack still uses the blessing."},
         quickening_prayer:{name:"Quickening Prayer",unlockCost:4,castCost:180,level:5,description:"Next quest: each adventurer has a seeded 25% chance per battle to use their special twice. Never more than two uses; no extra ability unlocks."}
     });
     function ritualUnlock(state,id){
@@ -2091,7 +2108,6 @@
     function ritualRewards(trip,gold,arcana){
         const effects=trip.ritualEffects||{};
         if(effects.fortunes_favor)gold=Math.floor(gold*1.25);
-        if(effects.arcane_rebate)arcana+=20;
         return{gold,arcana};
     }
     function magicalArtifactDrop(quest,status){
@@ -2130,7 +2146,7 @@
         return state.campJobs;
     }
     function campJobFor(state,id){ensureCampJobs(state);return state.campJobs[id]||null;}
-    function bestCampJob(npc){return ["mage","cleric","druid"].includes(LEGACY_CLASSES[npc.classId]||npc.classId)?"study":"work";}
+    function bestCampJob(npc){const id=LEGACY_CLASSES[npc.classId]||npc.classId;if(id==="druid")return"work";if(["mage","cleric","bard"].includes(id))return"study";return"work";}
     function campJobYield(npc,job){return job==="idle"?0:job===bestCampJob(npc)?2:1;}
     function autoAssignCampJobs(state){
         ensureCampJobs(state);const assignments=[];
@@ -2228,7 +2244,7 @@
         return{ok:true,message:`${r.name} performed.`};
     }
 
-    const GENERATOR_VERSION=1,BALANCE_VERSION=34;
+    const GENERATOR_VERSION=3,BALANCE_VERSION=36;
     const EXPEDITION_UPGRADES=Object.freeze({
         reinforced_clothing:Object.freeze({name:"Reinforced Clothing",cost:18,effect:"+1 Armor to every companion for this expedition",armor:1}),
         protective_charms:Object.freeze({name:"Protective Charms",cost:16,effect:"+1 ordinary Ward to every companion for this expedition",ward:1}),
@@ -2249,28 +2265,33 @@
         const durationMinutes=EXPEDITION_DURATIONS.includes(Number(options.durationMinutes))?Number(options.durationMinutes):25;
         const difficulty=durationMinutes===1?1:Math.max(1,Math.min(5,Math.floor(Number(options.difficulty)||1)));
         const seed=String(options.seed??`${Date.now()}-${Math.floor(Math.random()*1e9)}`),quests=Array.isArray(content)?content:Array.isArray(content?.quests)?content.quests:[];
-        const themes=JOURNEY_THEMES.filter(t=>quests.some(q=>t.match.test(`${q.environment} ${q.faction} ${q.tags?.join(" ")}`))),theme=themes[seededIndex(seed,"theme",themes.length)]||JOURNEY_THEMES[0];
-        const pool=quests.filter(q=>theme.match.test(`${q.environment} ${q.faction} ${q.tags?.join(" ")}`)&&Number(q.durationMinutes)>1),tier=pool.filter(q=>Math.max(1,Math.min(5,Number(q.encounterTier)||Number(q.intendedLevel)||1))===difficulty),sources=tier.length?tier:pool;
-        const opposition=sources[seededIndex(seed,"opposition",sources.length)]||quests.find(q=>q.enemyIds?.length)||{},story=sources[seededIndex(seed,"story",sources.length)]||opposition;
+        const themes=JOURNEY_THEMES.filter(t=>quests.some(q=>t.match.test(`${q.environment} ${q.faction} ${q.tags?.join(" ")}`))),themeChoices=themes.length>1?themes.filter(t=>t.id!==options.excludeThemeId):themes,theme=themeChoices[seededIndex(seed,"theme",themeChoices.length)]||themes[0]||JOURNEY_THEMES[0];
+        const pool=quests.filter(q=>!["arcane_rebate","first_strike"].includes(q.ritualUnlock)&&theme.match.test(`${q.environment} ${q.faction} ${q.tags?.join(" ")}`)&&Number(q.durationMinutes)>1),tier=pool.filter(q=>Math.max(1,Math.min(5,Number(q.encounterTier)||Number(q.intendedLevel)||1))===difficulty),sources=tier.length?tier:pool;
+        const oppositionChoices=sources.length>1?sources.filter(q=>(q.id||null)!==options.excludeOppositionId):sources,opposition=oppositionChoices[seededIndex(seed,"opposition",oppositionChoices.length)]||sources[0]||quests.find(q=>q.enemyIds?.length)||{},story=sources[seededIndex(seed,"story",sources.length)]||opposition;
         const battles=durationMinutes===1?0:Math.max(1,Math.min(5,Math.floor(durationMinutes/6)+(difficulty>=4?1:0))),gold=Math.max(1,Math.round(durationMinutes*(1.4+difficulty*.35))),arcana=durationMinutes>=10?Math.floor(durationMinutes/10)+(difficulty>=4?1:0):0;
         const participation=Math.max(1,Math.round(durationMinutes*XP_DIFFICULTY_MULTIPLIERS[difficulty])),victoryBonus=durationMinutes===1?0:Math.max(1,Math.round(durationMinutes*.1));
-        const journey={id:`generated-v${GENERATOR_VERSION}-${seed}`,name:theme.titles[seededIndex(seed,"title",theme.titles.length)],category:"Generated journey",durationMinutes,description:`A ${durationMinutes}-minute journey through ${theme.name}.`,risk:`${difficulty}-skull`,danger:difficulty===1?"A gentle route with generous spacing between dangers.":difficulty===5?"A severe fixed challenge for an expert company.":"A fixed challenge that does not adapt to the selected party.",rewardTypes:[`${gold} Gold`,`${arcana} Arcana`,`${participation} participation XP plus ${victoryBonus} victory XP`],encounterType:durationMinutes===1?"Peaceful travel; no combat":`${battles} paced encounters`,environment:theme.name,combatMode:durationMinutes===1?"none":"required",xpReward:victoryBonus,xpPool:victoryBonus*3,rewardGold:{victory:gold,draw:Math.floor(gold*.45),defeat:Math.floor(gold*.2)},rewardArcana:{victory:arcana,draw:0,defeat:0},bonusRewards:{},travelSeconds:3,faction:opposition.faction||theme.name,boss:difficulty===5&&durationMinutes>=20&&stableUnit(`${seed}:boss`)>.55,enemyIds:durationMinutes===1?[]:copy(opposition.enemyIds||[]),knownThreats:copy(opposition.knownThreats||[]),knownConditions:[`Fixed ${difficulty}-skull opposition`,`Balanced for three healthy level-${difficulty} companions`],rumors:copy(story.rumors||[]),journey:story.journey||`A measured route through ${theme.name}.`,chance:difficulty<=2?"low":"normal",randomEncounters:copy(opposition.randomEncounters||[]),tags:[theme.id,"procedural",`${difficulty}-skull`],objectiveReturnText:`The destination is reached. The company turns home through ${theme.name}.`,difficulty:["","Gentle","Steady","Demanding","Perilous","Heroic"][difficulty],riskExplanation:"Difficulty is fixed. Smaller, injured, or underleveled parties face greater risk; upgrades never strengthen enemies.",battleback:theme.background,battlebackFolder:"pictures",intendedLevel:difficulty,skulls:difficulty,encounterTier:difficulty,balanceVersion:BALANCE_VERSION,generatorVersion:GENERATOR_VERSION,generatorSeed:seed,participationXp:participation,victoryBonusXp:victoryBonus,encounterTuning:copy(opposition.encounterTuning||{}),sourceIngredients:{opposition:opposition.id||null,narrative:story.id||null,theme:theme.id}};
+        const completionGold=durationMinutes===1?1:Math.max(1,Math.floor(gold*.84)),tierTuning=[{},{},{},{hp:1},{hp:2,speed:1},{hp:3,damage:1,speed:1}][difficulty],encounterTuning={...copy(opposition.encounterTuning||{})};for(const key of ["hp","damage","speed"]){const authored=(Number(encounterTuning[key])||0)+(Number(tierTuning[key])||0),floor=Number(tierTuning[key])||0;encounterTuning[key]=difficulty>=3?Math.max(floor,authored):authored;}
+        const journey={id:`generated-v${GENERATOR_VERSION}-${seed}`,name:theme.titles[seededIndex(seed,"title",theme.titles.length)],category:"Generated journey",durationMinutes,description:`A ${durationMinutes}-minute journey through ${theme.name}.`,risk:`${difficulty}-skull`,danger:difficulty===1?"A gentle route with generous spacing between dangers.":difficulty===5?"A severe fixed challenge for an expert company.":"A fixed challenge that does not adapt to the selected party.",rewardTypes:[`${completionGold} completion Gold plus field finds`,`${arcana} Arcana`,`${participation} participation XP plus ${victoryBonus} victory XP`],encounterType:durationMinutes===1?"Peaceful travel; no combat":`${battles} paced encounters`,environment:theme.name,combatMode:durationMinutes===1?"none":"required",xpReward:victoryBonus,xpPool:victoryBonus*3,rewardGold:{victory:completionGold,draw:Math.floor(completionGold*.45),defeat:Math.floor(completionGold*.2)},rewardArcana:{victory:arcana,draw:0,defeat:0},fieldRewardBase:gold,bonusRewards:{},travelSeconds:3,faction:opposition.faction||theme.name,boss:difficulty===5&&durationMinutes>=20&&stableUnit(`${seed}:boss`)>.55,enemyIds:durationMinutes===1?[]:copy(opposition.enemyIds||[]),knownThreats:copy(opposition.knownThreats||[]),knownConditions:[`Fixed ${difficulty}-skull opposition`,`Balanced for three healthy level-${difficulty} companions`],rumors:copy(story.rumors||[]),journey:story.journey||`A measured route through ${theme.name}.`,chance:difficulty<=2?"low":"normal",randomEncounters:copy(opposition.randomEncounters||[]),tags:[theme.id,"procedural",`${difficulty}-skull`],objectiveReturnText:`The destination is reached. The company turns home through ${theme.name}.`,difficulty:["","Gentle","Steady","Demanding","Perilous","Heroic"][difficulty],riskExplanation:"Difficulty is fixed. Smaller, injured, or underleveled parties face greater risk; paid boons are included in the warning preview and never strengthen enemies.",battleback:theme.background,battlebackFolder:"pictures",intendedLevel:difficulty,skulls:difficulty,encounterTier:difficulty,balanceVersion:BALANCE_VERSION,generatorVersion:GENERATOR_VERSION,generatorSeed:seed,participationXp:participation,victoryBonusXp:victoryBonus,encounterTuning,sourceIngredients:{opposition:opposition.id||null,narrative:story.id||null,theme:theme.id}};
+        const recommendedLevels=`${difficulty*2-1}–${difficulty*2}`;
+        journey.intendedLevel=difficulty*2;
+        journey.knownConditions[1]=`Balanced for three healthy level ${recommendedLevels} companions`;
+        journey.riskExplanation=`Difficulty ${difficulty} is balanced for levels ${recommendedLevels}. Smaller, injured, or underlevelled parties face greater risk; boons never strengthen enemies.`;
         journey.planFingerprint=JSON.stringify([durationMinutes,difficulty,theme.id,journey.enemyIds,journey.name,gold,arcana]);return journey;
     }
-    function upgradeSelectionError(state,ids){if(!Array.isArray(ids)||ids.length>3)return "Choose no more than three expedition upgrades.";if(new Set(ids).size!==ids.length)return "Each expedition upgrade may be selected only once.";if(ids.some(id=>!EXPEDITION_UPGRADES[id]))return "Unknown expedition upgrade.";const cost=ids.reduce((n,id)=>n+EXPEDITION_UPGRADES[id].cost,0);return state.gold<cost?`Requires ${cost} Gold; treasury has ${state.gold}.`:"";}
+    function upgradeSelectionError(state,ids){if(!Array.isArray(ids))return "Invalid expedition equipment selection.";if(new Set(ids).size!==ids.length)return "Each expedition item may be selected only once.";if(ids.some(id=>!EXPEDITION_UPGRADES[id]))return "Unknown expedition item.";const cost=ids.reduce((n,id)=>n+EXPEDITION_UPGRADES[id].cost,0);return state.gold<cost?`Requires ${cost} Gold; treasury has ${state.gold}.`:"";}
     function applyExpeditionUpgrades(team,ids){for(const member of team)for(const id of ids){const u=EXPEDITION_UPGRADES[id];if(u?.armor){member.classArmor=(member.classArmor||0)+u.armor;member.classArmorMax=(member.classArmorMax||0)+u.armor;member.armor=(member.armor||0)+u.armor;member.maxArmor=(member.maxArmor||0)+u.armor;}if(u?.ward){member.innateWard=(member.innateWard||0)+u.ward;member.innateWardMax=(member.innateWardMax||0)+u.ward;}if(u?.hp){member.hp=(member.hp||member.maxHealth||1)+u.hp;member.health=(member.health||1)+u.hp;member.maxHealth=(member.maxHealth||1)+u.hp;}if(u?.damage)member.damage=(member.damage||1)+u.damage;}return team;}
     function participationXpFor(trip,elapsedMs=trip.elapsedMs,completed=false){const minutes=Math.max(0,Number(elapsedMs)||0)/60000,mult=XP_DIFFICULTY_MULTIPLIERS[Math.max(1,Math.min(5,trip.skulls||1))]||1;return Math.floor(minutes*mult)+(completed?Math.max(0,Math.floor(Number(trip.victoryBonusXp)||0)):0);}
 
-    function questDangerEstimate(state,quest,content,BattleClass,partyIds=state.teamIds){
+    function questDangerEstimate(state,quest,content,BattleClass,partyIds=state.teamIds,upgradeIds=[]){
         if(quest.combatMode==="none"||quest.durationMinutes===1)return {dangerous:false,samples:0,wipes:0};
         const preview=copy(state),ids=Array.isArray(partyIds)?partyIds.slice():[];if(ids.length<MIN_PARTY_SIZE||ids.length>MAX_PARTY_SIZE)return {dangerous:false,samples:0,wipes:0};
         let objectiveStage={enemyIds:quest.enemyIds||[]};
         if(quest.balanceVersion>=33){const plan=encounterPlan({...quest,id:'risk-preview',questId:quest.id,totalDurationMs:quest.durationMinutes*60000,stages:[{...objectiveStage,type:'battle',mainQuest:true}]});objectiveStage=plan.find(p=>p.stage.mainQuest)?.stage||objectiveStage;}
-        const team=prepareTeam(preview,ids);for(const n of team){n.classArmor=Math.min(n.classArmorMax,(n.classArmor||0)+(n.armorRecovery||0));n.armor=n.classArmor+equipmentArmor(n)+(n.ritualArmor||0);n.innateWard=Math.min(n.innateWardMax,n.innateWard+2);if(state.ritualEffects?.oath_of_vanguard===n.id)n.armor++;}const enemies=encounterEnemies(objectiveStage,content,quest);if(!enemies.length)return {dangerous:false,samples:0,wipes:0};
+        const team=prepareTeam(preview,ids);applyExpeditionUpgrades(team,upgradeIds);for(const n of team){n.classArmor=Math.min(n.classArmorMax,(n.classArmor||0)+(n.armorRecovery||0));n.armor=n.classArmor+equipmentArmor(n)+(n.ritualArmor||0);n.innateWard=Math.min(n.innateWardMax,n.innateWard+2);if(state.ritualEffects?.oath_of_vanguard===n.id)n.armor++;}const enemies=encounterEnemies(objectiveStage,content,quest);if(!enemies.length)return {dangerous:false,samples:0,wipes:0};
         let wipes=0,losses=0;const samples=24;
         for(let seed=1;seed<=samples;seed++){const b=new BattleClass(copy(team),copy(enemies),{seed:seed*7919,maxActions:180,ritualEffects:copy(state.ritualEffects||{})});b._waves=(objectiveStage.waves||[]).slice(1).map((enemyIds,index)=>encounterEnemies({...objectiveStage,enemyIds,reinforcementWave:objectiveStage.reinforcementWaveIndex===index+1},content,quest));while(b.snapshot().status==="running")b.step();const snap=b.snapshot();if(snap.status!=="victory")losses++;if(snap.fighters.filter(n=>n.side==="player").every(n=>n.health<=0))wipes++;}
-        const underlevel=team.reduce((n,x)=>n+x.level,0)/team.length<dangerRating(quest);
-        return {dangerous:underlevel||losses>=samples*.5,wipes,samples,losses,allSamplesWiped:wipes===samples};
+        const underlevel=team.reduce((n,x)=>n+x.level,0)/team.length<(dangerRating(quest)*2-1);
+        return {dangerous:underlevel||losses>=samples*.5,wipes,samples,losses,allSamplesWiped:wipes===samples,upgradeIds:copy(upgradeIds)};
     }
     const ritualEntries = () => Object.entries(RITUALS).sort((a,b)=>a[1].unlockCost-b[1].unlockCost||a[1].castCost-b[1].castCost);
     const api = { GENERATOR_VERSION,BALANCE_VERSION,XP_THRESHOLDS,XP_DIFFICULTY_MULTIPLIERS,EXPEDITION_UPGRADES,JOURNEY_THEMES,generateJourney,upgradeSelectionError,applyExpeditionUpgrades,participationXpFor, autoAssignCampJobs, bestCampJob, campJobYield, encounterTier, ritualEntries, questDangerEstimate, itemBoosts, requestRecall, classLabel, normalizeUndead, startCampTimer, tickCampTimer, consumeCampBell, replaceCreated, dangerRating, dangerLabel, encounterPlan, finishBattlePlayback, repairGear, woundLines, powerTrack, SESSION_TIMING, walkingPortrait, recruitCreated, primaryReward, portraitOptions,createStartingParty,restoreReturnArmor, encounterEnemies,namePools,identityLabel,questNarrative,xpFieldNote, CLASS_NAMES, authoredDifficulty,sessionRecap,retreatAssessment,beginAutomaticRetreat,endSessionEarly, nameError, randomName, classStats, ALL_CLASSES, LEGACY_CLASSES, compatible, itemSummary, sellItem, beginStartingRoster, confirmStartingRoster, queueEventCue, consumeEventCues, expeditionLine, FOUNDER_IDS, activeSlotIds, activeRoster, vacantSlots, graveyard, replacementCandidates, consumeCompletionAlert, fixedRoster, normalizeFocusRoster, resultSnapshot, dismissQuestResults, availableEquipmentArmor, gearIds, armorGearIds, shopIds, normalizeInventory, returnSlottedEquipment, rating, assignTeam, selectTeam, SEXES, RACES, MIN_PARTY_SIZE, MAX_PARTY_SIZE, MAX_ROSTER_SIZE, LEVEL_CAP, QUEST_HISTORY_LIMIT, SETTLED_TRIP_LIMIT, BADGE_DEFINITIONS, DEFAULT_XP_RULES, SCHEMA_VERSION, TRAIT_DEFINITIONS, EXPEDITION_ORDERS, EQUIPMENT_SLOTS, DODGE_TIERS, MAX_EXPEDITION_WAIT_SECONDS, CAMP_JOBS, EXPEDITION_DURATIONS, MAX_SESSION_TICK_MS, ENCOUNTER_CHANCES, RANDOM_BATTLE_ENEMIES, RANDOM_OPPORTUNITY_EVENTS, PRESENTATION_LEVELS, WOUND_DEFINITIONS, EARNED_TRAITS, RITUALS,
