@@ -2142,7 +2142,7 @@
     function restoreBetweenBattles(npc){ensureLife(npc);npc.innateWard=Math.min(npc.innateWardMax,npc.innateWard+2);return npc;}
     function ensureCampJobs(state){
         const source=state.campJobs&&typeof state.campJobs==="object"?state.campJobs:{};state.campJobs={};
-        for(const npc of state.roster||[])if(living(npc)&&!npc.retired)state.campJobs[npc.id]=CAMP_JOBS.includes(source[npc.id])?source[npc.id]:"idle";
+        for(const npc of state.roster||[])if(living(npc)&&!npc.retired)state.campJobs[npc.id]=CAMP_JOBS.includes(source[npc.id])?source[npc.id]:bestCampJob(npc);
         return state.campJobs;
     }
     function campJobFor(state,id){ensureCampJobs(state);return state.campJobs[id]||null;}
@@ -2151,7 +2151,7 @@
     function autoAssignCampJobs(state){
         ensureCampJobs(state);const assignments=[];
         for(const npc of activeRoster(state))if(!isUnavailable(state,npc.id)){const job=bestCampJob(npc);assignCampJob(state,npc.id,job);assignments.push({id:npc.id,job,yield:campJobYield(npc,job)});}
-        return{ok:true,assignments,message:assignments.length?`Auto-assigned ${assignments.length} companions to their best jobs (2 resources per minute). Adventurers away keep their assignments.`:"No companions are available at camp."};
+        return{ok:true,assignments,message:assignments.length?`Auto-assigned ${assignments.length} companions to their best jobs (2 resources per 2 minutes). Adventurers away keep their assignments.`:"No companions are available at camp."};
     }
     function assignCampJob(state,id,job){
         ensureCampJobs(state);const npc=(state.roster||[]).find(entry=>entry.id===id);
