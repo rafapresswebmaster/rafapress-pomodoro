@@ -3527,7 +3527,7 @@
             this._choices.setHandler("ritual",this.choose.bind(this)); this._choices.setHandler("target",this.cast.bind(this));this._choices.setHandler("replace",this.chooseReplacement.bind(this));
             this._choices.setHandler("back",()=>this._mode==="ritual"?this.popScene():this.back()); this._choices.setHandler("cancel",()=>this._mode==="ritual"?this.popScene():this.back());
             this._choices.onSelectionChange=this.refreshDetails.bind(this);this.addWindow(this._choices);
-            this._footer=this.footer(["Magical Artifacts permanently unlock rituals. Arcana pays for each activation.","Artifacts drop only from successful quests; longer and harder quests improve the odds."]);this.refreshDetails();
+            this._footer=this.footer(["Choose a ritual to view its effect or activate it.","Locked rituals are revealed in order."]);this.refreshDetails();
         }
         start(){super.start();this.mountAltarPointerBridge();}
         mountAltarPointerBridge(){
@@ -3561,17 +3561,16 @@
         chooseReplacement(){const id=this._choices.currentExt(),npc=findNpc(id),cancel=()=>{closeManagerDialog();this._choices.activate();};managerModal(`Replace ${npc.name}?`,[`${progression.classLabel(npc)} / Level ${npc.level}`,"All gear returns to inventory. The companion is removed only after the final resurrection confirmation."],[{name:"Choose fallen companion",run:()=>{closeManagerDialog();this._replaceId=id;this._mode="target";this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshDetails();}},{name:"Cancel",run:cancel}],cancel);}
         cast(){const s=managerState(),id=this._choices.currentExt(),ritual=this._ritual,r=progression.RITUALS[ritual];if(r.target!=="fallen"){this.showResult(progression.ritualCast(s,ritual,id));return;}const npc=findNpc(id),old=this._replaceId?findNpc(this._replaceId):null,cancel=()=>{closeManagerDialog();this._choices.activate();};managerModal("Confirm resurrection",[old?`Remove ${old.name} (${progression.classLabel(old)}, L${old.level}) and return all their gear.`:"Use the empty party slot.",ritual==="reanimate"?`Return ${npc.name} as a Skeleton ${progression.classFor(npc).name}, L${npc.level}; cannot level up.`:`Return ${npc.name} at 1 HP with an injury.`,`${npc.permanentWounds.length} wounds and acquired powers are preserved. Cost: ${r.castCost} Arcana.`],[{name:"Confirm resurrection",run:()=>{const result=progression.ritualCast(s,ritual,id,{replaceId:this._replaceId,confirmed:true});closeManagerDialog();this._mode="ritual";this.showResult(result);}},{name:"Cancel",run:cancel}],cancel);}
         back(){this._mode="ritual";this._ritual=null;this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshDetails();}
-        showResult(result){result.ok?SoundManager.playOk():SoundManager.playBuzzer();this._header.setLines(["ALTAR",`Artifacts: ${managerState().magicalArtifacts||0} / Arcana: ${managerState().arcana||0}`]);this._choices.refresh();this._choices.activate();this._footer.setLines([result.message,"Unlock prices are paid once; activation costs are charged per successful use."]);this.refreshDetails();}
+        showResult(result){result.ok?SoundManager.playOk():SoundManager.playBuzzer();this._header.setLines(["ALTAR",`Artifacts: ${managerState().magicalArtifacts||0} / Arcana: ${managerState().arcana||0}`]);this._choices.refresh();this._choices.activate();this._footer.setLines([result.message]);this.refreshDetails();}
         refreshDetails(){
-            this._details.contents.clear();let id=this._mode==="ritual"?this._choices.currentExt():this._ritual;if(id==="__unlock_next"){const p=this._details,w=p.innerWidth;p.line("A VEILED RITUAL",0,CozyUI.colors.honey,24);CozyUI.icon(p.contents,"altar",w/2-36,62,72,"#8f91a0");CozyUI.wrap(p,"The altar keeps future rites secret. Spend Artifacts to reveal and permanently unlock the next ritual in the sequence.",16,170,w-32,17,"#e6d7b5",5,24);return;}const r=progression.RITUALS[id];if(!r)return;
+            this._details.contents.clear();let id=this._mode==="ritual"?this._choices.currentExt():this._ritual;if(id==="__unlock_next"){const p=this._details,w=p.innerWidth;p.line("A VEILED RITUAL",0,CozyUI.colors.honey,24);CozyUI.icon(p.contents,"altar",w/2-36,62,72,"#8f91a0");CozyUI.wrap(p,"Unlock the next ritual to reveal it.",16,170,w-32,17,"#e6d7b5",3,24);return;}const r=progression.RITUALS[id];if(!r)return;
             const p=this._details,w=p.innerWidth,unlocked=managerState().ritualsUnlocked[id];p.line(r.name,0,CozyUI.colors.honey,24);
             const sigilKind={protection_ward:"ward",healing_ritual:"hp",greed_prayer:"coin",reanimate:"graveyard",battle_hymn:"battle",first_strike:"difficulty",familiars_vigil:"roster",arcane_rebate:"arcana",veil_of_mercy:"wound"}[id]||"altar";
             CozyUI.ellipse(p.contents,w-50,56,38,38,unlocked?"#184f46aa":"#242d4dcc");CozyUI.icon(p.contents,sigilKind,w-68,38,36,unlocked?"#8ff0bf":"#8f91a0");
-            CozyUI.text(p,`Unlock: ${r.unlockCost} Magical Artifact${r.unlockCost===1?"":"s"}`,8,40,w-16,16,"#d6c6a6");
-            CozyUI.text(p,`Activation: ${r.castCost} Arcana`,8,62,w-16,16,"#c5ade4");
-            p.badge(unlocked?"UNLOCKED":"LOCKED",8,94,124,unlocked?"#a6c797":"#c6b99d");
-            CozyUI.wrap(p,unlocked?"This ritual is permanently available. Arcana is charged only when an activation succeeds.":"Spend Magical Artifacts to unlock permanently. Find them randomly after successful quests.",16,128,w-32,16,"#e6d7b5",3,22);
-            CozyUI.wrap(p,r.description,16,208,w-32,16,"#d7ccb2",4,22);
+            CozyUI.text(p,`${r.castCost} Arcana to activate`,8,46,w-16,16,"#c5ade4");
+            p.badge(unlocked?"UNLOCKED":"LOCKED",8,78,124,unlocked?"#a6c797":"#c6b99d");
+            CozyUI.wrap(p,unlocked?"Ready to activate.":"Unlock this ritual to use it.",16,116,w-32,16,"#e6d7b5",2,22);
+            CozyUI.wrap(p,r.description,16,174,w-32,17,"#d7ccb2",4,23);
             if(managerState().ritualEffects?.[id])CozyUI.text(p,"PENDING / already activated",16,300,w-32,15,"#a6c797","left",22);
         }
         terminate(){document.removeEventListener("pointermove",this._altarPointerMove,true);document.removeEventListener("pointerdown",this._altarPointerDown,true);document.removeEventListener("pointerup",this._altarPointerUp,true);document.removeEventListener("pointercancel",this._altarPointerCancel,true);document.removeEventListener("wheel",this._altarWheel,true);super.terminate();}

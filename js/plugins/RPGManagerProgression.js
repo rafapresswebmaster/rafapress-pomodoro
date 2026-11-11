@@ -2077,17 +2077,17 @@
     ]);
     const EARNED_TRAITS = [];
     const RITUALS = Object.freeze({
-        protection_ward:{name:"Warding",unlockCost:2,castCost:80,level:4,description:"One shared party Ward absorbs one entire hit, then disappears. An unused Ward remains until hit."},
-        healing_ritual:{name:"Healing",unlockCost:3,castCost:120,level:5,target:"living",description:"Remove one permanent wound and its injury stack from a chosen adventurer. Does not restore HP."},
-        greed_prayer:{name:"Greed Prayer",unlockCost:2,castCost:100,level:4,description:"Pay 100 Arcana to receive 100 coins immediately."},
-        reanimate:{name:"Reanimate",unlockCost:6,castCost:450,level:5,target:"fallen",description:"Return a fallen companion as their skeleton appearance, with their living health, armor and ward. Heals normally; cannot level. Death permanently bars further reanimation."},
-        fortunes_favor:{name:"Fortune's Favor",unlockCost:1,castCost:40,level:2,description:"Next quest: +25% coin reward, rounded down. No Ward requirement or penalty."},
-        battle_hymn:{name:"Battle Hymn",unlockCost:2,castCost:60,level:3,description:"Party attacks deal +1 damage throughout the next battle. Remains pending until a battle occurs."},
-        veil_of_mercy:{name:"Veil of Mercy",unlockCost:5,castCost:260,level:5,description:"Once next quest, the first adventurer who would die instead survives at 1 HP with a serious permanent wound."},
-        last_rites:{name:"Last Rites",unlockCost:8,castCost:650,level:5,target:"fallen",description:"Return one fallen adventurer at 1 HP with an injury. Reanimation exhaustion remains permanent."},
-        oath_of_vanguard:{name:"Oath of the Vanguard",unlockCost:2,castCost:60,level:3,target:"living",description:"One chosen adventurer gains +1 Armor for the next quest. No targeting or party-protection effect."},
-        familiars_vigil:{name:"Familiar's Vigil",unlockCost:4,castCost:110,level:5,description:"Next quest, a summoned spirit absorbs the first hit aimed at any party member, then disappears."},
-        quickening_prayer:{name:"Quickening Prayer",unlockCost:4,castCost:180,level:5,description:"Next quest: each adventurer has a seeded 25% chance per battle to use their special twice. Never more than two uses; no extra ability unlocks."}
+        protection_ward:{name:"Warding",unlockCost:2,castCost:80,level:4,description:"Blocks the next hit against the party."},
+        healing_ritual:{name:"Healing",unlockCost:3,castCost:120,level:5,target:"living",description:"Removes one permanent wound and injury stack. Does not restore HP."},
+        greed_prayer:{name:"Greed Prayer",unlockCost:2,castCost:100,level:4,description:"Gain 100 Gold immediately."},
+        reanimate:{name:"Reanimate",unlockCost:6,castCost:450,level:5,target:"fallen",description:"Returns a fallen companion as a skeleton. They heal normally but cannot level or be reanimated again."},
+        fortunes_favor:{name:"Fortune's Favor",unlockCost:1,castCost:40,level:2,description:"The next quest awards 25% more Gold."},
+        battle_hymn:{name:"Battle Hymn",unlockCost:2,castCost:60,level:3,description:"Party attacks deal +1 damage in the next battle."},
+        veil_of_mercy:{name:"Veil of Mercy",unlockCost:5,castCost:260,level:5,description:"Once next quest, a fatal blow leaves its target at 1 HP with a permanent wound."},
+        last_rites:{name:"Last Rites",unlockCost:8,castCost:650,level:5,target:"fallen",description:"Returns one fallen adventurer at 1 HP with an injury."},
+        oath_of_vanguard:{name:"Oath of the Vanguard",unlockCost:2,castCost:60,level:3,target:"living",description:"One adventurer gains +1 Armor for the next quest."},
+        familiars_vigil:{name:"Familiar's Vigil",unlockCost:4,castCost:110,level:5,description:"A spirit blocks the first party hit on the next quest."},
+        quickening_prayer:{name:"Quickening Prayer",unlockCost:4,castCost:180,level:5,description:"Next quest, each adventurer has a 25% chance per battle to use their special twice."}
     });
     function ritualUnlock(state,id){
         const r=RITUALS[id];if(!r)return{ok:false,message:"Unknown ritual."};
