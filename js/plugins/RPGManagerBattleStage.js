@@ -176,11 +176,19 @@
         const pages=Math.max(1,Math.ceil(lines.length/rows)),page=Math.min(pages-1,Math.floor(t*pages));
         lines.slice(page*rows,page*rows+rows).forEach((line,i)=>api.text(win,line,x,y+i*lineHeight,width,size,color,"left",lineHeight));
     }
+    function expeditionStatusText(trip,event={}){
+        if(trip.phase==="campfire")return "The party is camping.";
+        if(trip.phase==="return"||trip.wiped)return "The party is heading home.";
+        const text=String(event.text||trip.latestEvent||"");
+        if(/gold|arcana|artifact|treasure|reward|loot|cache|strongbox|pouch|coins?|discovery|found|finds?/i.test(text))return "Coin, Arcana, or an artifact has been found.";
+        if(["wave","attack","mortalIntent","result","defeat","deathSave"].includes(event.sourceType)||/enemy|enemies|tracks?|warning|danger|threat|encounter|nearby|ahead/i.test(text))return "There are signs of an enemy ahead.";
+        return "The party is heading out.";
+    }
     function annotation(api,win,trip,bottom,t){
         const b=win.contents,w=win.innerWidth,e=trip.presentationCurrent||{},outline=b.outlineWidth;b.outlineWidth=0;
         api.round(b,8,bottom+3,w-16,59,TOKENS.parchment,"#cbb86d",5);
         try{
-            pagedText(api,win,e.text||trip.latestEvent||"Your companions follow the trail.",17,bottom+7,w-34,18,24,2,t,/dies|damage|falls|Wounded|death/i.test(e.text||"")?"#9b2637":/heal|restor|Gold|Arcana/i.test(e.text||"")?"#216b43":TOKENS.ink);
+            pagedText(api,win,expeditionStatusText(trip,e),17,bottom+7,w-34,18,24,2,t,TOKENS.ink);
 
         }finally{b.outlineWidth=outline;}
     }
