@@ -1851,7 +1851,7 @@
 
         start() {
             super.start();
-            if(!this._hasTrip){this._commandWindow.hide();this._commandWindow.deactivate();}
+            if(!this._hasTrip){this._commandWindow?.hide();this._commandWindow?.deactivate();}
             SceneManager.clearStack();if(Scene_RPGHome.reopenSheet&&Scene_RPGHome.memberContext){Scene_RPGHome.reopenSheet=false;this.openMember(Scene_RPGHome.memberContext);}
         }
 
@@ -1962,7 +1962,7 @@
             }
             const step = this._steps[this._step++];
             if (step.check) {
-                this._dialogue.hide();
+                this._dialogue?.hide();
                 this._rollWindow = new Window_RPGD20(new Rectangle(214, 108, Graphics.boxWidth - 226, 344), step.check, step.title, () => {
                     this._rollWindow.parent?.removeChild(this._rollWindow); this._rollWindow.destroy(); this._rollWindow = null; this._dialogue.show(); this.showStep();
                 });
@@ -2506,7 +2506,7 @@
             this.addWindow(this._logScrollbar);
             this._historyButton = new Window_RPGHistoryButton(new Rectangle(12, Graphics.boxHeight - 76, 252, 68), () => this.toggleHistory());
             this.addWindow(this._historyButton);
-            this._logWindow.hide(); this._logScrollbar.hide();
+            this._logWindow?.hide(); this._logScrollbar?.hide();
             this._commandWindow = new Window_RPGBattleCommands(new Rectangle(270, Graphics.boxHeight - 76, Graphics.boxWidth - 282, 68));
             this._commandWindow._finishLabel = "Battle in progress";
             this._commandWindow.refresh();
@@ -2617,7 +2617,7 @@
                 this._largePortrait.setCharacter(beat.npc); this._largePortrait.show();
                 this._rollWindow = new Window_RPGD20(new Rectangle(188, 180, Graphics.boxWidth - 200, 370), beat.check, beat.title, () => {
                     this._rollWindow.parent?.removeChild(this._rollWindow); this._rollWindow.destroy(); this._rollWindow = null;
-                    this._narrativeActive = false; this._largePortrait.hide();
+                    this._narrativeActive = false; this._largePortrait?.hide();
                 });
                 this.addWindow(this._rollWindow); return;
             }
@@ -2625,7 +2625,7 @@
             this._largePortrait.setCharacter(beat.npc); this._largePortrait.show();
             this._narrativeDialogue.show();
             this._narrativeDialogue.setDialogue(beat.title, beat.text, () => {
-                this._narrativeActive = false; this._largePortrait.hide(); this._narrativeDialogue.hide();
+                this._narrativeActive = false; this._largePortrait?.hide(); this._narrativeDialogue?.hide();
             });
         }
 
@@ -2670,7 +2670,7 @@
             this._arena.visible = !this._historyOpen;
             this._strategies.visible = false;
             this._orderPanel.visible = !this._historyOpen;
-            if (this._historyOpen) { this._largePortrait.hide(); this._narrativeDialogue.hide(); }
+            if (this._historyOpen) { this._largePortrait?.hide(); this._narrativeDialogue?.hide(); }
             else if (this._narrativeActive) { this._largePortrait.show(); this._narrativeDialogue.show(); }
             this._logWindow.visible = this._historyOpen;
             this._logScrollbar.visible = this._historyOpen;
@@ -2926,7 +2926,7 @@
                 const message = trip?.phase === "choice" ? "Battle complete. Decide now whether the expedition continues." : trip ? "Battle complete. Return travel has begun; settlement occurs on arrival." : "No adventurer can return. The expedition settled immediately.";
                 this._header.line(this._teamKey ? message : "Battle complete. View the report for rewards and condition.", 32, ColorManager.normalColor(), 18);
                 if (trip?.phase === "choice") {
-                    this._commandWindow.hide(); this._commandWindow.deactivate(); this._management.show(); this._management.activate(); this._management.select(0);
+                    this._commandWindow?.hide(); this._commandWindow?.deactivate(); this._management?.show(); this._management?.activate(); this._management?.select(0);
                 }
                 window.RPGManager.lastBattle = { snapshot: state, events: JSON.parse(JSON.stringify(this._battle.events)) };
             }
@@ -3757,19 +3757,19 @@
         this._actionsWindow = new Window_RPGLoadActions(new Rectangle((Graphics.boxWidth - 320) / 2, 250, 320, 116));
         this._actionsWindow.setHandler("load", () => {
             this._actionsWindow.deactivate();
-            this._actionsWindow.hide();
+            this._actionsWindow?.hide();
             this.executeLoad(this._selectedFileId);
         });
         this._actionsWindow.setHandler("delete", this.requestDelete.bind(this));
         this._actionsWindow.setHandler("cancel", this.closeFileActions.bind(this));
-        this._actionsWindow.hide();
+        this._actionsWindow?.hide();
         this._actionsWindow.deactivate();
         this.addWindow(this._actionsWindow);
         this._deleteConfirm = new Window_RPGDeleteConfirm(new Rectangle((Graphics.boxWidth - 320) / 2, 250, 320, 116));
         this._deleteConfirm.setHandler("no", this.cancelDelete.bind(this));
         this._deleteConfirm.setHandler("cancel", this.cancelDelete.bind(this));
         this._deleteConfirm.setHandler("yes", this.deleteSelectedFile.bind(this));
-        this._deleteConfirm.hide();
+        this._deleteConfirm?.hide();
         this._deleteConfirm.deactivate();
         this.addWindow(this._deleteConfirm);
         if (this._cancelButton) this._cancelButton.setClickHandler(this.backFromLoad.bind(this));
@@ -3791,7 +3791,7 @@
         else this.popScene();
     };
     Scene_Load.prototype.closeFileActions = function() {
-        this._actionsWindow.hide();
+        this._actionsWindow?.hide();
         this._actionsWindow.deactivate();
         this._listWindow.activate();
         this._helpWindow.setText(this.helpWindowText());
@@ -3800,7 +3800,7 @@
         const id = this._selectedFileId;
         if (!DataManager.savefileInfo(id) || this._deleteBusy) return;
         this._deleteId = id;
-        this._actionsWindow.hide();
+        this._actionsWindow?.hide();
         this._actionsWindow.deactivate();
         this._helpWindow.setText(`Delete File ${id}: are you sure?`);
         this._deleteConfirm.show();
@@ -3809,7 +3809,7 @@
     };
     Scene_Load.prototype.cancelDelete = function() {
         this._deleteId = null;
-        this._deleteConfirm.hide();
+        this._deleteConfirm?.hide();
         this._deleteConfirm.deactivate();
         this._actionsWindow.show();
         this._actionsWindow.selectSymbol("delete");
@@ -3825,13 +3825,13 @@
             await StorageManager.remove(DataManager.makeSavename(id));
             delete DataManager._globalInfo[id];
             await StorageManager.saveObject("global", DataManager._globalInfo);
-            this._deleteConfirm.hide();
+            this._deleteConfirm?.hide();
             this._deleteId = null;
             this.closeFileActions();
             this._listWindow.refresh();
             this._helpWindow.setText(`File ${id} deleted. Select another file or go back.`);
         } catch (error) {
-            this._deleteConfirm.hide();
+            this._deleteConfirm?.hide();
             this._deleteId = null;
             this.closeFileActions();
             this._listWindow.refresh();
@@ -3857,19 +3857,26 @@
 
     // New Game alone opens starting selection; existing loads keep their established party.
     Scene_Title.prototype.startConfirmedNewGame = function() {
+        if(this._newGameTransitioning)return;
+        this._newGameTransitioning=true;
+        closeManagerDialog();
+        this._titleMouseMenu?.querySelectorAll("button").forEach(button=>button.disabled=true);
         DataManager.setupNewGame();
-        progression.beginStartingRoster(managerState(),$dataRPGManagerRoster);
-        this._commandWindow.close();
+        const result=progression.beginStartingRoster(managerState(),$dataRPGManagerRoster);
+        if(!result.ok){this._newGameTransitioning=false;throw new Error(result.message||"Could not prepare the starting roster.");}
+        this._commandWindow?.close();
+        this._commandWindow?.deactivate();
         this.fadeOutAll();
         SceneManager.goto(Scene_RPGStartingRoster);
     };
     Scene_Title.prototype.commandNewGame = function() {
+        if(this._newGameTransitioning||managerDialog)return;
         const hasCampaign=!!DataManager.savefileInfo(MANAGER_SAVE_ID)&&DataManager.savefileExists(MANAGER_SAVE_ID);
         if(!hasCampaign){this.startConfirmedNewGame();return;}
-        this._commandWindow.deactivate();
-        const cancel=()=>{closeManagerDialog();this._commandWindow.activate();};
+        this._commandWindow?.deactivate();
+        const cancel=()=>{closeManagerDialog();this._commandWindow?.activate();};
         const modal=managerModal("Replace existing campaign?",["Starting a New Game permanently deletes the current campaign save.","This cannot be undone. Continue only if you want to begin again."],[{name:"Delete Save and Start New Game",run:async()=>{modal.buttons.forEach(button=>button.disabled=true);modal.error.textContent="Deleting the old campaign…";try{await StorageManager.remove(DataManager.makeSavename(MANAGER_SAVE_ID));delete DataManager._globalInfo[MANAGER_SAVE_ID];await StorageManager.saveObject("global",DataManager._globalInfo);closeManagerDialog();this.startConfirmedNewGame();}catch(error){modal.error.textContent=`Could not delete the old campaign: ${error.message||error}`;modal.buttons.forEach(button=>button.disabled=false);modal.buttons[1].focus();}}},{name:"Cancel",run:cancel}],cancel);
-        modal.buttons[1].focus();
+        modal.buttons[1]?.focus();
     };
     window.RPGManager.uiComponents = Object.freeze({ Window_RPGLargePortrait, Window_RPGDialogue });
 })();
