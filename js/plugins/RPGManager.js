@@ -117,6 +117,13 @@
     }
     const questBoonIconIndex=Object.freeze({reinforced_clothing:0,protective_charms:1,medical_supplies:2,sharpening_kit:3,emergency_supplies:4});
     function questBoonIconElement(id,size=46){const el=document.createElement("span"),index=questBoonIconIndex[id]??0;el.setAttribute("aria-hidden","true");el.style.cssText=`display:block;width:${size}px;height:${size}px;margin:0 auto 3px;background-image:url('img/pictures/ui/QuestBoonIcons16Bit_v1.png');background-repeat:no-repeat;background-size:${size*5}px ${size}px;background-position:-${index*size}px 0;image-rendering:pixelated`;return el;}
+    const ritualIconSheet=Bitmap.load("img/pictures/ui/AltarRitualIcons16Bit_v1.png");
+    const ritualIconIndex=Object.freeze({protection_ward:0,healing_ritual:1,greed_prayer:2,reanimate:3,fortunes_favor:4,battle_hymn:5,veil_of_mercy:6,last_rites:7,oath_of_vanguard:8,familiars_vigil:9,quickening_prayer:10,__unlock_next:11});
+    function drawRitualIcon(bitmap,id,x,y,size,locked=false){
+        if(!ritualIconSheet.isReady())return false;
+        const index=locked?11:(ritualIconIndex[id]??11),cellW=ritualIconSheet.width/4,cellH=ritualIconSheet.height/3;
+        bitmap.blt(ritualIconSheet,(index%4)*cellW,Math.floor(index/4)*cellH,cellW,cellH,x,y,size,size);return true;
+    }
     const MIN_TEAM_SIZE = progression.MIN_PARTY_SIZE || 1;
     const MAX_TEAM_SIZE = progression.MAX_PARTY_SIZE || 5;
     // The single presentation-speed knob. Simulation time/results never use it.
@@ -1340,6 +1347,15 @@
             const xpMax=progression.xpRequired(npc);CozyUI.text(this,xpMax?`XP ${npc.xp}/${xpMax}`:`LEVEL ${progression.LEVEL_CAP} / MAX`,115,56,w-123,13,"#b8cea5","left",18);this.contents.fillRect(115,78,w-130,3,"#5e6047");this.contents.fillRect(115,78,(w-130)*Math.min(1,npc.xp/Math.max(1,xpMax)),3,"#a6c797");
             CozyUI.text(this,npc.alive?(npc.injury||"Healthy / ready for adventure"):npc.reanimationExhausted?"FALLEN / permanently barred from reanimation":"FALLEN / remembered at the guild",115,85,w-123,12,npc.alive?"#b8cea5":"#e9afa1","left",17);
             this.rule(108);
+            if(!npc.alive){
+                const returned=npc.deathCircumstance?.returnedToCemetery,killer=npc.killedBy?.name||npc.deathCircumstance?.killedBy||"Unknown creature",quest=npc.deathCircumstance?.questName||npc.deathQuest||career.lastQuest?.questName||"an unrecorded quest";
+                CozyUI.text(this,"FINAL JOURNEY",8,116,w-16,14,"#e9afa1","left",20);
+                CozyUI.wrap(this,returned?"Returned to the cemetery when a fresh recruit joined.":`Killed by ${killer} during ${quest}.`,8,144,w-16,17,"#f4deb0",3,23);
+                CozyUI.text(this,`${career.questsCompleted} adventures / ${career.victories} victories / ${career.bossVictories} bosses`,8,226,w-16,14,"#e8c583");
+                CozyUI.text(this,`${career.kills} enemies defeated / ${career.damageDealt} damage dealt`,8,254,w-16,13,"#c6b99d");
+                CozyUI.wrap(this,npc.reanimationExhausted?"Their spirit has already returned once and cannot be reanimated again.":"Their memory remains in the Graveyard. Eligible altar rituals may return them.",8,298,w-16,14,"#c5ade4",3,20);
+                return;
+            }
             const leadership=["","Unproven","Steady","Capable","Strong","Exceptional"][npc.leadership]||"Unproven",traits=(npc.personalityTraits||[]).map(id=>progression.traitFor(id)?.name).filter(Boolean),descriptions=(npc.personalityTraits||[]).map(id=>progression.traitFor(id)?.description).filter(Boolean),baseDodge=Math.round(npc.dodgeChance*100);
             CozyUI.text(this,`Signature: ${progression.moveFor(npc)?.name||npc.signatureAttack} / ${npc.passiveTrait.name}`,8,116,w-16,14,"#c5ade4");
             CozyUI.text(this,`HP ${npc.health}/${npc.maxHealth} / Class Armor ${npc.classArmor}/${npc.classArmorMax} / Ward ${npc.innateWardMax}`,8,142,w-16,16,"#c6d5bc");
@@ -1402,7 +1418,8 @@
         }
 
         lineHeight() { return 28; }
-        itemHeight() { return 40; }
+        itemHeight() { return this._graveyard?54:40; }
+        isHoverEnabled(){return !this._graveyard||!mobilePointerLayout()?super.isHoverEnabled():false;}
         itemTextAlign() { return "left"; }
 
         resetFontSettings() {
@@ -1426,12 +1443,13 @@
                 this.addCommand(`Confirm Team (${this._draft.length}/5)`, "confirm", !validateTeam(this._draft));
             }
             if(!this._selecting)for(const slot of progression.vacantSlots(managerState()))this.addCommand(`Slot ${slot+1}: EMPTY · Recruit for free`,"tavern",true,slot);
+            if(this._graveyard)this._list=this._list.filter(entry=>entry.symbol!=="tavern");
             this.addCommand(this._selecting ? "Cancel Changes" : "Back to Home", "back");paginateCommands(this);
         }
 
         drawItem(index){
             const r=this.itemRect(index),entry=this._list[index],npc=entry.symbol==="npc"?findNpc(entry.ext):null;this.changePaintOpacity(this.isCommandEnabled(index));
-            if(npc){CozyUI.portraitFrame(this,npc,r.x+7,r.y+6,27);CozyUI.text(this,entry.name,r.x+44,r.y+1,r.width-50,16,"#f4e8cf","left",21);const prefix=`L${npc.level} / ${progression.identityLabel(npc)} / HP `,hp=`${npc.health}/${npc.maxHealth}`;CozyUI.text(this,prefix,r.x+44,r.y+23,r.width-50,11,"#bfb99b","left",15);CozyUI.text(this,hp,r.x+44+this.contents.measureTextWidth(prefix),r.y+23,r.width-50,11,npc.health<npc.maxHealth?"#ffe36e":"#bfb99b","left",15);}
+            if(npc){const portraitSize=this._graveyard?38:27,tx=r.x+(this._graveyard?53:44);CozyUI.portraitFrame(this,npc,r.x+7,r.y+6,portraitSize);CozyUI.text(this,entry.name,tx,r.y+1,r.width-(tx-r.x)-6,16,"#f4e8cf","left",21);if(this._graveyard){const returned=npc.deathCircumstance?.returnedToCemetery,killer=npc.killedBy?.name||npc.deathCircumstance?.killedBy||"Unknown creature";CozyUI.text(this,returned?`L${npc.level} / Returned to cemetery`:`L${npc.level} / Killed by ${killer}`,tx,r.y+27,r.width-(tx-r.x)-6,11,"#d8b8ad","left",17);}else{const prefix=`L${npc.level} / ${progression.identityLabel(npc)} / HP `,hp=`${npc.health}/${npc.maxHealth}`;CozyUI.text(this,prefix,tx,r.y+23,r.width-(tx-r.x)-6,11,"#bfb99b","left",15);CozyUI.text(this,hp,tx+this.contents.measureTextWidth(prefix),r.y+23,r.width-(tx-r.x)-6,11,npc.health<npc.maxHealth?"#ffe36e":"#bfb99b","left",15);}}
             else CozyUI.text(this,entry.name,r.x+9,r.y+5,r.width-18,15,"#e8c583","left",28);
             this.changePaintOpacity(true);
         }
@@ -3001,8 +3019,8 @@
                 this._detailsWindow.setNpc(findNpc(this._listWindow.currentExt()));
             }
             this._footer.setLines(this._graveyard ? [
-                "Deceased characters remain here after their slots are filled.",
-                "Supplies cannot revive them. Esc / Back to Home: return."
+                "Hover or use arrows to inspect. Wheel or swipe to scroll the memorial list.",
+                "Deceased companions remain here after their slots are filled. Esc / Back: return."
             ] : this._selecting ? [
                 "Enter / click: add or remove. Choose Confirm Team when ready.",
                 "Select 1-5 living adventurers. Esc / right-click: discard changes."
@@ -3075,7 +3093,7 @@
     }
     class Window_RPGChoices extends Window_Command {
         initialize(rect, entries, visualKind=null) { this._entries = entries;this._visualKind=visualKind; super.initialize(rect); }
-        itemHeight() { return this._fitRowHeight||(this._visualKind==="quests"?60:36); }
+        itemHeight() { return this._fitRowHeight||(this._visualKind==="quests"?60:this._visualKind==="rituals"?58:36); }
         isHoverEnabled() {
             // Keep the reviewed contract selected while the pointer travels to Start Quest.
             return this._visualKind!=="quests"&&super.isHoverEnabled();
@@ -3088,7 +3106,13 @@
         }
         drawItem(index){
             const r=this.itemRect(index),entry=this._list[index],enabled=this.isCommandEnabled(index);this.changePaintOpacity(enabled);
-            if(this._visualKind==="quests"&&entry.symbol==="quest"){
+            if(this._visualKind==="rituals"&&entry.symbol==="ritual"){
+                const id=entry.ext,ritual=id==="__unlock_next"?null:progression.RITUALS[id],locked=id==="__unlock_next",pending=!!managerState().ritualEffects?.[id];
+                CozyUI.round(this.contents,r.x+2,r.y+2,r.width-4,r.height-4,pending?"#294f55":locked?"#252e4e":"#304a78",this.index()===index?"#f0d58c":"#657ca5",6);
+                CozyUI.round(this.contents,r.x+7,r.y+7,44,44,"#172747",locked?"#6f7487":"#bfa65f",6);drawRitualIcon(this.contents,id,r.x+9,r.y+9,40,locked);
+                CozyUI.text(this,locked?"VEILED RITUAL":ritual.name,r.x+59,r.y+5,r.width-66,14,locked?"#aaaebd":"#fff0cf","left",19);
+                CozyUI.text(this,locked?entry.name.split(" / ").slice(1).join(" / "):`${ritual.castCost} Arcana${pending?"  /  PENDING":""}`,r.x+59,r.y+28,r.width-66,12,pending?"#9ce5b4":locked?"#999daf":"#cab8e4","left",17);
+            }else if(this._visualKind==="quests"&&entry.symbol==="quest"){
                 const q=findQuest(entry.ext);CozyUI.icon(this.contents,"quest",r.x+7,r.y+8,19,enabled?"#d7bd80":"#9b927e");
                 CozyUI.text(this,`${enabled?"":"LOCKED / "}${q.name}`,r.x+34,r.y+1,r.width-40,14,enabled?"#f4e8cf":"#b9b29c","left",18);
                 CozyUI.text(this,`${progression.dangerLabel(q)} / ${q.durationMinutes} min / 1-3 party / L${q.intendedLevel||1}`,r.x+34,r.y+20,r.width-40,13,{Easy:"#b9dcac",Normal:"#ffe4a1",Hard:"#ffadb7"}[progression.authoredDifficulty(q)],"left",18);
@@ -3523,7 +3547,7 @@
             super.create(); this._mode="ritual"; this._ritual=null;
             this._header=this.header("ALTAR",`Artifacts: ${managerState().magicalArtifacts||0} / Arcana: ${managerState().arcana||0}`);
             this._details=this.panel(new Rectangle(332,108,Graphics.boxWidth-344,360));
-            this._choices=new Window_RPGChoices(new Rectangle(12,108,308,416),()=>this.entries());
+            this._choices=new Window_RPGChoices(new Rectangle(12,108,308,416),()=>this.entries(),"rituals");
             this._choices.setHandler("ritual",this.choose.bind(this)); this._choices.setHandler("target",this.cast.bind(this));this._choices.setHandler("replace",this.chooseReplacement.bind(this));
             this._choices.setHandler("back",()=>this._mode==="ritual"?this.popScene():this.back()); this._choices.setHandler("cancel",()=>this._mode==="ritual"?this.popScene():this.back());
             this._choices.onSelectionChange=this.refreshDetails.bind(this);this.addWindow(this._choices);
@@ -3563,15 +3587,14 @@
         back(){this._mode="ritual";this._ritual=null;this._choices.refresh();this._choices.select(0);this._choices.activate();this.refreshDetails();}
         showResult(result){result.ok?SoundManager.playOk():SoundManager.playBuzzer();this._header.setLines(["ALTAR",`Artifacts: ${managerState().magicalArtifacts||0} / Arcana: ${managerState().arcana||0}`]);this._choices.refresh();this._choices.activate();this._footer.setLines([result.message]);this.refreshDetails();}
         refreshDetails(){
-            this._details.contents.clear();let id=this._mode==="ritual"?this._choices.currentExt():this._ritual;if(id==="__unlock_next"){const p=this._details,w=p.innerWidth;p.line("A VEILED RITUAL",0,CozyUI.colors.honey,24);CozyUI.icon(p.contents,"altar",w/2-36,62,72,"#8f91a0");CozyUI.wrap(p,"Unlock the next ritual to reveal it.",16,170,w-32,17,"#e6d7b5",3,24);return;}const r=progression.RITUALS[id];if(!r)return;
+            this._details.contents.clear();let id=this._mode==="ritual"?this._choices.currentExt():this._ritual;if(id==="__unlock_next"){const p=this._details,w=p.innerWidth;p.line("A VEILED RITUAL",0,CozyUI.colors.honey,24);CozyUI.round(p.contents,w/2-66,48,132,132,"#17213e","#727789",10);drawRitualIcon(p.contents,id,w/2-60,54,120,true);CozyUI.wrap(p,"Unlock the next ritual to reveal its artwork and effect.",16,202,w-32,17,"#e6d7b5",3,24);return;}const r=progression.RITUALS[id];if(!r)return;
             const p=this._details,w=p.innerWidth,unlocked=managerState().ritualsUnlocked[id];p.line(r.name,0,CozyUI.colors.honey,24);
-            const sigilKind={protection_ward:"ward",healing_ritual:"hp",greed_prayer:"coin",reanimate:"graveyard",battle_hymn:"battle",first_strike:"difficulty",familiars_vigil:"roster",arcane_rebate:"arcana",veil_of_mercy:"wound"}[id]||"altar";
-            CozyUI.ellipse(p.contents,w-50,56,38,38,unlocked?"#184f46aa":"#242d4dcc");CozyUI.icon(p.contents,sigilKind,w-68,38,36,unlocked?"#8ff0bf":"#8f91a0");
-            CozyUI.text(p,`${r.castCost} Arcana to activate`,8,46,w-16,16,"#c5ade4");
-            p.badge(unlocked?"UNLOCKED":"LOCKED",8,78,124,unlocked?"#a6c797":"#c6b99d");
-            CozyUI.wrap(p,unlocked?"Ready to activate.":"Unlock this ritual to use it.",16,116,w-32,16,"#e6d7b5",2,22);
-            CozyUI.wrap(p,r.description,16,174,w-32,17,"#d7ccb2",4,23);
-            if(managerState().ritualEffects?.[id])CozyUI.text(p,"PENDING / already activated",16,300,w-32,15,"#a6c797","left",22);
+            CozyUI.round(p.contents,8,42,126,126,"#172747",unlocked?"#d2b967":"#73788c",9);drawRitualIcon(p.contents,id,13,47,116,!unlocked);
+            CozyUI.text(p,`${r.castCost} Arcana to activate`,150,48,w-158,16,"#c5ade4");
+            p.badge(unlocked?"UNLOCKED":"LOCKED",150,78,Math.min(124,w-158),unlocked?"#a6c797":"#c6b99d");
+            CozyUI.wrap(p,unlocked?"Ready to activate.":"Unlock this ritual to use it.",150,116,w-158,16,"#e6d7b5",2,22);
+            CozyUI.wrap(p,r.description,16,190,w-32,17,"#d7ccb2",4,23);
+            if(managerState().ritualEffects?.[id])CozyUI.text(p,"PENDING / already activated",16,310,w-32,15,"#a6c797","left",22);
         }
         terminate(){document.removeEventListener("pointermove",this._altarPointerMove,true);document.removeEventListener("pointerdown",this._altarPointerDown,true);document.removeEventListener("pointerup",this._altarPointerUp,true);document.removeEventListener("pointercancel",this._altarPointerCancel,true);document.removeEventListener("wheel",this._altarWheel,true);super.terminate();}
     }

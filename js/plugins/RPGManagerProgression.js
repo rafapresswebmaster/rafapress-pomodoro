@@ -521,7 +521,7 @@
             })).map((npc, index) => { migrateIdentity(npc, true, random); ensureLife(npc, true); npc.history.joinedOrder = index + 1; return npc; }),
             gold: 100, arcana: 0, magicalArtifacts: 0, equipmentStock: Object.fromEntries(gearIds().map(id => [id, 0])),
             teams: { A: [], B: [] }, activeTeam: "A", teamBUnlocked: false,
-            orders: { A: "exploration", B: "exploration" }, ritualsUnlocked: {}, ritualUnlockVersion:2, ritualEffects:{}, campJobs: {}, campJobElapsed: {},
+            orders: { A: "exploration", B: "exploration" }, ritualsUnlocked: {}, ritualUnlockVersion:2, ritualEffects:{}, campJobs: {}, campJobElapsed: {},campJobAffinityVersion:2,
             teamIds: [], supplies: { potion: 6 }, bonds: {},
             questCount: 0, nextTripId: 1, activeQuest: null, trips: { A: null, B: null }, settledTrips: {},
             recruit: null, lastReport: null, questHistory: [], selectedQuestId: "restless_crypt",
@@ -626,6 +626,7 @@
             }
             if(!living(npc)) returnSlottedEquipment(state,npc);
         }
+        if(state.campJobAffinityVersion!==2){state.campJobs=state.campJobs&&typeof state.campJobs==="object"?state.campJobs:{};for(const npc of state.roster)if(["bard","druid"].includes(LEGACY_CLASSES[npc.classId]||npc.classId)&&living(npc)&&!npc.retired)state.campJobs[npc.id]="study";state.campJobAffinityVersion=2;}
         ensureCampJobs(state);
         state.teamIds = [...new Set(state.teamIds || [])].filter(id => living(state.roster.find(n => n.id === id))).slice(0, MAX_PARTY_SIZE);
         // Schema 20 collapses legacy A/B assignments into one expedition party.
@@ -1585,7 +1586,7 @@
             else if(event.type==="attack"){
                 const playerTarget=event.targetSide==="player",targetId=String(event.targetKey||"").replace(/^player:/,""),low=playerTarget&&event.targetHealth>0&&(event.targetHealth===1||event.targetHealth/Math.max(1,event.targetMaxHealth)<=.25),wardBreak=event.wardLoss>0&&event.targetWard===0,death=playerTarget&&event.targetHealth===0;
                 let importance="NORMAL",trigger=null;
-                if(death){importance="CRITICAL";trigger="ALLY_WOUNDED";}else if(low&&bonded.has(targetId)){importance="CRITICAL";trigger="BOND_ALLY_DANGER";}else if(low){importance="CRITICAL";trigger="LOW_HP";}else if(event.mortal||(boss&&event.side==="enemy")){importance="BOSS";}else if(event.kind==="signature"){importance="SIGNATURE";trigger="SIGNATURE";}else if(wardBreak){importance="DANGEROUS";trigger="WARD_BREAKS";}else if(event.armorLoss>0){importance="INTERESTING";trigger="ARMOR_ABSORBS";}else if(event.missed){importance="INTERESTING";trigger="DODGE";}else if(playerTarget)trigger="ALLY_TARGETED";
+                if(death){importance="CRITICAL";trigger="ALLY_WOUNDED";}else if(low&&bonded.has(targetId)){importance="CRITICAL";trigger="BOND_ALLY_DANGER";}else if(low){importance="CRITICAL";trigger="LOW_HP";}else if(event.mortal||(boss&&event.side==="enemy")){importance="BOSS";}else if(["signature","special"].includes(event.kind)){importance="SIGNATURE";trigger="SIGNATURE";}else if(wardBreak){importance="DANGEROUS";trigger="WARD_BREAKS";}else if(event.armorLoss>0){importance="INTERESTING";trigger="ARMOR_ABSORBS";}else if(event.missed){importance="INTERESTING";trigger="DODGE";}else if(playerTarget)trigger="ALLY_TARGETED";
                 const losses=[event.wardLoss?`${event.wardLoss} Ward absorbed`:null,event.armorLoss?`${event.armorLoss} Armor absorbed`:null,event.damage?`${event.damage} HP damage`:null].filter(Boolean);
                 const outcome=event.missed?"dodged / missed":event.ritualBlocked?"absorbed by the altar's protection":losses.join(", ")||"has no effect";
                 push(importance,`${event.actorName} targets ${event.targetName} with ${event.attackName}${event.criticalHit?" (CRITICAL x2)":""}: ${outcome}.${event.effectText?` ${event.effectText}`:""}`,event,trigger,{effectText:event.effectText||null,action:event.attackName,criticalHit:!!event.criticalHit,missed:!!event.missed,wardLoss:event.wardLoss||0,armorLoss:event.armorLoss||0,damage:event.damage||0});
@@ -1662,7 +1663,7 @@
                 if(trip.balanceVersion>=32&&source.combatProfile){
                     const p=source.combatProfile,rank=rating-3;
                     e.level=rating;
-                    e.health=Math.max(1,p.hp+rank+(rating>=3?2:0)+(rating>=6?rating-5:0)+(!patrol&&rating>=3?Math.max(0,3-(stage.totalEnemyCount||ids.length))*2:0));
+                    e.health=Math.max(1,p.hp+rank+(rating>=4?1:0)+(rating>=6?rating-5:0)+(!patrol&&rating>=4?Math.max(0,3-(stage.totalEnemyCount||ids.length))*2:0));
                     e.armor=Math.max(0,p.armor+Math.floor(rank/2));
                     e.innateWard=Math.max(0,p.ward+(p.ward?Math.floor(rank/3):0));
                     e.damage=Math.max(1,p.damage+(rating>=3?1:0)+(rating>=7?1:0));
@@ -1740,6 +1741,8 @@
                 presentation[0].fighters=copy(initialFighters).map(f=>({...f,ward:(f.innateWard||0)+(f.temporaryWard||0)}));
             }
             for(const loss of (trip.gearLosses||[]).slice(gearLossCount))presentation.push({kind:"battle",importance:"DANGEROUS",sourceType:"gearBroken",text:loss.text,holdMs:4000});
+            const moreBattles=(trip.encounterPlan||[]).some(next=>!next.done&&next.stage?.type==="battle");
+            if(snapshot.status==="victory"&&moreBattles)presentation.push({schema:1,kind:"travel",importance:"TRAVEL",sourceType:"journeyContinue",text:"The party continues its journey.",holdMs:3200,color:"#f3e5c7"});
             for(const event of presentation)event.bossEncounter=bossEncounter;
             trip.lastBattleMeasuredMs=presentation.reduce((sum,e)=>sum+presentationDelay(e,"standard",content?.presentation),0);
             trip.maxBattleMeasuredMs=Math.max(trip.maxBattleMeasuredMs||0,trip.lastBattleMeasuredMs);
@@ -2146,7 +2149,7 @@
         return state.campJobs;
     }
     function campJobFor(state,id){ensureCampJobs(state);return state.campJobs[id]||null;}
-    function bestCampJob(npc){const id=LEGACY_CLASSES[npc.classId]||npc.classId;if(id==="druid")return"work";if(["mage","cleric","bard"].includes(id))return"study";return"work";}
+    function bestCampJob(npc){const id=LEGACY_CLASSES[npc.classId]||npc.classId;if(["mage","cleric","bard","druid"].includes(id))return"study";return"work";}
     function campJobYield(npc,job){return job==="idle"?0:job===bestCampJob(npc)?2:1;}
     function autoAssignCampJobs(state){
         ensureCampJobs(state);const assignments=[];
@@ -2190,6 +2193,16 @@
     function consumeCampBell(state){if(!state.campTimer?.pendingBell)return false;state.campTimer.pendingBell=false;return true;}
     function removeCompanion(state,id){
         const error=dismissalError(state,id);if(error)return{ok:false,message:error};
+        const npc=state.roster.find(n=>n.id===id);
+        if(npc?.reanimated){
+            const result=killAdventurer(state,id,{reason:"Returned to the cemetery",questName:"Fresh recruit replacement"});if(!result.ok)return result;
+            npc.deathQuest="Fresh recruit replacement";
+            npc.deathCircumstance={questId:null,questName:"Fresh recruit replacement",killedBy:null,returnedToCemetery:true};
+            npc.retiredReason="returned_to_cemetery";
+            delete state.campJobs?.[id];delete state.campJobElapsed?.[id];
+            for(const key of Object.keys(state.bonds||{}))if(key.split("|").includes(id))delete state.bonds[key];
+            normalizeFocusRoster(state);return{...result,npc:copy(npc),returnedToCemetery:true,message:`${npc.name} returned to the cemetery.`};
+        }
         const result=dismissAdventurer(state,id,true);if(!result.ok)return result;
         state.roster=state.roster.filter(n=>n.id!==id);delete state.campJobs?.[id];delete state.campJobElapsed?.[id];
         for(const key of Object.keys(state.bonds||{}))if(key.split("|").includes(id))delete state.bonds[key];
@@ -2199,7 +2212,7 @@
         if(!confirmed)return{ok:false,confirmationRequired:true,message:"Confirm replacing this companion; their gear is returned."};
         const staged=copy(state),removed=removeCompanion(staged,id);if(!removed.ok)return removed;
         const hired=recruitCreated(staged,draft);if(!hired.ok)return hired;
-        for(const key of Object.keys(state))delete state[key];Object.assign(state,staged);return{...hired,message:`Replaced ${removed.npc.name}; all equipment returned to inventory.`};
+        for(const key of Object.keys(state))delete state[key];Object.assign(state,staged);return{...hired,message:removed.returnedToCemetery?`${removed.npc.name} returned to the cemetery; the fresh recruit joined the party.`:`Replaced ${removed.npc.name}; all equipment returned to inventory.`};
     }
     function ritualCast(state,id,targetId,options=null){
         const r=RITUALS[id],npc=state.roster.find(n=>n.id===targetId);
@@ -2244,7 +2257,7 @@
         return{ok:true,message:`${r.name} performed.`};
     }
 
-    const GENERATOR_VERSION=3,BALANCE_VERSION=36;
+    const GENERATOR_VERSION=4,BALANCE_VERSION=37;
     const EXPEDITION_UPGRADES=Object.freeze({
         reinforced_clothing:Object.freeze({name:"Reinforced Clothing",cost:18,effect:"+1 Armor to every companion for this expedition",armor:1}),
         protective_charms:Object.freeze({name:"Protective Charms",cost:16,effect:"+1 ordinary Ward to every companion for this expedition",ward:1}),
@@ -2270,8 +2283,10 @@
         const oppositionChoices=sources.length>1?sources.filter(q=>(q.id||null)!==options.excludeOppositionId):sources,opposition=oppositionChoices[seededIndex(seed,"opposition",oppositionChoices.length)]||sources[0]||quests.find(q=>q.enemyIds?.length)||{},story=sources[seededIndex(seed,"story",sources.length)]||opposition;
         const battles=durationMinutes===1?0:Math.max(1,Math.min(5,Math.floor(durationMinutes/6)+(difficulty>=4?1:0))),gold=Math.max(1,Math.round(durationMinutes*(1.4+difficulty*.35))),arcana=durationMinutes>=10?Math.floor(durationMinutes/10)+(difficulty>=4?1:0):0;
         const participation=Math.max(1,Math.round(durationMinutes*XP_DIFFICULTY_MULTIPLIERS[difficulty])),victoryBonus=durationMinutes===1?0:Math.max(1,Math.round(durationMinutes*.1));
-        const completionGold=durationMinutes===1?1:Math.max(1,Math.floor(gold*.84)),tierTuning=[{},{},{},{hp:1},{hp:2,speed:1},{hp:3,damage:1,speed:1}][difficulty],encounterTuning={...copy(opposition.encounterTuning||{})};for(const key of ["hp","damage","speed"]){const authored=(Number(encounterTuning[key])||0)+(Number(tierTuning[key])||0),floor=Number(tierTuning[key])||0;encounterTuning[key]=difficulty>=3?Math.max(floor,authored):authored;}
-        const journey={id:`generated-v${GENERATOR_VERSION}-${seed}`,name:theme.titles[seededIndex(seed,"title",theme.titles.length)],category:"Generated journey",durationMinutes,description:`A ${durationMinutes}-minute journey through ${theme.name}.`,risk:`${difficulty}-skull`,danger:difficulty===1?"A gentle route with generous spacing between dangers.":difficulty===5?"A severe fixed challenge for an expert company.":"A fixed challenge that does not adapt to the selected party.",rewardTypes:[`${completionGold} completion Gold plus field finds`,`${arcana} Arcana`,`${participation} participation XP plus ${victoryBonus} victory XP`],encounterType:durationMinutes===1?"Peaceful travel; no combat":`${battles} paced encounters`,environment:theme.name,combatMode:durationMinutes===1?"none":"required",xpReward:victoryBonus,xpPool:victoryBonus*3,rewardGold:{victory:completionGold,draw:Math.floor(completionGold*.45),defeat:Math.floor(completionGold*.2)},rewardArcana:{victory:arcana,draw:0,defeat:0},fieldRewardBase:gold,bonusRewards:{},travelSeconds:3,faction:opposition.faction||theme.name,boss:difficulty===5&&durationMinutes>=20&&stableUnit(`${seed}:boss`)>.55,enemyIds:durationMinutes===1?[]:copy(opposition.enemyIds||[]),knownThreats:copy(opposition.knownThreats||[]),knownConditions:[`Fixed ${difficulty}-skull opposition`,`Balanced for three healthy level-${difficulty} companions`],rumors:copy(story.rumors||[]),journey:story.journey||`A measured route through ${theme.name}.`,chance:difficulty<=2?"low":"normal",randomEncounters:copy(opposition.randomEncounters||[]),tags:[theme.id,"procedural",`${difficulty}-skull`],objectiveReturnText:`The destination is reached. The company turns home through ${theme.name}.`,difficulty:["","Gentle","Steady","Demanding","Perilous","Heroic"][difficulty],riskExplanation:"Difficulty is fixed. Smaller, injured, or underleveled parties face greater risk; paid boons are included in the warning preview and never strengthen enemies.",battleback:theme.background,battlebackFolder:"pictures",intendedLevel:difficulty,skulls:difficulty,encounterTier:difficulty,balanceVersion:BALANCE_VERSION,generatorVersion:GENERATOR_VERSION,generatorSeed:seed,participationXp:participation,victoryBonusXp:victoryBonus,encounterTuning,sourceIngredients:{opposition:opposition.id||null,narrative:story.id||null,theme:theme.id}};
+        const completionGold=durationMinutes===1?1:Math.max(1,Math.floor(gold*.84)),tierTuning=[{},{},{},{},{hp:2,speed:1},{hp:3,damage:1,speed:1}][difficulty],encounterTuning={...copy(opposition.encounterTuning||{})};for(const key of ["hp","damage","speed"]){const authored=(Number(encounterTuning[key])||0)+(Number(tierTuning[key])||0),floor=Number(tierTuning[key])||0;encounterTuning[key]=difficulty>=3?Math.max(floor,authored):authored;}
+        const themeEnemyPool=[...new Set(sources.flatMap(q=>q.enemyIds||[]))],enemyCount=Math.max(1,Math.min(3,(opposition.enemyIds||[]).length||2)),variedEnemyIds=[];
+        for(let i=0;i<enemyCount&&themeEnemyPool.length;i++){const index=seededIndex(seed,`enemy-${i}`,themeEnemyPool.length),id=themeEnemyPool.splice(index,1)[0];variedEnemyIds.push(id);}
+        const journey={id:`generated-v${GENERATOR_VERSION}-${seed}`,name:theme.titles[seededIndex(seed,"title",theme.titles.length)],category:"Generated journey",durationMinutes,description:`A ${durationMinutes}-minute journey through ${theme.name}.`,risk:`${difficulty}-skull`,danger:difficulty===1?"A gentle route with generous spacing between dangers.":difficulty===5?"A severe fixed challenge for an expert company.":"A fixed challenge that does not adapt to the selected party.",rewardTypes:[`${completionGold} completion Gold plus field finds`,`${arcana} Arcana`,`${participation} participation XP plus ${victoryBonus} victory XP`],encounterType:durationMinutes===1?"Peaceful travel; no combat":`${battles} paced encounters`,environment:theme.name,combatMode:durationMinutes===1?"none":"required",xpReward:victoryBonus,xpPool:victoryBonus*3,rewardGold:{victory:completionGold,draw:Math.floor(completionGold*.45),defeat:Math.floor(completionGold*.2)},rewardArcana:{victory:arcana,draw:0,defeat:0},fieldRewardBase:gold,bonusRewards:{},travelSeconds:3,faction:opposition.faction||theme.name,boss:difficulty===5&&durationMinutes>=20&&stableUnit(`${seed}:boss`)>.55,enemyIds:durationMinutes===1?[]:variedEnemyIds,knownThreats:copy(opposition.knownThreats||[]),knownConditions:[`Fixed ${difficulty}-skull opposition`,`Balanced for three healthy level-${difficulty} companions`],rumors:copy(story.rumors||[]),journey:story.journey||`A measured route through ${theme.name}.`,chance:difficulty<=2?"low":"normal",randomEncounters:copy(opposition.randomEncounters||[]),tags:[theme.id,"procedural",`${difficulty}-skull`],objectiveReturnText:`The destination is reached. The company turns home through ${theme.name}.`,difficulty:["","Gentle","Steady","Demanding","Perilous","Heroic"][difficulty],riskExplanation:"Difficulty is fixed. Smaller, injured, or underleveled parties face greater risk; paid boons are included in the warning preview and never strengthen enemies.",battleback:theme.background,battlebackFolder:"pictures",intendedLevel:difficulty,skulls:difficulty,encounterTier:difficulty,balanceVersion:BALANCE_VERSION,generatorVersion:GENERATOR_VERSION,generatorSeed:seed,participationXp:participation,victoryBonusXp:victoryBonus,encounterTuning,sourceIngredients:{opposition:opposition.id||null,narrative:story.id||null,theme:theme.id}};
         const recommendedLevels=`${difficulty*2-1}–${difficulty*2}`;
         journey.intendedLevel=difficulty*2;
         journey.knownConditions[1]=`Balanced for three healthy level ${recommendedLevels} companions`;
@@ -2279,7 +2294,7 @@
         journey.planFingerprint=JSON.stringify([durationMinutes,difficulty,theme.id,journey.enemyIds,journey.name,gold,arcana]);return journey;
     }
     function upgradeSelectionError(state,ids){if(!Array.isArray(ids))return "Invalid expedition equipment selection.";if(new Set(ids).size!==ids.length)return "Each expedition item may be selected only once.";if(ids.some(id=>!EXPEDITION_UPGRADES[id]))return "Unknown expedition item.";const cost=ids.reduce((n,id)=>n+EXPEDITION_UPGRADES[id].cost,0);return state.gold<cost?`Requires ${cost} Gold; treasury has ${state.gold}.`:"";}
-    function applyExpeditionUpgrades(team,ids){for(const member of team)for(const id of ids){const u=EXPEDITION_UPGRADES[id];if(u?.armor){member.classArmor=(member.classArmor||0)+u.armor;member.classArmorMax=(member.classArmorMax||0)+u.armor;member.armor=(member.armor||0)+u.armor;member.maxArmor=(member.maxArmor||0)+u.armor;}if(u?.ward){member.innateWard=(member.innateWard||0)+u.ward;member.innateWardMax=(member.innateWardMax||0)+u.ward;}if(u?.hp){member.hp=(member.hp||member.maxHealth||1)+u.hp;member.health=(member.health||1)+u.hp;member.maxHealth=(member.maxHealth||1)+u.hp;}if(u?.damage)member.damage=(member.damage||1)+u.damage;}return team;}
+    function applyExpeditionUpgrades(team,ids){for(const member of team)for(const id of ids){const u=EXPEDITION_UPGRADES[id];if(u?.armor){member.classArmor=(member.classArmor||0)+u.armor;member.classArmorMax=(member.classArmorMax||0)+u.armor;member.armor=(member.armor||0)+u.armor;member.maxArmor=(member.maxArmor||0)+u.armor;}if(u?.ward){member.innateWard=(member.innateWard||0)+u.ward;member.innateWardMax=(member.innateWardMax||0)+u.ward;}if(u?.hp){member.hp=(member.hp||member.maxHealth||1)+u.hp;member.health=(member.health||1)+u.hp;member.maxHealth=(member.maxHealth||1)+u.hp;}if(u?.damage){member.damage=(member.damage||1)+u.damage;member.damageBoon=true;}}return team;}
     function participationXpFor(trip,elapsedMs=trip.elapsedMs,completed=false){const minutes=Math.max(0,Number(elapsedMs)||0)/60000,mult=XP_DIFFICULTY_MULTIPLIERS[Math.max(1,Math.min(5,trip.skulls||1))]||1;return Math.floor(minutes*mult)+(completed?Math.max(0,Math.floor(Number(trip.victoryBonusXp)||0)):0);}
 
     function questDangerEstimate(state,quest,content,BattleClass,partyIds=state.teamIds,upgradeIds=[]){

@@ -562,7 +562,10 @@
             const target = selection.target;
             const signatureChoice = this._signatureDecision(actor, target);
             const signature = (signatureChoice.use||actor.side==="player"&&actor.personalTurns>=3) && (actor.side!=="player" || actor.signatureUnlocks>0&&!actor.signatureSpent);
-            const multiplier = signature ? (actor.signatureDamage || actor.damage || Math.max(1,Math.round(actor.signatureMove?.multiplier||1))) : (actor.damage || 1);
+            // Ordinary attacks are deliberately predictable: one point before
+            // defenses. Damage above one is reserved for named specials,
+            // critical specials, or the explicit Sharpening Kit quest boon.
+            const multiplier = signature ? (actor.signatureDamage || actor.damage || Math.max(1,Math.round(actor.signatureMove?.multiplier||1))) : actor.damageBoon ? (actor.damage || 1) : 1;
             const special=signature&&actor.side==="player"?actor.classId:null;
             const specialNames={barbarian:"Cleave",knight:"Shield Bash",ranger:"Pinning Shot",rogue:"Feint",mage:"Fireburst",cleric:"Mending Light",bard:"Encore",druid:"Entangling Bloom"};
             if(special)actor.signatureAttack=specialNames[special]||actor.signatureAttack;
@@ -646,8 +649,8 @@
                 type: "attack", round: this._round,
                 actorKey: actor.key, actorName: actor.name, side: actor.side,
                 targetKey: target.key, targetName: target.name, targetSide: target.side,
-                kind: signature ? "signature" : "basic",
-                attackName: signature ? actor.signatureAttack : actor.basicAttack,
+                kind: signature ? "signature" : rolledDamage>1&&!actor.damageBoon ? "special" : "basic",
+                attackName: signature ? actor.signatureAttack : criticalHit ? `${actor.basicAttack||"Attack"} — Critical Strike` : rolledDamage>1&&!actor.damageBoon ? `${actor.basicAttack||"Attack"} — Power Strike` : actor.basicAttack,
                 damage, effectText, ritualBlocked, rawDamage:rolledDamage, criticalHit, critChance, missed, dodgeChance, wardLoss, armorLoss, targetWard:(target.temporaryWard||0)+(target.innateWard||0), targetArmor:target.armor, targetHealth: target.health, targetMaxHealth: target.maxHealth,
                 cooldown: actor.cooldown, strategy: this._strategy, decisionStrategy: selection.strategy,
                 actorRole: actor.combatRole, targetRole: target.combatRole,

@@ -33,7 +33,7 @@
     }
     function backgroundArt(api,trip,quest){const spec=backgroundSpec(trip,quest),art=api.art(spec.folder,spec.name);return art.isError?.()?api.art("pictures",ART[biome(trip,quest)]):art;}
     function beat(event={}){
-        if(event.sourceType==="attack")return event.missed?"miss":event.attackKind==="signature"||event.importance==="SIGNATURE"?"signature":"attack";
+        if(event.sourceType==="attack")return event.missed?"miss":["signature","special"].includes(event.attackKind)||event.importance==="SIGNATURE"?"signature":"attack";
         if(event.sourceType==="deathSave")return event.permanentDeath===true||event.survived===false||event.importance==="DEATH"?"death":"deathSave";
         if(event.sourceType==="defeat")return "fall";
         if(event.sourceType==="result")return "ending";
@@ -180,6 +180,7 @@
         if(trip.phase==="campfire")return "The party is camping.";
         if(trip.phase==="return"||trip.wiped)return "The party is heading home.";
         const text=String(event.text||trip.latestEvent||"");
+        if(["attack","heal","support","defeat","deathSave","skip","wave","journeyContinue"].includes(event.sourceType)&&text)return text;
         if(/gold|arcana|artifact|treasure|reward|loot|cache|strongbox|pouch|coins?|discovery|found|finds?/i.test(text))return "Coin, Arcana, or an artifact has been found.";
         if(["wave","attack","mortalIntent","result","defeat","deathSave"].includes(event.sourceType)||/enemy|enemies|tracks?|warning|danger|threat|encounter|nearby|ahead/i.test(text))return "There are signs of an enemy ahead.";
         return "The party is heading out.";
@@ -469,7 +470,7 @@
                 if(source&&target){c.save();c.globalAlpha=.35;c.strokeStyle=TOKENS.honey;c.setLineDash([3,4]);c.beginPath();c.moveTo(source.x,source.y-8);c.lineTo(target.x,target.y-8);c.stroke();c.restore();}
                 const layers=frame.effects.filter(e=>["ward","armor","hp"].includes(e.type)),latest=layers[layers.length-1];
                 if(event.criticalHit&&frame.t>.42&&frame.t<.8){c.save();c.fillStyle="#fff2bf";c.globalAlpha=.16*Math.sin((frame.t-.42)/.38*Math.PI);c.fillRect(geometry.scene.x,geometry.top,geometry.scene.width,geometry.height);c.restore();a.text(win,"? CRITICAL x2",geometry.scene.x,geometry.top+32,geometry.scene.width,25,TOKENS.honey,"center",32);}
-                if((frame.kind==="signature"||event.attackKind==="signature")&&motion>0){const pulse=Math.sin(frame.t*Math.PI);c.save();c.globalAlpha=.2*pulse;c.fillStyle="#b377ff";c.fillRect(geometry.scene.x,geometry.top,geometry.scene.width,geometry.height);c.restore();if(source){c.save();c.strokeStyle="#ffe19b";c.lineWidth=3;c.globalAlpha=pulse;for(let i=0;i<12;i++){const angle=i*Math.PI/6+frame.t*3,r=24+frame.t*45;c.beginPath();c.moveTo(source.x+Math.cos(angle)*r,source.y-source.size*.5+Math.sin(angle)*r);c.lineTo(source.x+Math.cos(angle)*(r+14),source.y-source.size*.5+Math.sin(angle)*(r+14));c.stroke();}c.restore();}a.text(win,event.attackName||event.action||"SPECIAL MOVE",geometry.scene.x+8,geometry.top+32,geometry.scene.width-16,32,"#ffe6a3","center",30);}
+                if((frame.kind==="signature"||["signature","special"].includes(event.attackKind))&&motion>0){const pulse=Math.sin(frame.t*Math.PI);c.save();c.globalAlpha=.2*pulse;c.fillStyle="#b377ff";c.fillRect(geometry.scene.x,geometry.top,geometry.scene.width,geometry.height);c.restore();if(source){c.save();c.strokeStyle="#ffe19b";c.lineWidth=3;c.globalAlpha=pulse;for(let i=0;i<12;i++){const angle=i*Math.PI/6+frame.t*3,r=24+frame.t*45;c.beginPath();c.moveTo(source.x+Math.cos(angle)*r,source.y-source.size*.5+Math.sin(angle)*r);c.lineTo(source.x+Math.cos(angle)*(r+14),source.y-source.size*.5+Math.sin(angle)*(r+14));c.stroke();}c.restore();}a.text(win,event.attackName||event.action||"SPECIAL MOVE",geometry.scene.x+8,geometry.top+32,geometry.scene.width-16,32,"#ffe6a3","center",30);}
                 for(const e of motion===0?[]:frame.effects)this.effect(win,e,!layers.includes(e)||e===latest);
                 for(const f of fighters){
                     const pos=geometry.positions.get(f.key),state=stats(f,event,frame.t);if(!pos||state.health<=0)continue;
