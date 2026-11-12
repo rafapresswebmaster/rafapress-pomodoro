@@ -1748,6 +1748,7 @@
             trip.maxBattleMeasuredMs=Math.max(trip.maxBattleMeasuredMs||0,trip.lastBattleMeasuredMs);
             trip.playbackScale=Math.min(1,55000/Math.max(1,trip.lastBattleMeasuredMs));
             trip.fateRevealGraceUsed=false;trip.battlePresentationDeadlineMs=trip.elapsedMs+SESSION_TIMING.battleMs;
+            if(trip.wiped)trip.wipePlaybackComplete=false;
             trip.presentationCurrent=null;trip.presentationHoldMs=0;trip.presentationQueue=presentation;
             tickPresentation(trip,0,"standard",content?.presentation);
             if(trip.realtime&&!trip.wiped&&!trip.autoRetreat)trip.phase="travel";
@@ -1781,6 +1782,7 @@
         if(trip.presentationHoldMs<=0&&!trip.presentationQueue?.length){
             finishPresentationEvent(trip,trip.presentationCurrent);
             trip.presentationCurrent=null; trip.presentationDurationMs=0;
+            if(trip.wiped)trip.wipePlaybackComplete=true;
         }
     }
     // Simulation is synchronous. Playback is bounded independently of render rate or window focus.
@@ -1866,6 +1868,7 @@
         for(const e of pending)finishPresentationEvent(trip,e);
         trip.presentationQueue=[];trip.presentationCurrent=null;trip.presentationHoldMs=0;trip.presentationDurationMs=0;
         trip.battlePresentationDeadlineMs=0;delete trip.travelDisplayTeam;
+        if(trip.wiped)trip.wipePlaybackComplete=true;
         if(trip.battleSnapshot)trip.presentationFighters=copy(trip.battleSnapshot.fighters);
         if(hadBattle&&reason){trip.fastResolutionCount=(trip.fastResolutionCount||0)+1;addTimeline(trip,reason);}
     }

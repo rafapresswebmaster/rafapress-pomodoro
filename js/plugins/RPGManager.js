@@ -19,7 +19,6 @@
     // 816x624 desktop canvas into a narrow strip. This is presentation-only:
     // dimensions are selected before the first scene and never enter saves.
     const mobilePortraitAtBoot = globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px) and (orientation: portrait)")?.matches===true;
-    const touchCapableMobile=()=>((Number(navigator.maxTouchPoints)||0)>0||"ontouchstart" in globalThis||globalThis.matchMedia?.("(pointer: coarse)")?.matches===true)&&Math.min(innerWidth,innerHeight)<=900;
     function enableMobileTapSafety(root){if(root)root._mobileTapSafety=true;}
     const mobileScreenWakeLock=(()=>{
         // Some mobile browsers report a fine/absent primary pointer when an
@@ -1747,7 +1746,8 @@
         }
         showFallenReturn(trip){
             const fallen=!!trip&&(trip.wiped||(trip.preparedTeam||[]).length>0&&(trip.preparedTeam||[]).every(n=>n.alive===false||n.health<=0||trip.expeditionDeaths?.[n.id]));
-            if(!fallen){this._fallenReturnButton?.remove();this._fallenReturnButton=null;return;}
+            const playbackFinished=trip?.wipePlaybackComplete===true||(!trip?.presentationCurrent&&!(trip?.presentationQueue||[]).length&&!(trip?.presentationHoldMs>0)&&!trip?.battlePresentationDeadlineMs);
+            if(!fallen||!playbackFinished){this._fallenReturnButton?.remove();this._fallenReturnButton=null;return;}
             if(this._fallenReturnButton?.isConnected)return;
             const button=document.createElement("button"),r=Graphics._canvas.getBoundingClientRect(),scale=r.width/Graphics.width;
             button.id="fallen-return-to-camp";button.type="button";button.innerHTML="RETURN TO CAMP<small>Party fallen</small>";button.setAttribute("aria-label","Return fallen party to camp now");
@@ -3002,7 +3002,7 @@
             this._listWindow.onSelectionChange = this.onSelectionChange.bind(this);
             this._listWindow.onBlocked = this.onBlocked.bind(this);
             this.addWindow(this._listWindow);
-            if(this._graveyard&&touchCapableMobile())this.createMobileGraveyardList();
+            if(this._graveyard)this.createMobileGraveyardList();
             this.refreshStatus();
             this.onSelectionChange();
             if (this._graveyard && !progression.graveyard(managerState()).length) this._detailsWindow.setNpc(null);
@@ -3054,6 +3054,7 @@
         }
 
         onNpc() {
+            if(this._graveyard){this.onSelectionChange();this._listWindow.activate();return;}
             if (!this._selecting) {
                 SceneManager.push(Scene_RPGMember);
                 SceneManager.prepareNextScene(this._listWindow.currentExt(),this._graveyard);
