@@ -3001,11 +3001,19 @@
             this._listWindow.onSelectionChange = this.onSelectionChange.bind(this);
             this._listWindow.onBlocked = this.onBlocked.bind(this);
             this.addWindow(this._listWindow);
+            if(this._graveyard&&mobilePointerLayout()){
+                const canvas=Graphics._canvas,toCanvas=event=>{const r=canvas.getBoundingClientRect();return{x:(event.clientX-r.left)*Graphics.width/r.width,y:(event.clientY-r.top)*Graphics.height/r.height};};
+                this._gravePointerDown=event=>{const p=toCanvas(event);this._gravePointer={id:event.pointerId,x:p.x,y:p.y,moved:false};};
+                this._gravePointerMove=event=>{const tap=this._gravePointer;if(tap?.id===event.pointerId){const p=toCanvas(event);if(Math.hypot(p.x-tap.x,p.y-tap.y)>14)tap.moved=true;}};
+                this._gravePointerUp=event=>{const tap=this._gravePointer;if(!tap||tap.id!==event.pointerId)return;this._gravePointer=null;if(tap.moved||!this._listWindow?.active)return;const p=toCanvas(event),w=this._listWindow,index=w.hitTest(p.x-w.x,p.y-w.y);if(index>=0&&w._list[index]?.symbol==="npc"){w.select(index);w.processOk();}};
+                canvas.addEventListener("pointerdown",this._gravePointerDown,true);canvas.addEventListener("pointermove",this._gravePointerMove,true);canvas.addEventListener("pointerup",this._gravePointerUp,true);canvas.addEventListener("pointercancel",this._gravePointerUp,true);
+            }
             this.refreshStatus();
             this.onSelectionChange();
             if (this._graveyard && !progression.graveyard(managerState()).length) this._detailsWindow.setNpc(null);
         }
         start() { super.start(); this.refreshStatus(); this.onSelectionChange(); }
+        terminate(){const canvas=Graphics._canvas;if(this._gravePointerDown){canvas.removeEventListener("pointerdown",this._gravePointerDown,true);canvas.removeEventListener("pointermove",this._gravePointerMove,true);canvas.removeEventListener("pointerup",this._gravePointerUp,true);canvas.removeEventListener("pointercancel",this._gravePointerUp,true);}super.terminate();}
 
         refreshStatus() {
             this._header.contents.clear();
