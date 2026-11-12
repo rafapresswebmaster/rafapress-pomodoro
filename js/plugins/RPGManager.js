@@ -1353,7 +1353,7 @@
                 CozyUI.wrap(this,returned?"Returned to the cemetery when a fresh recruit joined.":`Killed by ${killer} during ${quest}.`,8,144,w-16,17,"#f4deb0",3,23);
                 CozyUI.text(this,`${career.questsCompleted} adventures / ${career.victories} victories / ${career.bossVictories} bosses`,8,226,w-16,14,"#e8c583");
                 CozyUI.text(this,`${career.kills} enemies defeated / ${career.damageDealt} damage dealt`,8,254,w-16,13,"#c6b99d");
-                CozyUI.wrap(this,npc.reanimationExhausted?"Their spirit has already returned once and cannot be reanimated again.":"Their memory remains in the Graveyard. Eligible altar rituals may return them.",8,298,w-16,14,"#c5ade4",3,20);
+                if(npc.reanimationExhausted)CozyUI.wrap(this,"Their spirit has already returned once and cannot be reanimated again.",8,298,w-16,14,"#c5ade4",3,20);
                 return;
             }
             const leadership=["","Unproven","Steady","Capable","Strong","Exceptional"][npc.leadership]||"Unproven",traits=(npc.personalityTraits||[]).map(id=>progression.traitFor(id)?.name).filter(Boolean),descriptions=(npc.personalityTraits||[]).map(id=>progression.traitFor(id)?.description).filter(Boolean),baseDodge=Math.round(npc.dodgeChance*100);
