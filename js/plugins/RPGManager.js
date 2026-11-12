@@ -19,6 +19,7 @@
     // 816x624 desktop canvas into a narrow strip. This is presentation-only:
     // dimensions are selected before the first scene and never enter saves.
     const mobilePortraitAtBoot = globalThis.matchMedia?.("(pointer: coarse) and (max-width: 900px) and (orientation: portrait)")?.matches===true;
+    const touchCapableMobile=()=>((Number(navigator.maxTouchPoints)||0)>0||"ontouchstart" in globalThis||globalThis.matchMedia?.("(pointer: coarse)")?.matches===true)&&Math.min(innerWidth,innerHeight)<=900;
     function enableMobileTapSafety(root){if(root)root._mobileTapSafety=true;}
     const mobileScreenWakeLock=(()=>{
         // Some mobile browsers report a fine/absent primary pointer when an
@@ -3001,7 +3002,7 @@
             this._listWindow.onSelectionChange = this.onSelectionChange.bind(this);
             this._listWindow.onBlocked = this.onBlocked.bind(this);
             this.addWindow(this._listWindow);
-            if(this._graveyard&&(mobilePortraitAtBoot||mobilePointerLayout()))this.createMobileGraveyardList();
+            if(this._graveyard&&touchCapableMobile())this.createMobileGraveyardList();
             this.refreshStatus();
             this.onSelectionChange();
             if (this._graveyard && !progression.graveyard(managerState()).length) this._detailsWindow.setNpc(null);
@@ -3012,7 +3013,7 @@
             el.id="mobile-graveyard-list";el.setAttribute("role","list");el.setAttribute("aria-label","Fallen companions");
             el.style.cssText=`position:fixed;z-index:23;left:${bounds.left+this._listWindow.x*sx}px;top:${bounds.top+this._listWindow.y*sy}px;width:${this._listWindow.width*sx}px;height:${this._listWindow.height*sy}px;box-sizing:border-box;padding:${8*sy}px;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;background:linear-gradient(#263d6d,#17294f);border:${2*sx}px solid #c6ae65;border-radius:${8*sx}px;box-shadow:inset 0 0 0 ${2*sx}px #7fa0d244`;
             progression.sortRoster(progression.graveyard(managerState()),Window_RPGRoster.sortMode||"healthy").forEach(npc=>{const button=document.createElement("button"),killer=npc.killedBy?.name||npc.deathCircumstance?.killedBy||"Unknown creature",returned=npc.deathCircumstance?.returnedToCemetery;button.type="button";button.dataset.npcId=npc.id;button.setAttribute("role","listitem");button.setAttribute("aria-label",`Open ${npc.name}'s memorial profile`);button.style.cssText=`display:block;width:100%;min-height:${54*sy}px;margin:0 0 ${5*sy}px;padding:${7*sy}px ${10*sx}px;box-sizing:border-box;text-align:left;border:${2*sx}px solid #b69a5c;border-radius:${7*sx}px;background:linear-gradient(155deg,#526fa7,#294779);color:#fff0cf;font:${16*sy}px Trebuchet MS;line-height:1.2;touch-action:manipulation`;const name=document.createElement("strong"),detail=document.createElement("small");name.textContent=npc.name;name.style.display="block";detail.textContent=returned?`Level ${npc.level} / Returned to cemetery`:`Level ${npc.level} / Killed by ${killer}`;detail.style.cssText=`display:block;margin-top:${4*sy}px;color:#d8c5b5;font-size:${12*sy}px`;button.append(name,detail);button.onclick=event=>{event.stopPropagation();const index=this._listWindow._list.findIndex(entry=>entry.symbol==="npc"&&entry.ext===npc.id);if(index<0)return;this._listWindow.select(index);SoundManager.playOk();this.onNpc();};el.appendChild(button);});
-            for(const type of ["touchstart","touchmove","touchend","touchcancel","mousedown","mouseup","wheel"])el.addEventListener(type,event=>event.stopPropagation(),{passive:true});document.body.appendChild(el);this._mobileGraveyardList=el;
+            for(const type of ["touchstart","touchmove","touchend","touchcancel","mousedown","mouseup","wheel"])el.addEventListener(type,event=>event.stopPropagation(),{passive:true});document.body.appendChild(el);enableMobileTapSafety(el);this._mobileGraveyardList=el;
         }
         terminate(){this._mobileGraveyardList?.remove();super.terminate();}
 
