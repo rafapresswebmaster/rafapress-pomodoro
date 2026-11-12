@@ -3001,19 +3001,20 @@
             this._listWindow.onSelectionChange = this.onSelectionChange.bind(this);
             this._listWindow.onBlocked = this.onBlocked.bind(this);
             this.addWindow(this._listWindow);
-            if(this._graveyard&&mobilePointerLayout()){
-                const canvas=Graphics._canvas,toCanvas=event=>{const r=canvas.getBoundingClientRect();return{x:(event.clientX-r.left)*Graphics.width/r.width,y:(event.clientY-r.top)*Graphics.height/r.height};};
-                this._gravePointerDown=event=>{const p=toCanvas(event);this._gravePointer={id:event.pointerId,x:p.x,y:p.y,moved:false};};
-                this._gravePointerMove=event=>{const tap=this._gravePointer;if(tap?.id===event.pointerId){const p=toCanvas(event);if(Math.hypot(p.x-tap.x,p.y-tap.y)>14)tap.moved=true;}};
-                this._gravePointerUp=event=>{const tap=this._gravePointer;if(!tap||tap.id!==event.pointerId)return;this._gravePointer=null;if(tap.moved||!this._listWindow?.active)return;const p=toCanvas(event),w=this._listWindow,index=w.hitTest(p.x-w.x,p.y-w.y);if(index>=0&&w._list[index]?.symbol==="npc"){w.select(index);w.processOk();}};
-                canvas.addEventListener("pointerdown",this._gravePointerDown,true);canvas.addEventListener("pointermove",this._gravePointerMove,true);canvas.addEventListener("pointerup",this._gravePointerUp,true);canvas.addEventListener("pointercancel",this._gravePointerUp,true);
-            }
+            if(this._graveyard&&(mobilePortraitAtBoot||mobilePointerLayout()))this.createMobileGraveyardList();
             this.refreshStatus();
             this.onSelectionChange();
             if (this._graveyard && !progression.graveyard(managerState()).length) this._detailsWindow.setNpc(null);
         }
         start() { super.start(); this.refreshStatus(); this.onSelectionChange(); }
-        terminate(){const canvas=Graphics._canvas;if(this._gravePointerDown){canvas.removeEventListener("pointerdown",this._gravePointerDown,true);canvas.removeEventListener("pointermove",this._gravePointerMove,true);canvas.removeEventListener("pointerup",this._gravePointerUp,true);canvas.removeEventListener("pointercancel",this._gravePointerUp,true);}super.terminate();}
+        createMobileGraveyardList(){
+            const canvas=Graphics._canvas,bounds=canvas.getBoundingClientRect(),sx=bounds.width/Graphics.width,sy=bounds.height/Graphics.height,el=document.createElement("div");
+            el.id="mobile-graveyard-list";el.setAttribute("role","list");el.setAttribute("aria-label","Fallen companions");
+            el.style.cssText=`position:fixed;z-index:23;left:${bounds.left+this._listWindow.x*sx}px;top:${bounds.top+this._listWindow.y*sy}px;width:${this._listWindow.width*sx}px;height:${this._listWindow.height*sy}px;box-sizing:border-box;padding:${8*sy}px;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;background:linear-gradient(#263d6d,#17294f);border:${2*sx}px solid #c6ae65;border-radius:${8*sx}px;box-shadow:inset 0 0 0 ${2*sx}px #7fa0d244`;
+            progression.sortRoster(progression.graveyard(managerState()),Window_RPGRoster.sortMode||"healthy").forEach(npc=>{const button=document.createElement("button"),killer=npc.killedBy?.name||npc.deathCircumstance?.killedBy||"Unknown creature",returned=npc.deathCircumstance?.returnedToCemetery;button.type="button";button.dataset.npcId=npc.id;button.setAttribute("role","listitem");button.setAttribute("aria-label",`Open ${npc.name}'s memorial profile`);button.style.cssText=`display:block;width:100%;min-height:${54*sy}px;margin:0 0 ${5*sy}px;padding:${7*sy}px ${10*sx}px;box-sizing:border-box;text-align:left;border:${2*sx}px solid #b69a5c;border-radius:${7*sx}px;background:linear-gradient(155deg,#526fa7,#294779);color:#fff0cf;font:${16*sy}px Trebuchet MS;line-height:1.2;touch-action:manipulation`;const name=document.createElement("strong"),detail=document.createElement("small");name.textContent=npc.name;name.style.display="block";detail.textContent=returned?`Level ${npc.level} / Returned to cemetery`:`Level ${npc.level} / Killed by ${killer}`;detail.style.cssText=`display:block;margin-top:${4*sy}px;color:#d8c5b5;font-size:${12*sy}px`;button.append(name,detail);button.onclick=event=>{event.stopPropagation();const index=this._listWindow._list.findIndex(entry=>entry.symbol==="npc"&&entry.ext===npc.id);if(index<0)return;this._listWindow.select(index);SoundManager.playOk();this.onNpc();};el.appendChild(button);});
+            for(const type of ["touchstart","touchmove","touchend","touchcancel","mousedown","mouseup","wheel"])el.addEventListener(type,event=>event.stopPropagation(),{passive:true});document.body.appendChild(el);this._mobileGraveyardList=el;
+        }
+        terminate(){this._mobileGraveyardList?.remove();super.terminate();}
 
         refreshStatus() {
             this._header.contents.clear();
@@ -3053,7 +3054,7 @@
         onNpc() {
             if (!this._selecting) {
                 SceneManager.push(Scene_RPGMember);
-                SceneManager.prepareNextScene(this._listWindow.currentExt());
+                SceneManager.prepareNextScene(this._listWindow.currentExt(),this._graveyard);
                 return;
             }
             let error = "";
@@ -3294,7 +3295,7 @@
     }
 
     class Scene_RPGMember extends Scene_RPGBase {
-        prepare(id) { this._npcId = id; Scene_RPGMember.selectedId = id; }
+        prepare(id,returnToGraveyard=false) { this._npcId = id;this._returnToGraveyard=returnToGraveyard; Scene_RPGMember.selectedId = id; }
         create() {
             super.create(); this._npcId ||= Scene_RPGMember.selectedId; this._mode = "main"; this._slot = "head";
             this._header = this.header(findNpc(this._npcId).name, "Identity is fixed. Only the name can be changed.");
@@ -3357,7 +3358,8 @@
             this.refresh(); this._choices.select(0);
         }
         back() {
-            if (this._mode === "main") this.popScene();
+            if (this._mode === "main"&&this._returnToGraveyard){SceneManager.goto(Scene_RPGRoster);SceneManager.prepareNextScene(false,true);}
+            else if (this._mode === "main") this.popScene();
             else { this._mode = this._mode === "gear" ? "slots" : "main"; this.refresh(); this._choices.select(0); }
         }
     }
