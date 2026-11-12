@@ -1444,7 +1444,9 @@
             }
             if(!this._selecting)for(const slot of progression.vacantSlots(managerState()))this.addCommand(`Slot ${slot+1}: EMPTY · Recruit for free`,"tavern",true,slot);
             if(this._graveyard)this._list=this._list.filter(entry=>entry.symbol!=="tavern");
-            this.addCommand(this._selecting ? "Cancel Changes" : "Back to Home", "back");paginateCommands(this);
+            if(this._selecting)this.addCommand("Cancel Changes","back");
+            else if(!this._graveyard)this.addCommand("Back to Home","back");
+            paginateCommands(this);
         }
 
         drawItem(index){
@@ -3041,7 +3043,7 @@
         }
 
         onNpc() {
-            if (!this._selecting && !this._graveyard) {
+            if (!this._selecting) {
                 SceneManager.push(Scene_RPGMember);
                 SceneManager.prepareNextScene(this._listWindow.currentExt());
                 return;
