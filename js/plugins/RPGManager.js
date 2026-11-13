@@ -1221,7 +1221,9 @@
                     }
                     CozyUI.text(this,progression.displayName(npc),82,y+5,w-94,17,"#f4e8cf","left",22);
                     const activity=away?"AWAY":`${condition.toUpperCase()} · ${(progression.campJobFor(s,id)||"Idle").toUpperCase()}`;
-                    const prefix=`${progression.classLabel(npc)} · L${npc.level} · HP `,hp=`${npc.health}/${npc.maxHealth}`,suffix=` · ${activity}`,lineX=54,lineY=y+31,lineColor=npc.injury?"#ffc8ae":"#c8dfbc";CozyUI.text(this,prefix,lineX,lineY,w-66,12,lineColor,"left",17);const hpX=lineX+this.contents.measureTextWidth(prefix);CozyUI.text(this,hp,hpX,lineY,w-hpX-12,12,npc.health<npc.maxHealth?"#ffe36e":lineColor,"left",17);const suffixX=hpX+this.contents.measureTextWidth(hp);CozyUI.text(this,suffix,suffixX,lineY,w-suffixX-12,12,lineColor,"left",17);
+                    const prefix=`${progression.classLabel(npc)} · L${npc.level} · HP `,hp=`${npc.health}/${npc.maxHealth}`,suffix=` · ${activity}`,lineX=54,lineY=y+27,lineColor=npc.injury?"#ffc8ae":"#c8dfbc";CozyUI.text(this,prefix,lineX,lineY,w-66,12,lineColor,"left",17);const hpX=lineX+this.contents.measureTextWidth(prefix);CozyUI.text(this,hp,hpX,lineY,w-hpX-12,12,npc.health<npc.maxHealth?"#ffe36e":lineColor,"left",17);const suffixX=hpX+this.contents.measureTextWidth(hp);CozyUI.text(this,suffix,suffixX,lineY,w-suffixX-12,12,lineColor,"left",17);
+                    const xpMax=progression.xpRequired(npc),xp=Math.max(0,Number(npc.xp)||0),xpLabel=xpMax?`EXP ${xp}/${xpMax}`:"EXP MAX",barX=124,barY=y+51,barW=Math.max(24,w-barX-14),progress=xpMax?Math.min(1,xp/xpMax):1;
+                    CozyUI.text(this,xpLabel,54,y+43,66,10,xpMax?"#d9d4a8":"#ffe39a","left",13);CozyUI.round(this.contents,barX,barY,barW,6,"#18233d","#73819c",3);if(progress>0)CozyUI.round(this.contents,barX+1,barY+1,Math.max(2,(barW-2)*progress),4,xpMax?"#a6c797":"#e8c583",null,2);
                     this._hitRegions.push({id,rect:new Rectangle(6,y,w-12,row-5)});
                 }else{
                     CozyUI.icon(this.contents,"recruit",14,y+12,26);
