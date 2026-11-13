@@ -815,9 +815,16 @@
         const fighters = snapshot.fighters?.filter(f => f.side === "player");
         // Validate the complete result before making any persistent changes.
         if (!fighters || fighters.length !== quest.team.length || new Set(fighters.map(f => f.id)).size !== quest.team.length ||
-            quest.team.some(start => !fighters.some(f => f.id === start.id &&
-                Number.isFinite(f.health) && f.health >= 0 && f.health <= start.maxHealth &&
-                f.alive === (f.health > 0)))) throw new Error("Invalid quest result.");
+            quest.team.some(start => {
+                // Paid expedition boons can raise a prepared fighter's HP above
+                // the roster value captured in team. Accept that locked cap while
+                // retaining the original cap as a fallback for legacy quests.
+                const prepared = quest.preparedTeam?.find(member => member.id === start.id);
+                const maxHealth = Math.max(Number(start.maxHealth) || 0, Number(prepared?.maxHealth) || 0);
+                return !fighters.some(f => f.id === start.id &&
+                    Number.isFinite(f.health) && f.health >= 0 && f.health <= maxHealth &&
+                    f.alive === (f.health > 0));
+            })) throw new Error("Invalid quest result.");
         const xp = quest.xp || xpPreview(quest.team.length);
         if(snapshot.ritualEffects&&!quest.realtime){quest.ritualEffects=copy(snapshot.ritualEffects);delete quest.ritualEffects.battle_hymn;}
         if(!quest.realtime&&snapshot.status==="victory")quest.ritualBattlesWon=(quest.ritualBattlesWon||0)+1;

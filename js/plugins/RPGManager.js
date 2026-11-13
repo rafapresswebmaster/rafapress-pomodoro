@@ -3888,7 +3888,7 @@
         if (!globalThis.$gameSystem?._rpgManager || document.getElementById("rpgManagerBackButton")) return;
         const button=document.createElement("button");button.id="rpgManagerBackButton";button.textContent="Back to Home";
         button.style.cssText="display:block;margin:22px auto 0;padding:10px 18px;font-size:20px;color:white;background:#315d78;border:2px solid white;border-radius:5px";
-        button.ontouchstart=e=>e.stopPropagation();button.onclick=()=>{try{Graphics.eraseError();Input.clear();TouchInput.clear();SceneManager.clearStack();SceneManager.resume();requestAnimationFrame(()=>SceneManager.goto(Scene_RPGHome));}catch(recoveryError){console.error(recoveryError);SceneManager.reloadGame();}};
+        button.ontouchstart=e=>e.stopPropagation();button.onclick=()=>{try{Graphics.eraseError();Input.clear();TouchInput.clear();SceneManager.clearStack();SceneManager.goto(Scene_RPGHome);SceneManager.resume();}catch(recoveryError){console.error(recoveryError);SceneManager.reloadGame();}};
         this._errorPrinter.appendChild(button);
     };
 
