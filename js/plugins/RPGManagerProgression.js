@@ -2091,7 +2091,7 @@
     const EARNED_TRAITS = [];
     const RITUALS = Object.freeze({
         protection_ward:{name:"Warding",unlockCost:2,castCost:80,level:4,description:"Blocks the next hit against the party."},
-        healing_ritual:{name:"Healing",unlockCost:3,castCost:120,level:5,target:"living",description:"Removes one permanent wound and injury stack. Does not restore HP."},
+        healing_ritual:{name:"Healing",unlockCost:3,castCost:120,level:5,target:"living",description:"Heals perma wounds by removing one wound and one injury stack. Does not restore HP."},
         greed_prayer:{name:"Greed Prayer",unlockCost:2,castCost:100,level:4,description:"Gain 100 Gold immediately."},
         reanimate:{name:"Reanimate",unlockCost:6,castCost:450,level:5,target:"fallen",description:"Returns a fallen companion as a skeleton. They heal normally but cannot level or be reanimated again."},
         fortunes_favor:{name:"Fortune's Favor",unlockCost:1,castCost:40,level:2,description:"The next quest awards 25% more Gold."},
