@@ -344,10 +344,6 @@
                     const direction=Math.sign(target.x-source.x);pose.dx=direction*pulse*(style==="melee"?Math.min(32,Math.abs(target.x-source.x)*.25):5);
                     pose.angle=direction*-.08*pulse;pose.motion=style==="spell"?10:style==="ranged"?8:kind==="signature"?9:7;pose.pattern=Math.min(2,Math.floor(t*6)%3);
                 }
-                if(f.key===event.targetKey&&t>.4&&t<.84){
-                    if(kind==="miss"){pose.dx=(source?Math.sign(base.x-source.x):1)*14*Math.sin((t-.4)/.44*Math.PI);pose.dy=-3*Math.sin((t-.4)/.44*Math.PI);pose.motion=5;}
-                    else if(["attack","signature"].includes(kind)&&t>.62&&(event.damage||0)>0){pose.dx=Math.sin(t*70)*3*(1-t);pose.motion=4;}
-                }
                 if(state.health<=0){pose.motion=17;pose.pattern=1;pose.alpha=0;pose.angle=0;}
                 if(kind==="ending"&&state.health>0){
                     const celebrating=f.side==="player"&&(event.outcome==="victory"||event.trigger==="VICTORY");

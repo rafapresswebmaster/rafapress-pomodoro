@@ -38,3 +38,7 @@ test('single-companion onboarding offers a reviewable quick-create path', () => 
   assert.match(ui, /quickCreate\(\)\{const classId=/);
   assert.match(ui, /this\.finishAppearance\(\);\}/);
 });
+
+test('the visible online title scene renders before the page receives focus', () => {
+  assert.match(ui, /!document\.hidden&&\(this\._scene instanceof Scene_RPGBase\|\|this\._scene instanceof Scene_Title\)/);
+});

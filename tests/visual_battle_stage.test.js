@@ -31,9 +31,9 @@ test('one resolved attack exposes Ward then Armor then HP values and never appli
  const f=fighters.find(f=>f.key==='enemy:4'),e=attack();
  assert.deepEqual(V.stats(f,e,.43),{health:5,armor:8,ward:45,life:null});assert.equal(V.stats(f,e,.45).ward,44);assert.equal(V.stats(f,e,.45).armor,8);assert.equal(V.stats(f,e,.55).armor,6);assert.equal(V.stats(f,e,.55).health,5);assert.equal(V.stats(f,e,.65).health,4);assert.equal(f.health,5);
 });
-test('miss visibly evades and produces no defense/HP-loss effects even with malformed damage fields',()=>{
+test('miss keeps the waiting target fixed and produces no defense/HP-loss effects even with malformed damage fields',()=>{
  const s=trip(attack({missed:true}),.6),a=new V.Animator(),g=V.layout(768,316,s.presentationFighters),frame=a.update(s,g);
- assert.equal(frame.kind,'miss');assert.ok(frame.effects.some(e=>e.type==='miss'));assert.ok(!frame.effects.some(e=>['ward','armor','hp'].includes(e.type)));assert.notEqual(frame.poses.get('enemy:4').dx,0);assert.equal(frame.poses.get('enemy:4').health,5);
+ assert.equal(frame.kind,'miss');assert.ok(frame.effects.some(e=>e.type==='miss'));assert.ok(!frame.effects.some(e=>['ward','armor','hp'].includes(e.type)));assert.equal(frame.poses.get('enemy:4').dx,0);assert.equal(frame.poses.get('enemy:4').dy,0);assert.equal(frame.poses.get('enemy:4').pattern,1);assert.equal(frame.poses.get('enemy:4').health,5);
 });
 test('basic melee, ranged/signature, opening, round, end and mortal intent are distinct beats',()=>{
  assert.equal(V.attackStyle({classId:'vanguard'},{action:'Sword Strike'}),'melee');assert.equal(V.attackStyle({classId:'ranger'},{action:'Bow Shot'}),'ranged');assert.equal(V.attackStyle({classId:'mystic'},{action:'Rune Pulse'}),'spell');

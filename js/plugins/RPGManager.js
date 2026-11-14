@@ -733,7 +733,7 @@
     // MZ's focus gate pauses Scene.update, including the event presentation cursor.
     // Keep its normal render loop on visible manager scenes; never synthesize input.
     const managerGameActive=SceneManager.isGameActive;
-    SceneManager.isGameActive=function(){return !managerMinimized&&(!document.hidden&&this._scene instanceof Scene_RPGBase||managerGameActive.call(this));};
+    SceneManager.isGameActive=function(){return !managerMinimized&&(!document.hidden&&(this._scene instanceof Scene_RPGBase||this._scene instanceof Scene_Title)||managerGameActive.call(this));};
     window.addEventListener("focus",()=>{syncMissionClock();refreshSessionDisplay(true);});
     document.addEventListener("visibilitychange",()=>{syncMissionClock();realtimeTickAt=null;refreshSessionDisplay(true);});
     const makeManagerSaveContents=DataManager.makeSaveContents;
@@ -2855,8 +2855,7 @@
                 }
                 this.characterFrame(actor, t < 0.78 ? Math.floor(t * 18) % 3 : 1);
                 const impactLife = t >= impactAt ? Math.max(0, 1 - (t - impactAt) / 0.32) : 0;
-                const recoil = impactLife * Math.sin((1 - impactLife) * Math.PI);
-                target.sprite.x = target.homeX + (e.side === "player" ? 14 : -14) * recoil;
+                target.sprite.x = target.homeX;
                 if (!target.defeated) target.sprite.y = target.homeY;
                 target.art.setBlendColor(impactLife > 0 ? (p.mode === "heal" ? [80, 255, 140, 180] : signature ? [160, 80, 255, 210] : [255, 255, 255, 210]) : [0, 0, 0, 0]);
                 if (target.defeated && p.impacted) {

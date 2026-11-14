@@ -2652,6 +2652,547 @@
         "wild_hunt",
         "haunted_fen"
       ]
+    },
+    {
+      "id": "moss_beetle",
+      "name": "Moss Beetle",
+      "role": "Guardian",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 0,
+      "speed": 7,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Mandible Snap",
+      "signatureAttack": "Shell Rush",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGMossBeetle_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGMossBeetle_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 8,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.06,
+        "speed": 7,
+        "crit": 0.06,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Shell Rush",
+        "special": null
+      },
+      "minEncounterTier": 1,
+      "encounterWeight": 7,
+      "encounterGroups": [
+        "wild_hunt",
+        "cavern_brood",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "sporecap",
+      "name": "Sporecap",
+      "role": "Support",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 1,
+      "speed": 6,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Spore Puff",
+      "signatureAttack": "Dream Spores",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGSporecap_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGSporecap_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 9,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 1,
+        "dodge": 0.06,
+        "speed": 6,
+        "crit": 0.06,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Dream Spores",
+        "special": null
+      },
+      "minEncounterTier": 1,
+      "encounterWeight": 7,
+      "encounterGroups": [
+        "wild_hunt",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "razor_boar",
+      "name": "Razor Boar",
+      "role": "Striker",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 0,
+      "speed": 9,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Tusk Jab",
+      "signatureAttack": "Razor Charge",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGRazorBoar_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGRazorBoar_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 10,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 1,
+        "ward": 0,
+        "dodge": 0.06,
+        "speed": 9,
+        "crit": 0.06,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Razor Charge",
+        "special": null
+      },
+      "minEncounterTier": 1,
+      "encounterWeight": 6,
+      "encounterGroups": [
+        "wild_hunt",
+        "outlaws"
+      ]
+    },
+    {
+      "id": "lizard_sentinel",
+      "name": "Lizard Sentinel",
+      "role": "Guardian",
+      "level": 1,
+      "health": 4,
+      "maxHealth": 4,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 0,
+      "speed": 10,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Obsidian Spear",
+      "signatureAttack": "Shield Rush",
+      "signatureDamage": 2,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGLizardSentinel_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGLizardSentinel_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 12,
+      "combatProfile": {
+        "hp": 4,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.06,
+        "speed": 10,
+        "crit": 0.06,
+        "damage": 1,
+        "specialDamage": 2,
+        "specialAttack": "Shield Rush",
+        "special": null
+      },
+      "minEncounterTier": 2,
+      "encounterWeight": 4,
+      "encounterGroups": [
+        "cavern_brood",
+        "haunted_fen",
+        "corsair_coast"
+      ]
+    },
+    {
+      "id": "frost_wisp",
+      "name": "Frost Wisp",
+      "role": "Mystic",
+      "level": 1,
+      "health": 3,
+      "maxHealth": 3,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 0,
+      "innateWard": 2,
+      "speed": 12,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Frost Spark",
+      "signatureAttack": "Winter Coil",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGFrostWisp_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGFrostWisp_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 13,
+      "combatProfile": {
+        "hp": 3,
+        "armor": 0,
+        "ward": 2,
+        "dodge": 0.12,
+        "speed": 12,
+        "crit": 0.06,
+        "damage": 1,
+        "specialDamage": 3,
+        "specialAttack": "Winter Coil",
+        "special": null
+      },
+      "minEncounterTier": 2,
+      "encounterWeight": 4,
+      "encounterGroups": [
+        "cavern_brood",
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "thorn_dryad",
+      "name": "Thorn Dryad",
+      "role": "Controller",
+      "level": 1,
+      "health": 5,
+      "maxHealth": 5,
+      "attack": 1,
+      "damage": 1,
+      "defense": 0,
+      "armor": 1,
+      "innateWard": 1,
+      "speed": 8,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Territorial",
+        "description": "Defends its home territory.",
+        "stat": "attack"
+      },
+      "basicAttack": "Thorn Lash",
+      "signatureAttack": "Root Prison",
+      "signatureDamage": 3,
+      "signatureUseLimit": 1,
+      "boss": false,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGThornDryad_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGThornDryad_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 14,
+      "combatProfile": {
+        "hp": 5,
+        "armor": 1,
+        "ward": 1,
+        "dodge": 0.06,
+        "speed": 8,
+        "crit": 0.06,
+        "damage": 1,
+        "specialDamage": 3,
+        "specialAttack": "Root Prison",
+        "special": null
+      },
+      "minEncounterTier": 2,
+      "encounterWeight": 4,
+      "encounterGroups": [
+        "wild_hunt",
+        "haunted_fen"
+      ]
+    },
+    {
+      "id": "griffin",
+      "name": "Griffin",
+      "role": "Boss",
+      "level": 1,
+      "health": 7,
+      "maxHealth": 7,
+      "attack": 1,
+      "damage": 2,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 0,
+      "speed": 14,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Normal",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Apex Threat",
+        "description": "A rare threat found on dangerous routes.",
+        "stat": "attack"
+      },
+      "basicAttack": "Talon Rake",
+      "signatureAttack": "Skyfall Dive",
+      "signatureDamage": 4,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGGriffin_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGGriffin_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 24,
+      "combatProfile": {
+        "hp": 7,
+        "armor": 2,
+        "ward": 0,
+        "dodge": 0.12,
+        "speed": 14,
+        "crit": 0.1,
+        "damage": 2,
+        "specialDamage": 4,
+        "specialAttack": "Skyfall Dive",
+        "special": null
+      },
+      "minEncounterTier": 4,
+      "encounterWeight": 2,
+      "encounterGroups": [
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "runic_golem",
+      "name": "Runic Golem",
+      "role": "Boss",
+      "level": 1,
+      "health": 8,
+      "maxHealth": 8,
+      "attack": 1,
+      "damage": 2,
+      "defense": 0,
+      "armor": 3,
+      "innateWard": 2,
+      "speed": 4,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Apex Threat",
+        "description": "A rare threat found on dangerous routes.",
+        "stat": "attack"
+      },
+      "basicAttack": "Stone Fist",
+      "signatureAttack": "Runic Quake",
+      "signatureDamage": 4,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGRunicGolem_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGRunicGolem_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 26,
+      "combatProfile": {
+        "hp": 8,
+        "armor": 3,
+        "ward": 2,
+        "dodge": 0.06,
+        "speed": 4,
+        "crit": 0.1,
+        "damage": 2,
+        "specialDamage": 4,
+        "specialAttack": "Runic Quake",
+        "special": null
+      },
+      "minEncounterTier": 4,
+      "encounterWeight": 2,
+      "encounterGroups": [
+        "cavern_brood",
+        "highland_monsters"
+      ]
+    },
+    {
+      "id": "marsh_hydra",
+      "name": "Marsh Hydra",
+      "role": "Boss",
+      "level": 1,
+      "health": 8,
+      "maxHealth": 8,
+      "attack": 1,
+      "damage": 2,
+      "defense": 0,
+      "armor": 2,
+      "innateWard": 1,
+      "speed": 7,
+      "intelligence": "Normal",
+      "position": "Front",
+      "dodge": "Low",
+      "alive": true,
+      "passiveTrait": {
+        "name": "Apex Threat",
+        "description": "A rare threat found on dangerous routes.",
+        "stat": "attack"
+      },
+      "basicAttack": "Venom Bite",
+      "signatureAttack": "Threefold Fang",
+      "signatureDamage": 4,
+      "signatureUseLimit": 1,
+      "boss": true,
+      "special": null,
+      "portrait": {
+        "sheet": "RPGMarshHydra_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "enemyArt": {
+        "sheet": "RPGMarshHydra_v10",
+        "index": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "xpReward": 28,
+      "combatProfile": {
+        "hp": 8,
+        "armor": 2,
+        "ward": 1,
+        "dodge": 0.06,
+        "speed": 7,
+        "crit": 0.1,
+        "damage": 2,
+        "specialDamage": 4,
+        "specialAttack": "Threefold Fang",
+        "special": null
+      },
+      "minEncounterTier": 4,
+      "encounterWeight": 2,
+      "encounterGroups": [
+        "haunted_fen",
+        "corsair_coast"
+      ]
     }
   ],
   "events": [
@@ -3139,7 +3680,8 @@
         "pirate_captain",
         "ratman",
         "mimic",
-        "dwarf_prospector"
+        "dwarf_prospector",
+        "razor_boar"
       ]
     },
     "wild_hunt": {
@@ -3154,7 +3696,11 @@
         "giant_spider_2",
         "treant",
         "swamp_hag",
-        "gnoll"
+        "gnoll",
+        "moss_beetle",
+        "sporecap",
+        "razor_boar",
+        "thorn_dryad"
       ]
     },
     "cavern_brood": {
@@ -3168,7 +3714,11 @@
         "giant_spider_2",
         "basilisk",
         "dwarf_prospector",
-        "mimic"
+        "mimic",
+        "moss_beetle",
+        "lizard_sentinel",
+        "frost_wisp",
+        "runic_golem"
       ]
     },
     "highland_monsters": {
@@ -3181,7 +3731,10 @@
         "minotaur",
         "basilisk",
         "giant_bat",
-        "kobold"
+        "kobold",
+        "frost_wisp",
+        "griffin",
+        "runic_golem"
       ]
     },
     "haunted_fen": {
@@ -3195,7 +3748,12 @@
         "giant_spider_1",
         "giant_spider_2",
         "ratman",
-        "treant"
+        "treant",
+        "moss_beetle",
+        "sporecap",
+        "lizard_sentinel",
+        "thorn_dryad",
+        "marsh_hydra"
       ]
     },
     "corsair_coast": {
@@ -3207,7 +3765,9 @@
         "ghost",
         "slime",
         "wyrmling",
-        "ratman"
+        "ratman",
+        "lizard_sentinel",
+        "marsh_hydra"
       ]
     }
   }
