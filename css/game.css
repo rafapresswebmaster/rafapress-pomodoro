@@ -53,8 +53,11 @@ button:not(:disabled):focus-visible, select:not(:disabled):focus-visible, input:
     image-rendering: auto;
 }
 #manager-confirmation { overflow-y: auto !important; overscroll-behavior: contain; }
+#quest-party-selection .quest-party-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+#quest-party-selection .quest-party-card { min-width: 0; }
 @media (max-width: 700px), (max-height: 560px) {
     #manager-confirmation { width: calc(100vw - 16px) !important; max-height: calc(100vh - 16px) !important; padding: 10px !important; font-size: 14px !important; }
+    #quest-party-selection .quest-party-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     /* Positioning is calculated from the canvas's left edge. Keeping that same
        origin while the canvas scales prevents the HUD from drifting right. */
     #rpg-focus-timer { transform-origin: top left !important; }
@@ -104,6 +107,7 @@ button:not(:disabled):focus-visible, select:not(:disabled):focus-visible, input:
         touch-action: pan-y; -webkit-overflow-scrolling: touch;
     }
     #manager-confirmation button { min-width: 44px; min-height: 48px; }
+    #quest-party-selection .quest-party-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     #rpg-how-to-play { padding: var(--mobile-safe-top) var(--mobile-safe-right) var(--mobile-safe-bottom) var(--mobile-safe-left); box-sizing: border-box; }
     #rpg-how-to-play .manual-shell { width: 100% !important; height: 100% !important; max-height: none; border-width: 2px; border-radius: 10px; }
     #rpg-how-to-play .manual-tabs { display: flex !important; overflow-x: auto; overscroll-behavior-x: contain; touch-action: pan-x; padding: 6px !important; }

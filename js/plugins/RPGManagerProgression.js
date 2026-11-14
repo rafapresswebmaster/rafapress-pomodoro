@@ -1313,7 +1313,7 @@
                     maxHealth: npc.maxHealth, armor: living(npc) ? npc.classArmor+equipmentArmor(npc) : 0,
                     ward: living(npc) ? (npc.innateWard || 0) + (npc.temporaryWard || 0) : 0,
                     levelChanges:Object.entries(classStats(npc)).map(([k,v])=>[k,v-classStats({...npc,level:levelsBefore[id]||npc.level})[k]]).filter(([k,v])=>v).map(([k,v])=>`${k} +${v}`).concat(npc.level>=3&&(levelsBefore[id]||npc.level)<3?["Signature unlocked"]:npc.level>=6&&(levelsBefore[id]||npc.level)<6?["Class refinement unlocked"]:[]).join(", "), oldLevel:levelsBefore[id]||npc.level, lastingInjuries:npc.lastingInjuries||0, condition: conditionOf(npc), permanentWounds: woundLines(npc),
-                    level: npc.level, levelledUp: Number.isFinite(levelsBefore[id]) && npc.level > levelsBefore[id] };
+                    level: npc.level, xp:Math.max(0,Number(npc.xp)||0), xpRequired:xpRequired(npc), levelledUp: Number.isFinite(levelsBefore[id]) && npc.level > levelsBefore[id] };
             })
         };result.fieldNotes=[xpFieldNote(report,result.members)];return result;
     }
