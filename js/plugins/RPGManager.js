@@ -1548,7 +1548,7 @@
         modal.element.id="quest-party-selection";modal.element.style.overflowY="auto";fitMobileDialog(modal.element);
         const content=document.createElement("div"),count=document.createElement("p"),timing=document.createElement("p"),grid=document.createElement("div");
         modal.element.insertBefore(content,modal.error);content.append(count,grid);
-        count.after(timing);timing.textContent=`Recommended level ${quest.intendedLevel||progression.dangerRating(quest)} · EXP and level-ups apply after the quest finishes.`;timing.style.cssText="margin:-8px 0 10px;color:#66583f;font-size:13px";grid.className="quest-party-grid";
+        count.after(timing);timing.textContent=`Recommended level ${quest.intendedLevel||progression.dangerRating(quest)} · EXP and level-ups apply after the quest finishes.`;timing.style.cssText="margin:-8px 0 10px;color:#66583f;font-size:13px";grid.className="quest-party-grid";grid.style.gridTemplateColumns="repeat(5,minmax(0,1fr))";
         const cards=[];
         const refresh=()=>{const average=selected.size?(members.filter(n=>selected.has(n.id)).reduce((sum,n)=>sum+n.level,0)/selected.size).toFixed(1):"–";count.textContent=`${selected.size} / 3 selected · Average level ${average}`;modal.buttons[0].disabled=selected.size<1||selected.size>3;modal.buttons[0].style.opacity=selected.size>=1&&selected.size<=3?"1":".5";for(const {card,id} of cards){const chosen=selected.has(id);card.setAttribute("aria-pressed",String(chosen));card.style.borderColor=chosen?"#b58225":"#aa9772";card.style.background=chosen?"#e8c583":"#e3d1ab";}};
         for(let i=0;i<5;i++){

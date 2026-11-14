@@ -13,6 +13,7 @@ test('quest preparation shows status, recommended level, and return-only EXP pro
   assert.match(ui, /EXP and level-ups apply after the quest finishes/);
   assert.match(ui, /condition==="Wounded"\?"PERMA WOUND":"READY"/);
   assert.match(ui, /xpLabel\.textContent=xpMax\?`EXP/);
+  assert.match(ui, /grid\.style\.gridTemplateColumns="repeat\(5,minmax\(0,1fr\)\)"/);
   assert.match(css, /quest-party-grid[^}]*repeat\(5/);
   assert.match(css, /quest-party-grid[^}]*repeat\(2/);
 });
