@@ -65,3 +65,13 @@ test('visual changes preserve the simulator, quest definitions and domain settle
  // Simulation now intentionally adds seeded critical hits; stage remains presentation only.
  const ui=fs.readFileSync(require.resolve('../js/plugins/RPGManager'),'utf8'),stage=fs.readFileSync(require.resolve('../js/plugins/RPGManagerBattleStage'),'utf8');assert.match(ui,/_battleFailedEvent/);assert.match(ui,/this\._battleStage\?\.destroy/);assert.match(stage,/LVL\.\$\{npc\.level\|\|1\}/);assert.match(stage,/#f1d487/);assert.doesNotMatch(stage,/Math\.random|\.step\(|recordBattleResult|completeReturn|consumeEventCues|AudioManager/);
 });
+test('walking-sheet battle fallbacks always use the center standing frame',()=>{
+ const stage=fs.readFileSync(require.resolve('../js/plugins/RPGManagerBattleStage'),'utf8');
+ assert.match(stage,/sx=\(\(big\?0:index%4\*3\)\+1\)\*sw/);
+ assert.doesNotMatch(stage,/sx=\(\(big\?0:index%4\*3\)\+pose\.pattern\)\*sw/);
+});
+test('waiting side-view battlers hold the center standby frame while only the actor animates',()=>{
+ const s=trip(attack(),.65),geometry=V.layout(816,360,fighters),frame=new V.Animator().update(s,geometry);
+ assert.equal(frame.poses.get('player:1').pattern,1);
+ assert.notEqual(frame.poses.get('player:0').pattern,1);
+});

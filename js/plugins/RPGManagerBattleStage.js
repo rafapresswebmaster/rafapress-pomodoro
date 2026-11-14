@@ -338,11 +338,11 @@
             const t=progress(trip),kind=beat(event),fighters=trip.presentationFighters?.length?trip.presentationFighters:trip.preparedTeam||[];
             const actor=fighters.find(f=>f.key===event.actorKey),style=attackStyle(actor,event),poses=new Map();
             const source=geometry.positions.get(event.actorKey),target=geometry.positions.get(event.targetKey),pulse=Math.sin(Math.PI*clamp((t-.2)/.62));
-            for(const f of fighters){const base=geometry.positions.get(f.key);if(!base)continue;const state=stats(f,event,t),pose={...base,...state,dx:0,dy:0,angle:0,alpha:state.health<=0?.45:1,motion:state.health<=0?17:1,pattern:Math.min(2,Math.floor(t*6)%3)};
+            for(const f of fighters){const base=geometry.positions.get(f.key);if(!base)continue;const state=stats(f,event,t),pose={...base,...state,dx:0,dy:0,angle:0,alpha:state.health<=0?.45:1,motion:state.health<=0?17:1,pattern:1};
                 if(kind==="opening"){pose.dx=(f.side==="player"?-1:1)*(1-clamp(t/.5))*16;pose.alpha*=clamp(.3+t*2);}
                 if(f.key===event.actorKey&&["attack","signature","miss"].includes(kind)&&source&&target){
                     const direction=Math.sign(target.x-source.x);pose.dx=direction*pulse*(style==="melee"?Math.min(32,Math.abs(target.x-source.x)*.25):5);
-                    pose.angle=direction*-.08*pulse;pose.motion=style==="spell"?10:style==="ranged"?8:kind==="signature"?9:7;
+                    pose.angle=direction*-.08*pulse;pose.motion=style==="spell"?10:style==="ranged"?8:kind==="signature"?9:7;pose.pattern=Math.min(2,Math.floor(t*6)%3);
                 }
                 if(f.key===event.targetKey&&t>.4&&t<.84){
                     if(kind==="miss"){pose.dx=(source?Math.sign(base.x-source.x):1)*14*Math.sin((t-.4)/.44*Math.PI);pose.dy=-3*Math.sin((t-.4)/.44*Math.PI);pose.motion=5;}
@@ -398,7 +398,7 @@
                 if(bitmap.isReady()){sw=bitmap.width/9;sh=bitmap.height/6;sx=(Math.floor(pose.motion/6)*3+pose.pattern)*sw;sy=pose.motion%6*sh;flip=f.side==="player";kind="sv";}
             }
             if(kind==="fallback"&&face.sheet&&face.sheet!=="RPGManagerMonsters"){
-                bitmap=a.art("characters",face.sheet);if(bitmap.isReady()){const big=String(face.sheet).startsWith("$");sw=bitmap.width/(big?3:12);sh=bitmap.height/(big?4:8);sx=((big?0:index%4*3)+pose.pattern)*sw;sy=((big?0:Math.floor(index/4)*4)+(f.side==="player"?2:1))*sh;kind="walk";}
+                bitmap=a.art("characters",face.sheet);if(bitmap.isReady()){const big=String(face.sheet).startsWith("$");sw=bitmap.width/(big?3:12);sh=bitmap.height/(big?4:8);sx=((big?0:index%4*3)+1)*sw;sy=((big?0:Math.floor(index/4)*4)+(f.side==="player"?2:1))*sh;kind="walk";}
             }
             const x=pose.x+pose.dx,y=pose.y+pose.dy,size=pose.size,c=b.context;let artCenterX=0;
             const isolated=kind!=="fallback"?isolatedFrame(bitmap.canvas,sx,sy,sw,sh):null;
